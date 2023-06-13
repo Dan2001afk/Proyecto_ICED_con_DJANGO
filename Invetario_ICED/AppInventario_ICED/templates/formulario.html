@@ -1,31 +1,137 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-
-    <form method="POST" action="/insertar/">
-        <label for="Equ_id">ID</label>
-        <input type="text" name="Equ_id">
-        <label for="Equi_tipo">Tipo</label>
-        <input type="text" name="Equi_tipo">
-        <label for="Equi_modelo">Modelo</label>
-        <input type="text" name="Equi_modelo">
-        <label for="Equi_color">Color</label>
-        <input type="text" name="Equi_color">
-        <label for="Equi_serial">Serial</label>
-        <input type="text" name="Equi_serial">
-        <label for="Equi_estado">Estado</label>
-        <input type="text" name="Equi_estado">
-        <label for="equi_especialidad">especialidad</label>
-        <input type="text" name="equi_especialidad">
-        <input type="submit">
-    </form>
-
+    <title>Menú lateral responsive</title> 
+    <link rel="stylesheet" href="{% static 'css/styles1.css' %}">
+    <link rel="stylesheet" href="/Invetario_ICED/AppInventario_ICED/css/styles1.css">
     
+    <script src="https://kit.fontawesome.com/3d7a846b01.js" crossorigin="anonymous"></script>
+   
+</head>
+<body id="body">
+    
+    <header>
+        <div class="icon__menu">
+            <i class="fas fa-bars" id="btn_open"></i>
+        </div>
+
+        </div>
+
+    </header>
+
+    <div class="menu__side" id="menu_side">
+
+        <div class="options__menu">	
+
+            <a href="/index3.html" class="selected">
+                <div class="option">
+                   <i class="fas fa-home" title="Inicio"></i>
+                    <h4>Inicio</h4>
+                </div>
+            </a>
+
+            <a href="/index4.html">
+                <div class="option">
+                    <i class="fa-solid fa-cloud"></i>
+                    <h4>Portafolio</h4>
+                </div>
+            </a>
+            
+            <a href="/index5.html">
+                <div class="option">
+                    <i class="fa-solid fa-database"></i>
+                    <h4>Cursos</h4>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="option">
+                    <i class="fa-solid fa-code"></i>
+                    <h4>Blog</h4>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="option">
+                    <i class="fa-solid fa-users"></i>
+                    <h4>Contacto</h4>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="option">
+                    <i class="fa-solid fa-arrows-rotate"></i>
+                    <h4>Nosotros</h4>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="option">
+                    <i class="fa-solid fa-plus"></i>
+                    <h4>Nosotros</h4>
+                </div>
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <section class="cont">
+        <div class="encabezado">
+            <h1>Insertar dispositivo nuevo </h1>
+        </div>
+        <div class="contenedor1">
+            <div class="form-container">
+                <form method="POST" action="/insertar/">
+                    {% csrf_token %}
+                    <label for="Equ_id">ID:</label>
+                    <input type="text" name="Equ_id" required><br>
+                    
+                    <label for="Equi_tipo">Tipo:</label>
+                    <input type="text" name="Equi_tipo" required><br>
+                    
+                    <label for="Equi_modelo">Modelo:</label>
+                    <input type="text" name="Equi_modelo" required><br>
+                    
+                    <label for="Equi_color">Color:</label>
+                    <input type="text" name="Equi_color" required><br>
+                    
+                    <label for="Equi_serial">Serial:</label>
+                    <input type="text" name="Equi_serial" required><br>
+                    
+                    <label for="Equi_estado">Estado:</label>
+                    <input type="text" name="Equi_estado" required><br>
+                    
+                    <label for="equi_especialidad">Especialidad:</label>
+                    <input type="text" name="equi_especialidad" required><br>
+                    
+                    <input type="submit" value="Guardar">
+                </form>
+            </div>
+        </div>
+        <div class="contenedor2">
+            <h3>Portatiles disponibles</h32>
+    
+        </div>
+
+        <div class="contenedor3">
+            <h3>Portatiles en uso</h3>
+        </div>
+
+
+        <div class="contenedor4">
+            <h1>Recuerda enregar el dispositivo acorde a la ficha del estudiante</h1>
+        </div>
+    </section>
+      
+
+
+
+    <script src="/js/script.js"></script>
 </body>
 </html>

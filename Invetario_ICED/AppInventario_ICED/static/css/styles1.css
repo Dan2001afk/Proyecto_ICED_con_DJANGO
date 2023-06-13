@@ -1,0 +1,444 @@
+/* Estilos adicionales para el formulario */
+.form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.form-container input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.form-container input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: sans-serif;
+
+}
+
+body{
+    background-color: #dcdcdc;
+    margin-top: 80px;
+    margin-left: 80px;
+    transition: margin-left 300ms  cubic-bezier(0.075, 0.82, 0.165, 1);
+
+}
+
+
+header{
+    width: 100%;
+    height: 80px;
+    background: #0c0c0c;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 200;
+}
+
+/*estilizar clases de nuestro navbar*/
+
+.icon__menu{
+
+    width: 50px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*mover el icono un poco*/
+    transform: translate(10px);
+}
+
+/*estilos del icono*/
+
+.icon__menu i{
+    color: white;
+    font-size: 20px;
+    /*opccion para click del icono*/
+    cursor: pointer;
+    position: absolute;
+}
+
+
+/*menu desplegable y contenido de iconos*/
+
+.menu__side{
+
+    width: 80px;
+    height: 100%;
+    background: #f7f7f7;
+    position: fixed;
+    top: 0;
+    left: 0 ;
+    font-size: 18px;
+    z-index: 300;
+    overflow: hidden;
+    overflow-y: scroll;
+    border-right: 20px solid #f5f5f5 ;
+    transition: all 300ms  cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+/*acultar scroll en navegadores*/
+.menu__side::-webkit-scrollbar{
+    display: none ;
+}
+
+.menu__side{
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/*contenido del menu*/
+.name__page{
+    padding: 20px 30px;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.name__page i{
+
+    width: 20px;
+    margin-right: 20px;
+}
+
+/*opcciones de nuestrp menu*/
+.options__menu{
+    padding: 20px 30px;
+    position: absolute;
+    top: 80px;
+
+}
+
+.options__menu a{
+    color: black;
+    cursor: default;
+    display: block;
+    position: relative;
+    transition: color 300ms;
+}
+
+
+/*acciones ya sea para usar el cursor*/
+.options__menu a:hover{
+
+    color: rgb(110, 41, 236);
+}
+
+/*posicionar orden de elementos*/
+
+.options__menu .option{
+
+    padding: 20px 0px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+/*ajustar iconos*/
+.options__menu .option i{
+
+    
+    width: 20px;
+    margin-right: 20px;
+    cursor: pointer;
+
+}
+
+/*estilos de los nombres*/
+.options__menu .option h4{
+
+
+    font-weight:300;
+    cursor: pointer;
+}
+
+
+/*opccion de marcar cualquier icono del menu y dibujar un ceudo elemento*/
+
+a.selected{
+    color: #1d1b1b;
+}
+
+.selected::before{
+
+    content: '' ;
+    width: 3px;
+    height: 80%;
+    background: rgb(17, 17, 17);
+    position: absolute;
+    top: 10%;
+    left: -25px;
+
+}
+
+/*contenido del diseño*/
+
+main{
+    background-color: #d3d3d3;
+    margin: auto;
+    margin-left: 50px;
+    margin:50px;
+    padding: 20px;
+}
+
+/*contenedores para el cotenido y el grid*/
+
+/*contenedor madre*/
+
+
+.cont{
+    
+  
+    max-width: 100%;
+    height: 1000px;
+    display: grid;
+    margin: 3px;
+    margin-top: 3px;
+    grid-template-columns:repeat(11, 1fr);
+    grid-template-rows: repeat(15, 1fr);
+    /*margenes generales*/
+    row-gap: 20px;
+    column-gap: 20px;
+    /*margenes de contenedores*/
+    margin: 3%;
+    padding: 0px;
+    box-sizing: border-box;
+    
+}
+
+/*contenedores hijos*/
+
+.encabezado h1{
+    text-align: center;
+    margin: 30px;
+}
+
+.encabezado {
+    background-color: rgb(255, 255, 255);
+    grid-column: 1/12;
+    grid-row: 1/3;
+    margin-top: 30px;
+}
+
+
+.contenedor1{
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    /*inicio y final de columna*/
+    grid-column: 1/8;
+    /*inicio y final de fila del ancho*/
+    grid-row: 3/12 ;   
+}
+
+/*contenido del contenedor1 */
+
+h3 {
+    margin: 30px;
+}
+
+table {
+    width: 95%;
+    border-collapse: collapse;
+    margin: 20px;
+    margin-top: 40px;
+}
+
+table th, table td {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color: #f2f2f2;
+}
+
+
+/*final del contenido del contenedor*/
+.contenedor2{
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    grid-column: 8/12;
+    grid-row: 3/7;
+}
+
+
+/*contenido del contenedor2 */
+.contenedor2 h1{
+    margin: 20px;
+    text-align: center;
+}
+
+/*final del contenedor2*/
+
+
+.contenedor3{
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    grid-column: 8/12;
+    grid-row: 7/11;
+}
+
+.contenedor4{
+    background-image: url(/imagenes/computadora.jpg);
+    background-color: rgba(34, 24, 43, 0.354);
+    background-blend-mode: soft-light;
+    background-size: cover;
+    border-radius: 10px;
+    grid-column: 8/12;
+    grid-row: 11/14;
+  
+}
+
+/*contenido del contenedor4 */
+.contenedor4 h1{
+    color: white;
+    margin: 50px;
+    text-align: center;
+}
+/*final del contenedor4*/
+
+/*clases para mover el menu */
+
+.body_move{
+    margin-left: 250px;
+}
+
+.menu__side_move{
+    width: 250px;
+}
+
+/*responsive general de el diseño*/
+@media screen and (min-width:320px) and (max-width:700px){
+
+/*----------- contenedor padre ----------*/    
+    .cont{
+    
+  
+        max-width: 100%;
+        height: 1000px;
+        display: grid;
+        margin: 3px;
+        margin-top: 3px;
+        grid-template-columns:repeat(11, 1fr);
+        grid-template-rows: repeat(60, 1fr);
+        /*margenes generales*/
+        row-gap: 20px;
+        column-gap: 20px;
+        /*margenes de contenedores*/
+        margin: 3%;
+        padding: 0px;
+        box-sizing: border-box;
+        
+    }
+
+/*--------contenedores hijos-------*/
+
+
+
+.encabezado h1{
+    font-size: 16px;
+    text-align: center;
+    margin: 30px;
+}
+
+.encabezado {
+    background-color: rgb(255, 255, 255);
+    grid-column: 1/12;
+    grid-row: 1/2;
+    margin-top: 30px;
+}
+
+
+.contenedor1{
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    /*inicio y final de columna*/
+    grid-column: 1/12;
+    /*inicio y final de fila del ancho*/
+    grid-row: 2/20 ;
+    font-size: 10px;
+    text-align: center;   
+}
+
+/*contenido del contenedor1 */
+
+.contenedor2{
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    grid-column: 1/12;
+    grid-row: 20/30;
+    text-align: center;
+    font-size: 13px;
+}
+
+.contenedor3{
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    grid-column: 1/12;
+    grid-row: 30/40;
+    text-align: center;
+    font-size: 13px;
+
+}
+
+
+
+
+.contenedor4{
+    background-image: url(/imagenes/computadora.jpg);
+    background-color: rgba(34, 24, 43, 0.354);
+    background-blend-mode: soft-light;
+    background-size: cover;
+    border-radius: 10px;
+    grid-column: 1/12;
+    grid-row: 40/50;
+    text-align: center;
+    font-size: 12px;
+  
+}
+
+
+
+
+
+
+}
+
+@media screen and (max-width: 760px){
+    .body_move{
+        margin-left: 0px;
+    }
+
+    .menu__side_move{
+        width: 80px;
+        left: -80px;
+    }
+}
