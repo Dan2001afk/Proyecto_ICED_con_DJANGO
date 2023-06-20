@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded",function(){
     document.getElementById("FormEquipos").addEventListener("submit",function(event) {
         event.preventDefault();
-
         var Datos={
             Equ_id:document.getElementById("Equ_id").value,
             Equi_tipo:document.getElementById("Equi_tipo").value,
@@ -9,7 +8,7 @@ document.addEventListener("DOMContentLoaded",function(){
             Equi_color:document.getElementById("Equi_color").value,
             Equi_serial:document.getElementById("Equi_serial").value,
             Equi_estado:document.getElementById("Equi_estado").value,
-            equi_especialidad:document.getElementById("equi_especialidad").value,
+            equi_especialidad:document.getElementById("equi_especialidad").value
         };
         console.log(document.getElementById("Equ_id").value)
 
@@ -27,7 +26,7 @@ document.addEventListener("DOMContentLoaded",function(){
         .then(response => response.json())
         .then(datoos=>{
             console.log(datoos)
-          
+            Consultar();
         })
 
         .catch(console.error())
@@ -35,6 +34,5 @@ document.addEventListener("DOMContentLoaded",function(){
 
         
     })
-    Consultar();
-  
+
 })

@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menú lateral responsive</title> 
-    <link rel="stylesheet" href="{% static 'css/styles1.css' %}">
-    <link rel="stylesheet" href="{% static 'js/GestionEquipos.js' %}">
-    <link rel="stylesheet" href="{% static 'js/ConsultarEquipos.js' %}">
-    
+    <link href="{% static 'css/estyless.css' %}">
+    <script src="{% static 'js/GestionEquipos.js' %}"></script>
+    <script src="{% static 'js/ConsultarEquipos.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
     <script src="https://kit.fontawesome.com/3d7a846b01.js" crossorigin="anonymous"></script>
-   
+
 </head>
 <body id="body">
     
@@ -91,25 +91,25 @@
                 <form method=""  id="FormEquipos" >
                     {% csrf_token %}
                     <label for="Equ_id">ID:</label>
-                    <input type="text" name="Equ_id" required><br>
+                    <input type="text" name="Equ_id" id="Equ_id" required><br>
                     
                     <label for="Equi_tipo">Tipo:</label>
-                    <input type="text" name="Equi_tipo" required><br>
+                    <input type="text" name="Equi_tipo" id="Equi_tipo" required><br>
                     
                     <label for="Equi_modelo">Modelo:</label>
-                    <input type="text" name="Equi_modelo" required><br>
+                    <input type="text" name="Equi_modelo" id="Equi_modelo" required><br>
                     
                     <label for="Equi_color">Color:</label>
-                    <input type="text" name="Equi_color" required><br>
+                    <input type="text" name="Equi_color" id="Equi_color" required><br>
                     
                     <label for="Equi_serial">Serial:</label>
-                    <input type="text" name="Equi_serial" required><br>
+                    <input type="text" name="Equi_serial" id="Equi_serial" required><br>
                     
                     <label for="Equi_estado">Estado:</label>
-                    <input type="text" name="Equi_estado" required><br>
+                    <input type="text" name="Equi_estado" id="Equi_estado" required><br>
                     
                     <label for="equi_especialidad">Especialidad:</label>
-                    <input type="text" name="equi_especialidad" required><br>
+                    <input type="text" name="equi_especialidad" id="equi_especialidad" required><br>
                     
                     <input type="submit" value="Guardar">
                 </form>
@@ -129,12 +129,11 @@
             <h1>Recuerda enregar el dispositivo acorde a la ficha del estudiante</h1>
         </div>
     </section>
-      
     
-   
 
 
 
-    <script src="{% static 'js/script.js' %}"></script>
+
+    
 </body>
 </html>

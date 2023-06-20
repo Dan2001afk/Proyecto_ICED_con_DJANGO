@@ -18,16 +18,16 @@ var body = document.getElementById("body");
 
 window.addEventListener("resize", function(){
 
-  if (window.innerWidth > 760){
+if (window.innerWidth > 760){
 
-      body.classList.remove("body_move");
-      side_menu.classList.remove("menu__side_move");
-  }
+body.classList.remove("body_move");
+side_menu.classList.remove("menu__side_move");
+}
 
-  if (window.innerWidth < 760){
+if (window.innerWidth < 760){
 
-      body.classList.add("body_move");
-      side_menu.classList.add("menu__side_move");
-  }
+    body.classList.add("body_move");
+    side_menu.classList.add("menu__side_move");
+}
 
 });
