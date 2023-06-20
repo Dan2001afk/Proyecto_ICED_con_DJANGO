@@ -10,9 +10,9 @@ from django.http import HttpResponse
 
 import json  
 
-class listadoEquipos(ListView):
-    model=Equipos
-    template_name="index.html"
+# class listadoEquipos(ListView):
+#     model=Equipos
+#     template_name="index.html"
 
 class listadoUsuarios(ListView):
     model=Usuarios
@@ -26,11 +26,23 @@ class listadoSanciones(ListView):
     model=Sanciones
     template_name="indextres.html"
 
-class ListadoEquipos(View):
+class ListadoEquipos(ListView):
     def get (self,request):
-        Datos=Equipos.objects.all().values()
-        DatosEquipos=list(Datos)
-        return JsonResponse(DatosEquipos,safe=False)
+        Datos=Equipos.objects.all()
+        Datos_Equipos=[]
+        for i in Datos:
+            Datos_Equipos.append({
+                'Equ_id':i.Equ_id,
+                'Equi_tipo':i.Equi_tipo,
+                'Equi_modelo':i.Equi_modelo,
+                'Equi_color':i.Equi_color,
+                'Equi_serial':i.Equi_serial,
+                'Equi_estado':i.Equi_estado,
+                'equi_especialidad':i.equi_especialidad
+            })
+        # DatosEquipos=list(Datos)
+
+        return JsonResponse(Datos_Equipos,safe=False)
 
 class InsertarEquipos(View):
     @method_decorator(csrf_exempt)
