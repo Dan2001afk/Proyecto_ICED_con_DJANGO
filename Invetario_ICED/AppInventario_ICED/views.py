@@ -67,9 +67,8 @@ class InsertarEquipos(View):
 
         # return render(request,"formulario.html",{'mensaje':'Datos Guardados'})
         
-def formularioInsertar(request):
-    return render(request,"formulario.html")
-
+def Equipo(request):
+    return render(request,"Equipos.html")
 
 #EQUIPOS
 class ActualizarEquipo(View):

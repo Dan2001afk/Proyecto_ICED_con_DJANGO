@@ -1,3 +1,4 @@
+//LISTAR EQUIPOS
 function Consultar() {
     fetch("http://127.0.0.1:8000/ListarEquipos",{
         method:"GET",
@@ -8,7 +9,7 @@ function Consultar() {
 .then(Response => Response.json())
 .then(datos=>{
 console.log(datos)
-let tabla=document.getElementById("ConsultarEquipos");
+let tabla=document.querySelector('#tabla1-body');
 tabla.innerHTML="";
 if (datos==0) {
     tabla.innerHTML+=`<tr> <td> no hay datos </td> </tr>`
@@ -31,3 +32,4 @@ else{
 })
 
 }
+

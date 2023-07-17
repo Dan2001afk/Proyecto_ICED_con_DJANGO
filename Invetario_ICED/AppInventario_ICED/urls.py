@@ -4,10 +4,10 @@ from . import views
 
 urlpatterns=[
     #CRUD Equipos
+    path('Equipo',views.Equipo,name='Equipo'),
     path('ListarEquipos',ListadoEquipos.as_view(),name='ListarEquipos'),
     path('insertar/',InsertarEquipos.as_view(),name='insertar'),
-    path('formularioInsertar',views.formularioInsertar,name='insertar'),
-    path('ActualizarEquipo/<pk>',ActualizarEquipo.as_view(),name='actualizar'),
+    path('ActualizarEquipo',ActualizarEquipo.as_view(),name='actualizar'),
     path('EliminarEquipo/<pk>',EliminarEquipo.as_view(),name='eliminar'),
     #CRUD Usuarios
     path('ListarUsuarios',ListadoUsuarios.as_view(),name='Usuarios'),
