@@ -217,11 +217,11 @@ class InsertarPrestamo(View):
         prestamo.save()
         
         
-        return render(request, "formularioPrestamos.html", {'mensaje': 'Datos Guardados'})
+        return render(request, "Prestamoss.html", {'mensaje': 'Datos Guardados'})
     
 
-def formularioPrestamos(request):
-    return render(request,"formularioPrestamos.html")
+def Prestamoss(request):
+    return render(request,"Prestamoss.html")
 
 
 class ActualizarPrestamo(View):
