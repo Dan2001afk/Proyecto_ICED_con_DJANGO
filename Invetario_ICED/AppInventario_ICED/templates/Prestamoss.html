@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="{% static 'css/formulario1.css' %}">
     <script src="{% static 'js/ListarPrestamos.js' %}"></script>
+    <script src="{% static 'js/InsertarPrestamo.js' %}"></script>
     <script src="{% static 'js/script.js' %}"></script>
     <script src="https://kit.fontawesome.com/3d7a846b01.js" crossorigin="anonymous"></script>
 </head>
@@ -110,28 +110,39 @@
             </div>
         </div>
         <div class="contenedor3">
-            <form method="POST" action="/insertarPrestamo/">
+            <form method="" id="FormPrestamos">
+                {% csrf_token %}
                 <label for="Pres_Id">ID</label>
                 <input type="text" name="Pres_Id">
+
                 <label for="Pres_Equipos_id">ID DEL EQUIPO</label>
                 <input type="text" name="Pres_Equipos_id">
+
                 <label for="Pres_Usuarios_Documento">DOCUMENTO DEL USUARIO</label>
                 <input type="text" name="Pres_Usuarios_Documento">
+
                 <label for="Pres_Fec_Entrega">FECHA DE ENTREGA</label>
                 <input type="text" name="Pres_Fec_Entrega">
+
                 <label for="Pres_Fec_Devolucion">FECHA DEVOLUCION</label>
                 <input type="text" name="Pres_Fec_Devolucion">
+
                 <label for="Pres_Hora_Entrega">HORA ENTREGA</label>
                 <input type="text" name="Pres_Hora_Entrega">
+
                 <label for="Pres_Hora_Devolucion">HORA DE DEVOLUCION</label>
                 <input type="text" name="Pres_Hora_Devolucion">
+
                 <label for="Pres_Tiempo_Limite">TIEMPO LIMITE</label>
                 <input type="text" name="Pres_Tiempo_Limite">
+
                 <label for="Pres_Observaciones_entrega">OBSERVACION DE ENTREGA</label>
                 <input type="text" name="Pres_Observaciones_entrega">
+
                 <label for="Pres_Observaciones_recibido">OBSERVACION DE RECIBIMIENTO</label>
                 <input type="text" name="Pres_Observaciones_recibido">
-                <input type="submit">
+
+                <input type="submit" value="Guardar">
             </form>
         </div>
         <div class="contenedor4">

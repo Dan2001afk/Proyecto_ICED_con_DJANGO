@@ -2,6 +2,7 @@
 document.addEventListener("DOMContentLoaded",function(){
     document.getElementById("FormEquipos").addEventListener("submit",function(event) {
         event.preventDefault();
+        
         var Datos={
             Equ_id:document.getElementById("Equ_id").value,
             Equi_tipo:document.getElementById("Equi_tipo").value,
