@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menú lateral responsive</title> 
-    <link rel="stylesheet" href="{% static 'css/formulario1.css' %}">
+    <link rel="stylesheet" href="{% static 'css/parte2.css' %}">
     <script src="{% static 'js/ListarUsuarios.js' %}"></script>
     <script src="{% static 'js/InsertarUsuario.js' %}"></script>
     <script src="{% static 'js/script.js' %}"></script>
@@ -82,7 +82,7 @@
     <section class="cont">
 
         <div class="contenedor1">
-            <h1>Lista de Usuarios</h1>
+            <h1>Lista de Usuarios Registrados</h1>
         </div>
         
         <div class="contenedor2">    
@@ -111,34 +111,31 @@
         </div>
 
         <div class="contenedor3">
-            <div class="form-container">
+            <h1>Insertar Equipo</h1>
                 <form method=""  id="FormUsuarios" >
+
+
                     {% csrf_token %}
-                    <label for="Usu_Documento">Documento:</label>
-                    <input type="text" name="Usu_Documento" id="Usu_Documento" required><br>
                     
-                    <label for="Usu_Nombre">Nombre</label>
-                    <input type="text" name="Usu_Nombre" id="Usu_Nombre" required><br>
+                    <input type="text" name="Usu_Documento" id="Usu_Documento" placeholder="Documento" required><br>
+                
+                    <input type="text" name="Usu_Nombre" id="Usu_Nombre" placeholder="Nombre" required><br>
                     
-                    <label for="Usu_Apellido">Modelo:</label>
-                    <input type="text" name="Usu_Apellido" id="Usu_Apellido" required><br>
+                    <input type="text" name="Usu_Apellido" id="Usu_Apellido" placeholder="Apellido" required><br>
+            
+                    <input type="text" name="Usu_tipo" id="Usu_tipo" placeholder="Tipo" required><br>
                     
-                    <label for="Usu_tipo">Tipo</label>
-                    <input type="text" name="Usu_tipo" id="Usu_tipo" required><br>
+                    <input type="text" name="Usu_Celular" id="Usu_Celular" placeholder="Celular" required><br>
                     
-                    <label for="Usu_Celular">Celular</label>
-                    <input type="text" name="Usu_Celular" id="Usu_Celular" required><br>
+                    <input type="text" name="Usu_Correo" id="Usu_Correo"  placeholder="Correo"><br>
                     
-                    <label for="Usu_Correo">Correo</label>
-                    <input type="text" name="Usu_Correo" id="Usu_Correo" required><br>
-                    
-                    <label for="Usu_Ficha">Ficha</label>
-                    <input type="text" name="Usu_Ficha" id="Usu_Ficha" required><br>
-                    
-                    <input type="submit" value="Guardar">
+                    <input type="text" name="Usu_Ficha" id="Usu_Ficha" placeholder="Ficha" required><br>
+                                    
+                    <button type="submit" value="Guardar" id="Guardar">Enviar</button>
+
                 </form>
-            </div>
         </div>
+    
 
 
         <div class="contenedor4">
