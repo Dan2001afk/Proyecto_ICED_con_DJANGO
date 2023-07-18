@@ -185,43 +185,25 @@ class InsertarPrestamo(View):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
     
-    def post(self, request):
-        Pres_Id = request.POST.get('Pres_Id')
-        Pres_Equipos_id = request.POST.get('Pres_Equipos_id')
-        Pres_Usuarios_Documento_id = request.POST.get('Pres_Usuarios_Documento_id')
-        Pres_Fec_Entrega = request.POST.get('Pres_Fec_Entrega')
-        Pres_Fec_Devolucion = request.POST.get('Pres_Fec_Devolucion')
-        Pres_Hora_Entrega = request.POST.get('Pres_Hora_Entrega')
-        Pres_Hora_Devolucion = request.POST.get('Pres_Hora_Devolucion')
-        Pres_Tiempo_Limite = request.POST.get('Pres_Tiempo_Limite')
-        Pres_Observaciones_entrega = request.POST.get('Pres_Observaciones_entrega')
-        Pres_Observaciones_recibido = request.POST.get('Pres_Observaciones_recibido')
+    def post(self,request):
         try:
-            usuario = Usuarios.objects.get(Usu_Documento=Pres_Usuarios_Documento_id)
-        except Usuarios.DoesNotExist:
-            print(Usuarios)
-            return HttpResponse("No se encontró ningún usuario con el número de documento proporcionado.")
-
-        
-        # Obtén la instancia de Usuarios basada en el documento
-        usuario = Usuarios.objects.get(Usu_Documento =Pres_Usuarios_Documento_id)
-        
-        # Crea una instancia de Prestamos y asígnale los valores del formulario
-        prestamo = Prestamos()
-        prestamo.Pres_Id = Pres_Id
-        prestamo.Pres_Equipos_id = Pres_Equipos_id
-        prestamo.Pres_Usuarios_Documento = usuario
-        prestamo.Pres_Fec_Entrega = Pres_Fec_Entrega
-        prestamo.Pres_Fec_Devolucion = Pres_Fec_Devolucion
-        prestamo.Pres_Hora_Entrega = Pres_Hora_Entrega
-        prestamo.Pres_Hora_Devolucion = Pres_Hora_Devolucion
-        prestamo.Pres_Tiempo_Limite = Pres_Tiempo_Limite
-        prestamo.Pres_Observaciones_entrega = Pres_Observaciones_entrega
-        prestamo.Pres_Observaciones_recibido = Pres_Observaciones_recibido
-        prestamo.save()
-        
-        
-        return render(request, "Prestamoss.html", {'mensaje': 'Datos Guardados'})
+            datosPrestamo=json.loads(request.body)
+        except(json.JSONDecodeError,UnicodeDecodeError):
+            return JsonResponse({"Error":"Error en el Documento"})
+        datosPrestamo=json.loads(request.body)
+        Pres_Id = datosPrestamo.get('Pres_Id')
+        Pres_Equipos_id = datosPrestamo.get('Pres_Equipos_id')
+        Pres_Usuarios_Documento_id = datosPrestamo.get('Pres_Usuarios_Documento_id')
+        Pres_Fec_Entrega = datosPrestamo.get('Pres_Fec_Entrega')
+        Pres_Fec_Devolucion = datosPrestamo.get('Pres_Fec_Devolucion')
+        Pres_Hora_Entrega = datosPrestamo.get('Pres_Hora_Entrega')
+        Pres_Hora_Devolucion = datosPrestamo.get('Pres_Hora_Devolucion')
+        Pres_Tiempo_Limite = datosPrestamo.get('Pres_Tiempo_Limite')
+        Pres_Observaciones_entrega = datosPrestamo.get('Pres_Observaciones_entrega')
+        Pres_Observaciones_recibido = datosPrestamo.get('Pres_Observaciones_recibido')
+        print("datosPrestamo",request.POST)
+        Prestamos.objects.create(Pres_Id=Pres_Id,Pres_Equipos_id=Pres_Equipos_id,Pres_Usuarios_Documento_id=Pres_Usuarios_Documento_id,Pres_Fec_Entrega=Pres_Fec_Entrega,Pres_Fec_Devolucion=Pres_Fec_Devolucion,Pres_Hora_Entrega=Pres_Hora_Entrega,Pres_Hora_Devolucion=Pres_Hora_Devolucion,Pres_Tiempo_Limite=Pres_Tiempo_Limite,Pres_Observaciones_entrega=Pres_Observaciones_entrega,Pres_Observaciones_recibido=Pres_Observaciones_recibido)
+        return JsonResponse({"mensaje":"Datos Guardados"})
     
 
 def Prestamoss(request):
