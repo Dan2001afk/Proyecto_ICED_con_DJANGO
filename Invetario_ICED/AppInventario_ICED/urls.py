@@ -25,7 +25,7 @@ urlpatterns=[
     #CRUD Sanciones
     path('ListarSanciones',ListarSanciones.as_view(),name='Sanciones'),
     path('insertarSancion/',InsertarSanciones.as_view(),name='insertar'),
-    path('formularioSanciones',views.formularioSanciones,name='insertar'),
+    path('Sancioness',views.Sancioness,name='Sancioness'),
     path('ActualizarSanciones/<pk>',ActualizarSanciones.as_view(),name='Actualizar'),
     path('EliminarUsuario/<pk>',EliminarSanciones.as_view(),name='Eliminar'),
 ]

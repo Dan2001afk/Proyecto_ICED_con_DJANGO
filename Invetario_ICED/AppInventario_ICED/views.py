@@ -311,10 +311,10 @@ class InsertarSanciones(View):
         San_Descripcion = request .POST.get('San_Descripcion')
         print("Datos",request.POST)
         Sanciones.objects.create(San_Pres_Id=San_Pres_Id,San_Fecha=San_Fecha,San_Hora=San_Hora,San_tiempo=San_tiempo,San_Descripcion=San_Descripcion)
-        return render(request,"formularioSanciones.html",{'mensaje':'Datos Guardados'})
+        return render(request,"Sancioness.html",{'mensaje':'Datos Guardados'})
         
-def formularioSanciones(request):
-    return render(request,"formularioSanciones.html")
+def Sancioness(request):
+    return render(request,"Sancioness.html")
 
 
 class ActualizarSanciones(View):

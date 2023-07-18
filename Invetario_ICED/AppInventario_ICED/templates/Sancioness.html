@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/ListarSanciones.js' %}"></script>
+    <script src="{% static 'js/InsertarSanciones.js' %}"></script>
+    <script src="https://kit.fontawesome.com/3d7a846b01.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    
+<body id="body" style="max-height: 100vh; overflow-y: scroll;">
+    <header>
+        <div class="icon__menu">
+            <i class="fas fa-bars" id="btn_open"></i>
+        </div>
+
+    </header>
+    
+
+    <div class="menu__side" id="menu_side">
+
+        <div class="options__menu">	
+
+            <a href="/index3.html" class="selected" >
+                <div class="option">
+                    <i class="fas fa-home" title="Inicio"></i>
+                    <h4>Inicio</h4>
+                </div>
+            </a>
+
+            <a href="/index4.html">
+                <div class="option">
+                    <i class="fa-solid fa-cloud"></i>
+                    <h4>Portafolio</h4>
+                </div>
+            </a>
+            
+            <a href="">
+                <div class="option">
+                    <i class="fa-solid fa-database"></i>
+                    <h4>Cursos</h4>
+                </div>
+            </a>
+
+            <a href="">
+                <div class="option">
+                    <i class="fa-solid fa-code"></i>
+                    <h4>Blog</h4>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="option">
+                    <i class="fa-solid fa-users"></i>
+                    <h4>Contacto</h4>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="option">
+                    <i class="fa-solid fa-arrows-rotate"></i>
+                    <h4>Nosotros</h4>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="option">
+                    <i class="fa-solid fa-plus"></i>
+                    <h4>Nosotros</h4>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+    <section>
+
+        <div class="contenedor1">
+            <h1>Lista de dispositivos en el centro</h1>
+        </div>
+
+        <div class="contenedor2">    
+            <div>
+                <table id="tabla1">
+                    <thead>
+                        <tr>
+                            <th>ID Sancion</th>
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                            <th>Tiempo</th>
+                            <th>Descripcion</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla1-body">
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                                ConsultarSanciones();
+                            });
+                        </script>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+<div class="contenedor4">
+    <div class="form-container">
+    <form method="" id="FormSanciones">
+        {% csrf_token %}
+        <label for="San_Pres_id">ID</label>
+        <input type="text" name="San_Pres_id" id="San_Pres_id">
+        <label for="San_Fecha">Fecha</label>
+        <input type="text" name="San_Fecha" id="San_Fecha">
+        <label for="San_Hora">Hora</label>
+        <input type="text" name="San_Hora" id="San_Hora">
+        <label for="San_tiempo">Tiempo</label>
+        <input type="text" name="San_tiempo" id="San_tiempo">
+        <label for="San_Descripcion">Descripcion</label>
+        <input type="text" name="San_Descripcion" id="San_Descripcion">
+        <input type="submit">
+    </form>
+    </div>
+</div>
+
+    
+</body>
+</html>
