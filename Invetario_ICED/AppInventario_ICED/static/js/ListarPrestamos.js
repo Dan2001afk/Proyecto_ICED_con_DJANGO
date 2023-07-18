@@ -19,7 +19,7 @@ else{
         tabla.innerHTML+=`
         <tr>
         <td>${dat.Pres_Id}</td>
-        <td>${dat.Pres_Equipos_id_id}</td>
+        <td>${dat.Pres_Equipos_id}</td>
         <td>${dat.Pres_Usuarios_Documento_id}</td>
         <td>${dat.Pres_Fec_Entrega}</td>
         <td>${dat.Pres_Fec_Devolucion}</td>

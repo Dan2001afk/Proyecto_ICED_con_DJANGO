@@ -21,7 +21,7 @@ class Usuarios(models.Model):
     
 class Prestamos(models.Model):
     Pres_Id=models.BigIntegerField(verbose_name="ID del prestamo",primary_key=True)
-    Pres_Equipos_id=models.ForeignKey(Equipos,verbose_name="ID del equipo",on_delete=models.CASCADE)
+    Pres_Equipos=models.ForeignKey(Equipos,verbose_name="ID del equipo",on_delete=models.CASCADE)
     Pres_Usuarios_Documento=models.ForeignKey(Usuarios,verbose_name="N° Documento del usuario",on_delete=models.CASCADE)
     Pres_Fec_Entrega=models.DateField(auto_now=True)
     Pres_Fec_Devolucion=models.DateField(auto_now=True)
@@ -32,7 +32,7 @@ class Prestamos(models.Model):
     Pres_Observaciones_recibido=models.TextField(max_length=255,verbose_name="Observaciones Recibido")
 
 class Sanciones(models.Model):
-    San_Pres_Id=models.OneToOneField(Prestamos, primary_key=True,verbose_name="ID de la sancion",on_delete=models.CASCADE)
+    San_Pres=models.OneToOneField(Prestamos, primary_key=True,verbose_name="ID de la sancion",on_delete=models.CASCADE)
     San_Fecha=models.DateField(auto_now=True)
     San_Hora=models.TimeField(auto_now=True)
     San_tiempo=models.BigIntegerField(verbose_name="Horas de la Sancion")
