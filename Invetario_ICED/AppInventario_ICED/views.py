@@ -76,7 +76,7 @@ class ActualizarEquipo(View):
     def dispatch(self, request,*args: Any, **kwargs):
         return super().dispatch(request, *args, **kwargs)
         
-    def put(self, request,pk):
+    def post(self, request,pk):
             
         try:
             ActuEquipo=Equipos.objects.get(pk=pk)
@@ -93,6 +93,9 @@ class ActualizarEquipo(View):
         ActuEquipo.save()
         return JsonResponse({"Mensaje":"Datos Actualizados"})
     
+
+
+
 class EliminarEquipo(View):
     @method_decorator(csrf_exempt)
     def dispatch(self, request,*args: Any, **kwargs):

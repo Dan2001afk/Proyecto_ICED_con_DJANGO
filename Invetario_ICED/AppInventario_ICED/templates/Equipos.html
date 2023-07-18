@@ -8,6 +8,7 @@
     <title>Menú lateral responsive</title> 
     <link rel="stylesheet" href="{% static 'css/formulario1.css' %}">
     <script src="{% static 'js/InsertarEquipos.js' %}"></script>
+    <script src="{% static 'js/ActualizarEquipos.js' %}"></script>
     <script src="{% static 'js/ListarEquipos.js' %}"></script>
     <script src="{% static 'js/script.js' %}"></script>
     <script src="https://kit.fontawesome.com/3d7a846b01.js" crossorigin="anonymous"></script>
@@ -104,10 +105,9 @@
                     <tbody id="tabla1-body">
                         <script>
                             document.addEventListener("DOMContentLoaded", function() {
-                              Consultar();
+                            Consultar();
                             });
-                          </script>
-                          
+                        </script>
                     </tbody>
                 </table>
             </div>
@@ -146,7 +146,7 @@
 
         <div class="contenedor4">
             <div class="form-container">
-                <form method=""  id="FormEquiposActualizar" >
+                <form method=""  id="ActualizarEquipos" >
                     {% csrf_token %}
                     <label for="Equ_id">ID:</label>
                     <input type="text" name="Equ_id" id="Equ_id" required><br>

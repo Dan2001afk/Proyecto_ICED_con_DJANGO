@@ -1,6 +1,6 @@
 //ACTUALIZAR EQUIPO
 document.addEventListener("DOMContentLoaded",function(){
-    document.getElementById("FormEquiposActualizar").addEventListener("submit",function(event) {
+    document.getElementById("ActualizarEquipos").addEventListener("submit",function(event) {
         event.preventDefault();
         var Datos={
             Equ_id:document.getElementById("Equ_id").value,
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded",function(){
         var JsonData=JSON.stringify(Datos);
         console.log(JsonData)
         fetch("http://127.0.0.1:8000/ActualizarEquipo",{
-            method:"PUT",
+            method:"POST",
             body:JsonData,
             headers:{
                 "Content-Type":"AppInventario_ICED/json"
@@ -37,3 +37,4 @@ document.addEventListener("DOMContentLoaded",function(){
     })
 
 })
+
