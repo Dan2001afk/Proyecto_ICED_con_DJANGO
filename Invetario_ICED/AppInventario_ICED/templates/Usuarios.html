@@ -8,6 +8,7 @@
     <title>Menú lateral responsive</title> 
     <link rel="stylesheet" href="{% static 'css/formulario1.css' %}">
     <script src="{% static 'js/ListarUsuarios.js' %}"></script>
+    <script src="{% static 'js/InsertarUsuario.js' %}"></script>
     <script src="{% static 'js/script.js' %}"></script>
     <script src="https://kit.fontawesome.com/3d7a846b01.js" crossorigin="anonymous"></script>
 
@@ -113,8 +114,8 @@
             <div class="form-container">
                 <form method=""  id="FormUsuarios" >
                     {% csrf_token %}
-                    <label for="Usu_Documentos">Documento:</label>
-                    <input type="text" name="Usu_Documentos" id="Usu_Documentos" required><br>
+                    <label for="Usu_Documento">Documento:</label>
+                    <input type="text" name="Usu_Documento" id="Usu_Documento" required><br>
                     
                     <label for="Usu_Nombre">Nombre</label>
                     <input type="text" name="Usu_Nombre" id="Usu_Nombre" required><br>
@@ -128,8 +129,8 @@
                     <label for="Usu_Celular">Celular</label>
                     <input type="text" name="Usu_Celular" id="Usu_Celular" required><br>
                     
-                    <label for="Usu_correo">Correo</label>
-                    <input type="text" name="Usu_correo" id="Usu_correo" required><br>
+                    <label for="Usu_Correo">Correo</label>
+                    <input type="text" name="Usu_Correo" id="Usu_Correo" required><br>
                     
                     <label for="Usu_Ficha">Ficha</label>
                     <input type="text" name="Usu_Ficha" id="Usu_Ficha" required><br>
