@@ -188,7 +188,7 @@ class InsertarPrestamo(View):
     def post(self, request):
         Pres_Id = request.POST.get('Pres_Id')
         Pres_Equipos_id = request.POST.get('Pres_Equipos_id')
-        Pres_Usuarios_Documento = request.POST.get('Pres_Usuarios_Documento')
+        Pres_Usuarios_Documento_id = request.POST.get('Pres_Usuarios_Documento_id')
         Pres_Fec_Entrega = request.POST.get('Pres_Fec_Entrega')
         Pres_Fec_Devolucion = request.POST.get('Pres_Fec_Devolucion')
         Pres_Hora_Entrega = request.POST.get('Pres_Hora_Entrega')
@@ -197,13 +197,14 @@ class InsertarPrestamo(View):
         Pres_Observaciones_entrega = request.POST.get('Pres_Observaciones_entrega')
         Pres_Observaciones_recibido = request.POST.get('Pres_Observaciones_recibido')
         try:
-            usuario = Usuarios.objects.get(Usu_Documento=Pres_Usuarios_Documento)
+            usuario = Usuarios.objects.get(Usu_Documento=Pres_Usuarios_Documento_id)
         except Usuarios.DoesNotExist:
+            print(Usuarios)
             return HttpResponse("No se encontró ningún usuario con el número de documento proporcionado.")
 
         
         # Obtén la instancia de Usuarios basada en el documento
-        usuario = Usuarios.objects.get(Usu_Documento =Pres_Usuarios_Documento)
+        usuario = Usuarios.objects.get(Usu_Documento =Pres_Usuarios_Documento_id)
         
         # Crea una instancia de Prestamos y asígnale los valores del formulario
         prestamo = Prestamos()
@@ -220,11 +221,11 @@ class InsertarPrestamo(View):
         prestamo.save()
         
         
-        return render(request, "formularioPrestamos.html", {'mensaje': 'Datos Guardados'})
+        return render(request, "Prestamoss.html", {'mensaje': 'Datos Guardados'})
     
 
-def formularioPrestamos(request):
-    return render(request,"formularioPrestamos.html")
+def Prestamoss(request):
+    return render(request,"Prestamoss.html")
 
 
 class ActualizarPrestamo(View):
