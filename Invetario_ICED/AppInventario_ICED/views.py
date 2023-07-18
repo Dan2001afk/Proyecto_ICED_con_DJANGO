@@ -26,6 +26,9 @@ class listadoSanciones(ListView):
     model=Sanciones
     template_name="indextres.html"
 
+
+
+#equipos
 class ListadoEquipos(ListView):
     def get(self,request):
         datos=Equipos.objects.all()
@@ -70,7 +73,6 @@ class InsertarEquipos(View):
 def Equipo(request):
     return render(request,"Equipos.html")
 
-#EQUIPOS
 class ActualizarEquipo(View):
     @method_decorator(csrf_exempt)
     def dispatch(self, request,*args: Any, **kwargs):
@@ -92,9 +94,6 @@ class ActualizarEquipo(View):
         ActuEquipo.equi_especialidad=data.get('equi_especialidad')
         ActuEquipo.save()
         return JsonResponse({"Mensaje":"Datos Actualizados"})
-    
-
-
 
 class EliminarEquipo(View):
     @method_decorator(csrf_exempt)
@@ -109,6 +108,8 @@ class EliminarEquipo(View):
         DeleteEquipo.delete()
         return JsonResponse({"Mensaje":"Equipo Eliminado"})
     
+
+
 #USUARIOS
 class ListadoUsuarios(View):
     def get (self,request):
@@ -116,24 +117,30 @@ class ListadoUsuarios(View):
         DatosUsuarios=list(Datos)
         return JsonResponse(DatosUsuarios,safe=False)
     
-
 class InsertarUsuarios(View):
     @method_decorator(csrf_exempt)
     def dispatch(self, request,*args: Any, **kwargs):
         return super().dispatch(request, *args, **kwargs)
-    def post(self,request):
-        Usu_Documento = request .POST.get('Usu_Documento')
-        Usu_Nombre = request .POST.get('Usu_Nombre')
-        Usu_Apellido = request .POST.get('Usu_Apellido')
-        Usu_tipo = request .POST.get('Usu_tipo')
-        Usu_Celular = request .POST.get('Usu_Celular')
-        Usu_Correo = request .POST.get('Usu_Correo')
-        Usu_Ficha = request.POST.get('Usu_Ficha')
-        print("datos",request.POST)
-        Usuarios.objects.create(Usu_Documento=Usu_Documento,Usu_Nombre=Usu_Nombre,Usu_Apellido=Usu_Apellido,Usu_tipo=Usu_tipo,Usu_Celular=Usu_Celular,Usu_Correo=Usu_Correo,Usu_Ficha=Usu_Ficha)
-        return render(request,"formularioUsuarios.html",{'mensaje':'Datos Guardados'})
     
 
+    def post(self,request):
+        try:
+            datos=json.loads(request.body)
+        except(json.JSONDecodeError,UnicodeDecodeError):
+            return JsonResponse({"Error":"Error en el Documento"})
+        datos=json.loads(request.body)
+
+        Usu_Documento = datos.get('Usu_Documento')
+        Usu_Nombre = datos.get('Usu_Nombre')
+        Usu_Apellido = datos.get('Usu_Apellido')
+        Usu_tipo = datos.get('Usu_tipo')
+        Usu_Celular = datos.get('Usu_Celular')
+        Usu_Correo = datos.get('Usu_Correo')
+        Usu_Ficha = datos.get('Usu_Ficha')
+        print("datos",request.POST)
+        Usuarios.objects.create(Usu_Documento=Usu_Documento,Usu_Nombre=Usu_Nombre,Usu_Apellido=Usu_Apellido,Usu_tipo=Usu_tipo,Usu_Celular=Usu_Celular,Usu_Correo=Usu_Correo,Usu_Ficha=Usu_Ficha)
+        return JsonResponse({"mensaje":"Datos Guardados"})
+    
 def formularioUsuarios(request):
     return render(request,"formularioUsuarios.html")
 
@@ -142,7 +149,7 @@ class ActualizarUsuarios(View):
     def dispatch(self, request,*args: Any, **kwargs):
         return super().dispatch(request, *args, **kwargs)
         
-    def put(self, request,pk):
+    def post(self, request,pk):
             
         try:
             registro=Usuarios.objects.get(pk=pk)
@@ -171,8 +178,11 @@ class EliminarUsuario(View):
             return JsonResponse({"Error":"El Usuario no existe"})
         registro.delete()
         return JsonResponse({"Mensaje":"Datos Eliminados"})
-#PRESTAMOS
 
+
+
+
+#PRETAMOS
 class ListadoPrestamos(View):
     def get (self,request):
         Datos=Prestamos.objects.all().values()
@@ -221,11 +231,8 @@ class InsertarPrestamo(View):
 
         return JsonResponse({"mensaje": "Datos Guardados"})
 
-    
-
 def Prestamoss(request):
     return render(request,"Prestamoss.html")
-
 
 class ActualizarPrestamo(View):
     @method_decorator(csrf_exempt)
@@ -264,6 +271,11 @@ class EliminarPrestamo(View):
             return JsonResponse({"Error":"El Prestamo no existe"})
         registro.delete()
         return JsonResponse({"Mensaje":"Datos Eliminados"})
+    
+
+
+
+
 #SANCIONES
 
 class ListarSanciones(View):
