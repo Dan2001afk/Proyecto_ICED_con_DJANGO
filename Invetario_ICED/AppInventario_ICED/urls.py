@@ -10,11 +10,12 @@ urlpatterns=[
     path('ActualizarEquipo/<pk>',ActualizarEquipo.as_view(),name='actualizar'),
     path('EliminarEquipo/<pk>',EliminarEquipo.as_view(),name='eliminar'),
     #CRUD Usuarios
-    path('ListarUsuarios',ListadoUsuarios.as_view(),name='Usuarios'),
-    path('insertarUsuario/',InsertarUsuarios.as_view(),name='insertarUsuario'),
-    path('formularioUsuarios',views.formularioUsuarios,name='insertarUsuario'),
-    path('ActualizarUsuario/<pk>',ActualizarUsuarios.as_view(),name='actualizarUsuario'),
-    path('EliminarUsuario/<pk>',EliminarUsuario.as_view(),name='eliminarUsuario'),
+    path('ListarUsuarios', ListarUsuarios.as_view(), name='ListarUsuarios'),
+    path('formularioUsuarios', formularioUsuarios, name='formularioUsuarios'),
+    path('ListarUsuarios', ListarUsuarios.as_view(), name='ListarUsuarios'),
+    path('insertarUsuario/', InsertarUsuarios.as_view(), name='insertarUsuario'),
+    path('ActualizarUsuario/<int:pk>', ActualizarUsuarios.as_view(), name='actualizarUsuario'),
+    path('EliminarUsuario/<int:pk>', EliminarUsuario.as_view(), name='eliminarUsuario'),
     #CRUD Prestamos
     path('Prestamoss',views.Prestamoss,name='Prestamoss'),
     path('ListarPrestamos',ListadoPrestamos.as_view(),name='Prestamos'),

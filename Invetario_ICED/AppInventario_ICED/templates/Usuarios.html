@@ -1,0 +1,162 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú lateral responsive</title> 
+    <link rel="stylesheet" href="{% static 'css/formulario1.css' %}">
+    <script src="{% static 'js/ListarUsuarios.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="https://kit.fontawesome.com/3d7a846b01.js" crossorigin="anonymous"></script>
+
+</head>
+<body id="body" style="max-height: 100vh; overflow-y: scroll;">
+    <header>
+        <div class="icon__menu">
+            <i class="fas fa-bars" id="btn_open"></i>
+        </div>
+
+    </header>
+
+    <div class="menu__side" id="menu_side">
+
+        <div class="options__menu">	
+
+            <a href="/index3.html" class="selected" >
+                <div class="option">
+                    <i class="fas fa-home" title="Inicio"></i>
+                    <h4>Inicio</h4>
+                </div>
+            </a>
+
+            <a href="/index4.html">
+                <div class="option">
+                    <i class="fa-solid fa-cloud"></i>
+                    <h4>Portafolio</h4>
+                </div>
+            </a>
+            
+            <a href="">
+                <div class="option">
+                    <i class="fa-solid fa-database"></i>
+                    <h4>Cursos</h4>
+                </div>
+            </a>
+
+            <a href="">
+                <div class="option">
+                    <i class="fa-solid fa-code"></i>
+                    <h4>Blog</h4>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="option">
+                    <i class="fa-solid fa-users"></i>
+                    <h4>Contacto</h4>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="option">
+                    <i class="fa-solid fa-arrows-rotate"></i>
+                    <h4>Nosotros</h4>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="option">
+                    <i class="fa-solid fa-plus"></i>
+                    <h4>Nosotros</h4>
+                </div>
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <section class="cont">
+
+        <div class="contenedor1">
+            <h1>Lista de Usuarios</h1>
+        </div>
+        
+        <div class="contenedor2">    
+            <div>
+                <table id="tabla1">
+                    <thead>
+                        <tr>
+                            <th>Documento</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>tipo</th>
+                            <th>Celular</th>
+                            <th>Correo</th>
+                            <th>Ficha</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla1-body">
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                            Consultar();
+                            });
+                        </script>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="contenedor3">
+            <div class="form-container">
+                <form method=""  id="FormUsuarios" >
+                    {% csrf_token %}
+                    <label for="Usu_Documentos">Documento:</label>
+                    <input type="text" name="Usu_Documentos" id="Usu_Documentos" required><br>
+                    
+                    <label for="Usu_Nombre">Nombre</label>
+                    <input type="text" name="Usu_Nombre" id="Usu_Nombre" required><br>
+                    
+                    <label for="Usu_Apellido">Modelo:</label>
+                    <input type="text" name="Usu_Apellido" id="Usu_Apellido" required><br>
+                    
+                    <label for="Usu_tipo">Tipo</label>
+                    <input type="text" name="Usu_tipo" id="Usu_tipo" required><br>
+                    
+                    <label for="Usu_Celular">Celular</label>
+                    <input type="text" name="Usu_Celular" id="Usu_Celular" required><br>
+                    
+                    <label for="Usu_correo">Correo</label>
+                    <input type="text" name="Usu_correo" id="Usu_correo" required><br>
+                    
+                    <label for="Usu_Ficha">Ficha</label>
+                    <input type="text" name="Usu_Ficha" id="Usu_Ficha" required><br>
+                    
+                    <input type="submit" value="Guardar">
+                </form>
+            </div>
+        </div>
+
+
+        <div class="contenedor4">
+            
+        </div>
+        <div class="contenedor5">C</div>
+        
+
+    </section>
+
+
+
+
+    <script src="static/js/script.js"></script>
+    
+
+
+
+
+    
+</body>
+</html>

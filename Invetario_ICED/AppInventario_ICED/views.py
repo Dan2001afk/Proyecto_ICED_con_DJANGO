@@ -14,9 +14,10 @@ import json
 #     model=Equipos
 #     template_name="index.html"
 
-class listadoUsuarios(ListView):
-    model=Usuarios
-    template_name="indexuno.html"
+
+#class listadoUsuarios(ListView):
+#   model=Usuarios
+#   template_name="indexuno.html"
 
 class listadoPrestamos(ListView):
     model=Prestamos
@@ -111,12 +112,22 @@ class EliminarEquipo(View):
 
 
 #USUARIOS
-class ListadoUsuarios(View):
-    def get (self,request):
-        Datos=Usuarios.objects.all().values()
-        DatosUsuarios=list(Datos)
-        return JsonResponse(DatosUsuarios,safe=False)
-    
+class ListarUsuarios(View):
+    def get(self, request):
+        datos = Usuarios.objects.all()
+        Datos_usuarios = []
+        for i in datos:
+            Datos_usuarios.append({
+                'Usu_Documento': i.Usu_Documento,
+                'Usu_Nombre': i.Usu_Nombre,
+                'Usu_Apellido': i.Usu_Apellido,
+                'Usu_tipo': i.Usu_tipo,
+                'Usu_Celular': i.Usu_Celular,
+                'Usu_Correo': i.Usu_Correo,
+                'Usu_Ficha': i.Usu_Ficha
+            })
+        return JsonResponse(Datos_usuarios, safe=False)
+
 class InsertarUsuarios(View):
     @method_decorator(csrf_exempt)
     def dispatch(self, request,*args: Any, **kwargs):
@@ -142,7 +153,7 @@ class InsertarUsuarios(View):
         return JsonResponse({"mensaje":"Datos Guardados"})
     
 def formularioUsuarios(request):
-    return render(request,"formularioUsuarios.html")
+    return render(request,"Usuarios.html")
 
 class ActualizarUsuarios(View):
     @method_decorator(csrf_exempt)
@@ -273,7 +284,7 @@ class EliminarPrestamo(View):
         return JsonResponse({"Mensaje":"Datos Eliminados"})
     
 
-
+ 
 
 
 #SANCIONES
