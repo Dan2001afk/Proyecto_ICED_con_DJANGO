@@ -19,9 +19,9 @@ import json
 #   model=Usuarios
 #   template_name="indexuno.html"
 
-class listadoPrestamos(ListView):
-    model=Prestamos
-    template_name="indexdos.html"
+#class listadoPrestamos(ListView):
+#    model=Prestamos
+#    template_name="indexdos.html"
 
 class listadoSanciones(ListView):
     model=Sanciones
@@ -155,6 +155,8 @@ class InsertarUsuarios(View):
 def formularioUsuarios(request):
     return render(request,"Usuarios.html")
 
+
+
 class ActualizarUsuarios(View):
     @method_decorator(csrf_exempt)
     def dispatch(self, request,*args: Any, **kwargs):
@@ -194,56 +196,56 @@ class EliminarUsuario(View):
 
 
 #PRETAMOS
-class ListadoPrestamos(View):
-    def get (self,request):
-        Datos=Prestamos.objects.all().values()
-        DatosPrestamos=list(Datos)
-        return JsonResponse(DatosPrestamos,safe=False)
+class ListadoPrestamos(ListView):
+    def get(self,request):
+        datos=Prestamos.objects.all()
+        Datos_Prestamos=[]
+        for i in datos:
+            Datos_Prestamos.append({
+                'Pres_Id':i.Pres_Id,
+                'Pres_Equipos_id':i.Pres_Equipos,
+                'Pres_Usuarios_Documento_id':i.Pres_Usuarios_Documento,
+                'Pres_Fec_Entrega':i.Pres_Fec_Entrega,
+                'Pres_Fec_Devolucion':i.Pres_Fec_Devolucion,
+                'Pres_Hora_Entrega':i.Pres_Hora_Entrega,
+                'Pres_Hora_Devolucion':i.Pres_Hora_Devolucion,
+                'Pres_Tiempo_Limite':i.Pres_Tiempo_Limite,
+                'Pres_Observaciones_entrega':i.Pres_Observaciones_entrega,
+                'equi_especialidad':i.Pres_Observaciones_recibido
+            })
+        # DatosEquipos=list(Datos)
+        return JsonResponse(Datos_Prestamos,safe=False)    
     
 class InsertarPrestamo(View):
     @method_decorator(csrf_exempt)
-    def dispatch(self, request, *args, **kwargs):
+    def dispatch(self, request,*args: Any, **kwargs):
         return super().dispatch(request, *args, **kwargs)
     
-    def post(self, request):
+    def post(self,request):
         try:
-            datosPrestamo = json.loads(request.body)
-        except (json.JSONDecodeError, UnicodeDecodeError):
-            return JsonResponse({"Error": "Error en el Documento"})
+            datos=json.loads(request.body)
+        except(json.JSONDecodeError,UnicodeDecodeError):
+            return JsonResponse({"Error":"Error en el Documento"})
+        datos=json.loads(request.body)
+        Pres_Id = datos.get('Pres_Id')
+        Pres_Equipos_id = datos.get('Pres_Equipos_id')
+        Pres_Usuarios_Documento_id = datos.get('Pres_Usuarios_Documento_id')
+        Pres_Fec_Entrega = datos.get('Pres_Fec_Entrega')
+        Pres_Fec_Devolucion = datos.get('Pres_Fec_Devolucion')
+        Pres_Hora_Entrega = datos.get('Pres_Hora_Entrega')
+        Pres_Hora_Devolucion = datos.get('Pres_Hora_Devolucion')
+        Pres_Tiempo_Limite = datos.get('Pres_Tiempo_Limite')
+        Pres_Observaciones_entrega = datos.get('Pres_Observaciones_entrega')
+        Pres_Observaciones_recibido = datos.get('Pres_Observaciones_recibido')
+        print("datos",request.POST)
+        Equipos.objects.create(Pres_Id=Pres_Id,Pres_Equipos_id=Pres_Equipos_id,Pres_Usuarios_Documento_id=Pres_Usuarios_Documento_id,Pres_Fec_Entrega=Pres_Fec_Entrega,Pres_Fec_Devolucion=Pres_Fec_Devolucion,Pres_Hora_Entrega=Pres_Hora_Entrega,Pres_Hora_Devolucion=Pres_Hora_Devolucion,Pres_Tiempo_Limite=Pres_Tiempo_Limite,Pres_Observaciones_entrega=Pres_Observaciones_entrega,Pres_Observaciones_recibido=Pres_Observaciones_recibido)
+        return JsonResponse({"mensaje":"Datos Guardados"})
+
+        # return render(request,"formulario.html",{'mensaje':'Datos Guardados'})
         
-        Pres_Id = datosPrestamo.get('Pres_Id')
-        Pres_Equipos_id = datosPrestamo.get('Pres_Equipos_id')
-        Pres_Usuarios_Documento_id = datosPrestamo.get('Pres_Usuarios_Documento_id')
-        Pres_Fec_Entrega = datosPrestamo.get('Pres_Fec_Entrega')
-        Pres_Fec_Devolucion = datosPrestamo.get('Pres_Fec_Devolucion')
-        Pres_Hora_Entrega = datosPrestamo.get('Pres_Hora_Entrega')
-        Pres_Hora_Devolucion = datosPrestamo.get('Pres_Hora_Devolucion')
-        Pres_Tiempo_Limite = datosPrestamo.get('Pres_Tiempo_Limite')
-        Pres_Observaciones_entrega = datosPrestamo.get('Pres_Observaciones_entrega')
-        Pres_Observaciones_recibido = datosPrestamo.get('Pres_Observaciones_recibido')
-
-        try:
-            equipo = Equipos.objects.get(Equ_id=Pres_Equipos_id)
-        except Equipos.DoesNotExist:
-            return JsonResponse({"Error": "No se encontró ningún equipo con el ID proporcionado."})
-
-        prestamo = Prestamos.objects.create(
-            Pres_Id=Pres_Id,
-            Pres_Equipos_id=equipo,
-            Pres_Usuarios_Documento_id=Pres_Usuarios_Documento_id,
-            Pres_Fec_Entrega=Pres_Fec_Entrega,
-            Pres_Fec_Devolucion=Pres_Fec_Devolucion,
-            Pres_Hora_Entrega=Pres_Hora_Entrega,
-            Pres_Hora_Devolucion=Pres_Hora_Devolucion,
-            Pres_Tiempo_Limite=Pres_Tiempo_Limite,
-            Pres_Observaciones_entrega=Pres_Observaciones_entrega,
-            Pres_Observaciones_recibido=Pres_Observaciones_recibido
-        )
-
-        return JsonResponse({"mensaje": "Datos Guardados"})
-
 def Prestamoss(request):
     return render(request,"Prestamoss.html")
+
 
 class ActualizarPrestamo(View):
     @method_decorator(csrf_exempt)

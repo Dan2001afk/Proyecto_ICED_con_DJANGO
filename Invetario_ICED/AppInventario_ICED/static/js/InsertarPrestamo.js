@@ -1,4 +1,4 @@
-//AGREGAR EQUIPO
+//AGREGAR PRESTAMO
 document.addEventListener("DOMContentLoaded",function(){
     document.getElementById("FormPrestamos").addEventListener("submit",function(event) {
         event.preventDefault();
@@ -16,26 +16,12 @@ document.addEventListener("DOMContentLoaded",function(){
             Pres_Observaciones_recibido:document.getElementById("Pres_Observaciones_recibido").value
         };
         console.log(document.getElementById("Pres_Id").value)
-        var data = {
-            'Pres_Id': Pres_Id,
-            'Pres_Equipos_id': Pres_Equipos_id,
-            'Pres_Usuarios_Documento_id': Pres_Usuarios_Documento_id,
-            'Pres_Fec_Entrega': Pres_Fec_Entrega,
-            'Pres_Fec_Devolucion': Pres_Fec_Devolucion,
-            'Pres_Hora_Entrega': Pres_Hora_Entrega,
-            'Pres_Hora_Devolucion': Pres_Hora_Devolucion,
-            'Pres_Tiempo_Limite': Pres_Tiempo_Limite,
-            'Pres_Observaciones_entrega': Pres_Observaciones_entrega,
-            'Pres_Observaciones_recibido': Pres_Observaciones_recibido
-        };
 
-        console.log(document.getElementById("Pres_Id").value)
-        
         var JsonData=JSON.stringify(Datos);
         console.log(JsonData)
-        fetch("http://127.0.0.1:8000/insertarPrestamo/",{
+        fetch("http://127.0.0.1:8000/insertarUsuario/",{
             method:"POST",
-            body: JSON.stringify(data),
+            body: JsonData,
             headers:{
                 "Content-Type":"AppInventario_ICED/json"
             }
@@ -45,11 +31,10 @@ document.addEventListener("DOMContentLoaded",function(){
         .then(response => response.json())
         .then(datoos=>{
             console.log(datoos)
-            Consultar();
+            ConsultarPrestamos();
         })
 
         .catch(console.error()) 
-        console.error("Error al guardar los datos:", error);
 
         
     })

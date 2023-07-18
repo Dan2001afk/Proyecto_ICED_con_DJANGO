@@ -115,34 +115,34 @@
             <form method="" id="FormPrestamos">
                 {% csrf_token %}
                 <label for="Pres_Id">ID</label>
-                <input type="text" name="Pres_Id">
-
-                <label for="Pres_Equipos_id_id">ID DEL EQUIPO</label>
-                <input type="text" name="Pres_Equipos_id_id">
+                <input type="text" name="Pres_Id" id="Pres_Id" required><br>
+        
+                <label for="Pres_Equipos_id">ID DEL EQUIPO</label>
+                <input type="text" name="Pres_Equipos_id" id="Pres_Equipos_id" required><br>
 
                 <label for="Pres_Usuarios_Documento_id">DOCUMENTO DEL USUARIO</label>
-                <input type="text" name="Pres_Usuarios_Documento_id">
+                <input type="text" name="Pres_Usuarios_Documento_id" id="Pres_Usuarios_Documento_id" required><br>
 
                 <label for="Pres_Fec_Entrega">FECHA DE ENTREGA</label>
-                <input type="text" name="Pres_Fec_Entrega">
+                <input type="text" name="Pres_Fec_Entrega" id="Pres_Fec_Entrega" required><br>
 
                 <label for="Pres_Fec_Devolucion">FECHA DEVOLUCION</label>
-                <input type="text" name="Pres_Fec_Devolucion">
+                <input type="text" name="Pres_Fec_Devolucion" id="Pres_Fec_Devolucion" required><br>
 
                 <label for="Pres_Hora_Entrega">HORA ENTREGA</label>
-                <input type="text" name="Pres_Hora_Entrega">
+                <input type="text" name="Pres_Hora_Entrega" id="Pres_Hora_Entrega" required><br>
 
                 <label for="Pres_Hora_Devolucion">HORA DE DEVOLUCION</label>
-                <input type="text" name="Pres_Hora_Devolucion">
+                <input type="text" name="Pres_Hora_Devolucion" id="Pres_Hora_Devolucion" required><br>
 
                 <label for="Pres_Tiempo_Limite">TIEMPO LIMITE</label>
-                <input type="text" name="Pres_Tiempo_Limite">
+                <input type="text" name="Pres_Tiempo_Limite" id="Pres_Tiempo_Limite" required><br>
 
                 <label for="Pres_Observaciones_entrega">OBSERVACION DE ENTREGA</label>
-                <input type="text" name="Pres_Observaciones_entrega">
+                <input type="text" name="Pres_Observaciones_entrega" id="Pres_Observaciones_entrega" required><br>
 
                 <label for="Pres_Observaciones_recibido">OBSERVACION DE RECIBIMIENTO</label>
-                <input type="text" name="Pres_Observaciones_recibido">
+                <input type="text" name="Pres_Observaciones_recibido" id="Pres_Observaciones_recibido" required><br>
 
                 <input type="submit" value="Guardar">
             </form>
