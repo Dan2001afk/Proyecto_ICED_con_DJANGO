@@ -179,18 +179,17 @@ class ListadoPrestamos(View):
         DatosPrestamos=list(Datos)
         return JsonResponse(DatosPrestamos,safe=False)
     
-
 class InsertarPrestamo(View):
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
     
-    def post(self,request):
+    def post(self, request):
         try:
-            datosPrestamo=json.loads(request.body)
-        except(json.JSONDecodeError,UnicodeDecodeError):
-            return JsonResponse({"Error":"Error en el Documento"})
-        datosPrestamo=json.loads(request.body)
+            datosPrestamo = json.loads(request.body)
+        except (json.JSONDecodeError, UnicodeDecodeError):
+            return JsonResponse({"Error": "Error en el Documento"})
+        
         Pres_Id = datosPrestamo.get('Pres_Id')
         Pres_Equipos_id = datosPrestamo.get('Pres_Equipos_id')
         Pres_Usuarios_Documento_id = datosPrestamo.get('Pres_Usuarios_Documento_id')
@@ -201,9 +200,27 @@ class InsertarPrestamo(View):
         Pres_Tiempo_Limite = datosPrestamo.get('Pres_Tiempo_Limite')
         Pres_Observaciones_entrega = datosPrestamo.get('Pres_Observaciones_entrega')
         Pres_Observaciones_recibido = datosPrestamo.get('Pres_Observaciones_recibido')
-        print("datosPrestamo",request.POST)
-        Prestamos.objects.create(Pres_Id=Pres_Id,Pres_Equipos_id=Pres_Equipos_id,Pres_Usuarios_Documento_id=Pres_Usuarios_Documento_id,Pres_Fec_Entrega=Pres_Fec_Entrega,Pres_Fec_Devolucion=Pres_Fec_Devolucion,Pres_Hora_Entrega=Pres_Hora_Entrega,Pres_Hora_Devolucion=Pres_Hora_Devolucion,Pres_Tiempo_Limite=Pres_Tiempo_Limite,Pres_Observaciones_entrega=Pres_Observaciones_entrega,Pres_Observaciones_recibido=Pres_Observaciones_recibido)
-        return JsonResponse({"mensaje":"Datos Guardados"})
+
+        try:
+            equipo = Equipos.objects.get(Equ_id=Pres_Equipos_id)
+        except Equipos.DoesNotExist:
+            return JsonResponse({"Error": "No se encontró ningún equipo con el ID proporcionado."})
+
+        prestamo = Prestamos.objects.create(
+            Pres_Id=Pres_Id,
+            Pres_Equipos_id=equipo,
+            Pres_Usuarios_Documento_id=Pres_Usuarios_Documento_id,
+            Pres_Fec_Entrega=Pres_Fec_Entrega,
+            Pres_Fec_Devolucion=Pres_Fec_Devolucion,
+            Pres_Hora_Entrega=Pres_Hora_Entrega,
+            Pres_Hora_Devolucion=Pres_Hora_Devolucion,
+            Pres_Tiempo_Limite=Pres_Tiempo_Limite,
+            Pres_Observaciones_entrega=Pres_Observaciones_entrega,
+            Pres_Observaciones_recibido=Pres_Observaciones_recibido
+        )
+
+        return JsonResponse({"mensaje": "Datos Guardados"})
+
     
 
 def Prestamoss(request):
