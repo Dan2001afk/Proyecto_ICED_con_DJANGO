@@ -23,9 +23,9 @@ import json
 #    model=Prestamos
 #    template_name="indexdos.html"
 
-class listadoSanciones(ListView):
-    model=Sanciones
-    template_name="indextres.html"
+#class listadoSanciones(ListView):
+#    model=Sanciones
+#    template_name="indextres.html"
 
 
 
@@ -152,7 +152,7 @@ class InsertarUsuarios(View):
         Usuarios.objects.create(Usu_Documento=Usu_Documento,Usu_Nombre=Usu_Nombre,Usu_Apellido=Usu_Apellido,Usu_tipo=Usu_tipo,Usu_Celular=Usu_Celular,Usu_Correo=Usu_Correo,Usu_Ficha=Usu_Ficha)
         return JsonResponse({"mensaje":"Datos Guardados"})
     
-def formularioUsuarios(request):
+def Usuario(request):
     return render(request,"Usuarios.html")
 
 
@@ -203,15 +203,12 @@ class ListadoPrestamos(ListView):
         for i in datos:
             Datos_Prestamos.append({
                 'Pres_Id':i.Pres_Id,
-                'Pres_Equipos_id':i.Pres_Equipos,
-                'Pres_Usuarios_Documento_id':i.Pres_Usuarios_Documento,
+                'Pres_Equipos_id':i.Pres_Equipos_id,
+                'Pres_Usuarios_Documento_id':i.Pres_Usuarios_Documento_id,
                 'Pres_Fec_Entrega':i.Pres_Fec_Entrega,
-                'Pres_Fec_Devolucion':i.Pres_Fec_Devolucion,
                 'Pres_Hora_Entrega':i.Pres_Hora_Entrega,
-                'Pres_Hora_Devolucion':i.Pres_Hora_Devolucion,
                 'Pres_Tiempo_Limite':i.Pres_Tiempo_Limite,
                 'Pres_Observaciones_entrega':i.Pres_Observaciones_entrega,
-                'equi_especialidad':i.Pres_Observaciones_recibido
             })
         # DatosEquipos=list(Datos)
         return JsonResponse(Datos_Prestamos,safe=False)    
@@ -231,20 +228,17 @@ class InsertarPrestamo(View):
         Pres_Equipos_id = datos.get('Pres_Equipos_id')
         Pres_Usuarios_Documento_id = datos.get('Pres_Usuarios_Documento_id')
         Pres_Fec_Entrega = datos.get('Pres_Fec_Entrega')
-        Pres_Fec_Devolucion = datos.get('Pres_Fec_Devolucion')
         Pres_Hora_Entrega = datos.get('Pres_Hora_Entrega')
-        Pres_Hora_Devolucion = datos.get('Pres_Hora_Devolucion')
         Pres_Tiempo_Limite = datos.get('Pres_Tiempo_Limite')
         Pres_Observaciones_entrega = datos.get('Pres_Observaciones_entrega')
-        Pres_Observaciones_recibido = datos.get('Pres_Observaciones_recibido')
         print("datos",request.POST)
-        Equipos.objects.create(Pres_Id=Pres_Id,Pres_Equipos_id=Pres_Equipos_id,Pres_Usuarios_Documento_id=Pres_Usuarios_Documento_id,Pres_Fec_Entrega=Pres_Fec_Entrega,Pres_Fec_Devolucion=Pres_Fec_Devolucion,Pres_Hora_Entrega=Pres_Hora_Entrega,Pres_Hora_Devolucion=Pres_Hora_Devolucion,Pres_Tiempo_Limite=Pres_Tiempo_Limite,Pres_Observaciones_entrega=Pres_Observaciones_entrega,Pres_Observaciones_recibido=Pres_Observaciones_recibido)
+        Equipos.objects.create(Pres_Id=Pres_Id,Pres_Equipos_id=Pres_Equipos_id,Pres_Usuarios_Documento_id=Pres_Usuarios_Documento_id,Pres_Fec_Entrega=Pres_Fec_Entrega,Pres_Hora_Entrega=Pres_Hora_Entrega,Pres_Tiempo_Limite=Pres_Tiempo_Limite,Pres_Observaciones_entrega=Pres_Observaciones_entrega)
         return JsonResponse({"mensaje":"Datos Guardados"})
 
         # return render(request,"formulario.html",{'mensaje':'Datos Guardados'})
         
-def Prestamoss(request):
-    return render(request,"Prestamoss.html")
+def Prestamo(request):
+    return render(request,"Prestamos.html")
 
 
 class ActualizarPrestamo(View):
@@ -291,11 +285,22 @@ class EliminarPrestamo(View):
 
 #SANCIONES
 
-class ListarSanciones(View):
-    def get (self,request):
-        Datos=Sanciones.objects.all().values()
-        DatosSanciones=list(Datos)
-        return JsonResponse(DatosSanciones,safe=False)
+
+class ListarSanciones(ListView):
+    def get(self,request):
+        datos=Sanciones.objects.all()
+        Datos_Sanciones=[]
+        for i in datos:
+            Datos_Sanciones.append({
+                'San_Pres':i.San_Pres,
+                'San_Fecha':i.San_Fecha,
+                'San_Hora':i.San_Hora,
+                'San_tiempo':i.San_tiempo,
+                'San_Descripcion':i.San_Descripcion,
+
+            })
+        # DatosEquipos=list(Datos)
+        return JsonResponse(Datos_Sanciones,safe=False)
 
 class InsertarSanciones(View):
     @method_decorator(csrf_exempt)
@@ -313,8 +318,8 @@ class InsertarSanciones(View):
         Sanciones.objects.create(San_Pres_Id=San_Pres_Id,San_Fecha=San_Fecha,San_Hora=San_Hora,San_tiempo=San_tiempo,San_Descripcion=San_Descripcion)
         return render(request,"Sancioness.html",{'mensaje':'Datos Guardados'})
         
-def Sancioness(request):
-    return render(request,"Sancioness.html")
+def Sancion(request):
+    return render(request,"Sanciones.html")
 
 
 class ActualizarSanciones(View):

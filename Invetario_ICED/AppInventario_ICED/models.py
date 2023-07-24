@@ -24,12 +24,9 @@ class Prestamos(models.Model):
     Pres_Equipos=models.ForeignKey(Equipos,verbose_name="ID del equipo",on_delete=models.CASCADE)
     Pres_Usuarios_Documento=models.ForeignKey(Usuarios,verbose_name="N° Documento del usuario",on_delete=models.CASCADE)
     Pres_Fec_Entrega=models.DateField(auto_now=True)
-    Pres_Fec_Devolucion=models.DateField(auto_now=True)
     Pres_Hora_Entrega=models.TimeField(auto_now=True,verbose_name="Hora de Entrega")
-    Pres_Hora_Devolucion =models.TimeField(auto_now=True, verbose_name="Hora de Devolucion")
     Pres_Tiempo_Limite=models.BigIntegerField(verbose_name="Horas Que prestara el Equipo")
     Pres_Observaciones_entrega=models.TextField(max_length=255,verbose_name="Observaciones Salida Equipo")
-    Pres_Observaciones_recibido=models.TextField(max_length=255,verbose_name="Observaciones Recibido")
 
 class Sanciones(models.Model):
     San_Pres=models.OneToOneField(Prestamos, primary_key=True,verbose_name="ID de la sancion",on_delete=models.CASCADE)

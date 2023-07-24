@@ -6,13 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="{% static 'css/formulario1.css' %}">
-    <script src="{% static 'js/ListarPrestamos.js' %}"></script>
-    <script src="{% static 'js/InsertarPrestamo.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/Sancion.css' %}">
     <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/ListarSanciones.js' %}"></script>
+    <script src="{% static 'js/InsertarSanciones.js' %}"></script>
     <script src="https://kit.fontawesome.com/3d7a846b01.js" crossorigin="anonymous"></script>
 </head>
+<body>
 
+    
 <body id="body" style="max-height: 100vh; overflow-y: scroll;">
     <header>
         <div class="icon__menu">
@@ -83,79 +85,57 @@
         <div class="contenedor1">
             <h1>Lista de dispositivos en el centro</h1>
         </div>
-        
+
         <div class="contenedor2">    
             <div>
                 <table id="tabla1">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Id equipo</th>
-                            <th>Documento</th>
-                            <th>Fecha Entrega</th>
-                            <th>Fecha Devolucion</th>
-                            <th>Hora entrega</th>
-                            <th>Hora Devolucion</th>
-                            <th>Tiempo Limite</th>
-                            <th>Observaciones de Entrega</th>
-                            <th>Observaciones de recibido</th>
+                            <th>ID Sancion</th>
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                            <th>Tiempo</th>
+                            <th>Descripcion</th>
                         </tr>
                     </thead>
                     <tbody id="tabla1-body">
                         <script>
                             document.addEventListener("DOMContentLoaded", function() {
-                                ConsultarPrestamos();
+                                ConsultarSanciones();
                             });
                         </script>
                     </tbody>
                 </table>
             </div>
         </div>
+
+
         <div class="contenedor3">
-            <form method="" id="FormPrestamos">
+            <h1>Insertar Sancion</h1>
+            <form method="" id="FormSanciones">
                 {% csrf_token %}
-                <label for="Pres_Id">ID</label>
-                <input type="text" name="Pres_Id" id="Pres_Id" required><br>
-        
-                <label for="Pres_Equipos_id">ID DEL EQUIPO</label>
-                <input type="text" name="Pres_Equipos_id" id="Pres_Equipos_id" required><br>
-
-                <label for="Pres_Usuarios_Documento_id">DOCUMENTO DEL USUARIO</label>
-                <input type="text" name="Pres_Usuarios_Documento_id" id="Pres_Usuarios_Documento_id" required><br>
-
-                <label for="Pres_Fec_Entrega">FECHA DE ENTREGA</label>
-                <input type="text" name="Pres_Fec_Entrega" id="Pres_Fec_Entrega" required><br>
-
-                <label for="Pres_Fec_Devolucion">FECHA DEVOLUCION</label>
-                <input type="text" name="Pres_Fec_Devolucion" id="Pres_Fec_Devolucion" required><br>
-
-                <label for="Pres_Hora_Entrega">HORA ENTREGA</label>
-                <input type="text" name="Pres_Hora_Entrega" id="Pres_Hora_Entrega" required><br>
-
-                <label for="Pres_Hora_Devolucion">HORA DE DEVOLUCION</label>
-                <input type="text" name="Pres_Hora_Devolucion" id="Pres_Hora_Devolucion" required><br>
-
-                <label for="Pres_Tiempo_Limite">TIEMPO LIMITE</label>
-                <input type="text" name="Pres_Tiempo_Limite" id="Pres_Tiempo_Limite" required><br>
-
-                <label for="Pres_Observaciones_entrega">OBSERVACION DE ENTREGA</label>
-                <input type="text" name="Pres_Observaciones_entrega" id="Pres_Observaciones_entrega" required><br>
-
-                <label for="Pres_Observaciones_recibido">OBSERVACION DE RECIBIMIENTO</label>
-                <input type="text" name="Pres_Observaciones_recibido" id="Pres_Observaciones_recibido" required><br>
-
-                <input type="submit" value="Guardar">
+                <input type="text" name="San_Pres_id" placeholder="ID" id="San_Pres_id" required><br>
+                
+                <input type="text" name="San_Fecha" placeholder="Fecha" id="San_Fecha" required><br>
+                
+                <input type="text" name="San_Hora" placeholder="Hora" id="San_Hora" required><br>
+                
+                <input type="text" name="San_tiempo" placeholder="Tiempo" id="San_tiempo" required><br>
+                
+                <input type="text" name="San_Descripcion" placeholder="Descripcion" id="San_Descripcion" required><br>
+                
+                <button type="submit" value="Guardar" id="Guardar">Enviar</button>
             </form>
+
         </div>
-        <div class="contenedor4">
-        </div>
-        <div class="contenedor5">
-        </div>
+
+        <div class="contenedor4">B</div>
+        <div class="contenedor5">C</div>
+    
     </section>
 
     <script src="static/js/script.js"></script>
+
+
 </body>
 </html>
-
-
-

@@ -6,14 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/Prestamo.css' %}">
+    <script src="{% static 'js/ListarPrestamos.js' %}"></script>
+    <script src="{% static 'js/InsertarPrestamo.js' %}"></script>
     <script src="{% static 'js/script.js' %}"></script>
-    <script src="{% static 'js/ListarSanciones.js' %}"></script>
-    <script src="{% static 'js/InsertarSanciones.js' %}"></script>
     <script src="https://kit.fontawesome.com/3d7a846b01.js" crossorigin="anonymous"></script>
 </head>
-<body>
 
-    
 <body id="body" style="max-height: 100vh; overflow-y: scroll;">
     <header>
         <div class="icon__menu">
@@ -79,55 +78,64 @@
         </div>
     </div>
 
-    <section>
+    <section class="cont">
 
         <div class="contenedor1">
-            <h1>Lista de dispositivos en el centro</h1>
+            <h1>Lista de Prestamos en el centro</h1>
         </div>
-
+        
         <div class="contenedor2">    
             <div>
                 <table id="tabla1">
                     <thead>
                         <tr>
-                            <th>ID Sancion</th>
-                            <th>Fecha</th>
-                            <th>Hora</th>
-                            <th>Tiempo</th>
-                            <th>Descripcion</th>
+                            <th>ID</th>
+                            <th>ID Equipo</th>
+                            <th>Documento</th>
+                            <th>Fecha Entrega</th>
+                            <th>Hora entrega</th>
+                            <th>Tiempo Limite</th>
+                            <th>Observaciones de Entrega</th>
                         </tr>
                     </thead>
                     <tbody id="tabla1-body">
                         <script>
                             document.addEventListener("DOMContentLoaded", function() {
-                                ConsultarSanciones();
+                                ConsultarPrestamos();
                             });
                         </script>
                     </tbody>
                 </table>
             </div>
         </div>
+        <div class="contenedor3">
+            <h1>Insertar Prestamo</h1>
+            <form method="" id="FormPrestamos">
+                {% csrf_token %}
+                <input type="text" placeholder="ID" name="Pres_Id" id="Pres_Id" required><br>
+        
+                <input type="text" placeholder="ID DEL EQUIPO" name="Pres_Equipos_id" id="Pres_Equipos_id" required><br>
+
+                <input type="text"  placeholder="DOCUMENTO DEL USUARIO" name="Pres_Usuarios_Documento_id" id="Pres_Usuarios_Documento_id" required><br>
+
+                <input type="date"  name="Pres_Fec_Entrega" id="Pres_Fec_Entrega" required><br>
+
+                <input type="text" placeholder="HORA ENTREGA" name="Pres_Hora_Entrega" id="Pres_Hora_Entrega" required><br>
+
+                <input type="text" placeholder="TIEMPO LIMITE" name="Pres_Tiempo_Limite" id="Pres_Tiempo_Limite" required><br>
+
+                <input type="text" placeholder="OBSERVACION DE ENTREGA" name="Pres_Observaciones_entrega" id="Pres_Observaciones_entrega" required><br>
+
+                <input type="submit" value="Guardar" id="Guardar">
+            </form>
+        </div>
+        <div class="contenedor4"></div>
+        <div class="contenedor5"></div>
     </section>
 
-<div class="contenedor4">
-    <div class="form-container">
-    <form method="" id="FormSanciones">
-        {% csrf_token %}
-        <label for="San_Pres_id">ID</label>
-        <input type="text" name="San_Pres_id" id="San_Pres_id">
-        <label for="San_Fecha">Fecha</label>
-        <input type="text" name="San_Fecha" id="San_Fecha">
-        <label for="San_Hora">Hora</label>
-        <input type="text" name="San_Hora" id="San_Hora">
-        <label for="San_tiempo">Tiempo</label>
-        <input type="text" name="San_tiempo" id="San_tiempo">
-        <label for="San_Descripcion">Descripcion</label>
-        <input type="text" name="San_Descripcion" id="San_Descripcion">
-        <input type="submit">
-    </form>
-    </div>
-</div>
-
-    
+    <script src="static/js/script.js"></script>
 </body>
 </html>
+
+
+

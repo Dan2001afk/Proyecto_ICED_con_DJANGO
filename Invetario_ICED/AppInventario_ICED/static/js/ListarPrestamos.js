@@ -22,12 +22,9 @@ else{
         <td>${dat.Pres_Equipos_id}</td>
         <td>${dat.Pres_Usuarios_Documento_id}</td>
         <td>${dat.Pres_Fec_Entrega}</td>
-        <td>${dat.Pres_Fec_Devolucion}</td>
         <td>${dat.Pres_Hora_Entrega}</td>
-        <td>${dat.Pres_Hora_Devolucion}</td>
         <td>${dat.Pres_Tiempo_Limite}</td>
         <td>${dat.Pres_Observaciones_entrega}</td>
-        <td>${dat.Pres_Observaciones_recibido}</td>
         </tr>`
     }
 }

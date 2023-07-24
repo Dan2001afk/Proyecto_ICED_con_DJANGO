@@ -1,0 +1,536 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: sans-serif;
+
+}
+
+body{
+
+  background-image: linear-gradient(to left, #301f4f, #8acbff);
+  margin-top: 80px;
+  margin-left: 80px;
+  transition: margin-left 300ms  cubic-bezier(0.075, 0.82, 0.165, 1);
+
+}
+
+header{
+  width: 100%;
+  height: 80px;
+  background: #0c0c0c;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 200;
+}
+
+/*estilizar clases de nuestro navbar*/
+
+.icon__menu{
+
+  width: 50px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*mover el icono un poco*/
+  transform: translate(10px);
+}
+
+/*estilos del icono*/
+
+.icon__menu i{
+  color: white;
+  font-size: 20px;
+  /*opccion para click del icono*/
+  cursor: pointer;
+  position: absolute;
+}
+
+
+/*menu desplegable y contenido de iconos*/
+
+.menu__side{
+
+  width: 80px;
+  height: 100%;
+  background: #f7f7f7;
+  position: fixed;
+  top: 0;
+  left: 0 ;
+  font-size: 18px;
+  z-index: 300;
+  overflow: hidden;
+  overflow-y: scroll;
+  border-right: 20px solid #f5f5f5 ;
+  transition: all 300ms  cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+/*acultar scroll en navegadores*/
+.menu__side::-webkit-scrollbar{
+  display: none ;
+}
+
+.menu__side{
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/*contenido del menu*/
+.name__page{
+  padding: 20px 30px;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.name__page i{
+
+  width: 20px;
+  margin-right: 20px;
+}
+
+/*opcciones de nuestrp menu*/
+.options__menu{
+  padding: 20px 30px;
+  position: absolute;
+  top: 80px;
+
+}
+
+.options__menu a{
+  color: black;
+  cursor: default;
+  display: block;
+  position: relative;
+  transition: color 300ms;
+}
+
+
+/*acciones ya sea para usar el cursor*/
+.options__menu a:hover{
+
+  color: rgb(110, 41, 236);
+}
+
+/*posicionar orden de elementos*/
+
+.options__menu .option{
+
+  padding: 20px 0px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/*ajustar iconos*/
+.options__menu .option i{
+
+  
+  width: 20px;
+  margin-right: 20px;
+  cursor: pointer;
+
+}
+
+/*estilos de los nombres*/
+.options__menu .option h4{
+
+
+  font-weight:300;
+  cursor: pointer;
+}
+
+
+/*opccion de marcar cualquier icono del menu y dibujar un ceudo elemento*/
+
+
+a.selected{
+  color: #1d1b1b;
+}
+
+.selected::before{
+
+  content: '' ;
+  width: 3px;
+  height: 80%;
+  background: rgb(17, 17, 17);
+  position: absolute;
+  top: 10%;
+  left: -25px;
+
+}
+
+/*contenido del diseño*/
+
+main{
+  background-color: #d3d3d3;
+  margin: auto;
+  margin-left: 50px;
+  margin:50px;
+  padding: 20px;
+}
+
+/*contenedores para el cotenido y el grid*/
+.cont{
+  
+
+  max-width: 100%;
+  height: 1500px;
+  display: grid;
+  margin: 3px;
+  margin-top: 3px;
+  grid-template-columns:repeat(11, 1fr);
+  grid-template-rows: repeat(40, 1fr);
+  /*margenes generales*/
+  row-gap: 20px;
+  column-gap: 20px;
+  /*margenes de contenedores*/
+  margin: 3%;
+  padding: 0px;
+  box-sizing: border-box;
+  
+}
+
+
+.contenedor1{
+  margin-top: 2%;
+  background-color: rgb(255, 255, 255);
+  grid-column: 1/12;
+  grid-row: 1/5;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 10px;
+}
+
+.contenedor1 h1{
+  font-size: 28px;
+  text-align: center;
+  margin: 30px;
+}
+
+
+.contenedor2{
+  background-color: rgb(255, 255, 255);
+  grid-column: 1/8;
+  grid-row: 5/30;
+  border-radius: 1%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+/*diseño de la tabla*/
+table {
+  width: 90%;
+  border-collapse: collapse;
+  margin: 65px;
+  margin-top: 20px;
+}
+
+table th, table td {
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+table th {
+  background-color: #f2f2f2;
+}
+
+
+.contenedor3 {
+  background-color: rgb(255, 255, 255);
+  grid-column: 8/12;
+  grid-row: 5/21;
+  border-radius: 3%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.contenedor3 h1{
+  margin-bottom: 11%;
+}
+
+
+#Pres_Id{
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  padding: 20px;
+  width: 350px;
+  height: 20px;
+  margin-bottom: 25px;
+  margin-top: -10px;
+}
+
+#Pres_Equipos_id{
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  padding: 20px;
+  width: 350px;
+  height: 20px;
+  margin-bottom: 25px;
+  margin-top: -10px;
+
+
+}
+
+#Pres_Usuarios_Documento_id{
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  padding: 20px;
+  width: 350px;
+  height: 20px;
+  margin-bottom: 25px;
+  margin-top: -10px; 
+  
+
+}
+
+#Pres_Fec_Entrega{
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  padding: 20px;
+  width: 350px;
+  height: 20px;
+  margin-bottom: 25px;
+  margin-top: -10px;
+  
+}
+
+#Pres_Hora_Entrega{
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  padding: 20px;
+  width: 350px;
+  height: 20px;
+  margin-bottom: 25px;
+  margin-top: -10px;
+
+}
+
+#Pres_Tiempo_Limite{
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  padding: 20px;
+  width: 350px;
+  height: 20px;
+  margin-bottom: 25px;
+  margin-top: -10px;
+ 
+
+}
+
+#Pres_Observaciones_entrega{
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  padding: 20px;
+  width: 350px;
+  height: 20px;
+  margin-bottom: 25px;
+  margin-top: -10px;
+ 
+
+}
+
+
+#Guardar {
+  border: none;
+  background-color: #b491ce;
+  border-radius: 25px;
+  padding: 10px 20px;
+  width: 350px;
+  height: 50px;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: -10px;
+  transition: background-color 0.3s ease; 
+}
+
+
+#guardar:hover {
+  background-color:  #8acbff; /* Cambio de color al pasar el mouse por encima */
+}
+
+
+
+/*clases para mover el menu */
+
+.body_move{
+  margin-left: 250px;
+}
+
+.menu__side_move{
+  width: 250px;
+}
+
+
+/* responsive */
+
+@media screen and (max-width: 760px){
+  .body_move{
+      margin-left: 0px;
+  }
+
+  .menu__side_move{
+      width: 80px;
+      left: -80px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 1000px) {
+  .cont {
+      max-width: 100%;
+      height: 1000px;
+      display: grid;
+      margin: 3px;
+      margin-top: 3px;
+      grid-template-columns: repeat(11, 1fr);
+      grid-template-rows: repeat(130, 1fr);
+      /*margenes generales*/
+      row-gap: 20px;
+      column-gap: 20px;
+      /*margenes de contenedores*/
+      margin: 3%;
+      padding: 0px;
+      box-sizing: border-box;
+  }
+
+  .contenedor1 {
+      margin-top: 2%;
+      grid-column: 1/12;
+      grid-row: 1/2;
+      text-align: center;
+      font-size: 18px;
+      border-radius: 2%;
+  }
+
+  .contenedor1 h1 {
+      font-size: 15px;
+      text-align: center;
+      margin: 30px;
+  }
+
+  .contenedor2 {
+      grid-column: 1/12;
+      grid-row: 2/25;
+      overflow-x: auto; /* Added overflow-x property for horizontal scrolling */
+      padding-bottom: 10px;
+      border-radius: 5%;
+  }
+
+  table {
+      width: 100%; /* Adjusted width to occupy full width of the container */
+      margin: 15px;
+  }
+
+  table th,
+  table td {
+      padding: 10px;
+      font-size: 11px;
+  }
+
+  .contenedor3 {
+      grid-column: 1/12;
+      grid-row: 25/54;
+      
+  }
+
+  .contenedor3 h1{
+      margin-bottom: 8%;
+  }
+
+
+
+  #Equ_id{
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    padding: 20px;
+    width: 250px;
+    height: 10px;
+    margin-bottom: 15px;
+    margin-top: -1px;
+}
+
+  #Equi_tipo{
+      border: 1px solid #ccc;
+      border-radius: 25px;
+      padding: 20px;
+      width: 250px;
+      height: 10px;
+      margin-bottom: 15px;
+      margin-top: -1px;
+  }
+
+  #Equi_modelo{
+      border: 1px solid #ccc;
+      border-radius: 25px;
+      padding: 20px;
+      width: 250px;
+      height: 10px;
+      margin-bottom: 15px;
+      margin-top: -1px;
+  }
+
+  #Equi_color{
+      border: 1px solid #ccc;
+      border-radius: 25px;
+      padding: 20px;
+      width: 250px;
+      height: 10px;
+      margin-bottom: 15px;
+      margin-top: -1px;
+  }
+
+  #Equi_serial{
+      border: 1px solid #ccc;
+      border-radius: 25px;
+      padding: 20px;
+      width: 250px;
+      height: 10px;
+      margin-bottom: 15px;
+      margin-top: -1px;
+  }
+
+  #Equi_estado{
+      border: 1px solid #ccc;
+      border-radius: 25px;
+      padding: 20px;
+      width: 250px;
+      height: 10px;
+      margin-bottom: 15px;
+      margin-top: -1px;
+
+  }
+
+  #equi_especialidad{
+      border: 1px solid #ccc;
+      border-radius: 25px;
+      padding: 20px;
+      width: 250px;
+      height: 10px;
+      margin-bottom: 15px;
+      margin-top: -1px;
+  }
+
+
+  #Guardar {
+      border: none;
+      background-color: #b491ce;
+      border-radius: 25px;
+      padding: 10px 20px;
+      width: 250px;
+      height: 50px;
+      color: #ffffff;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: -0px;
+      transition: background-color 0.3s ease; 
+  }
+
+}  

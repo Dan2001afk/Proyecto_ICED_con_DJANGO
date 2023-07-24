@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menú lateral responsive</title> 
-    <link rel="stylesheet" href="{% static 'css/parte1.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Equipo.css' %}">
     <script src="{% static 'js/InsertarEquipos.js' %}"></script>
     <script src="{% static 'js/ActualizarEquipos.js' %}"></script>
     <script src="{% static 'js/ListarEquipos.js' %}"></script>
@@ -114,14 +114,12 @@
 
         <div class="contenedor3">
             <h1>Insertar Equipo</h1>
-
-    
                 <form method=""  id="FormEquipos" >
                     {% csrf_token %}
                  
                     <input type="text" name="Equ_id" id="Equ_id" placeholder="ID" required><br>
+
                     
-                   
                     <input type="text" name="Equi_tipo" id="Equi_tipo" placeholder="Tipo|" required><br>
                     
                 
@@ -147,7 +145,7 @@
         </div>
 
 
-        <div class="contenedor4"></div>
+        <div class="contenedor4">B</div>
         <div class="contenedor5">C</div>
         
 

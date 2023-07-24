@@ -10,11 +10,11 @@ class ListaUsuarios(admin.ModelAdmin):
     list_display=('Usu_Documento', 'Usu_Nombre', 'Usu_Apellido', 'Usu_tipo','Usu_Celular','Usu_Correo','Usu_Ficha')
 
 @admin.register(Prestamos)
-class ListaUsuarios(admin.ModelAdmin):
-    list_display=('Pres_Id', 'Pres_Equipos', 'Pres_Usuarios_Documento', 'Pres_Fec_Entrega','Pres_Fec_Devolucion','Pres_Hora_Entrega','Pres_Hora_Devolucion','Pres_Tiempo_Limite','Pres_Observaciones_entrega','Pres_Observaciones_recibido')
+class ListaPrestamos(admin.ModelAdmin):
+    list_display=('Pres_Id', 'Pres_Equipos', 'Pres_Usuarios_Documento', 'Pres_Fec_Entrega','Pres_Hora_Entrega','Pres_Tiempo_Limite','Pres_Observaciones_entrega')
 
 @admin.register(Sanciones)
-class ListaUsuarios(admin.ModelAdmin):
+class ListaSanciones(admin.ModelAdmin):
     list_display=('San_Pres', 'San_Fecha', 'San_Hora','San_tiempo','San_Descripcion')
 
 
