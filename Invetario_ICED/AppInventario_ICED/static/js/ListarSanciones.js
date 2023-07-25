@@ -1,4 +1,4 @@
-//Listar Sanciones
+//LISTAR SANCIONES
 function ConsultarSanciones(){
     fetch("http://127.0.0.1:8000/ListarSanciones",{
     method:"GET",
@@ -6,7 +6,7 @@ function ConsultarSanciones(){
         "consultar-Type":"AppInventario_ICED/json"
     }
     })
-    .then(Response => Response.json())
+.then(Response => Response.json())
 .then(datos=>{
 console.log(datos)	
 let tabla=document.querySelector('#tabla1-body');
