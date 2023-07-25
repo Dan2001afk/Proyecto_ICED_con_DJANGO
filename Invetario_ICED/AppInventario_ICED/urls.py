@@ -3,6 +3,12 @@ from .views import *
 from . import views
 
 urlpatterns=[
+    #PORTADA PRINCIPAL
+    path('Portada',views.Portada,name='Portada'),
+    #LOGIN
+    path('Login',views.Login,name='Login'),
+    #FORMULARIO
+    path('Formulario',views.Formulario,name='Formulario'),
     #CRUD EQUIPOS
     path('Equipo',views.Equipo,name='Equipo'),
     path('ListarEquipos',ListadoEquipos.as_view(),name='ListarEquipos'),

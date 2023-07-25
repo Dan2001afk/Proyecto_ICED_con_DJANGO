@@ -357,3 +357,12 @@ class EliminarSanciones(View):
         DeleteEquipo.delete()
         return JsonResponse({"Mensaje":"Sancion Eliminada"})
     
+
+def Portada(request):
+    return render(request,"Principal.html")
+
+def Login(request):
+    return render(request,"Inicio.html")
+
+def Formulario(request):
+    return render(request,"formulario.html")

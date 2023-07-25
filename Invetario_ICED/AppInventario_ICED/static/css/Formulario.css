@@ -1,0 +1,180 @@
+*{
+    margin: 0;
+    padding: 0 ;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #0b0320;
+    color: white;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+
+body::after,
+body::before{
+    content: '';
+    position:  fixed;
+    height: 400px;
+    width: 400px;
+    border-radius: 50%;
+    z-index: -1;
+    filter:  blur(150px);
+    opacity: 0.5;
+
+}
+
+body::before{
+    background-color: #b1a8f5;
+    left: 0;
+    bottom: 0;
+    transform: translate(-50%);
+}
+
+body::before{
+    background-color: #b1a8f5;
+    right: 0;
+    top: 0;
+    transform: translate(-50%);
+
+}
+
+
+/*estilos del formulario*/
+
+
+.form-main{
+    min-height: 100vh;
+    padding: 60px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.form-content{
+    width: 100%;
+    max-width: 450px;
+    position: relative;
+    
+}
+
+/*estilos de los ciruclos */
+.form-content .circle-3,
+.form-content .circle-2,
+.form-content .circle-1{
+    position: absolute;
+    background: linear-gradient(to right, #b1a8f5, #4fa8f1);
+    border-radius:  50%;
+    z-index: -1;
+    filter: blur(3px); /* Puedes ajustar el valor (5px) según tu preferencia */
+    
+}
+
+/*estilos individuales*/
+
+.form-content .circle-1{
+    height:  120px;
+    width: 120px;
+    left: 0;
+    top: 10%;
+    transform:  translate(-50%);
+}
+
+
+.form-content .circle-2{
+    height:  80px;
+    width: 80px;
+    right: 0;
+    bottom: 0%;
+    transform:  translate(-20%, 20%);
+}
+
+
+.form-content .circle-3{
+    height:  80px;
+    width: 80px;
+    right: 0;
+    bottom: 0%;
+    transform:  translate(-560%, 90%);
+}
+
+
+
+
+
+
+.form-content .box{
+    background-color: #0b03209f;
+    border-color: #b1a8f5c2;
+    border: 1px solid rgb(236, 227, 227);
+    padding:  40px 50px;
+    border-radius: 20px;
+}
+
+.form-content h3{
+    font-size: 23px;
+    text-align: center;
+    line-height: 1.2;
+    color: white;
+    font-weight: 500;
+}
+
+.form-content form{
+    margin: 25px 0 20px;
+}
+
+a{
+    text-decoration: none;
+    color: #b1a8f5;
+}
+
+.form-content .input_controlador{
+    margin-bottom:  25px;
+}
+
+.form-content .input_controlador{
+    display:  block;
+    height: 45px;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    color: white;
+    font-size: 16px;
+}
+
+/*quitar focus del contenedor al momento de seleccionar*/
+
+.form-content .input_controlador:focus{
+    outline: none;
+}
+
+.form-content .input-link{
+    margin-top: 10px;
+    text-align: right;
+}
+
+.form-content .btn{
+     margin-top: 30px;
+     height: 45px;
+     width: 100%;
+     font-size: 16px;
+     font-weight: 500;
+     text-transform: capitalize;
+     cursor:  pointer;
+     border-radius: 25px;
+     user-select: none;
+     background: linear-gradient(to right, #b1a8f5, #4fa8f1);
+     border: none;
+     color: white;
+     position: relative;
+}
+
+.form-content p{
+    text-align: center;
+}
+
