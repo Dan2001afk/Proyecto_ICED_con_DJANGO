@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Equipos(models.Model):
-    Equ_id=models.BigIntegerField(verbose_name="ID del equipo", primary_key=True)
+    Equ_id=models.AutoField(verbose_name="ID del equipo", primary_key=True)
     Equi_tipo=models.TextField(max_length=50)
     Equi_modelo=models.TextField(max_length=50)
     Equi_color=models.TextField(max_length=50)

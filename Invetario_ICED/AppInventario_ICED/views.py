@@ -58,7 +58,6 @@ class InsertarEquipos(View):
         except(json.JSONDecodeError,UnicodeDecodeError):
             return JsonResponse({"Error":"Error en el Documento"})
         datos=json.loads(request.body)
-        Equ_id = datos.get('Equ_id')
         Equi_tipo = datos.get('Equi_tipo')
         Equi_modelo = datos.get('Equi_modelo')
         Equi_color = datos.get('Equi_color')
@@ -66,7 +65,7 @@ class InsertarEquipos(View):
         Equi_estado = datos.get('Equi_estado')
         equi_especialidad = datos.get('equi_especialidad')
         print("datos",request.POST)
-        Equipos.objects.create(Equ_id=Equ_id,Equi_tipo=Equi_tipo,Equi_modelo=Equi_modelo,Equi_color=Equi_color,Equi_serial=Equi_serial,Equi_estado=Equi_estado,equi_especialidad=equi_especialidad)
+        Equipos.objects.create(Equi_tipo=Equi_tipo,Equi_modelo=Equi_modelo,Equi_color=Equi_color,Equi_serial=Equi_serial,Equi_estado=Equi_estado,equi_especialidad=equi_especialidad)
         return JsonResponse({"mensaje":"Datos Guardados"})
 
         # return render(request,"formulario.html",{'mensaje':'Datos Guardados'})
