@@ -109,7 +109,6 @@ header{
   transition: color 300ms;
 }
 
-
 /*acciones ya sea para usar el cursor*/
 .options__menu a:hover{
 
@@ -117,7 +116,6 @@ header{
 }
 
 /*posicionar orden de elementos*/
-
 .options__menu .option{
 
   padding: 20px 0px;
@@ -144,10 +142,7 @@ header{
   cursor: pointer;
 }
 
-
 /*opccion de marcar cualquier icono del menu y dibujar un ceudo elemento*/
-
-
 a.selected{
   color: #1d1b1b;
 }
@@ -165,7 +160,6 @@ a.selected{
 }
 
 /*contenido del diseño*/
-
 main{
   background-color: #d3d3d3;
   margin: auto;
@@ -176,7 +170,6 @@ main{
 
 /*contenedores para el cotenido y el grid*/
 .cont{
-  
 
   max-width: 100%;
   height: 1500px;
@@ -197,42 +190,38 @@ main{
 
 
 .contenedor1{
-  margin-top: 2%;
   background-color: rgb(255, 255, 255);
   grid-column: 1/12;
-  grid-row: 1/5;
-  text-align: center;
-  font-size: 18px;
-  border-radius: 10px;
+  grid-row: 4/8;
+  border-radius: 1%;
+
+  
 }
 
-.contenedor1 h1{
-  font-size: 28px;
-  text-align: center;
-  margin: 30px;
-}
 
 
 .contenedor2{
   background-color: rgb(255, 255, 255);
-  grid-column: 1/8;
-  grid-row: 5/30;
+  grid-column: 1/12;
+  grid-row: 8/28;
   border-radius: 1%;
   overflow-y: auto;
   overflow-x: hidden;
 }
+
 /*diseño de la tabla*/
 table {
-  width: 90%;
-  border-collapse: collapse;
-  margin: 65px;
+  width: 95%;
+  margin: 40px;
   margin-top: 20px;
 }
 
 table th, table td {
+  width: 13%;
   border-bottom: 1px solid #ccc;
-  padding: 10px;
+  padding: 5px;
   text-align: center;
+  font-size: 15px;
 }
 
 table th {
@@ -240,122 +229,126 @@ table th {
 }
 
 
-.contenedor3 {
-  background-color: rgb(255, 255, 255);
-  grid-column: 8/12;
-  grid-row: 5/21;
-  border-radius: 3%;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-}
-
-.contenedor3 h1{
-  margin-bottom: 11%;
-}
-
-
-#Equ_id{
-  border: 1px solid #ccc;
-  border-radius: 25px;
-  padding: 20px;
-  width: 350px;
-  height: 20px;
-  margin-bottom: 25px;
-  margin-top: -10px;
-}
-
-#Equi_tipo{
-  border: 1px solid #ccc;
-  border-radius: 25px;
-  padding: 20px;
-  width: 350px;
-  height: 20px;
-  margin-bottom: 25px;
-  margin-top: -10px;
-
-
-}
-
-#Equi_modelo{
-  border: 1px solid #ccc;
-  border-radius: 25px;
-  padding: 20px;
-  width: 350px;
-  height: 20px;
-  margin-bottom: 25px;
-  margin-top: -10px; 
+/* Estilos para los botones de la tabla */
+.btnEliminar {
+  width: 100%;
+  background-color: #de3156; /* Color de fondo */
+  color: white; /* Color del texto */
+  padding: 8px 16px; /* Espaciado interno */
+  border: none; /* Sin borde */
+  border-radius: 4px; /* Bordes redondeados */
+  cursor: pointer; /* Cambiar el cursor al pasar por encima */
+  transition: background-color 0.5s ease; 
+  margin-top: 4px;
   
-
-}
-
-#Equi_color{
-  border: 1px solid #ccc;
-  border-radius: 25px;
-  padding: 20px;
-  width: 350px;
-  height: 20px;
-  margin-bottom: 25px;
-  margin-top: -10px;
   
 }
 
-#Equi_serial{
-  border: 1px solid #ccc;
-  border-radius: 25px;
-  padding: 20px;
-  width: 350px;
-  height: 20px;
-  margin-bottom: 25px;
-  margin-top: -10px;
-
+.btnActualizar{
+  width: 15%;
+  height: 40px;
+  background-color: #61af4c; /* Color de fondo */
+  color: white; /* Color del texto */
+  padding: 8px 16px; /* Espaciado interno */
+  border: none; /* Sin borde */
+  border-radius: 4px; /* Bordes redondeados */
+  cursor: pointer; /* Cambiar el cursor al pasar por encima */
+  transition: background-color 0.5s ease; 
+  margin: 10px;
+  
+   
 }
 
-#Equi_estado{
-  border: 1px solid #ccc;
-  border-radius: 25px;
-  padding: 20px;
-  width: 350px;
-  height: 20px;
-  margin-bottom: 25px;
-  margin-top: -10px;
- 
-
-}
-
-#equi_especialidad{
-  border: 1px solid #ccc;
-  border-radius: 25px;
-  padding: 20px;
-  width: 350px;
-  height: 20px;
-  margin-bottom: 25px;
-  margin-top: -10px;
- 
+.btnInsertar{
+  width: 15%;
+  height: 40px;
+  background-color: #4c78af; /* Color de fondo */
+  color: white; /* Color del texto */
+  padding: 8px 16px; /* Espaciado interno */
+  border: none; /* Sin borde */
+  border-radius: 4px; /* Bordes redondeados */
+  cursor: pointer; /* Cambiar el */
+  transition: background-color 0.5s ease; 
+  margin: 10px;
 
 }
 
 
-#Guardar {
-  border: none;
-  background-color: #b491ce;
-  border-radius: 25px;
-  padding: 10px 20px;
-  width: 350px;
-  height: 50px;
-  color: #ffffff;
+
+
+
+
+
+
+
+.btnEliminar:hover {
+  background-color: #e77d26; 
+}
+
+.btnActualizar:hover{
+  background-color: #d0f112; 
+}
+
+.btnInsertar:hover{
+  background-color: #5338aa;
+}
+
+/* Estilos para el modal 1 y 2 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(45, 37, 100, 0.388);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 8px;
+  max-width: 500px;
+  height: 600px;
+  box-shadow: 0px 4px 8px rgba(118, 7, 7, 0.1);
+  text-align: center;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 24px;
   font-weight: bold;
+}
+
+.close2 {
+  color: #aaa;
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
   cursor: pointer;
-  margin-top: -10px;
-  transition: background-color 0.3s ease; 
 }
 
 
-#guardar:hover {
-  background-color:  #8acbff; /* Cambio de color al pasar el mouse por encima */
+/*estilos del contenido interno de la tabla*/
+
+.modal h2{
+
+  text-align: center;
+  margin: 20px;
+  
 }
+
 
 
 
