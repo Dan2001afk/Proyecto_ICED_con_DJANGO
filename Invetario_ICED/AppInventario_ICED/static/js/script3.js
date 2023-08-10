@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
 
-    //segundo modal
+//segundo modal
 
    document.addEventListener('DOMContentLoaded', function() {
   // Obtén una referencia al botón de abrir modal y al modal de actualización
