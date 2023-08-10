@@ -177,7 +177,7 @@
   /*contenedores para el cotenido y el grid*/
   .cont{
     
-  
+    background-color: #b491ce;
     max-width: 100%;
     height: 1500px;
     display: grid;
@@ -195,66 +195,146 @@
     
   }
   
+.contenedor1{
+  background-color: rgb(255, 255, 255);
+  grid-column: 1/12;
+  grid-row: 4/8;
+  border-radius: 1%;
+}
+
+.contenedor2{
+  background-color: rgb(255, 255, 255);
+  grid-column: 1/12;
+  grid-row: 8/28;
+  border-radius: 1%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/*diseño de la tabla*/
+table {
+  width: 95%;
+  margin: 40px;
+  margin-top: 20px;
+}
+
+table th, table td {
+  width: 13%;
+  border-bottom: 1px solid #ccc;
+  padding: 5px;
+  text-align: center;
+  font-size: 15px;
+}
+
+table th {
+  background-color: #f2f2f2;
+}
+/* Estilos para los botones de la tabla */
+.btnEliminar {
+  width: 100%;
+  background-color: #de3156; /* Color de fondo */
+  color: white; /* Color del texto */
+  padding: 8px 16px; /* Espaciado interno */
+  border: none; /* Sin borde */
+  border-radius: 4px; /* Bordes redondeados */
+  cursor: pointer; /* Cambiar el cursor al pasar por encima */
+  margin-top: 4px;
   
-  .contenedor1{
-    margin-top: 2%;
-    background-color: rgb(255, 255, 255);
-    grid-column: 1/12;
-    grid-row: 1/5;
-    text-align: center;
-    font-size: 18px;
-    border-radius: 10px;
-  }
+}
+
+.btnActualizar{
+  width: 10%;
+  background-color: #61af4c; /* Color de fondo */
+  color: white; /* Color del texto */
+  padding: 8px 16px; /* Espaciado interno */
+  border: none; /* Sin borde */
+  border-radius: 4px; /* Bordes redondeados */
+  cursor: pointer; /* Cambiar el cursor al pasar por encima */
+   
+}
+
+.btnInsertar{
+  width: 10%;
+  background-color: #4c78af; /* Color de fondo */
+  color: white; /* Color del texto */
+  padding: 8px 16px; /* Espaciado interno */
+  border: none; /* Sin borde */
+  border-radius: 4px; /* Bordes redondeados */
+  cursor: pointer; /* Cambiar el */
+
+}
+
+
+.btnEliminar:hover {
+  background-color: #e77d26; 
+}
+
+.btnActualizar:hover{
+  background-color: #d0f112; 
+}
+
+.btnInsertar:hover{
+  background-color: #5338aa;
+}
+
+/* Estilos para el modal 1 y 2 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(45, 37, 100, 0.388);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 8px;
+  max-width: 500px;
+  height: 600px;
+  box-shadow: 0px 4px 8px rgba(118, 7, 7, 0.1);
+  text-align: center;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.close2 {
+  color: #aaa;
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+/*estilos del contenido interno de la tabla*/
+
+.modal h2{
+
+  text-align: center;
+  margin: 20px;
   
-  .contenedor1 h1{
-    font-size: 28px;
-    text-align: center;
-    margin: 30px;
-  }
+}
+
+
   
-  
-  .contenedor2{
-    background-color: rgb(255, 255, 255);
-    grid-column: 1/8;
-    grid-row: 5/30;
-    border-radius: 1%;
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
-  /*diseño de la tabla*/
-  table {
-    width: 90%;
-    border-collapse: collapse;
-    margin: 65px;
-    margin-top: 20px;
-  }
-  
-  table th, table td {
-    border-bottom: 1px solid #ccc;
-    padding: 10px;
-    text-align: center;
-  }
-  
-  table th {
-    background-color: #f2f2f2;
-  }
-  
-  
-  .contenedor3 {
-    background-color: rgb(255, 255, 255);
-    grid-column: 8/12;
-    grid-row: 5/21;
-    border-radius: 3%;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  .contenedor3 h1{
-    margin-bottom: 11%;
-  }
   
   
   #Usu_Documento{
