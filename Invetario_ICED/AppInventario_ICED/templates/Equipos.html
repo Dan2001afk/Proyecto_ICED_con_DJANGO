@@ -8,8 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Equipos</title> 
     <link rel="stylesheet" href="{% static 'css/Equipo.css' %}">
-    <script src="{% static 'js/InsertarEquipos.js' %}"></script>
-    <script src="{% static 'js/ListarEquipos.js' %}"></script>
+    <script src="{% static 'js/Crud-Equipo.js' %}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://kit.fontawesome.com/3d7a846b01.js" crossorigin="anonymous"></script>
 
@@ -86,6 +85,8 @@
             <h1>Lista de equipos registrados</h1>
             <button class="btnInsertar">Abrir Modal</button>
             <button class="btnActualizar">actualizar</button>
+            <label for=""><input type="text" id="id_equipoo" name="id_equipoo" placeholder="equipo"></label>
+            <button type="button" id="BuscarEquipo" class="btn btn-danger w-100 fs-5 mb-3">Buscar</button>
         </div>
         
         <div class="contenedor2">    
@@ -100,6 +101,7 @@
                             <th>Serial</th>
                             <th>Estado</th>
                             <th>Especialidad</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody id="tabla1-body">
