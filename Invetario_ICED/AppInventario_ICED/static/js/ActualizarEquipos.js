@@ -38,7 +38,6 @@ document.addEventListener("DOMContentLoaded",function(){
 
 })
 
-
 //AGREGAR EQUIPO
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("FormEquipos").addEventListener("submit", function (event) {

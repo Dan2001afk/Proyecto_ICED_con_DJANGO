@@ -7,12 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prestamos</title>
     <link rel="stylesheet" href="{% static 'css/Prestamo.css' %}">
-    <script src="{% static 'js/ListarPrestamos.js' %}"></script>
-    <script src="{% static 'js/InsertarPrestamo.js' %}"></script>
-    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/Crud-Prestamos.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="static/js/script.js"></script>
     <script src="https://kit.fontawesome.com/3d7a846b01.js" crossorigin="anonymous"></script>
 </head>
-
 <body id="body" style="max-height: 100vh; overflow-y: scroll;">
     <header>
         <div class="icon__menu">
@@ -26,51 +25,51 @@
 
         <div class="options__menu">	
 
-            <a href="/index3.html" class="selected" >
+            <a href="/Equipo">
                 <div class="option">
-                    <i class="fas fa-home" title="Inicio"></i>
-                    <h4>Inicio</h4>
+                    <i class="fas fa-laptop"></i>
+                    <h4>Equipos</h4>
                 </div>
             </a>
 
-            <a href="/index4.html">
+            <a href="/Usuario">
                 <div class="option">
-                    <i class="fa-solid fa-cloud"></i>
-                    <h4>Portafolio</h4>
+                    <i class="fa-solid fa-users"></i>
+                    <h4>Usuarios</h4>
                 </div>
             </a>
             
-            <a href="">
+            <a href="/Prestamo" class="selected">
                 <div class="option">
-                    <i class="fa-solid fa-database"></i>
-                    <h4>Cursos</h4>
+                    <i class="fas fa-server"></i>
+                    <h4>Prestamos</h4>
                 </div>
             </a>
 
-            <a href="">
+            <a href="/Sancion">
                 <div class="option">
-                    <i class="fa-solid fa-code"></i>
-                    <h4>Blog</h4>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <h4>Sanciones</h4>
                 </div>
             </a>
 
             <a href="#">
                 <div class="option">
-                    <i class="fa-solid fa-users"></i>
+                    <i class="fas fa-box-open"></i>
+                    <h4>Devoluciones</h4>
+                </div>
+            </a>
+            
+            <a href="#">
+                <div class="option">
+                    <i class="fas fa-phone"></i>
                     <h4>Contacto</h4>
                 </div>
             </a>
-
+            
             <a href="#">
                 <div class="option">
-                    <i class="fa-solid fa-arrows-rotate"></i>
-                    <h4>Nosotros</h4>
-                </div>
-            </a>
-
-            <a href="#">
-                <div class="option">
-                    <i class="fa-solid fa-plus"></i>
+                    <i class="fas fa-user-circle"></i>
                     <h4>Nosotros</h4>
                 </div>
             </a>
@@ -82,6 +81,10 @@
 
         <div class="contenedor1">
             <h1>Lista de Prestamos en el centro</h1>
+            <button class="btnInsertar">Insertar</button>
+            <button class="btnActualizar">actualizar</button>
+            <label for=""><input type="text" id="id_prestamoo" name="id_prestamoo" placeholder="Buscar Prestamo"></label>
+            <button type="button" id="BuscarPrestamo" class="btn btn-danger w-100 fs-5 mb-3">Buscar</button>
         </div>
         
         <div class="contenedor2">    
@@ -101,39 +104,78 @@
                     <tbody id="tabla1-body">
                         <script>
                             document.addEventListener("DOMContentLoaded", function() {
-                                ConsultarPrestamos();
+                                Listar();
                             });
                         </script>
                     </tbody>
                 </table>
             </div>
         </div>
-        <div class="contenedor3">
-            <h1>Insertar Prestamo</h1>
-            <form method="" id="FormPrestamos">
-                {% csrf_token %}
-                <input type="text" placeholder="ID" name="Pres_Id" id="Pres_Id" required><br>
+        <!--modal1-->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h1>Actualizar Prestamo</h1>
+                <!--<form method=""  id="ActualizarEquipos" >
+                    {% csrf_token %}
         
-                <input type="text" placeholder="ID DEL EQUIPO" name="Pres_Equipos_id" id="Pres_Equipos_id" required><br>
+                    <input type="text" name="Equ_id" id="Equ_id" placeholder="ID" required><br>
+                    
+                    <input type="text" name="Equi_tipo" id="Equi_tipo" placeholder="Tipo" required><br>
+                    
+                
+                    <input type="text" name="Equi_modelo" id="Equi_modelo" placeholder="Modelo" required><br>
+                    
+                
+                    <input type="text" name="Equi_color" id="Equi_color" placeholder="Color" required><br>
+                    
+                
+                    <input type="text" name="Equi_serial" id="Equi_serial" placeholder="Serial" required><br>
+                    
+                
+                    <input type="text" name="Equi_estado" id="Equi_estado" placeholder="Estado" required><br>
+                    
+                
+                    <input type="text" name="equi_especialidad" id="equi_especialidad"  placeholder="Especialidad"><br>
+                
 
-                <input type="text"  placeholder="DOCUMENTO DEL USUARIO" name="Pres_Usuarios_Documento_id" id="Pres_Usuarios_Documento_id" required><br>
-
-                <input type="date"  name="Pres_Fec_Entrega" id="Pres_Fec_Entrega" required><br>
-
-                <input type="text" placeholder="HORA ENTREGA" name="Pres_Hora_Entrega" id="Pres_Hora_Entrega" required><br>
-
-                <input type="text" placeholder="TIEMPO LIMITE" name="Pres_Tiempo_Limite" id="Pres_Tiempo_Limite" required><br>
-
-                <input type="text" placeholder="OBSERVACION DE ENTREGA" name="Pres_Observaciones_entrega" id="Pres_Observaciones_entrega" required><br>
-
-                <input type="submit" value="Guardar" id="Guardar">
-            </form>
+                    <button type="submit" value="Guardar" id="Guardar">Enviar</button>
+                </form>-->
+            </div>
         </div>
-        <div class="contenedor4"></div>
-        <div class="contenedor5"></div>
+        <!-- ... -->
+        <!--modal2-->
+        <div id="myModal2" class="modal">
+            <div class="modal-content">
+                <span class="close2">&times;</span>
+                <h1 class="h1">Insertar Prestamo</h1>
+                <form method="" id="FormPrestamos">
+                    {% csrf_token %}
+                    <input type="text" placeholder="ID" name="Pres_Id" id="Pres_Id" required><br>
+            
+                    <input type="text" placeholder="ID DEL EQUIPO" name="Pres_Equipos_id" id="Pres_Equipos_id" required><br>
+
+                    <input type="text"  placeholder="DOCUMENTO DEL USUARIO" name="Pres_Usuarios_Documento_id" id="Pres_Usuarios_Documento_id" required><br>
+
+                    <input type="date"  name="Pres_Fec_Entrega" id="Pres_Fec_Entrega" required><br>
+
+                    <input type="text" placeholder="HORA ENTREGA" name="Pres_Hora_Entrega" id="Pres_Hora_Entrega" required><br>
+
+                    <input type="text" placeholder="TIEMPO LIMITE" name="Pres_Tiempo_Limite" id="Pres_Tiempo_Limite" required><br>
+
+                    <input type="text" placeholder="OBSERVACION DE ENTREGA" name="Pres_Observaciones_entrega" id="Pres_Observaciones_entrega" required><br>
+
+                    <input type="submit" value="Guardar" id="Guardar">
+                </form>
+            </div>
+        </div>
+        <!---->
+
     </section>
 
-    <script src="static/js/script.js"></script>
+
+    <script src="static/js/script3.js"></script>
+    
 </body>
 </html>
 

@@ -348,9 +348,103 @@ table th {
   margin: 20px;
   
 }
+/*estilos del contenido interno de la tabla*/
 
+.modal h2{
 
+  text-align: center;
+  margin: 20px;
+  
+}
 
+#Equ_id{
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  padding: 20px;
+  width: 350px;
+  height: 20px;
+  margin-bottom: 25px;
+  margin-top: -10px;
+}
+
+#Equi_tipo{
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  padding: 20px;
+  width: 350px;
+  height: 20px;
+  margin-bottom: 25px;
+  margin-top: -10px;
+}
+
+#Equi_modelo{
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  padding: 20px;
+  width: 350px;
+  height: 20px;
+  margin-bottom: 25px;
+  margin-top: -10px;
+}
+
+#Equi_color{
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  padding: 20px;
+  width: 350px;
+  height: 20px;
+  margin-bottom: 25px;
+  margin-top: -10px;
+}
+
+#Equi_serial{
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  padding: 20px;
+  width: 350px;
+  height: 20px;
+  margin-bottom: 25px;
+  margin-top: -10px;
+}
+
+#Equi_estado{
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  padding: 20px;
+  width: 350px;
+  height: 20px;
+  margin-bottom: 25px;
+  margin-top: -10px;
+}
+
+#equi_especialidad{
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  padding: 20px;
+  width: 350px;
+  height: 20px;
+  margin-bottom: 25px;
+  margin-top: -10px;
+}
+
+#Guardar {
+  border: none;
+  background-color: #b491ce;
+  border-radius: 25px;
+  padding: 10px 20px;
+  width: 350px;
+  height: 50px;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: -10px;
+  transition: background-color 0.3s ease; 
+}
+.h1{
+  padding-top: 30px;
+  padding-bottom: 55px;
+
+}
 
 /*clases para mover el menu */
 

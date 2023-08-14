@@ -1,5 +1,3 @@
-alert("holaa")
-
 document.addEventListener('DOMContentLoaded', function() {
     // Obtén una referencia al botón de abrir modal y al modal de actualización
     const openUpdateModalBtn = document.querySelector('.btnInsertar');

@@ -50,7 +50,7 @@ function agregarEquipo() {
         method: "POST",
         body: jsonData,
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "AppInventario_ICED/json"
         }
     })
     .then(response => response.json())
