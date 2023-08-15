@@ -19,19 +19,21 @@ class Usuarios(models.Model):
     Usu_Correo=models.EmailField(max_length=50,verbose_name="Correo Electronico")
     Usu_Ficha=models.TextField(max_length=40)
     
+
 class Prestamos(models.Model):
-    Pres_Id=models.BigIntegerField(verbose_name="ID del prestamo",primary_key=True)
-    Pres_Equipos=models.ForeignKey(Equipos,verbose_name="ID del equipo",on_delete=models.CASCADE)
-    Pres_Usuarios_Documento=models.ForeignKey(Usuarios,verbose_name="N° Documento del usuario",on_delete=models.CASCADE)
-    Pres_Fec_Entrega=models.DateField(auto_now=True)
-    Pres_Hora_Entrega=models.TimeField(auto_now=True,verbose_name="Hora de Entrega")
-    Pres_Tiempo_Limite=models.BigIntegerField(verbose_name="Horas Que prestara el Equipo")
-    Pres_Observaciones_entrega=models.TextField(max_length=255,verbose_name="Observaciones Salida Equipo")
+    Pres_Id = models.BigIntegerField(verbose_name="ID del prestamo", primary_key=True)
+    Pres_Equipos = models.ForeignKey(Equipos, verbose_name="ID del equipo", on_delete=models.CASCADE)
+    Pres_Usuarios_Documento = models.ForeignKey(Usuarios, verbose_name="N° Documento del usuario", on_delete=models.CASCADE)
+    Pres_Fec_Entrega = models.DateField(auto_now=True)
+    Pres_Hora_Entrega = models.TimeField(auto_now=True, verbose_name="Hora de Entrega")
+    Pres_Tiempo_Limite = models.BigIntegerField(verbose_name="Horas Que prestara el Equipo")
+    Pres_Observaciones_entrega = models.TextField(max_length=255, verbose_name="Observaciones Salida Equipo")
 
 class Sanciones(models.Model):
-    San_Pres=models.OneToOneField(Prestamos, primary_key=True,verbose_name="ID de la sancion",on_delete=models.CASCADE)
-    San_Fecha=models.DateField(auto_now=True)
-    San_Hora=models.TimeField(auto_now=True)
-    San_tiempo=models.BigIntegerField(verbose_name="Horas de la Sancion")
-    San_Descripcion=models.TextField(max_length=1000, verbose_name="Descripcion de la Sancion")
+    San_Id = models.AutoField(verbose_name="ID de la sancion", primary_key=True)
+    San_Pres = models.ForeignKey(Prestamos, verbose_name="Prestamo relacionado", on_delete=models.CASCADE)
+    San_Fecha = models.DateField(auto_now=True)
+    San_Hora = models.TimeField(auto_now=True)
+    San_tiempo = models.BigIntegerField(verbose_name="Horas de la Sancion")
+    San_Descripcion = models.TextField(max_length=1000, verbose_name="Descripcion de la Sancion")
 
