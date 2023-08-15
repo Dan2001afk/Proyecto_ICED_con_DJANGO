@@ -85,10 +85,10 @@ function eliminarEquipo(equipoId) {
 
     Swal.fire({
         title: "¿Estás seguro?",
-        text: "Esta acción eliminará el equipo.",
+        text: "Esta Acción Eliminará El Equipo",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonText: "Sí, eliminar",
+        confirmButtonText: "Aceptar",
         cancelButtonText: "Cancelar"
     }).then((result) => {
         if (result.isConfirmed) {
@@ -111,5 +111,30 @@ function eliminarEquipo(equipoId) {
     });
 }
 
+//Buscar Equipo
+function Buscarequipo(equipoId) {
+    const url = `http://127.0.0.1:8000/BuscarEquipo/${equipoId}`;
+
+    fetch(url, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error("Error al buscar el equipo por ID");
+        }
+    })
+    .then(equipo => {
+        console.log("Equipo encontrado:", equipo);
+        // Realiza la acción que desees con el equipo encontrado
+    })
+    .catch(error => {
+        console.error("Error al buscar el equipo por ID:", error);
+    });
+}
 
 //Actualizar equipo

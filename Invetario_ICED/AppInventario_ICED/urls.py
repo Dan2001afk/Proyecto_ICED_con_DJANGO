@@ -35,7 +35,7 @@ urlpatterns=[
     path('ListarSanciones',ListarSanciones.as_view(),name='Sanciones'),
     path('insertarSancion/',InsertarSanciones.as_view(),name='insertar'),
     path('ActualizarSanciones/<pk>',ActualizarSanciones.as_view(),name='Actualizar'),
-    path('EliminarUsuario/<pk>',EliminarSanciones.as_view(),name='Eliminar'),
+    path('EliminarSancion/<pk>',EliminarSanciones.as_view(),name='Eliminar'),
 ]
 
 """ path('index.html',listadoEquipos.as_view(),name='Equipos'),

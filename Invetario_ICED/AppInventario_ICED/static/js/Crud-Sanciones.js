@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded",function(){
 
 //Eliminar Sancion
 function eliminarSancion(sancionId) {
-    const url = `http://127.0.0.1:8000/EliminarSanciones/${sancionId}`;
+    const url = `http://127.0.0.1:8000/EliminarSancion/${sancionId}`;
 
     fetch(url, {
         method: "DELETE",
