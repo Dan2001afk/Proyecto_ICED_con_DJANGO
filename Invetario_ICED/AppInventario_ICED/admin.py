@@ -15,7 +15,7 @@ class ListaPrestamos(admin.ModelAdmin):
 
 @admin.register(Sanciones)
 class ListaSanciones(admin.ModelAdmin):
-    list_display = ('San_Id', 'San_Pres_Id', 'San_Fecha', 'San_Hora', 'San_tiempo', 'San_Descripcion')
+    list_display = ('San_Id', 'San_Pres', 'San_Fecha', 'San_Hora', 'San_tiempo', 'San_Descripcion')
 
 
 

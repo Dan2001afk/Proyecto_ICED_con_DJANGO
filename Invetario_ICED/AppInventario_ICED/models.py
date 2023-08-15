@@ -31,7 +31,7 @@ class Prestamos(models.Model):
 
 class Sanciones(models.Model):
     San_Id = models.AutoField(verbose_name="ID de la sancion", primary_key=True)
-    San_Pres_Id = models.ForeignKey(Prestamos, verbose_name="Prestamo relacionado", on_delete=models.CASCADE)
+    San_Pres = models.ForeignKey(Prestamos, verbose_name="Prestamo relacionado", on_delete=models.CASCADE)
     San_Fecha = models.DateField(auto_now=True)
     San_Hora = models.TimeField(auto_now=True)
     San_tiempo = models.BigIntegerField(verbose_name="Horas de la Sancion")

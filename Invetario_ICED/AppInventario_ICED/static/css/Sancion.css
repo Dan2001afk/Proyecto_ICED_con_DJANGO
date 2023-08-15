@@ -371,6 +371,15 @@
   margin: 20px;
   
 }
+  #San_Id{
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    padding: 20px;
+    width: 350px;
+    height: 20px;
+    margin-bottom: 25px;
+    margin-top: -10px;
+  }
 
   #San_Pres_id{
     border: 1px solid #ccc;

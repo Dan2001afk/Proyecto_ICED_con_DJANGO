@@ -94,7 +94,8 @@
                 <table id="tabla1">
                     <thead>
                         <tr>
-                            <th>ID Sancion</th>
+                            <th>ID </th>
+                            <th>ID del prestamo</th>
                             <th>Fecha</th>
                             <th>Hora</th>
                             <th>Tiempo</th>
@@ -152,7 +153,8 @@
                 <h1 class="h1">Insertar Sancion</h1>
                 <form method="" id="FormSanciones">
                     {% csrf_token %}
-                    <input type="text" name="San_Pres_id" placeholder="ID" id="San_Pres_id" required><br>
+
+                    <input type="text" name="San_Pres_id" placeholder="ID del prestamo" id="San_Pres_id" required><br>
                     
                     <input type="date" name="San_Fecha" placeholder="Fecha" id="San_Fecha" required><br>
                     

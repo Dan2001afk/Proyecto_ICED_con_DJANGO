@@ -289,6 +289,7 @@ class ListarSanciones(ListView):
         Datos_Sanciones=[]
         for i in datos:
             Datos_Sanciones.append({
+                'San_Id':i.San_Id,
                 'San_Pres_id':i.San_Pres_id,
                 'San_Fecha':i.San_Fecha,
                 'San_Hora':i.San_Hora,
@@ -310,13 +311,13 @@ class InsertarSanciones(View):
         except(json.JSONDecodeError,UnicodeDecodeError):
             return JsonResponse({"Error":"Error en el Documento"})
         datos=json.loads(request.body)
-        San_Pres_Id = datos.get('San_Pres_Id')
+        San_Pres_id = datos.get('San_Pres_id')
         San_Fecha = datos.get('San_Fecha')
         San_Hora = datos.get('San_Hora')
         San_tiempo = datos.get('San_tiempo')
         San_Descripcion = datos.get('San_Descripcion')
         print("datos",request.POST)
-        Sanciones.objects.create(San_Pres_id=San_Pres_Id,San_Fecha=San_Fecha,San_Hora=San_Hora,San_tiempo=San_tiempo,San_Descripcion=San_Descripcion)
+        Sanciones.objects.create(San_Pres_id=San_Pres_id,San_Fecha=San_Fecha,San_Hora=San_Hora,San_tiempo=San_tiempo,San_Descripcion=San_Descripcion)
         return JsonResponse({"mensaje":"Datos Guardados"})
         
 def Sancion(request):
@@ -335,7 +336,7 @@ class ActualizarSanciones(View):
         except Sanciones.DoesNotExist:
             return JsonResponse({"Error":"la sancion no existe"})
         data=json.loads(request.body)
-        ActuSancion.San_Pres_Id=data.get('San_Pres_Id')
+        ActuSancion.San_Pres_id=data.get('San_Pres_id')
         ActuSancion.San_Fecha=data.get('San_Fecha')
         ActuSancion.San_Hora=data.get('San_Hora')
         ActuSancion.San_tiempo=data.get('San_tiempo')
@@ -350,10 +351,10 @@ class EliminarSanciones(View):
     
     def delete(self,request,pk):
         try:
-            DeleteEquipo=Equipos.objects.get(pk=pk)
-        except Equipos.DoesNotExist:
+            Delete=Sanciones.objects.get(pk=pk)
+        except Sanciones.DoesNotExist:
             return JsonResponse({"Error":"La Sancion no existe"})
-        DeleteEquipo.delete()
+        Delete.delete()
         return JsonResponse({"Mensaje":"Sancion Eliminada"})
     
 
