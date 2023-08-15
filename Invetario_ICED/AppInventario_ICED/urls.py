@@ -15,6 +15,8 @@ urlpatterns=[
     path('insertar/',InsertarEquipos.as_view(),name='insertar'),
     path('ActualizarEquipo/<pk>',ActualizarEquipo.as_view(),name='actualizar'),
     path('EliminarEquipo/<pk>',EliminarEquipo.as_view(),name='eliminar'),
+    path('BuscarEquipo/<int:pk>', BuscarEquipo.as_view(), name='buscar-equipo'),
+    
     #CRUD USUARIOS
     path('Usuario',views.Usuario,name='Usuario'),
     path('ListarUsuarios', ListarUsuarios.as_view(), name='ListarUsuarios'),

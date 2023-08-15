@@ -108,6 +108,29 @@ class EliminarEquipo(View):
         DeleteEquipo.delete()
         return JsonResponse({"Mensaje":"Equipo Eliminado"})
     
+class BuscarEquipo(View):
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+    
+    def get(self, request, pk):
+        try:
+            equipo = Equipos.objects.get(pk=pk)
+        except Equipos.DoesNotExist:
+            return JsonResponse({"Error": "El equipo no existe"})
+        
+        datos_equipo = {
+            'Equ_id': equipo.Equ_id,
+            'Equi_tipo': equipo.Equi_tipo,
+            'Equi_modelo': equipo.Equi_modelo,
+            'Equi_color': equipo.Equi_color,
+            'Equi_serial': equipo.Equi_serial,
+            'Equi_estado': equipo.Equi_estado,
+            'equi_especialidad': equipo.equi_especialidad
+        }
+        
+        return JsonResponse(datos_equipo)
+
 
 
 #USUARIOS

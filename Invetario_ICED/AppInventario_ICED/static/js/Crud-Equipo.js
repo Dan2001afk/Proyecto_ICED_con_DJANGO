@@ -44,7 +44,6 @@ function agregarEquipo() {
     };
 
     var jsonData = JSON.stringify(datos);
-    console.log(jsonData);
 
     fetch("http://127.0.0.1:8000/insertar/", {
         method: "POST",
@@ -57,11 +56,19 @@ function agregarEquipo() {
     .then(data => {
         console.log(data);
         Consultar();
-        alert("Datos enviados exitosamente.");
+        Swal.fire({
+            icon: "success",
+            title: "Éxito",
+            text: "Datos enviados exitosamente."
+        });
     })
     .catch(error => {
         console.error(error);
-        alert("Error al enviar los datos.");
+        Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "Error al enviar los datos."
+        });
     });
 }
 
@@ -76,19 +83,31 @@ document.addEventListener("DOMContentLoaded", function () {
 function eliminarEquipo(equipoId) {
     const url = `http://127.0.0.1:8000/EliminarEquipo/${equipoId}`;
 
-    fetch(url, {
-        method: "DELETE",
-        headers: {
-            "consultar-Type": "AppInventario_ICED/json"
+    Swal.fire({
+        title: "¿Estás seguro?",
+        text: "Esta acción eliminará el equipo.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Sí, eliminar",
+        cancelButtonText: "Cancelar"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            fetch(url, {
+                method: "DELETE",
+                headers: {
+                    "consultar-Type": "AppInventario_ICED/json"
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                Consultar();
+                Swal.fire("Éxito", "Registro eliminado exitosamente.", "success");
+            })
+            .catch(error => {
+                console.error("Error al eliminar el equipo:", error);
+                Swal.fire("Error", "Error al eliminar el equipo.", "error");
+            });
         }
-    })
-    .then(response => response.json())
-    .then(data => {
-
-        Consultar(); 
-    })
-    .catch(error => {
-        console.error("Error al eliminar el equipo:", error);
     });
 }
 
