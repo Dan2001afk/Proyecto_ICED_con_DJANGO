@@ -82,28 +82,19 @@
 
     <section class="cont">
 
-       
-
         <div class="contenedor1">
-        
                 <h1>Lista de equipos registrados</h1>
-            
-
-         
-                <button class="btnInsertar">Incertar Equipo</button>
+                <button class="btnInsertar">Insertar Equipo</button>
                 <button class="btnActualizar">Actualizar Equipo</button>
                 <label for=""><input type="text" id="id_equipoo" name="id_equipoo" placeholder="equipo"></label>
                 <button type="button" id="BuscarEquipo" class="btn btn-danger w-100 fs-5 mb-3">Buscar</button>
-        
         </div>
 
-        
         <div class="contenedor2">
             <div class="contador1">A</div>
             <div class="contador2">B</div>
             <div class="contador3">C</div>
         </div>
-    
 
         <div class="contenedor3">    
             <div>
@@ -147,49 +138,29 @@
                 <h1>Insertar Equipo</h1>
                 <form method=""  id="FormEquipos" >
                     {% csrf_token %}
-        
 
-                    
                     <input type="text" name="Equi_tipo" id="Equi_tipo" placeholder="Tipo" required><br>
                     
-                
                     <input type="text" name="Equi_modelo" id="Equi_modelo" placeholder="Modelo" required><br>
                     
-                 
                     <input type="text" name="Equi_color" id="Equi_color" placeholder="Color" required><br>
                     
-                
                     <input type="text" name="Equi_serial" id="Equi_serial" placeholder="Serial" required><br>
                     
-                
                     <input type="text" name="Equi_estado" id="Equi_estado" placeholder="Estado" required><br>
                     
-                
                     <input type="text" name="equi_especialidad" id="equi_especialidad"  placeholder="Especialidad"><br>
                 
-
                     <button class="Guardar" type="submit" value="Guardar" id="Guardar">Enviar</button>
                 </form>
             </div>
         </div>
         <!---->
 
-        
-       
-
     </section>
-
-
-
 
     <script src="static/js/script.js"></script>
     <script src="static/js/script3.js"></script>
-    
-    
-
-    
-
-
     
 </body>
 </html>

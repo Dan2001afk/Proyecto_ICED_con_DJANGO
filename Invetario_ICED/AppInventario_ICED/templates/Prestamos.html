@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="{% static 'css/Prestamo.css' %}">
     <script src="{% static 'js/Crud-Prestamos.js' %}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="static/js/script.js"></script>
     <script src="https://kit.fontawesome.com/3d7a846b01.js" crossorigin="anonymous"></script>
 </head>
 <body id="body" style="max-height: 100vh; overflow-y: scroll;">
@@ -81,8 +80,8 @@
 
         <div class="contenedor1">
             <h1>Lista de Prestamos en el centro</h1>
-            <button class="btnInsertar">Insertar</button>
-            <button class="btnActualizar">actualizar</button>
+            <button class="btnInsertar">Insertar Prestamo</button>
+            <button class="btnActualizar">Actualizar Prestamo</button>
             <label for=""><input type="text" id="id_prestamoo" name="id_prestamoo" placeholder="Buscar Prestamo"></label>
             <button type="button" id="BuscarPrestamo" class="btn btn-danger w-100 fs-5 mb-3">Buscar</button>
         </div>
@@ -99,6 +98,7 @@
                             <th>Hora entrega</th>
                             <th>Tiempo Limite</th>
                             <th>Observaciones de Entrega</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody id="tabla1-body">
@@ -115,8 +115,8 @@
         <div id="myModal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <h1>Actualizar Prestamo</h1>
-                <!--<form method=""  id="ActualizarEquipos" >
+                <!--<h1>Actualizar Prestamo</h1>
+                <form method=""  id="ActualizarEquipos" >
                     {% csrf_token %}
         
                     <input type="text" name="Equ_id" id="Equ_id" placeholder="ID" required><br>
@@ -173,7 +173,7 @@
 
     </section>
 
-
+    <script src="static/js/script.js"></script>
     <script src="static/js/script3.js"></script>
     
 </body>

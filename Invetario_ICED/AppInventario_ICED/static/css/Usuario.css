@@ -314,7 +314,7 @@ table th {
 }
 
 /* Estilo para el botón de búsqueda */
-#id_equipoo {
+#id_usuarioo {
   width: 10%;
   padding: 10px;
   margin-bottom: 10px;
@@ -322,7 +322,7 @@ table th {
   border-radius: 3px;
 }
 
-#BuscarEquipo {
+#BuscarUsuario {
 
   width: 10%;
   padding: 10px;

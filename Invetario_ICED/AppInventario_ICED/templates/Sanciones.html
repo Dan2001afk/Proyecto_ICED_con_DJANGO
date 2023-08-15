@@ -7,9 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sanciones</title>
     <link rel="stylesheet" href="{% static 'css/Sancion.css' %}">
-    <script src="{% static 'js/script.js' %}"></script>
-    <script src="{% static 'js/ListarSanciones.js' %}"></script>
-    <script src="{% static 'js/InsertarSanciones.js' %}"></script>
+    <script src="{% static 'js/Crud-Sanciones.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://kit.fontawesome.com/3d7a846b01.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -28,51 +27,51 @@
 
         <div class="options__menu">	
 
-            <a href="/index3.html" class="selected" >
+            <a href="/Equipo">
                 <div class="option">
-                    <i class="fas fa-home" title="Inicio"></i>
-                    <h4>Inicio</h4>
+                    <i class="fas fa-laptop"></i>
+                    <h4>Equipos</h4>
                 </div>
             </a>
 
-            <a href="/index4.html">
+            <a href="/Usuario">
                 <div class="option">
-                    <i class="fa-solid fa-cloud"></i>
-                    <h4>Portafolio</h4>
+                    <i class="fa-solid fa-users"></i>
+                    <h4>Usuarios</h4>
                 </div>
             </a>
             
-            <a href="">
+            <a href="/Prestamo">
                 <div class="option">
-                    <i class="fa-solid fa-database"></i>
-                    <h4>Cursos</h4>
+                    <i class="fas fa-server"></i>
+                    <h4>Prestamos</h4>
                 </div>
             </a>
 
-            <a href="">
+            <a href="/Sancion" class="selected">
                 <div class="option">
-                    <i class="fa-solid fa-code"></i>
-                    <h4>Blog</h4>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <h4>Sanciones</h4>
                 </div>
             </a>
 
             <a href="#">
                 <div class="option">
-                    <i class="fa-solid fa-users"></i>
+                    <i class="fas fa-box-open"></i>
+                    <h4>Devoluciones</h4>
+                </div>
+            </a>
+            
+            <a href="#">
+                <div class="option">
+                    <i class="fas fa-phone"></i>
                     <h4>Contacto</h4>
                 </div>
             </a>
-
+            
             <a href="#">
                 <div class="option">
-                    <i class="fa-solid fa-arrows-rotate"></i>
-                    <h4>Nosotros</h4>
-                </div>
-            </a>
-
-            <a href="#">
-                <div class="option">
-                    <i class="fa-solid fa-plus"></i>
+                    <i class="fas fa-user-circle"></i>
                     <h4>Nosotros</h4>
                 </div>
             </a>
@@ -84,6 +83,10 @@
 
         <div class="contenedor1">
             <h1>Lista de dispositivos en el centro</h1>
+            <button class="btnInsertar">Insertar Sancion</button>
+            <button class="btnActualizar">Actualizar Sancion</button>
+            <label for=""><input type="text" id="id_sancionn" name="id_sancionn" placeholder="Buscar Sancion"></label>
+            <button type="button" id="BuscarSancion" class="btn btn-danger w-100 fs-5 mb-3">Buscar</button>  
         </div>
 
         <div class="contenedor2">    
@@ -96,6 +99,7 @@
                             <th>Hora</th>
                             <th>Tiempo</th>
                             <th>Descripcion</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody id="tabla1-body">
@@ -108,33 +112,66 @@
                 </table>
             </div>
         </div>
+        <!--modal1-->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <!--<h1>Actualizar Prestamo</h1>
+                <form method=""  id="ActualizarEquipos" >
+                    {% csrf_token %}
+        
+                    <input type="text" name="Equ_id" id="Equ_id" placeholder="ID" required><br>
+                    
+                    <input type="text" name="Equi_tipo" id="Equi_tipo" placeholder="Tipo" required><br>
+                    
+                
+                    <input type="text" name="Equi_modelo" id="Equi_modelo" placeholder="Modelo" required><br>
+                    
+                
+                    <input type="text" name="Equi_color" id="Equi_color" placeholder="Color" required><br>
+                    
+                
+                    <input type="text" name="Equi_serial" id="Equi_serial" placeholder="Serial" required><br>
+                    
+                
+                    <input type="text" name="Equi_estado" id="Equi_estado" placeholder="Estado" required><br>
+                    
+                
+                    <input type="text" name="equi_especialidad" id="equi_especialidad"  placeholder="Especialidad"><br>
+                
 
-
-        <div class="contenedor3">
-            <h1>Insertar Sancion</h1>
-            <form method="" id="FormSanciones">
-                {% csrf_token %}
-                <input type="text" name="San_Pres_id" placeholder="ID" id="San_Pres_id" required><br>
-                
-                <input type="date" name="San_Fecha" placeholder="Fecha" id="San_Fecha" required><br>
-                
-                <input type="text" name="San_Hora" placeholder="Hora" id="San_Hora" required><br>
-                
-                <input type="text" name="San_tiempo" placeholder="Tiempo" id="San_tiempo" required><br>
-                
-                <input type="text" name="San_Descripcion" placeholder="Descripcion" id="San_Descripcion" required><br>
-                
-                <button type="submit" value="Guardar" id="Guardar">Enviar</button>
-            </form>
-
+                    <button type="submit" value="Guardar" id="Guardar">Enviar</button>
+                </form>-->
+            </div>
         </div>
+        <!-- ... -->
+        <!--modal2-->
+        <div id="myModal2" class="modal">
+            <div class="modal-content">
+                <span class="close2">&times;</span>
+                <h1 class="h1">Insertar Sancion</h1>
+                <form method="" id="FormSanciones">
+                    {% csrf_token %}
+                    <input type="text" name="San_Pres_id" placeholder="ID" id="San_Pres_id" required><br>
+                    
+                    <input type="date" name="San_Fecha" placeholder="Fecha" id="San_Fecha" required><br>
+                    
+                    <input type="text" name="San_Hora" placeholder="Hora" id="San_Hora" required><br>
+                    
+                    <input type="text" name="San_tiempo" placeholder="Tiempo" id="San_tiempo" required><br>
+                    
+                    <input type="text" name="San_Descripcion" placeholder="Descripcion" id="San_Descripcion" required><br>
+                    
+                    <button type="submit" value="Guardar" id="Guardar">Enviar</button>
+                </form>
+            </div>
+        </div>
+        <!---->
 
-        <div class="contenedor4">B</div>
-        <div class="contenedor5">C</div>
-    
     </section>
 
     <script src="static/js/script.js"></script>
+    <script src="static/js/script3.js"></script>
 
 
 </body>

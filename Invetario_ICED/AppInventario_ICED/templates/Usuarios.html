@@ -7,9 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuarios</title> 
     <link rel="stylesheet" href="{% static 'css/Usuario.css' %}">
-    <script src="{% static 'js/ListarUsuarios.js' %}"></script>
-    <script src="{% static 'js/InsertarUsuarios.js' %}"></script>
-    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/Crud-Usuarios.js' %}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://kit.fontawesome.com/3d7a846b01.js" crossorigin="anonymous"></script>
    
@@ -27,51 +25,54 @@
 
         <div class="options__menu">	
 
-            <a href="/index3.html" class="selected" >
+            <a href="/Equipo" >
                 <div class="option">
-                    <i class="fas fa-home" title="Inicio"></i>
-                    <h4>Inicio</h4>
+                    <i class="fas fa-laptop"></i>
+                    <h4>Equipos</h4>
                 </div>
             </a>
 
-            <a href="/index4.html">
+            <a href="/Usuario" class="selected">
                 <div class="option">
-                    <i class="fa-solid fa-cloud"></i>
-                    <h4>Portafolio</h4>
+                    <i class="fa-solid fa-users"></i>
+                    <h4>Usuarios</h4>
                 </div>
             </a>
             
-            <a href="">
+            <a href="/Prestamo">
                 <div class="option">
-                    <i class="fa-solid fa-database"></i>
-                    <h4>Cursos</h4>
+                    <i class="fas fa-server"></i>
+                    <h4>Prestamos</h4>
                 </div>
             </a>
 
-            <a href="">
+            <a href="/Sancion">
                 <div class="option">
-                    <i class="fa-solid fa-code"></i>
-                    <h4>Blog</h4>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <h4>Sanciones</h4>
                 </div>
             </a>
+
 
             <a href="#">
                 <div class="option">
-                    <i class="fa-solid fa-users"></i>
+                    <i class="fas fa-box-open"></i>
+                    <h4>Devoluciones</h4>
+                </div>
+            </a>
+            
+
+            <a href="#">
+                <div class="option">
+                    <i class="fas fa-phone"></i>
                     <h4>Contacto</h4>
                 </div>
             </a>
+            
 
             <a href="#">
                 <div class="option">
-                    <i class="fa-solid fa-arrows-rotate"></i>
-                    <h4>Nosotros</h4>
-                </div>
-            </a>
-
-            <a href="#">
-                <div class="option">
-                    <i class="fa-solid fa-plus"></i>
+                    <i class="fas fa-user-circle"></i>
                     <h4>Nosotros</h4>
                 </div>
             </a>
@@ -80,14 +81,14 @@
 
     </div>
 
-
     <section class="cont">
 
         <div class="contenedor1">
             <h1>Lista de Usuarios Registrados</h1>
-            <button id="openModalBtn" class="btnInsertar">Abrir Modal</button>
-            <button id="openModalBtn" class="btnActualizar">Actualizar</button>
-            
+            <button class="btnInsertar">Insertar Usuario</button>
+            <button class="btnActualizar">Actualizar Usuario</button>
+            <label for=""><input type="text" id="id_usuarioo" name="id_usuarioo" placeholder="Ingrese Documento"></label>
+            <button type="button" id="BuscarUsuario" class="btn btn-danger w-100 fs-5 mb-3">Buscar</button>
         </div>
 
         <div class="contenedor2">
@@ -108,6 +109,7 @@
                             <th>Celular</th>
                             <th>Correo</th>
                             <th>Ficha</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody id="tabla1-body">
@@ -125,9 +127,9 @@
         <div id="myModal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <h2>Actualizar Registro</h2>
+                <!--<h2>Actualizar Registro</h2>
                 <form id="updateForm">
-                    <!-- Campos para actualizar los datos -->
+                     Campos para actualizar los datos 
                     <div class="mb-3">
                         <input type="text" class="form-control" id="equi_id_actualizar" name="equi_id_actualizar" placeholder="ID del Equipo">
                     </div>
@@ -152,7 +154,7 @@
                     <div class="mb-3">
                         <button type="button" id="ActualizarEquipo" class="actualizar">Actualizar Equipo</button>
                     </div>
-                </form>
+                </form>-->
             </div>
         </div>
         <!-- ... -->
@@ -162,10 +164,8 @@
         <div id="myModal2" class="modal">
                 <div class="modal-content">
                     <span class="close2">&times;</span>
-                    <h2>Insertar Registro Usuarios </h2>
+                    <h2>Insertar Usuario</h2>
                     <form method=""  id="FormUsuarios" >
-
-
                         {% csrf_token %}
                         
                         <input type="text" name="Usu_Documento" id="Usu_Documento" placeholder="Documento" required><br>
@@ -183,34 +183,15 @@
                         <input type="text" name="Usu_Ficha" id="Usu_Ficha" placeholder="Ficha" required><br>
                                         
                         <button type="submit" value="Guardar" id="Guardar">Enviar</button>
-    
                     </form>
                 </div>
         </div>
         <!---->
         
-
-      
-    
-
-
-        
-
     </section>
-
-
-
-
-
 
     <script src="static/js/script.js"></script>
     <script src="static/js/script3.js"></script>
-    
-    
-
-
-
-
     
 </body>
 </html>
