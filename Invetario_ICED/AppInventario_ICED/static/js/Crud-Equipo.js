@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const equipoId = equipoIdInput.value;
 
         if (equipoId) {
-            const url = `http://127.0.0.1:8000/BuscarEquipo/`+equipoId;
+            const url = `http://127.0.0.1:8000/BuscarEquipo/${equipoId}`;
 
             fetch(url, {
                 method: "GET",
