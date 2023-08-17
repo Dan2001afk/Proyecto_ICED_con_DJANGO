@@ -6,7 +6,7 @@ class Equipos(models.Model):
     Equi_tipo=models.TextField(max_length=50)
     Equi_modelo=models.TextField(max_length=50)
     Equi_color=models.TextField(max_length=50)
-    Equi_serial=models.TextField(max_length=100)
+    Equi_serial=models.TextField(max_length=100,unique=True)
     Equi_estado=models.TextField(max_length=20)
     equi_especialidad=models.TextField(max_length=50)
 

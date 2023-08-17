@@ -67,7 +67,7 @@ function agregarEquipo() {
         Swal.fire({
             icon: "error",
             title: "Error",
-            text: "Error al enviar los datos."
+            text: "Serial ya existente"
         });
     });
 }
@@ -158,6 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         icon: "error", 
                         confirmButtonText: "Aceptar"
                     })
+                    Consultar();
                 }
             })
             .catch(error => {
