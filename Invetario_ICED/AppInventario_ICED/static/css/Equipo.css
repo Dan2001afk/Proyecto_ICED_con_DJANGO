@@ -100,6 +100,10 @@ header{
   top: 80px;
 
 }
+.titulo{
+  text-align: center;
+  margin-top: 10PX;
+}
 
 .options__menu a{
   color: black;
@@ -266,7 +270,9 @@ table th {
   background-color: #f2f2f2;
 }
 
-
+#id_equipoo::placeholder{
+  text-align: center;
+}
 
 /* Estilos para los botones de la tabla */
 .btnEliminar {
@@ -294,6 +300,7 @@ table th {
   cursor: pointer; /* Cambiar el cursor al pasar por encima */
   transition: background-color 0.5s ease; 
   margin: 10px;
+  margin-left: 160px;
   
    
 }
@@ -309,28 +316,32 @@ table th {
   cursor: pointer; /* Cambiar el */
   transition: background-color 0.5s ease; 
   margin: 10px;
+  margin-left: 300px;
   
 
 }
 
 /* Estilo para el botón de búsqueda */
 #id_equipoo {
-  width: 10%;
-  padding: 10px;
+  width: 15%;
+  padding: 12px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 3px;
+  margin-left: 160px;
+  margin-top: 20px;
 }
 
 #BuscarEquipo {
 
   width: 10%;
-  padding: 10px;
+  padding: 13px;
   background-color: #f44336;
   color: white;
   border: none;
   border-radius: 3px;
   cursor: pointer;
+  
 }
 
 /*estilos de los botones para que cambien de color*/
@@ -423,6 +434,25 @@ table th {
   margin-bottom: 15px;
 }
 
+/*estilos del formulario de actualizar*/
+
+#Equ_id_Actualizar,
+#Equi_tipo_Actualizar,
+#Equi_modelo_Actualizar,
+#Equi_color_Actualizar,
+#Equi_serial_Actualizar,
+#Equi_estado_Actualizar,
+#equi_especialidad_Actualizar{
+
+  margin-top: 1%;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 20px;
+  width: 250px;
+  height: 30px;
+  margin-bottom: 15px;
+}
+
 #Guardar {
   border: none;
   background-color: #b491ce;
@@ -440,6 +470,22 @@ table th {
   background-color:  #8acbff; /* Cambio de color al pasar el mouse por encima */
 }
 
+#ActualizarEquipo {
+  border: none;
+  background-color: #b491ce;
+  border-radius: 15px;
+  width: 250px;
+  height: 40px;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease; 
+}
+
+
+#ActualizarEquipo:hover {
+  background-color:  #8acbff; /* Cambio de color al pasar el mouse por encima */
+}
 
 
 

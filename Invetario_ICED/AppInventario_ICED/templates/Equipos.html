@@ -84,11 +84,11 @@
     <section class="cont">
 
         <div class="contenedor1">
-                <h1>Lista de equipos registrados</h1>
-                <button class="btnInsertar">Insertar Equipo</button>
-                <button class="btnActualizar">Actualizar Equipo</button>
-                <label for=""><input type="text" id="id_equipoo" name="id_equipoo" placeholder="equipo"></label>
-                <button type="button" id="BuscarEquipo" class="btnBuscar">Buscar</button>
+                <h1 class="titulo">LISTA DE EQUIPOS REGISTRADOS</h1>
+                <button class="btnInsertar">INSERTAR EQUIPO</button>
+                <button class="btnActualizar">ACTUALIZAR EQUIPO</button>
+                <label for=""><input type="text" id="id_equipoo" name="id_equipoo" placeholder="INGRESE EL ID"></label>
+                <button type="button" id="BuscarEquipo" class="btnBuscar">BUSCAR</button>
         </div>
 
         <div class="contenedor2">
@@ -127,7 +127,27 @@
         <div id="myModal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
+                <h1>ACTUALIZAR EQUIPO</h1>
+                <form method="" id="ActualizarEquipos">
+                    {% csrf_token %}
+
+                    <input type="text" class="form-control" id="Equ_id_Actualizar" name="Equ_id_Actualizar" placeholder="ID del Equipo">
+
+                    <input type="text" class="form-control" id="Equi_tipo_Actualizar" name="Equi_tipo_Actualizar" placeholder="Tipo">
+                    
+                    <input type="text" class="form-control" id="Equi_modelo_Actualizar" name="Equi_modelo_Actualizar" placeholder="Modelo">
+                    
+                    <input type="text" class="form-control" id="Equi_color_Actualizar" name="Equi_color_Actualizar" placeholder="Color">
+                    
+                    <input type="text" class="form-control" id="Equi_serial_Actualizar" name="Equi_serial_Actualizar" placeholder="Serial">
+                    
+                    <input type="text" class="form-control" id="Equi_estado_Actualizar" name="Equi_estado_Actualizar" placeholder="Estado">
+                    
+                    <input type="text" class="form-control" id="equi_especialidad_Actualizar" name="equi_especialidad_Actualizar" placeholder="Especialidad">
+                    
+                    <button type="submit" id="ActualizarEquipo" class="ActualizarEquipo" value="ActualizarEquipo">Actualizar Equipo</button>
                 
+                </form>
             </div>
         </div>
         <!-- ... -->

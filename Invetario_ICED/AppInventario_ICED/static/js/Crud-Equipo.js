@@ -80,8 +80,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 //Eliminar Equipo
-function eliminarEquipo(equipoId) {
-    const url = `http://127.0.0.1:8000/EliminarEquipo/${equipoId}`;
+function eliminarEquipo(Equ_id) {
+    const url = `http://127.0.0.1:8000/EliminarEquipo/${Equ_id}`;
 
     Swal.fire({
         title: "¿Estás seguro?",
@@ -129,6 +129,7 @@ function Buscarequipo(equipoId) {
         }
     })
     .then(equipo => {
+        Consultar();
         console.log("Equipo encontrado:", equipo);
         // Realiza la acción que desees con el equipo encontrado
     })
@@ -138,3 +139,50 @@ function Buscarequipo(equipoId) {
 }
 
 //Actualizar equipo
+function actualizarEquipo(Equ_id_Actualizar) {
+    var datos = {
+        Equ_id_Actualizar: document.getElementById("Equ_id_Actualizar").value,
+        Equi_tipo_Actualizar: document.getElementById("Equi_tipo_Actualizar").value,
+        Equi_modelo_Actualizar: document.getElementById("Equi_modelo_Actualizar").value,
+        Equi_color_Actualizar: document.getElementById("Equi_color_Actualizar").value,
+        Equi_serial_Actualizar: document.getElementById("Equi_serial_Actualizar").value,
+        Equi_estado_Actualizar: document.getElementById("Equi_estado_Actualizar").value,
+        equi_especialidad_Actualizar: document.getElementById("equi_especialidad_Actualizar").value
+    };
+
+    var jsonData = JSON.stringify(datos);
+
+    fetch("http://127.0.0.1:8000/ActualizarEquipo/" + Equ_id_Actualizar + "/", {
+        method: "POST",
+        body: jsonData,
+        headers: {
+            "Content-Type": "AppInventario_ICED/json"
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        Consultar();
+        Swal.fire({
+            icon: "success",
+            title: "Éxito",
+            text: "Datos enviados exitosamente."
+        });
+    })
+    .catch(error => {
+        console.error(error);
+        Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "Error al enviar los datos."
+        });
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("ActualizarEquipos").addEventListener("submit", function (event) {
+        event.preventDefault();
+        var Equ_id_Actualizar = document.getElementById("Equ_id_Actualizar").value;
+        actualizarEquipo(Equ_id_Actualizar);
+    });
+});
