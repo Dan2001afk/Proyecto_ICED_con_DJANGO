@@ -153,7 +153,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     tablaBody.appendChild(newRow);
                 } else {
-                    alert("Equipo no registrado en la base de datos");
+                    Swal.fire({
+                        title: "Elemento No Encontrado",
+                        icon: "error", 
+                        confirmButtonText: "Aceptar"
+                    })
                 }
             })
             .catch(error => {
@@ -165,6 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
 
 
 
