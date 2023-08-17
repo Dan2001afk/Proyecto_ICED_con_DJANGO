@@ -131,41 +131,42 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (response.ok) {
                     return response.json();
                 } else {
-                    throw new Error("Equipo no encontrado en la base de datos");
+                    throw new Error("Error al buscar el equipo por ID");
                 }
             })
             .then(equipo => {
-                // Limpia el contenido actual de la tabla
-                const tablaBody = document.getElementById("tabla1-body");
-                tablaBody.innerHTML = "";
+                if (equipo.hasOwnProperty('Equ_id')) {
+                    const tablaBody = document.getElementById("tabla1-body");
+                    tablaBody.innerHTML = "";
 
-                // Crea una nueva fila en la tabla con los datos del equipo
-                const newRow = document.createElement("tr");
-                newRow.innerHTML = `
-                    <td>${equipo.Equ_id}</td>
-                    <td>${equipo.Equi_tipo}</td>
-                    <td>${equipo.Equi_modelo}</td>
-                    <td>${equipo.Equi_color}</td>
-                    <td>${equipo.Equi_serial}</td>
-                    <td>${equipo.Equi_estado}</td>
-                    <td>${equipo.equi_especialidad}</td>
-                    <td>Acciones</td>
-                `;
+                    const newRow = document.createElement("tr");
+                    newRow.innerHTML = `
+                        <td>${equipo.Equ_id}</td>
+                        <td>${equipo.Equi_tipo}</td>
+                        <td>${equipo.Equi_modelo}</td>
+                        <td>${equipo.Equi_color}</td>
+                        <td>${equipo.Equi_serial}</td>
+                        <td>${equipo.Equi_estado}</td>
+                        <td>${equipo.equi_especialidad}</td>
+                        <td>Acciones</td>
+                    `;
 
-                // Agrega la fila a la tabla
-                tablaBody.appendChild(newRow);
-
-                // Realiza la acción que desees con el equipo encontrado
+                    tablaBody.appendChild(newRow);
+                } else {
+                    alert("Equipo no registrado en la base de datos");
+                }
             })
             .catch(error => {
                 console.error("Error al buscar el equipo por ID:", error);
-                alert("Equipo no encontrado en la base de datos");
+                alert("Error al buscar el equipo por ID");
             });
         } else {
             console.error("Debe ingresar un ID de equipo válido");
         }
     });
 });
+
+
 
 
 
