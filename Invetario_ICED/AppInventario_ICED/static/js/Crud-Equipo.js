@@ -112,31 +112,62 @@ function eliminarEquipo(Equ_id) {
 }
 
 //Buscar Equipo
-function Buscarequipo(equipoId) {
-    const url = `http://127.0.0.1:8000/BuscarEquipo/${equipoId}`;
+document.addEventListener("DOMContentLoaded", () => {
+    const buscarBtn = document.getElementById("BuscarEquipo");
+    buscarBtn.addEventListener("click", () => {
+        const equipoIdInput = document.getElementById("id_equipoo");
+        const equipoId = equipoIdInput.value;
 
-    fetch(url, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
-        }
-    })
-    .then(response => {
-        if (response.ok) {
-            return response.json();
+        if (equipoId) {
+            const url = `http://127.0.0.1:8000/BuscarEquipo/`+equipoId;
+
+            fetch(url, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error("Equipo no encontrado en la base de datos");
+                }
+            })
+            .then(equipo => {
+                // Limpia el contenido actual de la tabla
+                const tablaBody = document.getElementById("tabla1-body");
+                tablaBody.innerHTML = "";
+
+                // Crea una nueva fila en la tabla con los datos del equipo
+                const newRow = document.createElement("tr");
+                newRow.innerHTML = `
+                    <td>${equipo.Equ_id}</td>
+                    <td>${equipo.Equi_tipo}</td>
+                    <td>${equipo.Equi_modelo}</td>
+                    <td>${equipo.Equi_color}</td>
+                    <td>${equipo.Equi_serial}</td>
+                    <td>${equipo.Equi_estado}</td>
+                    <td>${equipo.equi_especialidad}</td>
+                    <td>Acciones</td>
+                `;
+
+                // Agrega la fila a la tabla
+                tablaBody.appendChild(newRow);
+
+                // Realiza la acción que desees con el equipo encontrado
+            })
+            .catch(error => {
+                console.error("Error al buscar el equipo por ID:", error);
+                alert("Equipo no encontrado en la base de datos");
+            });
         } else {
-            throw new Error("Error al buscar el equipo por ID");
+            console.error("Debe ingresar un ID de equipo válido");
         }
-    })
-    .then(equipo => {
-        Consultar();
-        console.log("Equipo encontrado:", equipo);
-        // Realiza la acción que desees con el equipo encontrado
-    })
-    .catch(error => {
-        console.error("Error al buscar el equipo por ID:", error);
     });
-}
+});
+
+
 
 //Actualizar equipo
 function actualizarEquipo(Equ_id_Actualizar) {
