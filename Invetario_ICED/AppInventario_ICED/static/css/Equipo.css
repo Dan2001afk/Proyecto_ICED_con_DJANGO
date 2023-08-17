@@ -191,6 +191,16 @@ main{
   
 }
 
+.metodos{
+  background-color: rgb(255, 255, 255);
+  grid-column: 1/12;
+  grid-row: 4/6;
+  border-radius: 1%;
+  margin-top: -5px;
+  border-radius: 5px ;
+  padding: 7px;
+}
+
 /*estilos de los contadores*/
 .contenedor1{
   background-color: rgb(255, 255, 255);
@@ -199,21 +209,24 @@ main{
   border-radius: 1%;
   overflow-y: auto;
   overflow-x: hidden;
+  height: 50px;
+  border-radius: 5px ;
 }
 
 .contenedor2{
-  background-color: rgb(255, 255, 255);
+  background-color: transparent;
   grid-column: 1/12;
   grid-row: 6/12;
   display: grid;
-  grid-template-columns:repeat(11, 1fr);
+  grid-template-columns:repeat(12, 1fr);
   grid-template-rows: repeat(10, 1fr);
   /*margenes generales*/
   row-gap: 20px;
   column-gap: 20px;
   /*margenes de contenedores*/
-
-  
+  border-radius: 5px ;
+  padding-top: 20px;
+  margin-top: -20px;
 }
 
 
@@ -221,7 +234,7 @@ main{
   background-color: rgb(255, 255, 255);
   grid-column: 1/12;
   grid-row: 12/30;
-  border-radius: 1%;
+  border-radius: 5px;
   overflow-y: auto;
   overflow-x: hidden;
   position: relative;
@@ -231,22 +244,25 @@ main{
 /*estilos de contadores*/
 
 .contador1{
-  background-color: #0c0c0c;
+  background-color: rgb(255, 255, 255);
   grid-column: 1/5;
-  grid-row: 1/10;
+  grid-row: 1/11;
+  border-radius: 5px;
 }
 
 
 .contador2{
-  background-color: #e10e0e;
-  grid-column: 5/8;
-  grid-row: 1/10;
+  background-color: rgb(255, 255, 255);
+  grid-column: 5/9;
+  grid-row: 1/11;
+  border-radius: 5px;
 }
 
 .contador3{ 
-  background-color: #4ae10e;
-  grid-column: 8/12;
-  grid-row: 1/10;
+  background-color: rgb(255, 255, 255);
+  grid-column: 9/13;
+  grid-row: 1/11;
+  border-radius: 5px;
 }
 
 
@@ -299,7 +315,7 @@ table th {
   border-radius: 4 px; /* Bordes redondeados */
   cursor: pointer; /* Cambiar el cursor al pasar por encima */
   transition: background-color 0.5s ease; 
-  margin: 10px;
+
   margin-left: 160px;
   
    
@@ -315,7 +331,7 @@ table th {
   border-radius: 4px; /* Bordes redondeados */
   cursor: pointer; /* Cambiar el */
   transition: background-color 0.5s ease; 
-  margin: 10px;
+
   margin-left: 300px;
   
 
@@ -329,7 +345,7 @@ table th {
   border: 1px solid #ccc;
   border-radius: 3px;
   margin-left: 160px;
-  margin-top: 20px;
+
 }
 
 #BuscarEquipo {
