@@ -16,6 +16,17 @@ body{
 
 }
 
+.principal{
+  color: white;
+  margin-left: 760px;
+  font-size: 20px;
+  text-shadow: white 1px 1px 5px;
+}
+.logoo{
+  width: 6%;
+  height: 100px;
+  margin-left: 600px;
+}
 header{
   width: 100%;
   height: 80px;
