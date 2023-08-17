@@ -171,29 +171,25 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-
-
-
-
 //Actualizar equipo
-function actualizarEquipo(Equ_id_Actualizar) {
+function actualizarEquipo(Equ_id) {
     var datos = {
-        Equ_id_Actualizar: document.getElementById("Equ_id_Actualizar").value,
-        Equi_tipo_Actualizar: document.getElementById("Equi_tipo_Actualizar").value,
-        Equi_modelo_Actualizar: document.getElementById("Equi_modelo_Actualizar").value,
-        Equi_color_Actualizar: document.getElementById("Equi_color_Actualizar").value,
-        Equi_serial_Actualizar: document.getElementById("Equi_serial_Actualizar").value,
-        Equi_estado_Actualizar: document.getElementById("Equi_estado_Actualizar").value,
-        equi_especialidad_Actualizar: document.getElementById("equi_especialidad_Actualizar").value
+        Equ_id: document.getElementById("Equ_id_Act").value,
+        Equi_tipo: document.getElementById("Equi_tipo_Act").value,
+        Equi_modelo: document.getElementById("Equi_modelo_Act").value,
+        Equi_color: document.getElementById("Equi_color_Act").value,
+        Equi_serial: document.getElementById("Equi_serial_Act").value,
+        Equi_estado: document.getElementById("Equi_estado_Act").value,
+        equi_especialidad: document.getElementById("equi_especialidad_Act").value
     };
 
     var jsonData = JSON.stringify(datos);
 
-    fetch("http://127.0.0.1:8000/ActualizarEquipo/" + Equ_id_Actualizar + "/", {
-        method: "POST",
+    fetch("http://127.0.0.1:8000/ActualizarEquipo/" + Equ_id, {
+        method: "POST", 
         body: jsonData,
         headers: {
-            "Content-Type": "AppInventario_ICED/json"
+            "Content-Type": "application/json" 
         }
     })
     .then(response => response.json())
@@ -203,8 +199,9 @@ function actualizarEquipo(Equ_id_Actualizar) {
         Swal.fire({
             icon: "success",
             title: "Éxito",
-            text: "Datos enviados exitosamente."
+            text: "Datos enviados exitosamente.",
         });
+
     })
     .catch(error => {
         console.error(error);
@@ -219,7 +216,7 @@ function actualizarEquipo(Equ_id_Actualizar) {
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("ActualizarEquipos").addEventListener("submit", function (event) {
         event.preventDefault();
-        var Equ_id_Actualizar = document.getElementById("Equ_id_Actualizar").value;
-        actualizarEquipo(Equ_id_Actualizar);
+        var Equ_id = document.getElementById("Equ_id_Act").value; 
+        actualizarEquipo(Equ_id);
     });
 });

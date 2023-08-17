@@ -417,7 +417,7 @@ table th {
 
 /*estilos del formulario de insertar*/
 
-#Equi_id,
+#Equ_id,
 #Equi_tipo,
 #Equi_modelo,
 #Equi_color,
@@ -436,13 +436,13 @@ table th {
 
 /*estilos del formulario de actualizar*/
 
-#Equ_id_Actualizar,
-#Equi_tipo_Actualizar,
-#Equi_modelo_Actualizar,
-#Equi_color_Actualizar,
-#Equi_serial_Actualizar,
-#Equi_estado_Actualizar,
-#equi_especialidad_Actualizar{
+#Equ_id_Act,
+#Equi_tipo_Act,
+#Equi_modelo_Act,
+#Equi_color_Act,
+#Equi_serial_Act,
+#Equi_estado_Act,
+#equi_especialidad_Act{
 
   margin-top: 1%;
   border: 1px solid #ccc;
