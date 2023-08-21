@@ -18,14 +18,15 @@ body{
 
 .principal{
   color: white;
-  margin-left: 760px;
-  font-size: 20px;
+  margin-left: 790px;
+  font-size: 22px;
   text-shadow: white 1px 1px 5px;
 }
+
 .logoo{
   width: 6%;
-  height: 100px;
-  margin-left: 600px;
+  height: 110px;
+  margin-left: 677px;
 }
 header{
   width: 100%;
@@ -113,7 +114,7 @@ header{
 }
 .titulo{
   text-align: center;
-  margin-top: 10PX;
+  margin-top: 12px;
 }
 
 .options__menu a{
