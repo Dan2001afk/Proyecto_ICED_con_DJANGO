@@ -10,6 +10,7 @@
     <script src="{% static 'js/Crud-Usuarios.js' %}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://kit.fontawesome.com/3d7a846b01.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
    
 
 </head>
@@ -83,19 +84,22 @@
 
     <section class="cont">
 
+        <div class="cabezera">
+                <h1 class="titulo">LISTA DE USUARIOS REGISTRADOS</h1>
+        </div>
+
         <div class="contenedor1">
-            <h1>Lista de Usuarios Registrados</h1>
             <button class="btnInsertar">Insertar Usuario</button>
             <button class="btnActualizar">Actualizar Usuario</button>
             <label for=""><input type="text" id="id_usuarioo" name="id_usuarioo" placeholder="Ingrese Documento"></label>
             <button type="button" id="BuscarUsuario" class="btn btn-danger w-100 fs-5 mb-3">Buscar</button>
         </div>
 
-        <div class="contenedor2">
-            <div class="contador1">A</div>
-            <div class="contador2">B</div>
-            <div class="contador3">C</div>
-        </div>
+        
+        <div class="contador1">A</div>
+        <div class="contador2">B</div>
+        <div class="contador3">C</div>
+    
         
         <div class="contenedor3">    
             <div>
@@ -127,34 +131,31 @@
         <div id="myModal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <!--<h2>Actualizar Registro</h2>
-                <form id="updateForm">
-                    Campos para actualizar los datos 
-                    <div class="mb-3">
-                        <input type="text" class="form-control" id="equi_id_actualizar" name="equi_id_actualizar" placeholder="ID del Equipo">
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" class="form-control" id="equi_tipo_actualizar" name="equi_tipo_actualizar" placeholder="Tipo">
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" class="form-control" id="equi_modelo_actualizar" name="equi_modelo_actualizar" placeholder="Modelo">
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" class="form-control" id="equi_color_actualizar" name="equi_color_actualizar" placeholder="Color">
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" class="form-control" id="equi_serial_actualizar" name="equi_serial_actualizar" placeholder="Serial">
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" class="form-control" id="equi_estado_actualizar" name="equi_estado_actualizar" placeholder="Estado">
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" class="form-control" id="equi_especialidad_actualizar" name="equi_especialidad_actualizar" placeholder="Especialidad">
-                    </div>
-                    <div class="mb-3">
-                        <button type="button" id="ActualizarEquipo" class="actualizar">Actualizar Equipo</button>
-                    </div>
-                </form>-->
+                <form id="ActualizarUsuarioForm">
+                    <label for="Usu_Documento">Documento:</label>
+                    <input type="text" id="Usu_DocumentoActualizar" name="Usu_Documento" required><br><br>
+            
+                    <label for="Usu_Nombre">Nombre:</label>
+                    <input type="text" id="Usu_NombreActualizar" name="Usu_Nombre" required><br><br>
+            
+                    <label for="Usu_Apellido">Apellido:</label>
+                    <input type="text" id="Usu_ApellidoActualizar" name="Usu_Apellido" required><br><br>
+            
+                    <label for="Usu_tipo">Tipo:</label>
+                    <input type="text" id="Usu_tipoActualizar" name="Usu_tipo" required><br><br>
+            
+                    <label for="Usu_Celular">Celular:</label>
+                    <input type="text" id="Usu_CelularActualizar" name="Usu_Celular" required><br><br>
+            
+                    <label for="Usu_Correo">Correo:</label>
+                    <input type="text" id="Usu_CorreoActualizar" name="Usu_Correo" required><br><br>
+            
+                    <label for="Usu_Ficha">Ficha:</label>
+                    <input type="text" id="Usu_FichaActualizar" name="Usu_Ficha" required><br><br>
+            
+                    <button type="submit">Actualizar Usuario</button>
+                </form>
+            
             </div>
         </div>
         <!-- ... -->
@@ -164,25 +165,48 @@
         <div id="myModal2" class="modal">
                 <div class="modal-content">
                     <span class="close2">&times;</span>
-                    <h2>Insertar Usuario</h2>
+                    <h1>Insertar Usuario</h2>
                     <form method=""  id="FormUsuarios" >
                         {% csrf_token %}
                         
-                        <input type="text" name="Usu_Documento" id="Usu_Documento" placeholder="Documento" required><br>
+
+                        <div>
+                            <input type="text" name="Usu_Documento" id="Usu_Documento" placeholder="Documento" required><br>
+                        </div>
+
+                        <div>
+                            <input type="text" name="Usu_Nombre" id="Usu_Nombre" placeholder="Nombre" required><br>
+                        </div>
                     
-                        <input type="text" name="Usu_Nombre" id="Usu_Nombre" placeholder="Nombre" required><br>
+                        <div>
+                            <input type="text" name="Usu_Apellido" id="Usu_Apellido" placeholder="Apellido" required><br>
+                        </div>
                         
-                        <input type="text" name="Usu_Apellido" id="Usu_Apellido" placeholder="Apellido" required><br>
-                
-                        <input type="text" name="Usu_tipo" id="Usu_tipo" placeholder="Tipo" required><br>
-                            
-                        <input type="text" name="Usu_Celular" id="Usu_Celular" placeholder="Celular" required><br>
+                        <div>
+                            <select id="Usu_tipo">
+                                <option value="" selected>Tipo</option>
+                                <option value="Aprendiz">Aprendiz</option>
+                                <option value="Instructor">Instructor</option>
+                                <option value="Otro">Otro</option>
                         
-                        <input type="text" name="Usu_Correo" id="Usu_Correo"  placeholder="Correo"><br>
+                            </select>
+                        </div>
+
+                        <div>
+                            <input type="text" name="Usu_Celular" id="Usu_Celular" placeholder="Celular" required><br>
+                        </div>  
                         
-                        <input type="text" name="Usu_Ficha" id="Usu_Ficha" placeholder="Ficha" required><br>
-                                        
-                        <button type="submit" value="Guardar" id="Guardar">Enviar</button>
+                        <div>
+                            <input type="text" name="Usu_Correo" id="Usu_Correo"  placeholder="Correo"><br>
+                        </div>
+
+                        <div>
+                            <input type="text" name="Usu_Ficha" id="Usu_Ficha" placeholder="Ficha" required><br>
+                        </div>
+
+                        <div>
+                            <button type="submit" value="Guardar" id="Guardar">Enviar</button>
+                        </div>
                     </form>
                 </div>
         </div>

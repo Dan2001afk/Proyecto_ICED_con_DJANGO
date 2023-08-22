@@ -34,13 +34,36 @@ function Consultar() {
 
 //Agregar equipo
 function agregarEquipo() {
+    var Equi_tipo = document.getElementById("Equi_tipo").value;
+    var Equi_modelo = document.getElementById("Equi_modelo").value;
+    var Equi_color = document.getElementById("Equi_color").value;
+    var Equi_serial = document.getElementById("Equi_serial").value;
+    var Equi_estado = document.getElementById("Equi_estado").value;
+    var equi_especialidad = document.getElementById("equi_especialidad").value;
+
+    if (
+        Equi_tipo === "" ||
+        Equi_modelo === "" ||
+        Equi_color === "" ||
+        Equi_serial === "" ||
+        Equi_estado === "" ||
+        equi_especialidad === ""
+    ) {
+        Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "Por favor, complete todos los campos."
+        });
+        return; // No envíes la solicitud si hay campos vacíos
+    }
+
     var datos = {
-        Equi_tipo: document.getElementById("Equi_tipo").value,
-        Equi_modelo: document.getElementById("Equi_modelo").value,
-        Equi_color: document.getElementById("Equi_color").value,
-        Equi_serial: document.getElementById("Equi_serial").value,
-        Equi_estado: document.getElementById("Equi_estado").value,
-        equi_especialidad: document.getElementById("equi_especialidad").value
+        Equi_tipo: Equi_tipo,
+        Equi_modelo: Equi_modelo,
+        Equi_color: Equi_color,
+        Equi_serial: Equi_serial,
+        Equi_estado: Equi_estado,
+        equi_especialidad: equi_especialidad
     };
 
     var jsonData = JSON.stringify(datos);
@@ -56,6 +79,7 @@ function agregarEquipo() {
     .then(data => {
         console.log(data);
         Consultar();
+        mostrarCantidadEquipos();
         Swal.fire({
             icon: "success",
             title: "Éxito",
@@ -71,6 +95,7 @@ function agregarEquipo() {
         });
     });
 }
+
 
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("FormEquipos").addEventListener("submit", function (event) {
@@ -101,6 +126,7 @@ function eliminarEquipo(Equ_id) {
             .then(response => response.json())
             .then(data => {
                 Consultar();
+                mostrarCantidadEquipos();
                 Swal.fire("Éxito", "Registro eliminado exitosamente.", "success");
             })
             .catch(error => {
@@ -220,4 +246,32 @@ document.addEventListener("DOMContentLoaded", function () {
         var Equ_id = document.getElementById("Equ_id_Act").value; 
         actualizarEquipo(Equ_id);
     });
+});
+
+
+//funciones adiccionales
+function mostrarCantidadEquipos() {
+    fetch("http://127.0.0.1:8000/ContarEquipos", {
+        method: "GET",
+        headers: {
+            "consultar-Type": "AppInventario_ICED/json"
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        const cantidad = document.querySelector('.cantidad');
+
+        
+        // Actualizar los contadores con los datos obtenidos
+        cantidad.textContent = `Total de equipos: ${data.cantidad_equipos}`;
+
+    })
+    .catch(error => {
+        console.error("Error al obtener la cantidad de equipos:", error);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    mostrarCantidadEquipos();
 });

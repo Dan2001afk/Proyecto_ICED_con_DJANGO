@@ -19,8 +19,6 @@
         <div class="icon__menu">
             <i class="fas fa-bars" id="btn_open"></i>
         </div>
-        <p class="principal">ICED INVENTORY</p>
-        <img class="logoo" src="{% static 'imagenes/sena.logo.png' %}" alt="">
     </header>
 
     <div class="menu__side" id="menu_side">
@@ -85,21 +83,26 @@
 
     <section class="cont">
 
-        <div class="contenedor1">
+        <div class="cabezera">
                 <h1 class="titulo">LISTA DE EQUIPOS REGISTRADOS</h1>
         </div>
-        <div class="metodos">
+
+        <div class="contenedor1">
             <button class="btnInsertar">INSERTAR EQUIPO</button>
             <button class="btnActualizar">ACTUALIZAR EQUIPO</button>
             <input type="text" id="id_equipoo" placeholder="Ingrese el ID del equipo">
             <button type="button" id="BuscarEquipo" class="btnBuscar">BUSCAR</button>
         </div>
 
-        <div class="contenedor2">
-            <div class="contador1"></div>
-            <div class="contador2"></div>
-            <div class="contador3"></div>
+        <div class="contador1"></div>
+        <div class="contador2">
+            <div class="icon-container">
+                <i class="fas fa-laptop"></i>
+                <h1 class="cantidad">Contador</h1>
+            </div>
         </div>
+        <div class="contador3"></div>
+    
 
         <div class="contenedor3">    
             <div>
@@ -164,19 +167,56 @@
                 <form method="post"  id="FormEquipos" >
                     {% csrf_token %}
 
-                    <input type="text" name="Equi_tipo" id="Equi_tipo" placeholder="Tipo" required><br>
-                    
-                    <input type="text" name="Equi_modelo" id="Equi_modelo" placeholder="Modelo" required><br>
-                    
-                    <input type="text" name="Equi_color" id="Equi_color" placeholder="Color" required><br>
-                    
-                    <input type="text" name="Equi_serial" id="Equi_serial" placeholder="Serial" required><br>
-                    
-                    <input type="text" name="Equi_estado" id="Equi_estado" placeholder="Estado" required><br>
-                    
-                    <input type="text" name="equi_especialidad" id="equi_especialidad"  placeholder="Especialidad"><br>
+                    <div>
+                        <select id="Equi_tipo">
+                            <option value="" selected>Tipo</option>
+                            <option value="portatil">Portatil</option>
+                            <option value="video_beam">Video Beam</option>
+                            <option value="cable_hdmi">Cable HDMI</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <select id="Equi_modelo">
+                            <option value="" selected>Modelo</option>
+                            <option value="Hewelt Packard">Hewelt Packard</option>
+                            <option value="Lenovo">Lenovo</option>
+                            <option value="HP">HP</option>
+                            <option value="Otro">Otros</option>
+                        </select>
+                    </div>
+
                 
-                    <button class="Guardar" type="submit" value="Guardar" id="Guardar">Enviar</button>
+                    
+                   <div>
+                    <input type="text" name="Equi_color" id="Equi_color" placeholder="Color" required><br>
+                   </div>
+                    
+                    <div>
+                        <input type="text" name="Equi_serial" id="Equi_serial" placeholder="Serial" required><br>
+                    </div>
+
+                    <div>
+                        <select id="Equi_estado">
+                            <option value="" selected>Estado</option>
+                            <option value="Activo">Activo</option>
+                            <option value="Inactivo">Inactivo</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <select id="equi_especialidad">
+                            <option value="" selected>Especialidad</option>
+                            <option value="ADSO">ADSO</option>
+                            <option value="ADSI">ADSI</option>
+                            <option value="CISCO 8.1">CISCO 8.1</option>
+                            <option value="TAURUS">TAURUS</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <button class="Guardar" type="submit" value="Guardar" id="Guardar">Enviar</button>
+                    </div>
 
                 </form>
             </div>

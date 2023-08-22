@@ -131,6 +131,11 @@ class BuscarEquipo(View):
         
         return JsonResponse(datos_equipo)
 
+class ContarEquipos(View):
+    def get(self, request):
+        cantidad_equipos = Equipos.objects.count()  # Realiza una consulta para contar los equipos
+        return JsonResponse({"cantidad_equipos": cantidad_equipos})
+
 
 
 #USUARIOS
@@ -177,8 +182,6 @@ class InsertarUsuarios(View):
 def Usuario(request):
     return render(request,"Usuarios.html")
 
-
-
 class ActualizarUsuarios(View):
     @method_decorator(csrf_exempt)
     def dispatch(self, request,*args: Any, **kwargs):
@@ -214,6 +217,28 @@ class EliminarUsuario(View):
         registro.delete()
         return JsonResponse({"Mensaje":"Datos Eliminados"})
 
+class BuscarUsuario(View):
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def get(self, request, pk):
+        try:
+            usuario = Usuarios.objects.get(pk=pk)
+            datos_usuario = {
+                'Usu_Documento': usuario.Usu_Documento,
+                'Usu_Nombre': usuario.Usu_Nombre,
+                'Usu_Apellido': usuario.Usu_Apellido,
+                'Usu_tipo': usuario.Usu_tipo,
+                'Usu_Celular': usuario.Usu_Celular,
+                'Usu_Correo': usuario.Usu_Correo,
+                'Usu_Ficha': usuario.Usu_Ficha
+            }
+            return JsonResponse(datos_usuario)
+        except Usuarios.DoesNotExist:
+            return JsonResponse({"Error": "El Usuario no existe"})
+
+#metodos adicionales
 
 
 
@@ -345,7 +370,6 @@ class InsertarSanciones(View):
         
 def Sancion(request):
     return render(request,"Sanciones.html")
-
 
 class ActualizarSanciones(View):
     @method_decorator(csrf_exempt)

@@ -16,6 +16,8 @@ urlpatterns=[
     path('ActualizarEquipo/<pk>',ActualizarEquipo.as_view(),name='actualizar'),
     path('EliminarEquipo/<pk>',EliminarEquipo.as_view(),name='eliminar'),
     path('BuscarEquipo/<int:pk>', BuscarEquipo.as_view(), name='buscar-equipo'),
+    path('ContarEquipos', ContarEquipos.as_view(), name='contar-equipos'),
+
     
     #CRUD USUARIOS
     path('Usuario',views.Usuario,name='Usuario'),
@@ -23,6 +25,8 @@ urlpatterns=[
     path('insertarUsuario/', InsertarUsuarios.as_view(), name='insertarUsuario'),
     path('ActualizarUsuario/<int:pk>', ActualizarUsuarios.as_view(), name='actualizarUsuario'),
     path('EliminarUsuario/<int:pk>', EliminarUsuario.as_view(), name='eliminarUsuario'),
+    path('BuscarUsuario/<int:pk>', views.BuscarUsuario.as_view(), name='buscarUsuario'),  # Nueva ruta
+    
     #CRUD PRESTAMOS
     path('Prestamo',views.Prestamo,name='Prestamo'),
     path('ListarPrestamos',ListadoPrestamos.as_view(),name='Prestamos'),

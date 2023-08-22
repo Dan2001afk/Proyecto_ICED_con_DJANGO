@@ -33,37 +33,51 @@ function Consultar(){
 }
 
 //Agregar Usuario
-function Agregar(){
-    var Datos={
-        Usu_Documento:document.getElementById("Usu_Documento").value,
-        Usu_Nombre:document.getElementById("Usu_Nombre").value,
-        Usu_Apellido:document.getElementById("Usu_Apellido").value,
-        Usu_tipo:document.getElementById("Usu_tipo").value,
-        Usu_Celular:document.getElementById("Usu_Celular").value,
-        Usu_Correo:document.getElementById("Usu_Correo").value,
-        Usu_Ficha:document.getElementById("Usu_Ficha").value
+function Agregar() {
+    var Datos = {
+        Usu_Documento: document.getElementById("Usu_Documento").value,
+        Usu_Nombre: document.getElementById("Usu_Nombre").value,
+        Usu_Apellido: document.getElementById("Usu_Apellido").value,
+        Usu_tipo: document.getElementById("Usu_tipo").value,
+        Usu_Celular: document.getElementById("Usu_Celular").value,
+        Usu_Correo: document.getElementById("Usu_Correo").value,
+        Usu_Ficha: document.getElementById("Usu_Ficha").value
     };
 
-    var jsonData=JSON.stringify(Datos);
+    var jsonData = JSON.stringify(Datos);
     console.log(jsonData);
 
-    fetch("http://127.0.0.1:8000/insertarUsuario/",{
-        method:"POST",
-        body:jsonData,
-        headers:{
-            "Content-Type":"AppInventario_ICED/json"
+    fetch("http://127.0.0.1:8000/insertarUsuario/", {
+        method: "POST",
+        body: jsonData,
+        headers: {
+            "Content-Type": "AppInventario_ICED/json"
         }
     })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        Consultar();
-        alert("Datos enviados exitosamente.");
-    })
-    .catch(error => {
-        console.error(error);
-        alert("Error al enviar los datos.");
-    });
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            Consultar();
+
+            // SweetAlert para éxito
+            Swal.fire({
+                title: "Éxito",
+                text: "Datos enviados exitosamente.",
+                icon: "success",
+                confirmButtonText: "Aceptar"
+            });
+        })
+        .catch(error => {
+            console.error(error);
+
+            // SweetAlert para error
+            Swal.fire({
+                title: "Error",
+                text: "Error al enviar los datos.",
+                icon: "error",
+                confirmButtonText: "Aceptar"
+            });
+        });
 }
 
 document.addEventListener("DOMContentLoaded",function(){
@@ -77,18 +91,92 @@ document.addEventListener("DOMContentLoaded",function(){
 function eliminarUsuario(Usu_Documento) {
     const url = `http://127.0.0.1:8000/EliminarUsuario/${Usu_Documento}`;
 
-    fetch(url, {
-        method: "DELETE",
+    // Mostrar un SweetAlert de confirmación
+    Swal.fire({
+        title: "Confirmar",
+        text: "¿Está seguro de eliminar este usuario?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Eliminar",
+        cancelButtonText: "Cancelar"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Realizar la petición de eliminación si el usuario confirma
+            fetch(url, {
+                method: "DELETE",
+                headers: {
+                    "consultar-Type": "AppInventario_ICED/json"
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Mostrar SweetAlert de éxito después de eliminar
+                Swal.fire({
+                    title: "Éxito",
+                    text: "Usuario eliminado correctamente.",
+                    icon: "success",
+                    confirmButtonText: "Aceptar"
+                });
+
+                Consultar();
+            })
+            .catch(error => {
+                console.error("Error al eliminar el Usuario:", error);
+            });
+        }
+    });
+}
+
+// Actualizar usuario
+function actualizarUsuario() {
+    var datos = {
+        Usu_Documento: document.getElementById("Usu_DocumentoActualizar").value,
+        Usu_Nombre: document.getElementById("Usu_NombreActualizar").value,
+        Usu_Apellido: document.getElementById("Usu_ApellidoActualizar").value,
+        Usu_tipo: document.getElementById("Usu_tipoActualizar").value,
+        Usu_Celular: document.getElementById("Usu_CelularActualizar").value,
+        Usu_Correo: document.getElementById("Usu_CorreoActualizar").value,
+        Usu_Ficha: document.getElementById("Usu_FichaActualizar").value
+    };
+
+    var jsonData = JSON.stringify(datos);
+
+    fetch("http://127.0.0.1:8000/ActualizarUsuario/" + datos.Usu_Documento, {
+        method: "POST", 
+        body: jsonData,
         headers: {
-            "consultar-Type": "AppInventario_ICED/json"
+            "Content-Type": "application/json" 
         }
     })
     .then(response => response.json())
     .then(data => {
+        console.log(data);
+        Consultar();
+        Swal.fire({
+            icon: "success",
+            title: "Éxito",
+            text: "Datos enviados exitosamente.",
+        });
 
-        Consultar(); 
     })
     .catch(error => {
-        console.error("Error al eliminar el Usuario:", error);
+        console.error(error);
+        Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "Error al enviar los datos."
+        });
     });
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("ActualizarUsuarioForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+        actualizarUsuario();
+    });
+});
+
+//Buscar usuario
+
+
+

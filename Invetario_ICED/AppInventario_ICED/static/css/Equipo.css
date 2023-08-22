@@ -9,25 +9,13 @@
 
 body{
 
-  background-image: linear-gradient(to left, #301f4f, #8acbff);
+  background-image: linear-gradient(to left,  #301f4f, #8acbff);
   margin-top: 80px;
   margin-left: 80px;
   transition: margin-left 300ms  cubic-bezier(0.075, 0.82, 0.165, 1);
 
 }
 
-.principal{
-  color: white;
-  margin-left: 790px;
-  font-size: 22px;
-  text-shadow: white 1px 1px 5px;
-}
-
-.logoo{
-  width: 6%;
-  height: 110px;
-  margin-left: 677px;
-}
 header{
   width: 100%;
   height: 80px;
@@ -112,10 +100,6 @@ header{
   top: 80px;
 
 }
-.titulo{
-  text-align: center;
-  margin-top: 12px;
-}
 
 .options__menu a{
   color: black;
@@ -128,7 +112,7 @@ header{
 /*acciones ya sea para usar el cursor*/
 .options__menu a:hover{
 
-  color: rgb(110, 41, 236);
+  color: rgb(87, 181, 224);
 }
 
 /*posicionar orden de elementos*/
@@ -191,7 +175,7 @@ main{
   height: 1500px;
   display: grid;
   margin-top: 3px;
-  grid-template-columns:repeat(11, 1fr);
+  grid-template-columns:repeat(12, 1fr);
   grid-template-rows: repeat(40, 1fr);
   /*margenes generales*/
   row-gap: 20px;
@@ -203,50 +187,36 @@ main{
   
 }
 
-.metodos{
+/*estilos de los contadores*/
+.cabezera{
   background-color: rgb(255, 255, 255);
-  grid-column: 1/12;
-  grid-row: 4/6;
+  grid-column: 1/13;
+  grid-row: 2/4;
   border-radius: 1%;
-  margin-top: -5px;
-  border-radius: 5px ;
-  padding: 7px;
+
 }
 
-/*estilos de los contadores*/
+.cabezera h1{
+  text-align: center;
+  margin-top: 1%;
+}
+
+
+
 .contenedor1{
   background-color: rgb(255, 255, 255);
-  grid-column: 1/12;
-  grid-row: 2/6;
+  grid-column: 1/13;
+  grid-row: 4/7;
   border-radius: 1%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  height: 50px;
-  border-radius: 5px ;
-}
 
-.contenedor2{
-  background-color: transparent;
-  grid-column: 1/12;
-  grid-row: 6/12;
-  display: grid;
-  grid-template-columns:repeat(12, 1fr);
-  grid-template-rows: repeat(10, 1fr);
-  /*margenes generales*/
-  row-gap: 20px;
-  column-gap: 20px;
-  /*margenes de contenedores*/
-  border-radius: 5px ;
-  padding-top: 20px;
-  margin-top: -20px;
 }
 
 
 .contenedor3{
   background-color: rgb(255, 255, 255);
-  grid-column: 1/12;
+  grid-column: 1/13;
   grid-row: 12/30;
-  border-radius: 5px;
+  border-radius: 1%;
   overflow-y: auto;
   overflow-x: hidden;
   position: relative;
@@ -258,23 +228,54 @@ main{
 .contador1{
   background-color: rgb(255, 255, 255);
   grid-column: 1/5;
-  grid-row: 1/11;
-  border-radius: 5px;
+  grid-row: 7/12;
+  border-radius: 1%;
+  
+  
 }
 
 
-.contador2{
+.contador2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: rgb(255, 255, 255);
   grid-column: 5/9;
-  grid-row: 1/11;
-  border-radius: 5px;
+  grid-row: 7/12;
+  border-radius: 1%;
+  padding: 20px; /* Agregamos un poco de espacio interno */
 }
 
-.contador3{ 
+
+.contador2 h1 {
+
+  font-size: 15px;
+  
+}
+
+.icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon-container i {
+  color: #8acbff;
+  font-size: 45px; /* Ajusta el tamaño del icono según tus preferencias */
+  margin-bottom: 30px; /* Agregamos espacio entre el icono y el h1 */
+}
+
+.cantidad {
+  text-align: center;
+}
+
+
+
+.contador3{
   background-color: rgb(255, 255, 255);
   grid-column: 9/13;
-  grid-row: 1/11;
-  border-radius: 5px;
+  grid-row: 7/12;
+  border-radius: 1%;
 }
 
 
@@ -298,9 +299,7 @@ table th {
   background-color: #f2f2f2;
 }
 
-#id_equipoo::placeholder{
-  text-align: center;
-}
+
 
 /* Estilos para los botones de la tabla */
 .btnEliminar {
@@ -327,8 +326,7 @@ table th {
   border-radius: 4 px; /* Bordes redondeados */
   cursor: pointer; /* Cambiar el cursor al pasar por encima */
   transition: background-color 0.5s ease; 
-
-  margin-left: 160px;
+  margin: 10px;
   
    
 }
@@ -343,33 +341,29 @@ table th {
   border-radius: 4px; /* Bordes redondeados */
   cursor: pointer; /* Cambiar el */
   transition: background-color 0.5s ease; 
-
-  margin-left: 300px;
+  margin: 10px;
   
 
 }
 
 /* Estilo para el botón de búsqueda */
 #id_equipoo {
-  width: 15%;
-  padding: 12px;
+  width: 10%;
+  padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 3px;
-  margin-left: 160px;
-
 }
 
 #BuscarEquipo {
 
   width: 10%;
-  padding: 13px;
+  padding: 10px;
   background-color: #f44336;
   color: white;
   border: none;
   border-radius: 3px;
   cursor: pointer;
-  
 }
 
 /*estilos de los botones para que cambien de color*/
@@ -435,32 +429,13 @@ table th {
 
 /*estilos del contenido interno de la tabla*/
 
-.modal h2{
+.modal h1{
 
   text-align: center;
   margin: 20px;
   
 }
 
-
-/*estilos del formulario de insertar*/
-
-#Equ_id,
-#Equi_tipo,
-#Equi_modelo,
-#Equi_color,
-#Equi_serial,
-#Equi_estado,
-#equi_especialidad{
-
-  margin-top: 1%;
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  padding: 20px;
-  width: 250px;
-  height: 30px;
-  margin-bottom: 15px;
-}
 
 /*estilos del formulario de actualizar*/
 
@@ -470,7 +445,8 @@ table th {
 #Equi_color_Act,
 #Equi_serial_Act,
 #Equi_estado_Act,
-#equi_especialidad_Act{
+#equi_especialidad_Act
+{
 
   margin-top: 1%;
   border: 1px solid #ccc;
@@ -479,23 +455,6 @@ table th {
   width: 250px;
   height: 30px;
   margin-bottom: 15px;
-}
-
-#Guardar {
-  border: none;
-  background-color: #b491ce;
-  border-radius: 15px;
-  width: 250px;
-  height: 40px;
-  color: #ffffff;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease; 
-}
-
-
-#Guardar:hover {
-  background-color:  #8acbff; /* Cambio de color al pasar el mouse por encima */
 }
 
 #ActualizarEquipo {
@@ -516,8 +475,54 @@ table th {
 }
 
 
+select{
+  
+  width: 250px;
+  height: 40px;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  background-color: white;
+  font-size: 16px;
+}
 
-/*clases para mover el menu */
+
+#Equi_color,
+#Equi_serial
+{
+
+  margin-top: 1%;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 20px;
+  width: 250px;
+  height: 30px;
+  margin-bottom: 15px;
+}
+
+#Guardar:hover{
+  background-color: #8acbff;
+}
+
+
+#Guardar {
+  border: none;
+  background-color: #b491ce;
+  border-radius: 15px;
+  width: 250px;
+  height: 40px;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease; 
+}
+
+
+/*estilos de formulario de insertar*/
+
+
+/*clases para mover el menu para que tenga movimiento */
 
 .body_move{
   margin-left: 250px;
@@ -541,10 +546,14 @@ table th {
   }
 }
 
+
+
 @media screen and (min-width: 320px) and (max-width: 1000px) {
+
   .cont {
+
       max-width: 100%;
-      height: 1000px;
+      height: 1500px;
       display: grid;
       margin: 3px;
       margin-top: 3px;
@@ -554,179 +563,240 @@ table th {
       row-gap: 20px;
       column-gap: 20px;
       /*margenes de contenedores*/
-      margin: 3%;
+      margin: 2%;
       padding: 0px;
-      box-sizing: border-box;
+     
   }
 
-  .contenedor1 {
-      margin-top: 2%;
+
+  .cabezera{
+      background-color: rgb(255, 255, 255);
       grid-column: 1/12;
-      grid-row: 25/45;
-      text-align: center;
-      font-size: 18px;
+      grid-row: 2/6;
       border-radius: 2%;
+      margin: 1px;
+  
   }
 
-  .contenedor2 {
-      grid-column: 1/12;
-      grid-row: 2/25;
-      overflow-x: auto; /* Added overflow-x property for horizontal scrolling */
-      padding-bottom: 10px;
-      border-radius: 5%;
+  .cabezera h1{
+      margin-top: 4%;
   }
+
+  .contenedor1{
+      background-color: rgb(255, 255, 255);
+      grid-column: 1/12;
+      grid-row: 6/10;
+      
+      
+  }
+
+  .contenedor1 h1{
+       text-align: center;
+       margin-top: 5%;
+       margin: 20px;
+  }
+
+  .contenedor3{
+      background-color: rgb(255, 255, 255);
+      grid-column: 1/12;
+      grid-row: 6/30;
+      border-radius: 1%;
+      overflow-y: auto;
+      overflow-x: auto; /* Added overflow-x property for horizontal scrolling */
+      position: relative;
+      margin: 5px;
+      
+  }
+
 
   table {
       width: 100%; /* Adjusted width to occupy full width of the container */
-      margin: 15px;
+      margin: 10px;
   }
 
   table th,
   table td {
-      padding: 10px;
-      font-size: 11px;
+      padding: 8px;
+      font-size: 10px;
   }
 
-  .contenedor1 h1 {
-    font-size: 15px;
-    text-align: center;
-    margin: 30px;
+
+  .contenedor1{
+      background-color: rgb(255, 255, 255);
+      grid-column: 1/12;
+      grid-row: 30/50;
+      margin: 10px;
+      border-radius: 4%;
   }
+
+  .contador1{
+      background-color: rgb(255, 255, 255);
+      grid-column: 1/12;
+      grid-row: 50/60;
+      margin: 10px;
+      border-radius: 4%;
+  }
+
+  .contador2{
+      background-color: rgb(255, 255, 255);
+      grid-column: 1/12;
+      grid-row: 60/70;
+      margin: 10px;
+      border-radius: 4%;
+  }
+
+
+  .contador3{
+      background-color: rgb(255, 255, 255);
+      grid-column: 1/12;
+      grid-row: 70/80;
+      margin: 10px;
+      border-radius: 4%;
+  }
+
+
+
+
+  
+
+  /*estilos de los botones*/
 
   .btnActualizar{
-    width: 50%;
-    height: 50px;
-    background-color: #61af4c; /* Color de fondo */
-    color: white; /* Color del texto */
-    padding: 8px 16px; /* Espaciado interno */
-    border: none; /* Sin borde */
-    border-radius: 4px; /* Bordes redondeados */
-    cursor: pointer; /* Cambiar el cursor al pasar por encima */
-    transition: background-color 0.5s ease; 
- 
-    
-     
+      width: 60%;
+      height: 50px;
+      margin-top: 60px;
+      background-color: #61af4c; /* Color de fondo */
+      color: white; /* Color del texto */
+      padding: 8px 16px; /* Espaciado interno */
+      border: none; /* Sin borde */
+      border-radius: 4px; /* Bordes redondeados */
+      cursor: pointer; /* Cambiar el cursor al pasar por encima */
+      transition: background-color 0.5s ease; 
+      margin-left: 20%;
+      margin-top: 3%;
+   
+      
+      
   }
-  
+    
   .btnInsertar{
-    width: 50%;
-    height: 50px;
-    background-color: #4c78af; /* Color de fondo */
-    color: white; /* Color del texto */
-    padding: 8px 16px; /* Espaciado interno */
-    border: none; /* Sin borde */
-    border-radius: 4px; /* Bordes redondeados */
-    cursor: pointer; /* Cambiar el */
-    transition: background-color 0.5s ease; 
-  
-  }
-
-  
-  #id_equipoo {
-    width: 50%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
-
-  /* Estilo para el botón de búsqueda */
-  #BuscarEquipo {
-
-    width: 50%;
-    padding: 10px;
-    background-color: #f44336;
-    color: white;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-  }
-
-
-  .Guardar {
-    border: none;
-    background-color: #b491ce;
-    border-radius: 25px;
-    padding: 10px 20px;
-    width: 250px;
-    height: 50px;
-    color: #ffffff;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: -0px;
-    transition: background-color 0.6s ease; 
-  }
-
-
-  /* Estilos para el modal 1 y 2 */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(45, 37, 100, 0.388);
-}
-
-.modal-content {
-  background-color: #fefefe;
-  margin: 40% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  border-radius: 8px;
-  max-width: 500px;
-  height: 500px;
-  box-shadow: 0px 4px 8px rgba(118, 7, 7, 0.1);
-  text-align: center;
-  margin-left: 10px; /* Márgen izquierdo */
-  margin-right: 10px; /* Márgen derecho */
-}
-
-
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.close2 {
-  color: #aaa;
-  float: right;
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-
-/*estilos del contenido interno de la tabla*/
-
-.modal h2{
-
-  text-align: center;
-  margin: 20px;
-  margin-top: 2%;
-
-  
-}
-
-
-  
-
+      
+      width: 60%;
+      height: 50px;
+      background-color: #4c78af; /* Color de fondo */
+      color: white; /* Color del texto */
+      border: none; /* Sin borde */
+      border-radius: 4px; /* Bordes redondeados */
+      cursor: pointer; /* Cambiar el */
+      transition: background-color 0.5s ease;
+      margin-left: 20%;
+      margin-top: 10%;
     
+  }
+  
+    
+  #id_equipoo {
+      width: 60%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      margin-left: 20%;
+  }
+  
+  
+  #BuscarEquipo {
+  
+      width: 60%;
+      padding: 10px;
+      background-color: #f44336;
+      color: white;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      margin-left: 20%;
+  }
+  
+  
+  .Guardar {
+      border: none;
+      background-color: #b491ce;
+      border-radius: 25px;
+      padding: 10px 20px;
+      width: 250px;
+      height: 50px;
+      color: #ffffff;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: -0px;
+      transition: background-color 0.6s ease; 
+  }
 
- 
+  /*estilos de los modales*/
+
+  
+   
+  .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(45, 37, 100, 0.388);
+  }
+  
+  .modal-content {
+      background-color: #fefefe;
+      margin: 40% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      border-radius: 8px;
+      max-width: 600px;
+      height: 600px;
+      box-shadow: 0px 4px 8px rgba(118, 7, 7, 0.1);
+      text-align: center;
+      margin-left: 10px; /* Márgen izquierdo */
+      margin-right: 10px; /* Márgen derecho */
+  }
+  
+  
+  .close {
+      color: #aaa;
+      float: right;
+      font-size: 24px;
+      font-weight: bold;
+  }
+  
+  .close2 {
+      color: #aaa;
+      float: right;
+      font-size: 24px;
+      font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+  }
+  
+  
+  /*estilos del contenido interno de la tabla*/
+  
+  .modal h2{
+  
+      text-align: center;
+      margin: 20px;
+      margin-top: 2%;
+  
+      
+  }
 
 
 
-}  
-	
+}
+
