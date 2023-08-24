@@ -1,11 +1,18 @@
 from django.urls import path
 from .views import *
 from . import views
+from AppInventario_ICED.viewsLogin import *
+from django.conf import *
+from django.conf.urls.static import *
+
 
 urlpatterns=[
     #PORTADA PRINCIPAL
     path('Portada',views.Portada,name='Portada'),
     #LOGIN
+    path('registro/',RegistrarUsuarioView.as_view(),name="registrar_usuario"),
+    path('iniciarSesion/',IniciarSesionView.as_view(),name="iniciar_sesion"),
+    path('ActualizarUsuario/',PerfilClienteView.as_view(),name="perfil_usuario"),
     path('Login',views.Login,name='Login'),
     #FORMULARIO
     path('Formulario',views.Formulario,name='Formulario'),
@@ -23,6 +30,7 @@ urlpatterns=[
     path('Usuario',views.Usuario,name='Usuario'),
     path('ListarUsuarios', ListarUsuarios.as_view(), name='ListarUsuarios'),
     path('insertarUsuario/', InsertarUsuarios.as_view(), name='insertarUsuario'),
+    path('formularioInsertar',views.Formulario,name="insertarf"),
     path('ActualizarUsuario/<int:pk>', ActualizarUsuarios.as_view(), name='actualizarUsuario'),
     path('EliminarUsuario/<int:pk>', EliminarUsuario.as_view(), name='eliminarUsuario'),
     path('BuscarUsuario/<int:pk>', views.BuscarUsuario.as_view(), name='buscarUsuario'),  # Nueva ruta
@@ -40,7 +48,7 @@ urlpatterns=[
     path('insertarSancion/',InsertarSanciones.as_view(),name='insertar'),
     path('ActualizarSanciones/<pk>',ActualizarSanciones.as_view(),name='Actualizar'),
     path('EliminarSancion/<pk>',EliminarSanciones.as_view(),name='Eliminar'),
-]
+] + static (settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 """ path('index.html',listadoEquipos.as_view(),name='Equipos'),
     path('indexuno.html',listadoUsuarios.as_view(),name='Usuarios'),

@@ -4,40 +4,17 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="{% static 'css/Login.css' %}">
-    <script src="https://kit.fontawesome.com/3d7a846b01.js" crossorigin="anonymous"></script>
 </head>
-
     <title>Inicio De Sesion</title>
-    <title>Document</title>
 
 <body>
 
-    <section class="form-main">
-        <div class="form-content">
-
-            <div class="circle-1"></div>
-            <div class="circle-2"></div>
-            <div class="circle-3"></div>
-
-            <div class="box">
-                <h3>Bienvenido</h3>
-                <form action="">
-                    <div>
-                        <input type="text" placeholder="Email" class="input_controlador">
-                    </div>
-                    <div>
-                        <input type="password" placeholder="Contraseña" class="input_controlador">
-                        <div class="input-link">
-                            <a href="" class="gradiente-text">Has olvidado la Contraseña</a>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn">Iniciar Sesion</button>
-                </form>
-                <p>No tienen una cuenta?  <a href="">Crear cuenta</a></p>
-
-            </div>
-        </div>
-    </section>
+    <h1>Iniciar Sesión</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_div }}
+        <button type="submit">Iniciar Sesión</button>
+    </form>
    
     
 </body>

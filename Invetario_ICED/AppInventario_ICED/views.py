@@ -2,7 +2,7 @@ from typing import Any
 from django import http
 from django.shortcuts import render
 from AppInventario_ICED.models import *
-from django.views.generic import ListView,View
+from django.views.generic import *
 from django.http import JsonResponse
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
@@ -412,4 +412,4 @@ def Login(request):
     return render(request,"Inicio.html")
 
 def Formulario(request):
-    return render(request,"formulario.html")
+    return render(request,"Usuarios.html")

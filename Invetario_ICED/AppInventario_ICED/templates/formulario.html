@@ -6,43 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro Usuario</title>
     <link rel="stylesheet" href="{% static 'css/Formulario.css' %}">
-    <script src="https://kit.fontawesome.com/3d7a846b01.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-    <section class="form-main">
-        <div class="form-content">
-            <div class="circle-1"></div>
-            <div class="circle-2"></div>
-            <div class="circle-3"></div>
-            <div class="box">
-                <h3>Formulario de Registro</h3>
-                <form action="">
-                    <div>
-                        <input type="text" placeholder="Nombre" required class="input_controlador">
-                    </div>
-                    <div>
-                        <input type="text" placeholder="Apellido" required class="input_controlador">
-                    </div>
-                    <div>
-                        <input type="email" placeholder="Correo electrónico" required class="input_controlador">
-                    </div>
-                    <div>
-                        <input type="password" placeholder="Contraseña" required class="input_controlador">
-                    </div>
-                    <div>
-                        <input type="text" placeholder="Número de cédula" required class="input_controlador">
-                    </div>
-                    <div>
-                        <input type="tel" placeholder="Número de teléfono" required class="input_controlador">
-                    </div>
-                    <button type="submit" value="Registrarse" class="btn">Registrarse</button>
-                </form>
-                <p>ya tiene cuenta? <a href="">dale clik</a></p>
-            </div>
-        </div>
+    <h1>Registro de Usuario</h1>
 
-    </section>
+    <form action="/registro/" method="post" enctype="multipart/form-data" >
+
+        <legend>registro datos usuario</legend>
+        {% csrf_token %}
+        {{ form.as_div }}
+        <!-- Mostrar campos de imagen y documento -->
+       
+    
+        <!-- Resto del formulario generado automáticamente -->
+       
+    
+        <button type="submit">Registrar</button>
+    </form>
+
+
     
 </body>
 </html>

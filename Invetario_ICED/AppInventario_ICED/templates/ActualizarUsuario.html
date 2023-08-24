@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil del cliente</title>
+</head>
+
+<body>
+    <a href="{% url 'perfil_usuario' %}">Ir a mi perfil</a>
+
+    {% if form %}
+        <h1>informacion del cliente</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{form.as_div }}
+
+
+            <div><label for="">Nombre usuario</label>{{form.Usu_Nombre}}</div>
+            <a href="{% url 'perfil_usuario' %}">Ir a mi perfil</a>
+
+
+            <!-- {{ form.as_p }} -->
+             <button type="submit" name="editar" value="editar">Guardar Cambios</button>
+        </form>
+        <div>datos de usuario</div>
+        <div>nombre de usuario{{user.username}}</div>
+        <div>rol: {{user.rol}}</div>
+
+        {% if user.imagen %}
+
+        <input type="text" value=" usuario.imagen ">
+        <img src="{{ user.imagen.url }}" alt="imagen de usuario">
+        {% endif %}
+
+    {% else %}
+        <div>no se encontro informacion para el cliente solicitado</div>
+    {% endif %}
+    </body>
+
+
+</html>

@@ -26,7 +26,6 @@ SECRET_KEY = 'django-insecure-1^&8*kpfr+!fzmgzzk=m(+!d#o@)q6s7r+x6a=o=sr*5-$q)in
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -52,7 +51,15 @@ MIDDLEWARE = [
 ]
 
 
+ALLOWED_HOSTS = ['*']
 
+
+
+AUTHENTICATIONS_BACKENDS =(
+    'django.contrib.auth.backends.ModelsBackend',
+)
+LOGIN_URL='iniciar_sesion'
+SESSION_COOKIE_AGE = 60
 ROOT_URLCONF = 'Invetario_ICED.urls'
 
 TEMPLATES = [
@@ -125,7 +132,12 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS=(os.path.join(BASE_DIR,'AppInventario_ICED/static'),)
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Default primary key field type
+
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AUTH_USER_MODEL="AppInventario_ICED.User"

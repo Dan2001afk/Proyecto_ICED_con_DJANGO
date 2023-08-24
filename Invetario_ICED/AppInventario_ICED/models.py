@@ -1,14 +1,8 @@
+from django.conf import settings
 from django.db import models
+from django.contrib.auth.models import *
 
 # Create your models here.
-class Equipos(models.Model):
-    Equ_id=models.AutoField(verbose_name="ID del equipo", primary_key=True)
-    Equi_tipo=models.TextField(max_length=50)
-    Equi_modelo=models.TextField(max_length=50)
-    Equi_color=models.TextField(max_length=50)
-    Equi_serial=models.TextField(max_length=100,unique=True)
-    Equi_estado=models.TextField(max_length=20)
-    equi_especialidad=models.TextField(max_length=50)
 
 class Usuarios(models.Model):
     Usu_Documento=models.BigIntegerField(verbose_name="N° Documento",primary_key=True,)
@@ -19,6 +13,20 @@ class Usuarios(models.Model):
     Usu_Correo=models.EmailField(max_length=50,verbose_name="Correo Electronico")
     Usu_Ficha=models.TextField(max_length=40)
     
+class User(AbstractUser):
+    rol = models.CharField(max_length=100)
+    imagen = models.ImageField(upload_to='img/', null=True, blank=True)
+    Documento = models.OneToOneField(Usuarios, on_delete=models.CASCADE, primary_key=True)
+    
+class Equipos(models.Model):
+    Equ_id=models.AutoField(verbose_name="ID del equipo", primary_key=True)
+    Equi_tipo=models.TextField(max_length=50)
+    Equi_modelo=models.TextField(max_length=50)
+    Equi_color=models.TextField(max_length=50)
+    Equi_serial=models.TextField(max_length=100,unique=True)
+    Equi_estado=models.TextField(max_length=20)
+    equi_especialidad=models.TextField(max_length=50)
+
 
 class Prestamos(models.Model):
     Pres_Id = models.BigIntegerField(verbose_name="ID del prestamo", primary_key=True)
