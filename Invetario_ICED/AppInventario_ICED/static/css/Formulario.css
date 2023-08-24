@@ -41,6 +41,10 @@ body::before{
     transform: translate(-50%);
 
 }
+#doc{
+    background-color: blue;
+    font-size: 100px;
+}
 
 
 /*estilos del formulario*/
