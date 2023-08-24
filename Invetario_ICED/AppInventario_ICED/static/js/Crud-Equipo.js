@@ -25,8 +25,24 @@ function Consultar() {
                 <td>${dat.Equi_serial}</td>
                 <td>${dat.Equi_estado}</td>
                 <td>${dat.equi_especialidad}</td>
-                <td><button class="btnEliminar" onclick="eliminarEquipo(${dat.Equ_id})">Eliminar</button></td>
+                <td>
+                <div class="btn-container">
+                <button class="btnEliminar" onclick="eliminarEquipo(${dat.Equ_id})">Eliminar</button>
+                <button class="btnActualizar" onclick="capturarYActualizarEquipo(${dat.Equ_id})">Actualizar</button>
+                </div>
+                </td>
                 </tr>`;
+
+                            // Obtén todos los botones de "Actualizar"
+                const updateButtons = document.querySelectorAll('.btnActualizar');
+                
+                // Agrega un evento de clic a cada botón de "Actualizar"
+                updateButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const equipoId = button.getAttribute('data-equipo-id');
+                        abrirModalActualizar(equipoId);
+                    });
+                });
             }
         }
     });
@@ -95,7 +111,6 @@ function agregarEquipo() {
         });
     });
 }
-
 
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("FormEquipos").addEventListener("submit", function (event) {
@@ -198,7 +213,88 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-//Actualizar equipo
+
+
+//funciones adiccionales
+function mostrarCantidadEquipos() {
+    fetch("http://127.0.0.1:8000/ContarEquipos", {
+        method: "GET",
+        headers: {
+            "consultar-Type": "AppInventario_ICED/json"
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        const cantidad = document.querySelector('.cantidad');
+
+        
+        // Actualizar los contadores con los datos obtenidos
+        cantidad.textContent = `Total de equipos: ${data.cantidad_equipos}`;
+
+    })
+    .catch(error => {
+        console.error("Error al obtener la cantidad de equipos:", error);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    mostrarCantidadEquipos();
+});
+
+
+//funcion para que el boton pueda abrir el modal desde JS
+function abrirModalActualizar() {
+    const updateModal = document.getElementById('myModal');
+    updateModal.style.display = 'block'; // Muestra el modal de actualización
+    
+    const closeUpdateModalBtn = updateModal.querySelector('.close');
+    closeUpdateModalBtn.addEventListener('click', function() {
+        updateModal.style.display = 'none'; // Cierra el modal de actualización
+    });
+
+    closeUpdateModalBtn.addEventListener('mouseenter', function() {
+        closeUpdateModalBtn.style.color = 'red'; // Cambia el color al pasar cerca del cursor
+    });
+
+    closeUpdateModalBtn.addEventListener('mouseleave', function() {
+        closeUpdateModalBtn.style.color = '#aaa'; // Restaura el color original
+    });
+
+    // Aquí puedes realizar acciones adicionales según tus necesidades, como cargar los datos del equipo en el modal.
+}
+
+
+//Funcion de actualizar que atrapa los datos y los muesta en el formulario
+function capturarYActualizarEquipo(equipoId) {
+    fetch(`http://127.0.0.1:8000/BuscarEquipo/${equipoId}`, {
+        method: "GET",
+        headers: {
+            "consultar-Type": "AppInventario_ICED/json"
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Populate the form fields with the retrieved data
+        document.getElementById('Equ_id_Act').value = data.Equ_id;
+        document.getElementById('Equi_tipo_Act').value = data.Equi_tipo;
+        document.getElementById('Equi_modelo_Act').value = data.Equi_modelo;
+        document.getElementById('Equi_color_Act').value = data.Equi_color;
+        document.getElementById('Equi_serial_Act').value = data.Equi_serial;
+        document.getElementById('Equi_estado_Act').value = data.Equi_estado;
+        document.getElementById('equi_especialidad_Act').value = data.equi_especialidad;
+
+        // Show the update form
+        document.getElementById('ActualizarEquipos').style.display = 'block';
+        
+        // Update the form submission event listener
+        document.getElementById("ActualizarEquipos").addEventListener("submit", function (event) {
+            event.preventDefault();
+            actualizarEquipo(equipoId);
+        });
+    });
+}
+
 function actualizarEquipo(Equ_id) {
     var datos = {
         Equ_id: document.getElementById("Equ_id_Act").value,
@@ -241,37 +337,6 @@ function actualizarEquipo(Equ_id) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("ActualizarEquipos").addEventListener("submit", function (event) {
-        event.preventDefault();
-        var Equ_id = document.getElementById("Equ_id_Act").value; 
-        actualizarEquipo(Equ_id);
-    });
-});
-
-
-//funciones adiccionales
-function mostrarCantidadEquipos() {
-    fetch("http://127.0.0.1:8000/ContarEquipos", {
-        method: "GET",
-        headers: {
-            "consultar-Type": "AppInventario_ICED/json"
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-
-        const cantidad = document.querySelector('.cantidad');
-
-        
-        // Actualizar los contadores con los datos obtenidos
-        cantidad.textContent = `Total de equipos: ${data.cantidad_equipos}`;
-
-    })
-    .catch(error => {
-        console.error("Error al obtener la cantidad de equipos:", error);
-    });
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-    mostrarCantidadEquipos();
+    // Replace 'equipoId' with the actual ID of the equipment you want to capture and update
+    capturarYActualizarEquipo(equipoId);
 });

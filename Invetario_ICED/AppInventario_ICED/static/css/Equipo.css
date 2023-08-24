@@ -299,6 +299,12 @@ table th {
   background-color: #f2f2f2;
 }
 
+.btn-container {
+  display: flex; /* Mostrar los botones en línea uno al lado del otro */
+  gap: 10px; /* Espacio entre los botones */
+}
+
+
 
 
 /* Estilos para los botones de la tabla */
@@ -317,16 +323,15 @@ table th {
 }
 
 .btnActualizar{
-  width: 15%;
-  height: 40px;
-  background-color: #61af4c; /* Color de fondo */
+  width: 100%;
+  background-color: #5fde31; /* Color de fondo */
   color: white; /* Color del texto */
   padding: 8px 16px; /* Espaciado interno */
   border: none; /* Sin borde */
-  border-radius: 4 px; /* Bordes redondeados */
+  border-radius: 4px; /* Bordes redondeados */
   cursor: pointer; /* Cambiar el cursor al pasar por encima */
   transition: background-color 0.5s ease; 
-  margin: 10px;
+  margin-top: 4px;
   
    
 }
