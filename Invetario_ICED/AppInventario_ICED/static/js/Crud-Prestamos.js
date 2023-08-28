@@ -35,11 +35,8 @@ function Listar(){
 //Agregar un Prestamo
 function Agregar(){
     var Datos={
-        Pres_Id:document.getElementById("Pres_Id").value,
         Pres_Equipos_id:document.getElementById("Pres_Equipos_id").value,
         Pres_Usuarios_Documento_id:document.getElementById("Pres_Usuarios_Documento_id").value,
-        Pres_Fec_Entrega:document.getElementById("Pres_Fec_Entrega").value,
-        Pres_Hora_Entrega:document.getElementById("Pres_Hora_Entrega").value,
         Pres_Tiempo_Limite:document.getElementById("Pres_Tiempo_Limite").value,
         Pres_Observaciones_entrega:document.getElementById("Pres_Observaciones_entrega").value
     };

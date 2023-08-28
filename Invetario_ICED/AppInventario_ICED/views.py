@@ -271,15 +271,12 @@ class InsertarPrestamo(View):
         except(json.JSONDecodeError,UnicodeDecodeError):
             return JsonResponse({"Error":"Error en el Documento"})
         datos=json.loads(request.body)
-        Pres_Id = datos.get('Pres_Id')
         Pres_Equipos_id = datos.get('Pres_Equipos_id')
         Pres_Usuarios_Documento_id = datos.get('Pres_Usuarios_Documento_id')
-        Pres_Fec_Entrega = datos.get('Pres_Fec_Entrega')
-        Pres_Hora_Entrega = datos.get('Pres_Hora_Entrega')
         Pres_Tiempo_Limite = datos.get('Pres_Tiempo_Limite')
         Pres_Observaciones_entrega = datos.get('Pres_Observaciones_entrega')
         print("datos",request.POST)
-        Prestamos.objects.create(Pres_Id=Pres_Id,Pres_Equipos_id=Pres_Equipos_id,Pres_Usuarios_Documento_id=Pres_Usuarios_Documento_id,Pres_Fec_Entrega=Pres_Fec_Entrega,Pres_Hora_Entrega=Pres_Hora_Entrega,Pres_Tiempo_Limite=Pres_Tiempo_Limite,Pres_Observaciones_entrega=Pres_Observaciones_entrega)
+        Prestamos.objects.create(Pres_Equipos_id=Pres_Equipos_id,Pres_Usuarios_Documento_id=Pres_Usuarios_Documento_id,Pres_Tiempo_Limite=Pres_Tiempo_Limite,Pres_Observaciones_entrega=Pres_Observaciones_entrega)
         return JsonResponse({"mensaje":"Datos Guardados"})
 
         # return render(request,"formulario.html",{'mensaje':'Datos Guardados'})

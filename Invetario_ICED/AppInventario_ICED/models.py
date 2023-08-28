@@ -29,7 +29,7 @@ class Equipos(models.Model):
 
 
 class Prestamos(models.Model):
-    Pres_Id = models.BigIntegerField(verbose_name="ID del prestamo", primary_key=True)
+    Pres_Id = models.AutoField(verbose_name="ID del prestamo", primary_key=True)
     Pres_Equipos = models.ForeignKey(Equipos, verbose_name="ID del equipo", on_delete=models.CASCADE)
     Pres_Usuarios_Documento = models.ForeignKey(Usuarios, verbose_name="N° Documento del usuario", on_delete=models.CASCADE)
     Pres_Fec_Entrega = models.DateField(auto_now=True)
