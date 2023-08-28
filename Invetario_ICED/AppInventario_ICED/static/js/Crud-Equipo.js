@@ -126,7 +126,7 @@ function eliminarEquipo(Equ_id) {
     Swal.fire({
         title: "¿Estás seguro?",
         text: "Esta Acción Eliminará El Equipo",
-        icon: "warning",
+        icon: "error",
         showCancelButton: true,
         confirmButtonText: "Aceptar",
         cancelButtonText: "Cancelar"

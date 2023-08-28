@@ -178,5 +178,65 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //Buscar usuario
 
+document.addEventListener("DOMContentLoaded", () => {
+    const buscarBtn = document.getElementById("BuscarUsuario");
+    buscarBtn.addEventListener("click", () => {
+        const usuarioIdInput = document.getElementById("id_usuarioo");
+        const usuarioId = usuarioIdInput.value;
+
+        if (usuarioId) {
+            const url = `http://127.0.0.1:8000/BuscarUsuario/${usuarioId}`;
+
+            fetch(url, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error("Error al buscar el usuario por el Documento");
+                }
+            })
+            .then(usuario => {
+                if (usuario.hasOwnProperty('Usu_Documento')) {
+                    const tablaBody = document.getElementById("tabla1-body");
+                    tablaBody.innerHTML = "";
+
+                    const newRow = document.createElement("tr");
+                    newRow.innerHTML = `
+                    
+                    
+                        <td>${usuario.Usu_Documento}</td>
+                        <td>${usuario.Usu_Nombre}</td>
+                        <td>${usuario.Usu_Apellido}</td>
+                        <td>${usuario.Usu_tipo}</td>
+                        <td>${usuario.Usu_Celular}</td>
+                        <td>${usuario.Usu_Correo}</td>
+                        <td>${usuario.Usu_Ficha}</td>
+                        <td>Acciones</td>
+                    `;
+
+                    tablaBody.appendChild(newRow);
+                } else {
+                    Swal.fire({
+                        title: "Elemento No Encontrado",
+                        icon: "error", 
+                        confirmButtonText: "Aceptar"
+                    })
+                    Consultar();
+                }
+            })
+            .catch(error => {
+                console.error("Error al buscar el usuario por ID:", error);
+                alert("Error al buscar el usuario por ID");
+            });
+        } else {
+            console.error("Debe ingresar un ID de usuario válido");
+        }
+    });
+});
 
 

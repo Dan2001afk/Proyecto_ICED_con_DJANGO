@@ -225,18 +225,19 @@ class BuscarUsuario(View):
     def get(self, request, pk):
         try:
             usuario = Usuarios.objects.get(pk=pk)
-            datos_usuario = {
-                'Usu_Documento': usuario.Usu_Documento,
-                'Usu_Nombre': usuario.Usu_Nombre,
-                'Usu_Apellido': usuario.Usu_Apellido,
-                'Usu_tipo': usuario.Usu_tipo,
-                'Usu_Celular': usuario.Usu_Celular,
-                'Usu_Correo': usuario.Usu_Correo,
-                'Usu_Ficha': usuario.Usu_Ficha
-            }
-            return JsonResponse(datos_usuario)
         except Usuarios.DoesNotExist:
             return JsonResponse({"Error": "El Usuario no existe"})
+        datos_usuario = {
+            'Usu_Documento': usuario.Usu_Documento,
+            'Usu_Nombre': usuario.Usu_Nombre,
+            'Usu_Apellido': usuario.Usu_Apellido,
+            'Usu_tipo': usuario.Usu_tipo,
+            'Usu_Celular': usuario.Usu_Celular,
+            'Usu_Correo': usuario.Usu_Correo,
+            'Usu_Ficha': usuario.Usu_Ficha
+        }
+        return JsonResponse(datos_usuario)
+       
 
 #metodos adicionales
 
@@ -357,12 +358,10 @@ class InsertarSanciones(View):
             return JsonResponse({"Error":"Error en el Documento"})
         datos=json.loads(request.body)
         San_Pres_id = datos.get('San_Pres_id')
-        San_Fecha = datos.get('San_Fecha')
-        San_Hora = datos.get('San_Hora')
         San_tiempo = datos.get('San_tiempo')
         San_Descripcion = datos.get('San_Descripcion')
         print("datos",request.POST)
-        Sanciones.objects.create(San_Pres_id=San_Pres_id,San_Fecha=San_Fecha,San_Hora=San_Hora,San_tiempo=San_tiempo,San_Descripcion=San_Descripcion)
+        Sanciones.objects.create(San_Pres_id=San_Pres_id,San_tiempo=San_tiempo,San_Descripcion=San_Descripcion)
         return JsonResponse({"mensaje":"Datos Guardados"})
         
 def Sancion(request):

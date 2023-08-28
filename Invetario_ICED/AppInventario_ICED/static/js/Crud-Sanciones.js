@@ -35,8 +35,6 @@ function ConsultarSanciones(){
 function Agregar() {
     var Datos={
         San_Pres_id:document.getElementById("San_Pres_id").value,
-        San_Fecha:document.getElementById("San_Fecha").value,
-        San_Hora:document.getElementById("San_Hora").value,
         San_tiempo:document.getElementById("San_tiempo").value,
         San_Descripcion:document.getElementById("San_Descripcion").value
     };
