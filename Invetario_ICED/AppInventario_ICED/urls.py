@@ -34,6 +34,8 @@ urlpatterns=[
     path('ActualizarUsuario/<int:pk>', ActualizarUsuarios.as_view(), name='actualizarUsuario'),
     path('EliminarUsuario/<int:pk>', EliminarUsuario.as_view(), name='eliminarUsuario'),
     path('BuscarUsuario/<int:pk>', views.BuscarUsuario.as_view(), name='buscarUsuario'),  # Nueva ruta
+    path('ContarUsuarios', ContarUsuarios.as_view(), name='cantidad_usuarios'),
+
     
     #CRUD PRESTAMOS
     path('Prestamo',views.Prestamo,name='Prestamo'),

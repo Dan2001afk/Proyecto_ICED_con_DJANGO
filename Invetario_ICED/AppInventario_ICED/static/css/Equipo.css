@@ -191,14 +191,15 @@ main{
 .cabezera{
   background-color: rgb(255, 255, 255);
   grid-column: 1/13;
-  grid-row: 2/4;
+  grid-row: 1/5;
   border-radius: 1%;
+  margin: 10px;
 
 }
 
 .cabezera h1{
   text-align: center;
-  margin-top: 1%;
+  margin-top: 25px;
 }
 
 
@@ -206,8 +207,11 @@ main{
 .contenedor1{
   background-color: rgb(255, 255, 255);
   grid-column: 1/13;
-  grid-row: 4/7;
+  grid-row: 3/6;
   border-radius: 1%;
+  margin: 10px;
+
+  
 
 }
 
@@ -228,8 +232,9 @@ main{
 .contador1{
   background-color: rgb(255, 255, 255);
   grid-column: 1/5;
-  grid-row: 7/12;
+  grid-row: 6/12;
   border-radius: 1%;
+  margin: 10px;
   
   
 }
@@ -241,9 +246,10 @@ main{
   align-items: center;
   background-color: rgb(255, 255, 255);
   grid-column: 5/9;
-  grid-row: 7/12;
+  grid-row: 6/12;
   border-radius: 1%;
   padding: 20px; /* Agregamos un poco de espacio interno */
+  margin: 10px;
 }
 
 
@@ -274,8 +280,9 @@ main{
 .contador3{
   background-color: rgb(255, 255, 255);
   grid-column: 9/13;
-  grid-row: 7/12;
+  grid-row: 6/12;
   border-radius: 1%;
+  margin: 10px;
 }
 
 
@@ -309,7 +316,7 @@ table th {
 
 /* Estilos para los botones de la tabla */
 .btnEliminar {
-  width: 100%;
+  width: 50%;
   background-color: #de3156; /* Color de fondo */
   color: white; /* Color del texto */
   padding: 8px 16px; /* Espaciado interno */
@@ -323,7 +330,7 @@ table th {
 }
 
 .btnActualizar{
-  width: 100%;
+  width: 50%;
   background-color: #5fde31; /* Color de fondo */
   color: white; /* Color del texto */
   padding: 8px 16px; /* Espaciado interno */
@@ -346,14 +353,14 @@ table th {
   border-radius: 4px; /* Bordes redondeados */
   cursor: pointer; /* Cambiar el */
   transition: background-color 0.5s ease; 
-  margin: 10px;
+  margin: 15px;
   
 
 }
 
 /* Estilo para el botón de búsqueda */
 #id_equipoo {
-  width: 10%;
+  width: 15%;
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
@@ -362,16 +369,22 @@ table th {
 
 #BuscarEquipo {
 
-  width: 10%;
+  width: 12%;
   padding: 10px;
   background-color: #f44336;
   color: white;
   border: none;
   border-radius: 3px;
   cursor: pointer;
+  transition: background-color 0.5s ease; 
 }
 
 /*estilos de los botones para que cambien de color*/
+
+.BuscarEquipo:hover {
+  background-color: #e77d26; 
+}
+
 
 .btnEliminar:hover {
   background-color: #e77d26; 
@@ -524,7 +537,11 @@ select{
 }
 
 
-/*estilos de formulario de insertar*/
+
+
+
+
+
 
 
 /*clases para mover el menu para que tenga movimiento */
@@ -584,7 +601,7 @@ select{
   }
 
   .cabezera h1{
-      margin-top: 4%;
+      margin-top: 3%;
   }
 
   .contenedor1{
@@ -622,7 +639,7 @@ select{
   table th,
   table td {
       padding: 8px;
-      font-size: 10px;
+      font-size: 13px;
   }
 
 
@@ -659,30 +676,10 @@ select{
       border-radius: 4%;
   }
 
-
-
-
   
 
   /*estilos de los botones*/
 
-  .btnActualizar{
-      width: 60%;
-      height: 50px;
-      margin-top: 60px;
-      background-color: #61af4c; /* Color de fondo */
-      color: white; /* Color del texto */
-      padding: 8px 16px; /* Espaciado interno */
-      border: none; /* Sin borde */
-      border-radius: 4px; /* Bordes redondeados */
-      cursor: pointer; /* Cambiar el cursor al pasar por encima */
-      transition: background-color 0.5s ease; 
-      margin-left: 20%;
-      margin-top: 3%;
-   
-      
-      
-  }
     
   .btnInsertar{
       
@@ -695,7 +692,7 @@ select{
       cursor: pointer; /* Cambiar el */
       transition: background-color 0.5s ease;
       margin-left: 20%;
-      margin-top: 10%;
+      margin-top: 20%;
     
   }
   

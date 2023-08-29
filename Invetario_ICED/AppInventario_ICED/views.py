@@ -237,7 +237,11 @@ class BuscarUsuario(View):
             'Usu_Ficha': usuario.Usu_Ficha
         }
         return JsonResponse(datos_usuario)
-       
+
+class ContarUsuarios(View):
+    def get(self, request):
+        cantidad_usuarios=Usuarios.objects.count()
+        return JsonResponse({"cantidad_usuarios":cantidad_usuarios})   
 
 #metodos adicionales
 

@@ -189,16 +189,29 @@ document.addEventListener("DOMContentLoaded", () => {
                         <td>${equipo.Equi_serial}</td>
                         <td>${equipo.Equi_estado}</td>
                         <td>${equipo.equi_especialidad}</td>
-                        <td>Acciones</td>
+                        <td>
+                            <div class="btn-container">
+                                <button class="btnEliminar" onclick="eliminarEquipo(${equipo.Equ_id})">Eliminar</button>
+                                <button class="btnActualizar" data-equipo-id="${equipo.Equ_id}">Actualizar</button>
+                            </div>
+                        </td>
                     `;
 
                     tablaBody.appendChild(newRow);
+                    
+                    // Agregar evento de clic al botón de "Actualizar"
+                    const updateButton = newRow.querySelector('.btnActualizar');
+                    updateButton.addEventListener('click', function() {
+                        const equipoId = this.getAttribute('data-equipo-id');
+                        abrirModalActualizar(equipoId);
+                    });
+
                 } else {
                     Swal.fire({
                         title: "Elemento No Encontrado",
                         icon: "error", 
                         confirmButtonText: "Aceptar"
-                    })
+                    });
                     Consultar();
                 }
             })
@@ -211,8 +224,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
-
-
 
 
 //funciones adiccionales

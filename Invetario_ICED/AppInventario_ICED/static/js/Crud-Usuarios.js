@@ -216,7 +216,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         <td>${usuario.Usu_Celular}</td>
                         <td>${usuario.Usu_Correo}</td>
                         <td>${usuario.Usu_Ficha}</td>
-                        <td>Acciones</td>
+                        <td>
+                        </td>
                     `;
 
                     tablaBody.appendChild(newRow);
@@ -237,6 +238,37 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("Debe ingresar un ID de usuario válido");
         }
     });
+});
+
+
+
+//funciones adicionale
+
+function mostrarCantidadUsuarios(){
+    fetch("http://127.0.0.1:8000/ContarUsuarios", {
+        method: "GET",
+        headers: {
+            "consultar-Type": "AppInventario_ICED/json"
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        const cantidad = document.querySelector('.cantidad');
+
+        
+        // Actualizar los contadores con los datos obtenidos
+        cantidad.textContent = `Total de usuarios : ${data.cantidad_usuarios}`;
+
+    })
+    .catch(error => {
+        console.error("Error al obtener la cantidad de usuarios:", error);
+    });
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    mostrarCantidadUsuarios();
 });
 
 
