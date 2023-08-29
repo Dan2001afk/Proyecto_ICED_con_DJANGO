@@ -325,8 +325,6 @@ table th {
   cursor: pointer; /* Cambiar el cursor al pasar por encima */
   transition: background-color 0.5s ease; 
   margin-top: 4px;
-  
-  
 }
 
 .btnActualizar{
@@ -368,7 +366,6 @@ table th {
 }
 
 #BuscarEquipo {
-
   width: 12%;
   padding: 10px;
   background-color: #f44336;
@@ -384,7 +381,6 @@ table th {
 .BuscarEquipo:hover {
   background-color: #e77d26; 
 }
-
 
 .btnEliminar:hover {
   background-color: #e77d26; 

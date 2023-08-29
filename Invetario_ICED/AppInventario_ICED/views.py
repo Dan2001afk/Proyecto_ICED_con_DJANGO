@@ -279,9 +279,8 @@ class InsertarPrestamo(View):
         Pres_Equipos_id = datos.get('Pres_Equipos_id')
         Pres_Usuarios_Documento_id = datos.get('Pres_Usuarios_Documento_id')
         Pres_Tiempo_Limite = datos.get('Pres_Tiempo_Limite')
-        Pres_Observaciones_entrega = datos.get('Pres_Observaciones_entrega')
         print("datos",request.POST)
-        Prestamos.objects.create(Pres_Equipos_id=Pres_Equipos_id,Pres_Usuarios_Documento_id=Pres_Usuarios_Documento_id,Pres_Tiempo_Limite=Pres_Tiempo_Limite,Pres_Observaciones_entrega=Pres_Observaciones_entrega)
+        Prestamos.objects.create(Pres_Equipos_id=Pres_Equipos_id,Pres_Usuarios_Documento_id=Pres_Usuarios_Documento_id,Pres_Tiempo_Limite=Pres_Tiempo_Limite)
         return JsonResponse({"mensaje":"Datos Guardados"})
 
         # return render(request,"formulario.html",{'mensaje':'Datos Guardados'})
@@ -295,7 +294,7 @@ class ActualizarPrestamo(View):
     def dispatch(self, request,*args: Any, **kwargs):
         return super().dispatch(request, *args, **kwargs)
         
-    def put(self, request,pk):
+    def post(self, request,pk):
             
         try:
             registro=Prestamos.objects.get(pk=pk)
@@ -304,14 +303,11 @@ class ActualizarPrestamo(View):
         data=json.loads(request.body)
         registro.Pres_Id=data.get('Pres_Id')
         registro.Pres_Equipos_id=data.get('Pres_Equipos_id')
-        registro.Pres_Usuarios_Documento=data.get('Pres_Usuarios_Documento')
+        registro.Pres_Usuarios_Documento_id=data.get('Pres_Usuarios_Documento_id')
         registro.Pres_Fec_Entrega=data.get('Pres_Fec_Entrega')
-        registro.Pres_Fec_Devolucion=data.get('Pres_Fec_Devolucion')
         registro.Pres_Hora_Entrega=data.get('Pres_Hora_Entrega')
-        registro.Pres_Hora_Devolucion=data.get('Pres_Hora_Devolucion')
         registro.Pres_Tiempo_Limite=data.get('Pres_Tiempo_Limite')
         registro.Pres_Observaciones_entrega=data.get('Pres_Observaciones_entrega')
-        registro.Pres_Observaciones_recibido=data.get('Pres_Observaciones_recibido')
         registro.save()
         return JsonResponse({"Mensaje":"Datos Actualizados"})
     
@@ -328,6 +324,29 @@ class EliminarPrestamo(View):
         registro.delete()
         return JsonResponse({"Mensaje":"Datos Eliminados"})
     
+class BuscarPrestamo(View):
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+    
+    def get(self, request, pk):
+        try:
+            prestamo = Prestamos.objects.get(pk=pk)
+        except Prestamos.DoesNotExist:
+            return JsonResponse({"Error": "El Prestamo no existe"})
+        
+        datos_prestamo = {
+            'Pres_Id': prestamo.Pres_Id,
+            'Pres_Equipos_id': prestamo.Pres_Equipos_id,
+            'Pres_Usuarios_Documento_id': prestamo.Pres_Usuarios_Documento_id,
+            'Pres_Fec_Entrega': prestamo.Pres_Fec_Entrega,
+            'Pres_Hora_Entrega': prestamo.Pres_Hora_Entrega,
+            'Pres_Tiempo_Limite': prestamo.Pres_Tiempo_Limite,
+            'Pres_Observaciones_entrega': prestamo.Pres_Observaciones_entrega
+        }
+        
+        return JsonResponse(datos_prestamo)
+
 
  
 

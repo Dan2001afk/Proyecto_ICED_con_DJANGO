@@ -10,6 +10,7 @@
     <script src="{% static 'js/Crud-Prestamos.js' %}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://kit.fontawesome.com/3d7a846b01.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body id="body" style="max-height: 100vh; overflow-y: scroll;">
     <header>
@@ -78,15 +79,26 @@
 
     <section class="cont">
 
-        <div class="contenedor1">
+        <div class="cabezera">
             <h1>Lista de Prestamos en el centro</h1>
-            <button class="btnInsertar">Insertar Prestamo</button>
-            <button class="btnActualizar">Actualizar Prestamo</button>
-            <label for=""><input type="text" id="id_prestamoo" name="id_prestamoo" placeholder="Buscar Prestamo"></label>
-            <button type="button" id="BuscarPrestamo" class="btn btn-danger w-100 fs-5 mb-3">Buscar</button>
         </div>
+
+        <div class="contenedor1">
+            <button class="btnInsertar">Insertar Prestamo</button>
+            <input type="text" id="id_prestamoo" placeholder="Buscar Prestamo">
+            <button type="button" id="BuscarPrestamo" class="btnBuscar">Buscar</button>
+        </div>
+
+        <div class="contador1"></div>
+        <div class="contador2">
+            <div class="icon-container">
+                <i class="fas fa-laptop"></i>
+                <h1 class="cantidad">Contador</h1>
+            </div>
+        </div>
+        <div class="contador3"></div>
         
-        <div class="contenedor2">    
+        <div class="contenedor3">    
             <div>
                 <table id="tabla1">
                     <thead>
@@ -115,32 +127,32 @@
         <div id="myModal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <!--<h1>Actualizar Prestamo</h1>
-                <form method=""  id="ActualizarEquipos" >
+                <h1>Actualizar Prestamo</h1>
+                <form method=""  id="ActualizarPrestamos" >
                     {% csrf_token %}
         
-                    <input type="text" name="Equ_id" id="Equ_id" placeholder="ID" required><br>
+                    <input type="text" name="Pres_Id" id="Pres_Id" placeholder="ID" required><br>
                     
-                    <input type="text" name="Equi_tipo" id="Equi_tipo" placeholder="Tipo" required><br>
-                    
-                
-                    <input type="text" name="Equi_modelo" id="Equi_modelo" placeholder="Modelo" required><br>
+                    <input type="text" name="Pres_Equipos" id="Pres_Equipos" placeholder="Tipo" required><br>
                     
                 
-                    <input type="text" name="Equi_color" id="Equi_color" placeholder="Color" required><br>
+                    <input type="text" name="Pres_Usuarios_Documento" id="Pres_Usuarios_Documento" placeholder="Modelo" required><br>
                     
                 
-                    <input type="text" name="Equi_serial" id="Equi_serial" placeholder="Serial" required><br>
+                    <input type="text" name="Pres_Fec_Entrega" id="Pres_Fec_Entrega" placeholder="Color" required><br>
                     
                 
-                    <input type="text" name="Equi_estado" id="Equi_estado" placeholder="Estado" required><br>
+                    <input type="text" name="Pres_Hora_Entrega" id="Pres_Hora_Entrega" placeholder="Serial" required><br>
                     
                 
-                    <input type="text" name="equi_especialidad" id="equi_especialidad"  placeholder="Especialidad"><br>
+                    <input type="text" name="Pres_Tiempo_Limite" id="Pres_Tiempo_Limite" placeholder="Estado" required><br>
+                    
+            
+                    <input type="text" name="Pres_Observaciones_entrega" id="Pres_Observaciones_entrega"  placeholder="Especialidad"><br>
                 
-
-                    <button type="submit" value="Guardar" id="Guardar">Enviar</button>
-                </form>-->
+                    <button type="submit" class="ActualizarPrestamo" value="ActualizarPrestamo" id="ActualizarPrestamo">Actualizar</button>
+                
+                </form>
             </div>
         </div>
         <!-- ... -->
@@ -157,8 +169,6 @@
                     <input type="text"  placeholder="DOCUMENTO DEL USUARIO" name="Pres_Usuarios_Documento_id" id="Pres_Usuarios_Documento_id" required><br>
 
                     <input type="text" placeholder="TIEMPO LIMITE" name="Pres_Tiempo_Limite" id="Pres_Tiempo_Limite" required><br>
-
-                    <input type="text" placeholder="OBSERVACION DE ENTREGA" name="Pres_Observaciones_entrega" id="Pres_Observaciones_entrega" required><br>
 
                     <input type="submit" value="Guardar" id="Guardar">
                 </form>

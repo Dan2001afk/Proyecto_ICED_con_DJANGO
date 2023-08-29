@@ -42,6 +42,7 @@ urlpatterns=[
     path('ListarPrestamos',ListadoPrestamos.as_view(),name='Prestamos'),
     path('insertarPrestamo/',InsertarPrestamo.as_view(),name='insertarPrestamo'),
     path('ActualizarPrestamo/<pk>',ActualizarPrestamo.as_view(),name='actualizarPrestamo'),
+    path('BuscarPrestamo/<int:pk>', BuscarPrestamo.as_view(), name='buscar-prestamo'),
     path('EliminarPrestamo/<pk>',EliminarPrestamo.as_view(),name='eliminarPrestamo'),
 
     #CRUD SANCIONES
