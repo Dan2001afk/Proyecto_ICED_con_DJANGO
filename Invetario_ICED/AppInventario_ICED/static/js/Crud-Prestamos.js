@@ -24,11 +24,13 @@ function Listar(){
                 <td>${dat.Pres_Fec_Entrega}</td>
                 <td>${dat.Pres_Hora_Entrega}</td>
                 <td>${dat.Pres_Tiempo_Limite}</td>
-                <td> Buen estado ${dat.Pres_Observaciones_entrega}</td>
+                <td>${dat.Pres_Observaciones_entrega}</td>
+                
                 <td>
                 <div class="btn-container">
                 <button class="btnActualizar" onclick="capturarYActualizarPrestamo(${dat.Pres_Id})">Actualizar</button>
                 <button class="btnEliminar" onclick="eliminarPrestamo(${dat.Pres_Id})">Eliminar</button>
+                </div>
                 </td>
                 </tr>`;
             }
@@ -42,6 +44,7 @@ function Agregar(){
         Pres_Equipos_id:document.getElementById("Pres_Equipos_id").value,
         Pres_Usuarios_Documento_id:document.getElementById("Pres_Usuarios_Documento_id").value,
         Pres_Tiempo_Limite:document.getElementById("Pres_Tiempo_Limite").value,
+        Pres_Observaciones_entrega:document.getElementById("Pres_Observaciones_entrega").value
     };
 
     var jsonData=JSON.stringify(Datos);

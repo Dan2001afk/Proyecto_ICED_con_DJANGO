@@ -279,8 +279,9 @@ class InsertarPrestamo(View):
         Pres_Equipos_id = datos.get('Pres_Equipos_id')
         Pres_Usuarios_Documento_id = datos.get('Pres_Usuarios_Documento_id')
         Pres_Tiempo_Limite = datos.get('Pres_Tiempo_Limite')
+        Pres_Observaciones_entrega = datos.get('Pres_Observaciones_entrega')
         print("datos",request.POST)
-        Prestamos.objects.create(Pres_Equipos_id=Pres_Equipos_id,Pres_Usuarios_Documento_id=Pres_Usuarios_Documento_id,Pres_Tiempo_Limite=Pres_Tiempo_Limite)
+        Prestamos.objects.create(Pres_Equipos_id=Pres_Equipos_id,Pres_Usuarios_Documento_id=Pres_Usuarios_Documento_id,Pres_Tiempo_Limite=Pres_Tiempo_Limite,Pres_Observaciones_entrega=Pres_Observaciones_entrega)
         return JsonResponse({"mensaje":"Datos Guardados"})
 
         # return render(request,"formulario.html",{'mensaje':'Datos Guardados'})
