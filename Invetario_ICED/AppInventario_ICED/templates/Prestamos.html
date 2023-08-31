@@ -124,37 +124,37 @@
             </div>
         </div>
         <!--modal1-->
-        <!--<div id="myModal" class="modal">
+        <div id="myModal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
                 <h1>Actualizar Prestamo</h1>
                 <form method=""  id="ActualizarPrestamos" >
                     {% csrf_token %}
         
-                    <input type="text" name="Pres_Id" id="Pres_Id" placeholder="ID" required><br>
+                    <input type="text" name="Pres_Id" id="Pres_Id_Act" placeholder="ID" required><br>
                     
-                    <input type="text" name="Pres_Equipos" id="Pres_Equipos" placeholder="Tipo" required><br>
-                    
-                
-                    <input type="text" name="Pres_Usuarios_Documento" id="Pres_Usuarios_Documento" placeholder="Modelo" required><br>
+                    <input type="text" name="Pres_Equipos" id="Pres_Equipos_Act" placeholder="Tipo" required><br>
                     
                 
-                    <input type="text" name="Pres_Fec_Entrega" id="Pres_Fec_Entrega" placeholder="Color" required><br>
+                    <input type="text" name="Pres_Usuarios_Documento" id="Pres_Usuarios_Documento_Act" placeholder="Modelo" required><br>
                     
                 
-                    <input type="text" name="Pres_Hora_Entrega" id="Pres_Hora_Entrega" placeholder="Serial" required><br>
+                    <input type="text" name="Pres_Fec_Entrega" id="Pres_Fec_Entrega_Act" placeholder="Color" required><br>
                     
                 
-                    <input type="text" name="Pres_Tiempo_Limite" id="Pres_Tiempo_Limite" placeholder="Estado" required><br>
+                    <input type="text" name="Pres_Hora_Entrega" id="Pres_Hora_Entrega_Act" placeholder="Serial" required><br>
+                    
+                
+                    <input type="text" name="Pres_Tiempo_Limite" id="Pres_Tiempo_Limite_Act" placeholder="Estado" required><br>
                     
             
-                    <input type="text" name="Pres_Observaciones_entrega" id="Pres_Observaciones_entrega"  placeholder="Especialidad"><br>
+                    <input type="text" name="Pres_Observaciones_entrega" id="Pres_Observaciones_entrega_Act"  placeholder="Especialidad"><br>
                 
                     <button type="submit" class="ActualizarPrestamo" value="ActualizarPrestamo" id="ActualizarPrestamo">Actualizar</button>
                 
                 </form>
             </div>
-        </div> -->
+        </div>
         
         <!-- ... -->
         <!--modal2-->
@@ -171,8 +171,6 @@
 
                     <input type="text" placeholder="TIEMPO LIMITE" name="Pres_Tiempo_Limite" id="Pres_Tiempo_Limite" required><br>
 
-                    <input type="text" placeholder="OBSERVACION DE ENTREGA" name="Pres_Observaciones_entrega" id="Pres_Observaciones_entrega" required><br>
-                    
                     <input type="submit" value="Guardar" id="Guardar">
                 </form>
             </div>
