@@ -9,7 +9,7 @@
 
 body{
 
-  background-image: linear-gradient(to left,  #301f4f, #8acbff);
+  background-image: linear-gradient(to left,  #8acbff,#301f4f);
   margin-top: 80px;
   margin-left: 80px;
   transition: margin-left 300ms  cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -19,7 +19,7 @@ body{
 header{
   width: 100%;
   height: 80px;
-  background: #0c0c0c;
+  background: #241f2e;
   display: flex;
   align-items: center;
   position: fixed;
@@ -191,14 +191,16 @@ main{
 .cabezera{
   background-color: rgb(255, 255, 255);
   grid-column: 1/13;
-  grid-row: 2/4;
-  border-radius: 1%;
+  grid-row: 1/5;
+  border-radius: 3%;
+  margin: 10px;
+  margin-top: 30px;
 
 }
 
 .cabezera h1{
   text-align: center;
-  margin-top: 1%;
+  margin-top: 25px;
 }
 
 
@@ -206,8 +208,11 @@ main{
 .contenedor1{
   background-color: rgb(255, 255, 255);
   grid-column: 1/13;
-  grid-row: 4/7;
-  border-radius: 1%;
+  grid-row: 3/6;
+  border-radius: 3%;
+  margin: 10px;
+
+  
 
 }
 
@@ -228,8 +233,9 @@ main{
 .contador1{
   background-color: rgb(255, 255, 255);
   grid-column: 1/5;
-  grid-row: 7/12;
-  border-radius: 1%;
+  grid-row: 6/12;
+  border-radius: 8%;
+  
   
   
 }
@@ -241,9 +247,10 @@ main{
   align-items: center;
   background-color: rgb(255, 255, 255);
   grid-column: 5/9;
-  grid-row: 7/12;
-  border-radius: 1%;
+  grid-row: 6/12;
+  border-radius: 8%;
   padding: 20px; /* Agregamos un poco de espacio interno */
+
 }
 
 
@@ -274,8 +281,9 @@ main{
 .contador3{
   background-color: rgb(255, 255, 255);
   grid-column: 9/13;
-  grid-row: 7/12;
-  border-radius: 1%;
+  grid-row: 6/12;
+  border-radius: 8%;
+
 }
 
 
@@ -299,6 +307,17 @@ table th {
   background-color: #f2f2f2;
 }
 
+.btn-container {
+  display: flex; /* Mostrar los botones en línea uno al lado del otro */
+  gap: 10px; /* Espacio entre los botones */
+}
+
+.btn-container {
+  display: flex; /* Mostrar los botones en línea uno al lado del otro */
+  gap: 10px; /* Espacio entre los botones */
+}
+
+
 
 
 /* Estilos para los botones de la tabla */
@@ -317,16 +336,15 @@ table th {
 }
 
 .btnActualizar{
-  width: 15%;
-  height: 40px;
-  background-color: #61af4c; /* Color de fondo */
+  width: 100%;
+  background-color: #34de31; /* Color de fondo */
   color: white; /* Color del texto */
   padding: 8px 16px; /* Espaciado interno */
   border: none; /* Sin borde */
-  border-radius: 4 px; /* Bordes redondeados */
+  border-radius: 4px; /* Bordes redondeados */
   cursor: pointer; /* Cambiar el cursor al pasar por encima */
   transition: background-color 0.5s ease; 
-  margin: 10px;
+  margin-top: 4px;
   
    
 }
@@ -348,7 +366,7 @@ table th {
 
 /* Estilo para el botón de búsqueda */
 #id_usuarioo {
-  width: 10%;
+  width: 15%;
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
@@ -437,27 +455,30 @@ table th {
 }
 
 
+
+
 /*estilos del formulario de actualizar*/
 
-#Equ_id_Act,
-#Equi_tipo_Act,
-#Equi_modelo_Act,
-#Equi_color_Act,
-#Equi_serial_Act,
-#Equi_estado_Act,
-#equi_especialidad_Act
+#Usu_DocumentoActualizar,
+#Usu_NombreActualizar,
+#Usu_ApellidoActualizar,
+#Usu_tipoActualizar,
+#Usu_CelularActualizar,
+#Usu_CorreoActualizar,
+#Usu_FichaActualizar
 {
 
-  margin-top: 1%;
+
   border: 1px solid #ccc;
   border-radius: 15px;
-  padding: 20px;
+  padding: 5px;
   width: 250px;
-  height: 30px;
-  margin-bottom: 15px;
+  height: 45px;
+  margin-bottom: 5px;
+
 }
 
-#ActualizarEquipo {
+#ActualizarUsuario {
   border: none;
   background-color: #b491ce;
   border-radius: 15px;
@@ -470,38 +491,29 @@ table th {
 }
 
 
-#ActualizarEquipo:hover {
+#ActualizarUsuario:hover {
   background-color:  #8acbff; /* Cambio de color al pasar el mouse por encima */
 }
 
 
-select{
-  
-  width: 250px;
-  height: 40px;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  background-color: white;
-  font-size: 16px;
-}
 
+
+/*estilos de formulario de insertar */
 
 #Usu_Documento,
 #Usu_Nombre,
 #Usu_Apellido,
+#Usu_tipo,
 #Usu_Celular,
 #Usu_Correo,
 #Usu_Ficha
 {
 
-  margin-top: 1%;
   border: 1px solid #ccc;
   border-radius: 15px;
-  padding: 20px;
+  padding: 5px;
   width: 250px;
-  height: 30px;
+  height: 45px;
   margin-bottom: 15px;
 }
 
@@ -521,6 +533,20 @@ select{
   cursor: pointer;
   transition: background-color 0.3s ease; 
 }
+
+
+select{
+  
+  width: 250px;
+  height: 40px;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  background-color: white;
+  font-size: 16px;
+}
+
 
 
 /*estilos de formulario de insertar*/
@@ -694,7 +720,7 @@ select{
       cursor: pointer; /* Cambiar el */
       transition: background-color 0.5s ease;
       margin-left: 20%;
-      margin-top: 10%;
+      margin-top: 20%;
     
   }
   
@@ -803,4 +829,3 @@ select{
 
 
 }
-

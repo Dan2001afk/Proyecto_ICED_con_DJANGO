@@ -265,26 +265,41 @@ class ListadoPrestamos(ListView):
         # DatosEquipos=list(Datos)
         return JsonResponse(Datos_Prestamos,safe=False)    
     
-class InsertarPrestamo(View):
+class InsertarPrestamos(View):
     @method_decorator(csrf_exempt)
-    def dispatch(self, request,*args: Any, **kwargs):
+    def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
-    
-    def post(self,request):
+
+    def post(self, request):
         try:
-            datos=json.loads(request.body)
-        except(json.JSONDecodeError,UnicodeDecodeError):
-            return JsonResponse({"Error":"Error en el Documento"})
-        datos=json.loads(request.body)
+            datos = json.loads(request.body)
+        except (json.JSONDecodeError, UnicodeDecodeError):
+            return JsonResponse({"Error": "Error en el Documento"})
+
         Pres_Equipos_id = datos.get('Pres_Equipos_id')
         Pres_Usuarios_Documento_id = datos.get('Pres_Usuarios_Documento_id')
         Pres_Tiempo_Limite = datos.get('Pres_Tiempo_Limite')
-        print("datos",request.POST)
-        Prestamos.objects.create(Pres_Equipos_id=Pres_Equipos_id,Pres_Usuarios_Documento_id=Pres_Usuarios_Documento_id,Pres_Tiempo_Limite=Pres_Tiempo_Limite)
-        return JsonResponse({"mensaje":"Datos Guardados"})
+        Pres_Observaciones_entrega = datos.get('Pres_Observaciones_entrega')
 
-        # return render(request,"formulario.html",{'mensaje':'Datos Guardados'})
+        #validacion extra si existe algun equipo o usuario que ya tenga un prestamo
+        if Prestamos.objects.filter(Pres_Equipos_id=Pres_Equipos_id).exists():
+            return JsonResponse({"Error": "El equipo ya está en préstamo"})
         
+        if Prestamos.objects.filter(Pres_Usuarios_Documento_id=Pres_Usuarios_Documento_id).exists():
+            return JsonResponse({"Error": "El usuario ya tiene un préstamo activo"})
+
+        equipo = get_object_or_404(Equipos, pk=Pres_Equipos_id)
+        usuario = get_object_or_404(Usuarios, Usu_Documento=Pres_Usuarios_Documento_id)
+
+        Prestamos.objects.create(
+            Pres_Equipos=equipo,
+            Pres_Usuarios_Documento=usuario,
+            Pres_Tiempo_Limite=Pres_Tiempo_Limite,
+            Pres_Observaciones_entrega=Pres_Observaciones_entrega
+        )
+
+        return JsonResponse({"mensaje": "Préstamo registrado"})    
+
 def Prestamo(request):
     return render(request,"Prestamos.html")
 
@@ -347,8 +362,32 @@ class BuscarPrestamo(View):
         
         return JsonResponse(datos_prestamo)
 
+class VerificarPrestamo(View):
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
 
- 
+    def post(self, request):
+        try:
+            datos = json.loads(request.body)
+        except (json.JSONDecodeError, UnicodeDecodeError):
+            return JsonResponse({"Error": "Error en el Documento"})
+
+        Pres_Equipos_id = datos.get('Pres_Equipos_id')
+        Pres_Usuarios_Documento_id = datos.get('Pres_Usuarios_Documento_id')
+
+        response_data = {}  # Respuesta que enviarás al cliente
+
+        # Validación para verificar si el equipo ya está en préstamo
+        if Prestamos.objects.filter(Pres_Equipos_id=Pres_Equipos_id).exists():
+            response_data["error"] = "El equipo ya está en préstamo"
+
+        # Validación para verificar si el usuario ya tiene un préstamo activo
+        if Prestamos.objects.filter(Pres_Usuarios_Documento_id=Pres_Usuarios_Documento_id).exists():
+            response_data["error"] = "El usuario ya tiene un préstamo activo"
+
+        return JsonResponse(response_data)
+
 
 
 #SANCIONES

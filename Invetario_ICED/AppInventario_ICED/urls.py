@@ -40,10 +40,11 @@ urlpatterns=[
     #CRUD PRESTAMOS
     path('Prestamo',views.Prestamo,name='Prestamo'),
     path('ListarPrestamos',ListadoPrestamos.as_view(),name='Prestamos'),
-    path('insertarPrestamo/',InsertarPrestamo.as_view(),name='insertarPrestamo'),
+    path('insertarPrestamo/',InsertarPrestamos.as_view(),name='insertarPrestamo'),
     path('ActualizarPrestamo/<pk>',ActualizarPrestamo.as_view(),name='actualizarPrestamo'),
     path('BuscarPrestamo/<int:pk>', BuscarPrestamo.as_view(), name='buscar-prestamo'),
     path('EliminarPrestamo/<pk>',EliminarPrestamo.as_view(),name='eliminarPrestamo'),
+    path('verificarPrestamo/', VerificarPrestamo.as_view(), name='verificar-prestamo'),
 
     #CRUD SANCIONES
     path('Sancion',views.Sancion,name='Sancion'),

@@ -39,42 +39,77 @@ function Listar(){
 }
 
 //Agregar un Prestamo
-function Agregar(){
-    var Datos={
-        Pres_Equipos_id:document.getElementById("Pres_Equipos_id").value,
-        Pres_Usuarios_Documento_id:document.getElementById("Pres_Usuarios_Documento_id").value,
-        Pres_Tiempo_Limite:document.getElementById("Pres_Tiempo_Limite").value
-        
+function Agregar() {
+    var Datos = {
+        Pres_Equipos_id: document.getElementById("Pres_Equipos_id").value,
+        Pres_Usuarios_Documento_id: document.getElementById("Pres_Usuarios_Documento_id").value,
+        Pres_Tiempo_Limite: document.getElementById("Pres_Tiempo_Limite").value,
+        Pres_Observaciones_entrega: document.getElementById("Pres_Observaciones_entrega").value
     };
 
-    var jsonData=JSON.stringify(Datos);
-    console.log(jsonData)
+    var jsonData = JSON.stringify(Datos);
 
-    fetch("http://127.0.0.1:8000/insertarPrestamo/",{
-        method:"POST",
+    // Primero, realiza una solicitud para verificar la existencia de préstamos
+    fetch("http://127.0.0.1:8000/verificarPrestamo/", {
+        method: "POST",
         body: jsonData,
-        headers:{
-            "Content-Type":"AppInventario_ICED/json"
+        headers: {
+            "Content-Type": "application/json"
         }
-    
     })
-    .then(response => response.json())
+    .then(response => {
+        if (response.status === 200) {
+            return response.json();
+        } else {
+            throw new Error('Error en la solicitud.');
+        }
+    })
     .then(data => {
+        // Si no hay errores, puedes proceder a crear el préstamo
         console.log(data);
-        Listar();
-        alert("Datos enviados exitosamente.");
+        if (data.error) {
+            alert(data.error); // Muestra el mensaje de error recibido del servidor
+        } else {
+            // Si no hay error de préstamo existente, crea el préstamo
+            fetch("http://127.0.0.1:8000/insertarPrestamo/", {
+                method: "POST",
+                body: jsonData,
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(response => {
+                if (response.status === 200) {
+                    return response.json();
+                } else {
+                    throw new Error('Error en la solicitud.');
+                }
+            })
+            .then(data => {
+                console.log(data);
+                Listar();
+                alert("Datos enviados exitosamente.");
+            })
+            .catch(error => {
+                console.error(error);
+                alert("Error al enviar los datos: " + error.message);
+            });
+        }
     })
     .catch(error => {
         console.error(error);
-        alert("Error al enviar los datos.");
+        alert("Error al verificar el préstamo: " + error.message);
     });
 }
-document.addEventListener("DOMContentLoaded",function(){
-    document.getElementById("FormPrestamos").addEventListener("submit",function(event) {
+
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("FormPrestamos").addEventListener("submit", function (event) {
         event.preventDefault();
         Agregar();
     });
 });
+
+
 
 //Eliminar Prestamo
 function eliminarPrestamo(prestamoId) {

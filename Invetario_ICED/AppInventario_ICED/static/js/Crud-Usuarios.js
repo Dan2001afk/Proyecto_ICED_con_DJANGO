@@ -25,8 +25,23 @@ function Consultar(){
                 <td>${dat.Usu_Celular}</td>
                 <td>${dat.Usu_Correo}</td>
                 <td>${dat.Usu_Ficha}</td>
-                <td><button class="btnEliminar" onclick="eliminarUsuario(${dat.Usu_Documento})">Eliminar</button></td>
+                <td>
+                <div class="btn-container">
+                <button class="btnEliminar" onclick="eliminarUsuario(${dat.Usu_Documento})">Eliminar</button>
+                <button class="btnActualizar" onclick="capturarYActualizarUsuario(${dat.Usu_Documento})">Actualizar</button>
+                </div>
+                </td>
                 </tr>`;
+
+                 const updateButtons = document.querySelectorAll('.btnActualizar');
+                
+                // Agrega un evento de clic a cada botón de "Actualizar"
+                updateButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const usuarioId = button.getAttribute('data-usuario-id');
+                        abrirModalActualizar(usuarioId);
+                    });
+                });
             }
         }
     });
@@ -58,6 +73,7 @@ function Agregar() {
         .then(data => {
             console.log(data);
             Consultar();
+            mostrarCantidadUsuarios();
 
             // SweetAlert para éxito
             Swal.fire({
@@ -119,6 +135,7 @@ function eliminarUsuario(Usu_Documento) {
                 });
 
                 Consultar();
+                mostrarCantidadUsuarios();
             })
             .catch(error => {
                 console.error("Error al eliminar el Usuario:", error);
@@ -177,7 +194,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 //Buscar usuario
-
 document.addEventListener("DOMContentLoaded", () => {
     const buscarBtn = document.getElementById("BuscarUsuario");
     buscarBtn.addEventListener("click", () => {
@@ -243,7 +259,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 //funciones adicionale
-
 function mostrarCantidadUsuarios(){
     fetch("http://127.0.0.1:8000/ContarUsuarios", {
         method: "GET",
@@ -266,9 +281,64 @@ function mostrarCantidadUsuarios(){
     });
 }
 
-
 document.addEventListener("DOMContentLoaded", function () {
     mostrarCantidadUsuarios();
 });
 
+
+//funcion para que el boton pueda abrir el modal desde JS
+function abrirModalActualizar() {
+    const updateModal = document.getElementById('myModal');
+    updateModal.style.display = 'block'; // Muestra el modal de actualización
+    
+    const closeUpdateModalBtn = updateModal.querySelector('.close');
+    closeUpdateModalBtn.addEventListener('click', function() {
+        updateModal.style.display = 'none'; // Cierra el modal de actualización
+    });
+
+    closeUpdateModalBtn.addEventListener('mouseenter', function() {
+        closeUpdateModalBtn.style.color = 'red'; // Cambia el color al pasar cerca del cursor
+    });
+
+    closeUpdateModalBtn.addEventListener('mouseleave', function() {
+        closeUpdateModalBtn.style.color = '#aaa'; // Restaura el color original
+    });
+
+    // Aquí puedes realizar acciones adicionales según tus necesidades, como cargar los datos del equipo en el modal.
+}
+
+
+
+//funcion para actualizar
+
+
+//funcion actualizar que atrapa datos del registro
+function capturarYActualizarUsuario(usuarioId) {
+    fetch(`http://127.0.0.1:8000/BuscarUsuario/${usuarioId}`, {
+        method: "GET",
+        headers: {
+            "consultar-Type": "AppInventario_ICED/json"
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Populate the form fields with the retrieved data
+        document.getElementById('Usu_DocumentoActualizar').value =data.Usu_Documento;
+        document.getElementById('Usu_NombreActualizar').value = data.Usu_Nombre;
+        document.getElementById('Usu_ApellidoActualizar').value = data.Usu_Apellido;
+        document.getElementById('Usu_tipoActualizar').value = data.Usu_tipo;
+        document.getElementById('Usu_CelularActualizar').value =data.Usu_Celular;
+        document.getElementById('Usu_CorreoActualizar').value = data.Usu_Correo;
+        document.getElementById('Usu_FichaActualizar').value = data.Usu_Ficha;
+
+        // Show the update form
+        document.getElementById('ActualizarUsuarioss').style.display = 'block';
+        
+        // Update the form submission event listener
+        document.getElementById("ActualizarUsuarios").addEventListener("submit", function (event) {
+            event.preventDefault();
+        
+        });
+    });
+}
 

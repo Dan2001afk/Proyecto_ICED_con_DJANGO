@@ -276,7 +276,7 @@ function abrirModalActualizar() {
 }
 
 
-//Funcion de actualizar que atrapa los datos y los muesta en el formulario
+//funcion actualizar que atrapa datos del registro
 function capturarYActualizarEquipo(equipoId) {
     fetch(`http://127.0.0.1:8000/BuscarEquipo/${equipoId}`, {
         method: "GET",
