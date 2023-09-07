@@ -44,7 +44,6 @@ function Agregar() {
         Pres_Equipos_id: document.getElementById("Pres_Equipos_id").value,
         Pres_Usuarios_Documento_id: document.getElementById("Pres_Usuarios_Documento_id").value,
         Pres_Tiempo_Limite: document.getElementById("Pres_Tiempo_Limite").value,
-        Pres_Observaciones_entrega: document.getElementById("Pres_Observaciones_entrega").value
     };
 
     var jsonData = JSON.stringify(Datos);

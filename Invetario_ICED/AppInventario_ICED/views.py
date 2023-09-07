@@ -1,6 +1,6 @@
 from typing import Any
 from django import http
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from AppInventario_ICED.models import *
 from django.views.generic import *
 from django.http import JsonResponse
@@ -279,7 +279,6 @@ class InsertarPrestamos(View):
         Pres_Equipos_id = datos.get('Pres_Equipos_id')
         Pres_Usuarios_Documento_id = datos.get('Pres_Usuarios_Documento_id')
         Pres_Tiempo_Limite = datos.get('Pres_Tiempo_Limite')
-        Pres_Observaciones_entrega = datos.get('Pres_Observaciones_entrega')
 
         #validacion extra si existe algun equipo o usuario que ya tenga un prestamo
         if Prestamos.objects.filter(Pres_Equipos_id=Pres_Equipos_id).exists():
@@ -295,7 +294,6 @@ class InsertarPrestamos(View):
             Pres_Equipos=equipo,
             Pres_Usuarios_Documento=usuario,
             Pres_Tiempo_Limite=Pres_Tiempo_Limite,
-            Pres_Observaciones_entrega=Pres_Observaciones_entrega
         )
 
         return JsonResponse({"mensaje": "Préstamo registrado"})    
