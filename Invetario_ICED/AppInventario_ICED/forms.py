@@ -37,7 +37,7 @@ class UserForm(UserCreationForm):
             'type':'text',
             'class':'form-input',
             'placeholder':'Correo',
-            'maxlength':'20',
+            'maxlength':'50',
             'minlength':'1'
         })
 
@@ -94,5 +94,31 @@ class UserForm(UserCreationForm):
         fields = ['Documento','username','email','password1','password2','rol','imagen',]
 
 class LoginForm(AuthenticationForm):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs.update({
+            'required':'',
+             'name':'user',
+             'id':'user',
+             'type':'text',
+             'class':'form-input',
+             'placeholder':'Usuario',
+             'maxlength':'20',
+             'minlength':'1'
+    })
+        
+
+        self.fields['password'].widget.attrs.update({
+            'required':'',
+             'name':'pass',
+             'id':'pass',
+             'type':'text',
+             'class':'form-input',
+             'placeholder':'Contraseña',
+             'maxlength':'20',
+             'minlength':'1'
+    })
+
     class Meta:
         fields = ['username' , 'password']

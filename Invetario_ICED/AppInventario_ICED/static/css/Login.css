@@ -13,7 +13,6 @@ body{
     overflow-x: hidden;
 }
 
-
 body::after,
 body::before{
     content: '';
@@ -34,17 +33,6 @@ body::before{
     transform: translate(-50%);
 }
 
-body::before{
-    background-color: #b1a8f5;
-    right: 0;
-    top: 0;
-    transform: translate(-50%);
-
-}
-
-
-/*estilos del formulario*/
-
 
 .form-main{
     min-height: 100vh;
@@ -62,7 +50,6 @@ body::before{
     
 }
 
-/*estilos de los ciruclos */
 .form-content .circle-3,
 .form-content .circle-2,
 .form-content .circle-1{
@@ -73,8 +60,6 @@ body::before{
     filter: blur(3px); /* Puedes ajustar el valor (5px) según tu preferencia */
     
 }
-
-/*estilos individuales*/
 
 .form-content .circle-1{
     height:  120px;
@@ -102,16 +87,11 @@ body::before{
     transform:  translate(-560%, 90%);
 }
 
-
-
-
-
-
 .form-content .box{
     background-color: #0b03209f;
     border-color: #b1a8f5c2;
     border: 1px solid rgb(236, 227, 227);
-    padding:  40px 50px;
+    padding:  25px 50px;
     border-radius: 20px;
 }
 
@@ -121,6 +101,7 @@ body::before{
     line-height: 1.2;
     color: white;
     font-weight: 500;
+    margin-top: 20px;
 }
 
 .form-content form{
@@ -147,21 +128,50 @@ a{
     font-size: 16px;
 }
 
-/*quitar focus del contenedor al momento de seleccionar*/
+#user{
+    display:  block;
+    height: 45px;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    color: white;
+    font-size: 16px;
+    margin-bottom: 15px;
+
+}
+#pass{
+    display:  block;
+    height: 45px;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    color: white;
+    font-size: 16px;
+}
+
+
+
+[type=submit]{
+ margin-left: 10px;
+ margin-top: 50px;
+}
 
 .form-content .input_controlador:focus{
     outline: none;
 }
 
 .form-content .input-link{
-    margin-top: 10px;
+    margin-top: 15px;
     text-align: right;
+    margin-right: 100px;
 }
 
 .form-content .btn{
-    margin-top: 30px;
+    margin-top: 25px;
     height: 45px;
-    width: 100%;
+    width: 95%;
     font-size: 16px;
     font-weight: 500;
     text-transform: capitalize;
@@ -177,4 +187,3 @@ a{
 .form-content p{
     text-align: center;
 }
-

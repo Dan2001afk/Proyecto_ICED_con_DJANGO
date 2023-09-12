@@ -237,28 +237,6 @@ legend{
 
 
 
-/* Estilos para el campo de archivo */
-.input_controlador input[type="file"] {
-    display: none; /* Ocultar el campo de archivo real */
-}
 
-.input_controlador label {
-    background-color: #4fa8f1; /* Color de fondo del botón de selección de archivo */
-    color: white;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    display: inline-block;
-}
 
-.input_controlador label:hover {
-    background-color: #357ABD; /* Cambiar el color de fondo al pasar el mouse */
-}
-
-/* Estilos para mostrar el nombre del archivo seleccionado */
-.input_controlador .file-name {
-    margin-top: 10px;
-    font-size: 14px;
-    color: #333;
-}
-
+ 

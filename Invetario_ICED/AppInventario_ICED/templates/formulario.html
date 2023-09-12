@@ -42,19 +42,12 @@
                         {{ form.rol }}
                     </div>
                     <div class="input_controlador">
-                        {{ form.imagen.label_tag }}
+                        <!--{{ form.imagen.label_tag }}-->
                         {{ form.imagen }}
                     </div>
                     <!-- Agrega clases y estilos a los campos según sea necesario -->
                     <button type="submit" class="btn">Registrar</button>
                 </div>
-                <script>
-                    document.querySelector('.input_controlador .file-input').addEventListener('change', function () {
-                        const fileName = this.files[0].name;
-                        document.querySelector('.file-name').textContent = fileName;
-                    });
-                </script>
-                
             </form>
             <p>ya tiene cuenta? <a href="Login.html">Iniciar Sesion</a></p>
         </div>
