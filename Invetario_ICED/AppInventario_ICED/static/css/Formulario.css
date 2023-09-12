@@ -41,10 +41,6 @@ body::before{
     transform: translate(-50%);
 
 }
-#doc{
-    background-color: blue;
-    font-size: 100px;
-}
 
 
 /*estilos del formulario*/
@@ -86,6 +82,9 @@ body::before{
     left: 0;
     top: 10%;
     transform:  translate(-50%);
+    left: -20%;
+    top: 10%;
+    transform: translate(-50%);
 }
 
 
@@ -105,10 +104,6 @@ body::before{
     bottom: 0%;
     transform:  translate(-560%, 90%);
 }
-
-
-
-
 
 
 .form-content .box{
@@ -180,5 +175,90 @@ a{
 
 .form-content p{
     text-align: center;
+}
+
+
+
+/*estilo para los tipos de campos del formulario*/
+
+
+/*Titulo*/
+
+legend{
+    text-align: center;
+    color: rgb(251, 251, 251);
+    font-size: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 30px;
+
+}
+
+/*Text*/
+
+[type="text"]{
+    display:  block;
+    height: 45px;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    color: white;
+    font-size: 16px;
+    /*border-bottom: 1px solid rgb(1, 1, 30);*/
+ }
+
+ /*Email*/
+
+ [type="Email"]{
+    display:  block;
+    height: 45px;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    color: white;
+    font-size: 16px;
+    /*border-bottom: 1px solid rgb(1, 1, 30);*/
+ }
+
+ /*password*/
+ [type="password"]{
+    display:  block;
+    height: 45px;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    color: white;
+    font-size: 16px;
+    /*border-bottom: 1px solid rgb(1, 1, 30);*/
+ }
+
+
+
+
+/* Estilos para el campo de archivo */
+.input_controlador input[type="file"] {
+    display: none; /* Ocultar el campo de archivo real */
+}
+
+.input_controlador label {
+    background-color: #4fa8f1; /* Color de fondo del botón de selección de archivo */
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.input_controlador label:hover {
+    background-color: #357ABD; /* Cambiar el color de fondo al pasar el mouse */
+}
+
+/* Estilos para mostrar el nombre del archivo seleccionado */
+.input_controlador .file-name {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
 }
 

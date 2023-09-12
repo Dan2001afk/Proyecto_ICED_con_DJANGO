@@ -8,22 +8,60 @@
     <link rel="stylesheet" href="{% static 'css/Formulario.css' %}">
 </head>
 <body>
-
-    <h1>Registro de Usuario</h1>
-
-    <form action="/registro/" method="post" enctype="multipart/form-data" >
-
-        <legend>registro datos usuario</legend>
-        {% csrf_token %}
-        {{ form.as_div }}
-        <!-- Mostrar campos de imagen y documento -->
-       
     
-        <!-- Resto del formulario generado automáticamente -->
-       
-    
-        <button type="submit">Registrar</button>
-    </form>
+    <div class="form-main">
+        <div class="form-content">
+            <div class="box">
+            <h3>Registro Usuario</h3>
+            <form action="/registro/" method="post" enctype="multipart/form-data">
+                <legend>Diligencia el formulario para Continuar</legend>
+                {% csrf_token %}
+                <div class="form-content">
+                    <div class="input_controlador">
+                        <!--{{ form.Documento.label_tag }}-->
+                        {{ form.Documento }}
+                    </div>
+                    <div class="input_controlador">
+                        <!-- {{ form.username.label_tag }}-->
+                        {{ form.username }}
+                    </div>
+                    <div class="input_controlador">
+                        <!--{{ form.email.label_tag }}-->
+                        {{ form.email }}
+                    </div>
+                    <div class="input_controlador">
+                        <!--{{ form.password1.label_tag }}-->
+                        {{ form.password1 }}
+                    </div>
+                    <div class="input_controlador">
+                        <!--{{ form.password2.label_tag }}-->
+                        {{ form.password2 }}
+                    </div>
+                    <div class="input_controlador">
+                        <!--{{ form.rol.label_tag }}-->
+                        {{ form.rol }}
+                    </div>
+                    <div class="input_controlador">
+                        {{ form.imagen.label_tag }}
+                        {{ form.imagen }}
+                    </div>
+                    <!-- Agrega clases y estilos a los campos según sea necesario -->
+                    <button type="submit" class="btn">Registrar</button>
+                </div>
+                <script>
+                    document.querySelector('.input_controlador .file-input').addEventListener('change', function () {
+                        const fileName = this.files[0].name;
+                        document.querySelector('.file-name').textContent = fileName;
+                    });
+                </script>
+                
+            </form>
+            <p>ya tiene cuenta? <a href="Login.html">Iniciar Sesion</a></p>
+        </div>
+    </div>
+</div>
+
+
 
 
     
