@@ -138,24 +138,16 @@
                 <h1>ACTUALIZAR EQUIPO</h1>
                 <form method="" id="ActualizarEquipos">
                     {% csrf_token %}
-
-                    <input type="number" id="Equ_id_Act" name="Equ_id_Act" placeholder="ID" required><br>
-                    
+                    <input type="number" id="Equ_id_Act"><br>
                     <input type="text" name="Equi_tipo_Act" id="Equi_tipo_Act" placeholder="Tipo" required><br>
-                    
                     <input type="text" name="Equi_modelo_Act" id="Equi_modelo_Act" placeholder="Modelo" required><br>
-                    
                     <input type="text" name="Equi_color_Act" id="Equi_color_Act" placeholder="Color" required><br>
-                    
                     <input type="text" name="Equi_serial_Act" id="Equi_serial_Act" placeholder="Serial" required><br>
-                    
                     <input type="text" name="Equi_estado_Act" id="Equi_estado_Act" placeholder="Estado" required><br>
-                    
-                    <input type="text" name="equi_especialidad_Act" id="equi_especialidad_Act"  placeholder="Especialidad"><br>
-                    
+                    <input type="text" name="equi_especialidad_Act" id="equi_especialidad_Act" placeholder="Especialidad"><br>
                     <button type="submit" id="ActualizarEquipo" class="ActualizarEquipo" value="ActualizarEquipo">Actualizar Equipo</button>
-                
                 </form>
+                
             </div>
         </div>
         <!-- ... -->
@@ -190,7 +182,13 @@
                 
                     
                    <div>
-                    <input type="text" name="Equi_color" id="Equi_color" placeholder="Color" required><br>
+                    <select id="Equi_color" >
+                    <option value="" selected>Color</option>
+                    <option value="Gris">Gris</option>
+                    <option value="Negro">Negro</option>
+                    <option value="Otro">Otro</option>
+                    </select>
+                 
                    </div>
                     
                     <div>

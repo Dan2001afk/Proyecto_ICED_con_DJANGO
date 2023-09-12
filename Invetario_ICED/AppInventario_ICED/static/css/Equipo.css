@@ -1,5 +1,4 @@
 
-
 *{
   margin: 0;
   padding: 0;
@@ -464,14 +463,8 @@ table th {
 #equi_especialidad_Act
 {
 
-  margin-top: 1%;
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  padding: 20px;
-  width: 250px;
-  height: 30px;
-  margin-bottom: 15px;
 }
+
 
 #ActualizarEquipo {
   border: none;
@@ -503,14 +496,7 @@ table th {
 #Usu_Correo
 {
 
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-bottom: 15px;
-  outline: none;
-  width: 250px;
-  height: 40px;
-  margin-bottom: 15px;
+ 
 }
 
 #Guardar:hover{
@@ -534,14 +520,7 @@ table th {
 
 select{
   
-  width: 250px;
-  height: 40px;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  background-color: white;
-  font-size: 16px;
+  
 }
 
 
@@ -549,13 +528,7 @@ select{
 #Equi_serial
 {
 
-  margin-top: 1%;
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  padding: 20px;
-  width: 250px;
-  height: 30px;
-  margin-bottom: 15px;
+ 
 }
 
 #Guardar:hover{

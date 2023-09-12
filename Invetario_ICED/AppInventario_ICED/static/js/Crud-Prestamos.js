@@ -24,12 +24,13 @@ function Listar(){
                 <td>${dat.Pres_Fec_Entrega}</td>
                 <td>${dat.Pres_Hora_Entrega}</td>
                 <td>${dat.Pres_Tiempo_Limite}</td>
-                <td> Buen Estado ${dat.Pres_Observaciones_entrega}</td>
+                <td>${dat.Pres_Observaciones_entrega}</td>
                 
                 <td>
                 <div class="btn-container">
                 <button class="btnActualizar" onclick="capturarYActualizarPrestamo(${dat.Pres_Id})">Actualizar</button>
                 <button class="btnEliminar" onclick="eliminarPrestamo(${dat.Pres_Id})">Eliminar</button>
+
                 </div>
                 </td>
                 </tr>`;
@@ -108,42 +109,55 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-
-
-//Eliminar Prestamo
-function eliminarPrestamo(prestamoId) {
-    const url = `http://127.0.0.1:8000/EliminarPrestamo/${prestamoId}`;
-
+//funcion para eliminar prestao
+function eliminarPrestamo(Pres_Id) {
     Swal.fire({
-        title: "¿Estás seguro?",
-        text: "Esta Acción Eliminará El Prestamo",
-        icon: "error",
+        title: "¿Estás seguro de que deseas eliminar este préstamo?",
+        icon: "warning",
         showCancelButton: true,
-        confirmButtonText: "Aceptar",
-        cancelButtonText: "Cancelar"
+        confirmButtonText: "Sí, eliminar",
+        cancelButtonText: "Cancelar",
     }).then((result) => {
         if (result.isConfirmed) {
+            const url = `http://127.0.0.1:8000/EliminarPrestamo/${Pres_Id}`;
+
             fetch(url, {
                 method: "DELETE",
                 headers: {
-                    "consultar-Type": "AppInventario_ICED/json"
-                }
+                    "Content-Type": "application/json",
+                },
             })
-            .then(response => response.json())
-            .then(data => {
-                Listar(); 
-                mostrarCantidadPrestamos();
-                Swal.fire("Éxito", "Registro eliminado exitosamente.", "success");
-            })
-            .catch(error => {
-                console.error("Error al eliminar el Prestamo:", error);
-                Swal.fire("Error", "Error al eliminar el Prestamo.", "error");
-            });
+                .then((response) => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error("Error al eliminar el préstamo");
+                    }
+                })
+                .then((data) => {
+                    console.log(data);
+                    Listar();
+                    Swal.fire({
+                        title: "Préstamo eliminado exitosamente.",
+                        icon: "success",
+                    });
+                })
+                .catch((error) => {
+                    console.error("Error al eliminar el préstamo:", error);
+                    Swal.fire({
+                        title: "Error al eliminar el préstamo",
+                        text: error.message,
+                        icon: "error",
+                    });
+                });
         }
     });
 }
 
-//Buscar Prestamo
+
+
+
+//funcion Buscar Prestamo
 document.addEventListener("DOMContentLoaded", () => {
     const buscarBtn = document.getElementById("BuscarPrestamo");
     buscarBtn.addEventListener("click", () => {

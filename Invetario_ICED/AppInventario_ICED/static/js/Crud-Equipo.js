@@ -48,7 +48,7 @@ function Consultar() {
     });
 }
 
-//Agregar equipo
+//funcion para Agregar equipo
 function agregarEquipo() {
     var Equi_tipo = document.getElementById("Equi_tipo").value;
     var Equi_modelo = document.getElementById("Equi_modelo").value;
@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-//Eliminar Equipo
+//funcion para Eliminar Equipo
 function eliminarEquipo(Equ_id) {
     const url = `http://127.0.0.1:8000/EliminarEquipo/${Equ_id}`;
 
@@ -152,7 +152,7 @@ function eliminarEquipo(Equ_id) {
     });
 }
 
-//Buscar Equipo
+//funcion para Buscar Equipo
 document.addEventListener("DOMContentLoaded", () => {
     const buscarBtn = document.getElementById("BuscarEquipo");
     buscarBtn.addEventListener("click", () => {
@@ -276,6 +276,7 @@ function abrirModalActualizar() {
 }
 
 
+
 //funcion actualizar que atrapa datos del registro
 function capturarYActualizarEquipo(equipoId) {
     fetch(`http://127.0.0.1:8000/BuscarEquipo/${equipoId}`, {
@@ -350,4 +351,4 @@ function actualizarEquipo(Equ_id) {
 document.addEventListener("DOMContentLoaded", function () {
     // Replace 'equipoId' with the actual ID of the equipment you want to capture and update
     capturarYActualizarEquipo(equipoId);
-});
+}); 

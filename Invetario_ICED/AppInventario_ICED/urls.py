@@ -20,8 +20,8 @@ urlpatterns=[
     path('Equipo',views.Equipo,name='Equipo'),
     path('ListarEquipos',ListadoEquipos.as_view(),name='ListarEquipos'),
     path('insertar/',InsertarEquipos.as_view(),name='insertar'),
-    path('ActualizarEquipo/<pk>',ActualizarEquipo.as_view(),name='actualizar'),
-    path('EliminarEquipo/<pk>',EliminarEquipo.as_view(),name='eliminar'),
+    path('ActualizarEquipo/<int:pk>',ActualizarEquipo.as_view(),name='actualizar'),
+    path('EliminarEquipo/<int:pk>',EliminarEquipo.as_view(),name='eliminar'),
     path('BuscarEquipo/<int:pk>', BuscarEquipo.as_view(), name='buscar-equipo'),
     path('ContarEquipos', ContarEquipos.as_view(), name='contar-equipos'),
 
@@ -41,9 +41,9 @@ urlpatterns=[
     path('Prestamo',views.Prestamo,name='Prestamo'),
     path('ListarPrestamos',ListadoPrestamos.as_view(),name='Prestamos'),
     path('insertarPrestamo/',InsertarPrestamos.as_view(),name='insertarPrestamo'),
-    path('ActualizarPrestamo/<pk>',ActualizarPrestamo.as_view(),name='actualizarPrestamo'),
+    path('ActualizarPrestamo/<int:pk>',ActualizarPrestamo.as_view(),name='actualizarPrestamo'),
     path('BuscarPrestamo/<int:pk>', BuscarPrestamo.as_view(), name='buscar-prestamo'),
-    path('EliminarPrestamo/<pk>',EliminarPrestamo.as_view(),name='eliminarPrestamo'),
+    path('EliminarPrestamo/<int:pk>',EliminarPrestamo.as_view(),name='eliminarPrestamo'),
     path('verificarPrestamo/', VerificarPrestamo.as_view(), name='verificar-prestamo'),
 
     #CRUD SANCIONES

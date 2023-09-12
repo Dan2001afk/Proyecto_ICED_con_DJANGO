@@ -289,12 +289,19 @@ class InsertarPrestamos(View):
 
         equipo = get_object_or_404(Equipos, pk=Pres_Equipos_id)
         usuario = get_object_or_404(Usuarios, Usu_Documento=Pres_Usuarios_Documento_id)
+        #definir el campo automatico
+        pres_observaciones_entrega = "En buen estado"
 
         Prestamos.objects.create(
             Pres_Equipos=equipo,
             Pres_Usuarios_Documento=usuario,
             Pres_Tiempo_Limite=Pres_Tiempo_Limite,
+            Pres_Observaciones_entrega=pres_observaciones_entrega,
         )
+
+         # Update the equipment state
+        equipo.Equi_estado = "En préstamo"
+        equipo.save()
 
         return JsonResponse({"mensaje": "Préstamo registrado"})    
 
@@ -326,16 +333,27 @@ class ActualizarPrestamo(View):
     
 class EliminarPrestamo(View):
     @method_decorator(csrf_exempt)
-    def dispatch(self, request,*args: Any, **kwargs):
+    def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
-    
-    def delete(self,request,pk):
+
+    def delete(self, request, pk):
         try:
-            registro=Prestamos.objects.get(pk=pk)
+            prestamo = Prestamos.objects.get(pk=pk)
         except Prestamos.DoesNotExist:
-            return JsonResponse({"Error":"El Prestamo no existe"})
-        registro.delete()
-        return JsonResponse({"Mensaje":"Datos Eliminados"})
+            return JsonResponse({"Error": "El Prestamo no existe"})
+
+        # Recupera el equipo asociado al préstamo
+        equipo = prestamo.Pres_Equipos
+
+        # Cambia el estado del equipo de nuevo a "Activo"
+        equipo.Equi_estado = "Activo"
+        equipo.save()
+
+        # Luego, elimina el préstamo
+        prestamo.delete()
+
+        return JsonResponse({"Mensaje": "Datos Eliminados"})
+
     
 class BuscarPrestamo(View):
     @method_decorator(csrf_exempt)
@@ -468,4 +486,8 @@ def Login(request):
     return render(request,"Inicio.html")
 
 def Formulario(request):
+
     return render(request,"Usuarios.html")
+
+
+

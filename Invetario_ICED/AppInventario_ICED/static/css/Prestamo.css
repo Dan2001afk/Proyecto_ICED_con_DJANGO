@@ -9,7 +9,7 @@
 
 body{
 
-  background-image: linear-gradient(to left,  #301f4f, #8acbff);
+  background-image: linear-gradient(to left,  #8acbff,#301f4f);
   margin-top: 80px;
   margin-left: 80px;
   transition: margin-left 300ms  cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -19,7 +19,7 @@ body{
 header{
   width: 100%;
   height: 80px;
-  background: #0c0c0c;
+  background: #241f2e;
   display: flex;
   align-items: center;
   position: fixed;
@@ -109,15 +109,13 @@ header{
   transition: color 300ms;
 }
 
-
 /*acciones ya sea para usar el cursor*/
 .options__menu a:hover{
 
-  color: rgb(110, 41, 236);
+  color: rgb(87, 181, 224);
 }
 
 /*posicionar orden de elementos*/
-
 .options__menu .option{
 
   padding: 20px 0px;
@@ -144,10 +142,7 @@ header{
   cursor: pointer;
 }
 
-
 /*opccion de marcar cualquier icono del menu y dibujar un ceudo elemento*/
-
-
 a.selected{
   color: #1d1b1b;
 }
@@ -165,7 +160,6 @@ a.selected{
 }
 
 /*contenido del diseño*/
-
 main{
   background-color: #d3d3d3;
   margin: auto;
@@ -174,9 +168,10 @@ main{
   padding: 20px;
 }
 
-/*contenedores para el cotenido y el grid*/
+
+/*contenedor madre que guarda los contenedores hijos*/
 .cont{
-  
+
   max-width: 100%;
   height: 1500px;
   display: grid;
@@ -192,12 +187,15 @@ main{
   box-sizing: border-box;
   
 }
+
+/*estilos de los contadores*/
 .cabezera{
   background-color: rgb(255, 255, 255);
   grid-column: 1/13;
   grid-row: 1/5;
-  border-radius: 1%;
+  border-radius: 3%;
   margin: 10px;
+  margin-top: 30px;
 
 }
 
@@ -207,13 +205,18 @@ main{
 }
 
 
+
 .contenedor1{
   background-color: rgb(255, 255, 255);
   grid-column: 1/13;
   grid-row: 3/6;
-  border-radius: 1%;
+  border-radius: 3%;
   margin: 10px;
+
+  
+
 }
+
 
 .contenedor3{
   background-color: rgb(255, 255, 255);
@@ -225,12 +228,15 @@ main{
   position: relative;
 }
 
+
+/*estilos de contadores*/
+
 .contador1{
   background-color: rgb(255, 255, 255);
   grid-column: 1/5;
   grid-row: 6/12;
-  border-radius: 1%;
-  margin: 10px;
+  border-radius: 8%;
+  
   
   
 }
@@ -243,9 +249,9 @@ main{
   background-color: rgb(255, 255, 255);
   grid-column: 5/9;
   grid-row: 6/12;
-  border-radius: 1%;
+  border-radius: 8%;
   padding: 20px; /* Agregamos un poco de espacio interno */
-  margin: 10px;
+
 }
 
 
@@ -277,9 +283,10 @@ main{
   background-color: rgb(255, 255, 255);
   grid-column: 9/13;
   grid-row: 6/12;
-  border-radius: 1%;
-  margin: 10px;
+  border-radius: 8%;
+
 }
+
 
 /*diseño de la tabla*/
 table {
@@ -293,7 +300,7 @@ table th, table td {
   border-bottom: 1px solid #ccc;
   padding: 5px;
   text-align: center;
-  font-size: 15px;
+  font-size: 13px;
 }
 
 table th {
@@ -448,95 +455,7 @@ table th {
   
 }
 
-#Pres_Id{
-  margin-top: 1%;
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  padding: 20px;
-  width: 250px;
-  height: 30px;
-  margin-bottom: 15px;
-}
 
-#Pres_Equipos_id{
-  margin-top: 1%;
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  padding: 20px;
-  width: 250px;
-  height: 30px;
-  margin-bottom: 15px;
-}
-
-#Pres_Usuarios_Documento_id{
-  margin-top: 1%;
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  padding: 20px;
-  width: 250px;
-  height: 30px;
-  margin-bottom: 15px;
-  
-}
-
-#Pres_Fec_Entrega{
-  margin-top: 1%;
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  padding: 20px;
-  width: 250px;
-  height: 30px;
-  margin-bottom: 15px;
-  
-}
-
-#Pres_Hora_Entrega{
-  margin-top: 1%;
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  padding: 20px;
-  width: 250px;
-  height: 30px;
-  margin-bottom: 15px;
-
-}
-
-#Pres_Tiempo_Limite{
-  margin-top: 1%;
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  padding: 20px;
-  width: 250px;
-  height: 30px;
-  margin-bottom: 15px;
- 
-
-}
-
-#Pres_Observaciones_entrega{
-  margin-top: 1%;
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  padding: 20px;
-  width: 250px;
-  height: 30px;
-  margin-bottom: 15px;
- 
-
-}
-
-
-#ActualizarPrestamo{
-  border: none;
-  background-color: #b491ce;
-  border-radius: 15px;
-  width: 250px;
-  height: 40px;
-  color: #ffffff;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease; 
-}
 
 #ActualizarEquipo:hover {
   background-color:  #8acbff; /* Cambio de color al pasar el mouse por encima */
@@ -660,90 +579,6 @@ select{
 
 
 
-  #Equ_id{
-    border: 1px solid #ccc;
-    border-radius: 25px;
-    padding: 20px;
-    width: 250px;
-    height: 10px;
-    margin-bottom: 15px;
-    margin-top: -1px;
-}
 
-  #Equi_tipo{
-      border: 1px solid #ccc;
-      border-radius: 25px;
-      padding: 20px;
-      width: 250px;
-      height: 10px;
-      margin-bottom: 15px;
-      margin-top: -1px;
-  }
-
-  #Equi_modelo{
-      border: 1px solid #ccc;
-      border-radius: 25px;
-      padding: 20px;
-      width: 250px;
-      height: 10px;
-      margin-bottom: 15px;
-      margin-top: -1px;
-  }
-
-  #Equi_color{
-      border: 1px solid #ccc;
-      border-radius: 25px;
-      padding: 20px;
-      width: 250px;
-      height: 10px;
-      margin-bottom: 15px;
-      margin-top: -1px;
-  }
-
-  #Equi_serial{
-      border: 1px solid #ccc;
-      border-radius: 25px;
-      padding: 20px;
-      width: 250px;
-      height: 10px;
-      margin-bottom: 15px;
-      margin-top: -1px;
-  }
-
-  #Equi_estado{
-      border: 1px solid #ccc;
-      border-radius: 25px;
-      padding: 20px;
-      width: 250px;
-      height: 10px;
-      margin-bottom: 15px;
-      margin-top: -1px;
-
-  }
-
-  #equi_especialidad{
-      border: 1px solid #ccc;
-      border-radius: 25px;
-      padding: 20px;
-      width: 250px;
-      height: 10px;
-      margin-bottom: 15px;
-      margin-top: -1px;
-  }
-
-
-  #Guardar {
-      border: none;
-      background-color: #b491ce;
-      border-radius: 25px;
-      padding: 10px 20px;
-      width: 250px;
-      height: 50px;
-      color: #ffffff;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: -0px;
-      transition: background-color 0.3s ease; 
-  }
 
 }  

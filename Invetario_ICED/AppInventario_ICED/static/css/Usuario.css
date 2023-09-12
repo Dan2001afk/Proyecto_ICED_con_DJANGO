@@ -450,7 +450,7 @@ table th {
 .modal h1{
 
   text-align: center;
-  margin: 20px;
+  margin: 15px;
   
 }
 
@@ -468,13 +468,7 @@ table th {
 #Usu_FichaActualizar
 {
 
-
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  padding: 5px;
-  width: 250px;
-  height: 45px;
-  margin-bottom: 5px;
+  
 
 }
 
@@ -487,7 +481,7 @@ table th {
   color: #ffffff;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease; 
+  transition: background-color 0.3s ease;  
 }
 
 
@@ -509,12 +503,7 @@ table th {
 #Usu_Ficha
 {
 
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  padding: 5px;
-  width: 250px;
-  height: 45px;
-  margin-bottom: 15px;
+
 }
 
 #Guardar:hover{
@@ -537,14 +526,7 @@ table th {
 
 select{
   
-  width: 250px;
-  height: 40px;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  background-color: white;
-  font-size: 16px;
+ 
 }
 
 
@@ -817,7 +799,7 @@ select{
   
   /*estilos del contenido interno de la tabla*/
   
-  .modal h2{
+  .modal h1{
   
       text-align: center;
       margin: 20px;

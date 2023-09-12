@@ -77,3 +77,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+//Eliminar Equipo
+function eliminarEquipo(prestamoId) {
+    const url = `http://127.0.0.1:8000/EliminarPrestamo/${prestamoId}`;
+
+    Swal.fire({
+        title: "¿Estás seguro?",
+        text: "Esta Acción Eliminará El Equipo",
+        icon: "error",
+        showCancelButton: true,
+        confirmButtonText: "Aceptar",
+        cancelButtonText: "Cancelar"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            fetch(url, {
+                method: "DELETE",
+                headers: {
+                    "consultar-Type": "AppInventario_ICED/json"
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                Listar(); 
+                mostrarCantidadPrestamos();
+                Swal.fire("Éxito", "Registro eliminado exitosamente.", "success");
+            })
+            .catch(error => {
+                console.error("Error al eliminar el equipo:", error);
+                Swal.fire("Error", "Error al eliminar el equipo.", "error");
+            });
+        }
+    });
+}
+
+
