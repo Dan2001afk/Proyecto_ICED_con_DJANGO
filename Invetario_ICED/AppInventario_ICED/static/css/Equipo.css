@@ -236,10 +236,27 @@ main{
   grid-column: 1/5;
   grid-row: 6/12;
   border-radius: 8%;
-  
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  padding: 20px; /* Agregamos un poco de espacio interno */  
+}
+
+
+.contador1 i {
+  color: #63c030;
+  font-size: 45px; /* Ajusta el tamaño del icono según tus preferencias */
+  margin-bottom: 30px; /* Agregamos espacio entre el icono y el h1 */
+}
+
+
+.contador1 h1 {
+
+  font-size: 15px;
   
 }
+
 
 
 .contador2 {
@@ -267,15 +284,13 @@ main{
   align-items: center;
 }
 
-.icon-container i {
+.contador2 i {
   color: #8acbff;
   font-size: 45px; /* Ajusta el tamaño del icono según tus preferencias */
   margin-bottom: 30px; /* Agregamos espacio entre el icono y el h1 */
 }
 
-.cantidad {
-  text-align: center;
-}
+
 
 
 

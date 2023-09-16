@@ -95,6 +95,7 @@ function agregarEquipo() {
     .then(data => {
         console.log(data);
         Consultar();
+        equiposActivos();
         mostrarCantidadEquipos();
         Swal.fire({
             icon: "success",
@@ -141,6 +142,7 @@ function eliminarEquipo(Equ_id) {
             .then(response => response.json())
             .then(data => {
                 Consultar();
+                equiposActivos();
                 mostrarCantidadEquipos();
                 Swal.fire("Éxito", "Registro eliminado exitosamente.", "success");
             })
@@ -226,56 +228,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-//funciones adiccionales
-function mostrarCantidadEquipos() {
-    fetch("http://127.0.0.1:8000/ContarEquipos", {
-        method: "GET",
-        headers: {
-            "consultar-Type": "AppInventario_ICED/json"
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-
-        const cantidad = document.querySelector('.cantidad');
-
-        
-        // Actualizar los contadores con los datos obtenidos
-        cantidad.textContent = `Total de equipos: ${data.cantidad_equipos}`;
-
-    })
-    .catch(error => {
-        console.error("Error al obtener la cantidad de equipos:", error);
-    });
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-    mostrarCantidadEquipos();
-});
-
-
-//funcion para que el boton pueda abrir el modal desde JS
-function abrirModalActualizar() {
-    const updateModal = document.getElementById('myModal');
-    updateModal.style.display = 'block'; // Muestra el modal de actualización
-    
-    const closeUpdateModalBtn = updateModal.querySelector('.close');
-    closeUpdateModalBtn.addEventListener('click', function() {
-        updateModal.style.display = 'none'; // Cierra el modal de actualización
-    });
-
-    closeUpdateModalBtn.addEventListener('mouseenter', function() {
-        closeUpdateModalBtn.style.color = 'red'; // Cambia el color al pasar cerca del cursor
-    });
-
-    closeUpdateModalBtn.addEventListener('mouseleave', function() {
-        closeUpdateModalBtn.style.color = '#aaa'; // Restaura el color original
-    });
-
-    // Aquí puedes realizar acciones adicionales según tus necesidades, como cargar los datos del equipo en el modal.
-}
-
-
 
 //funcion actualizar que atrapa datos del registro
 function capturarYActualizarEquipo(equipoId) {
@@ -331,6 +283,8 @@ function actualizarEquipo(Equ_id) {
     .then(data => {
         console.log(data);
         Consultar();
+        equiposActivos();
+        mostrarCantidadEquipos();
         Swal.fire({
             icon: "success",
             title: "Éxito",
@@ -352,3 +306,83 @@ document.addEventListener("DOMContentLoaded", function () {
     // Replace 'equipoId' with the actual ID of the equipment you want to capture and update
     capturarYActualizarEquipo(equipoId);
 }); 
+
+
+//funciones adiccionales
+function equiposActivos() {
+    fetch("http://127.0.0.1:8000/ContarActivos", {
+        method: "GET",
+        headers: {
+            "consultar-Type": "AppInventario_ICED/json"
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        const activos = document.querySelector('.activos');
+
+        
+        // Actualizar los contadores con los datos obtenidos
+        activos.textContent = `Total de equipos activos: ${data.cantidad_equipos_activos}`;
+
+    })
+    .catch(error => {
+        console.error("Error al obtener la cantidad de equipos activos:", error);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    equiposActivos();
+});
+
+
+
+function mostrarCantidadEquipos() {
+    fetch("http://127.0.0.1:8000/ContarEquipos", {
+        method: "GET",
+        headers: {
+            "consultar-Type": "AppInventario_ICED/json"
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        const cantidad = document.querySelector('.cantidad');
+
+        
+        // Actualizar los contadores con los datos obtenidos
+        cantidad.textContent = `Total de equipos: ${data.cantidad_equipos}`;
+
+    })
+    .catch(error => {
+        console.error("Error al obtener la cantidad de equipos:", error);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    mostrarCantidadEquipos();
+});
+
+
+//funcion para que el boton pueda abrir el modal desde JS
+function abrirModalActualizar() {
+    const updateModal = document.getElementById('myModal');
+    updateModal.style.display = 'block'; // Muestra el modal de actualización
+    
+    const closeUpdateModalBtn = updateModal.querySelector('.close');
+    closeUpdateModalBtn.addEventListener('click', function() {
+        updateModal.style.display = 'none'; // Cierra el modal de actualización
+    });
+
+    closeUpdateModalBtn.addEventListener('mouseenter', function() {
+        closeUpdateModalBtn.style.color = 'red'; // Cambia el color al pasar cerca del cursor
+    });
+
+    closeUpdateModalBtn.addEventListener('mouseleave', function() {
+        closeUpdateModalBtn.style.color = '#aaa'; // Restaura el color original
+    });
+
+    // Aquí puedes realizar acciones adicionales según tus necesidades, como cargar los datos del equipo en el modal.
+}
+
+

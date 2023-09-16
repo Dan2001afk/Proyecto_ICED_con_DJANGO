@@ -23,9 +23,10 @@ urlpatterns=[
     path('ActualizarEquipo/<int:pk>',ActualizarEquipo.as_view(),name='actualizar'),
     path('EliminarEquipo/<int:pk>',EliminarEquipo.as_view(),name='eliminar'),
     path('BuscarEquipo/<int:pk>', BuscarEquipo.as_view(), name='buscar-equipo'),
-    path('ContarEquipos', ContarEquipos.as_view(), name='contar-equipos'),
+    path('ContarActivos', ContarActivos.as_view(), name='contar-equipos'),
 
     
+
     #CRUD USUARIOS
     path('Usuario',views.Usuario,name='Usuario'),
     path('ListarUsuarios', ListarUsuarios.as_view(), name='ListarUsuarios'),
@@ -35,6 +36,8 @@ urlpatterns=[
     path('EliminarUsuario/<int:pk>', EliminarUsuario.as_view(), name='eliminarUsuario'),
     path('BuscarUsuario/<int:pk>', views.BuscarUsuario.as_view(), name='buscarUsuario'),  # Nueva ruta
     path('ContarUsuarios', ContarUsuarios.as_view(), name='cantidad_usuarios'),
+    path('ContarEquipos', ContarEquipos.as_view(), name='contar-equipos'),
+
 
     
     #CRUD PRESTAMOS

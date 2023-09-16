@@ -277,7 +277,6 @@ main{
 }
 
 
-
 .contador3{
   background-color: rgb(255, 255, 255);
   grid-column: 9/13;
@@ -307,10 +306,8 @@ table th {
   background-color: #f2f2f2;
 }
 
-.btn-container {
-  display: flex; /* Mostrar los botones en línea uno al lado del otro */
-  gap: 10px; /* Espacio entre los botones */
-}
+
+
 
 .btn-container {
   display: flex; /* Mostrar los botones en línea uno al lado del otro */
@@ -331,13 +328,11 @@ table th {
   cursor: pointer; /* Cambiar el cursor al pasar por encima */
   transition: background-color 0.5s ease; 
   margin-top: 4px;
-  
-  
 }
 
 .btnActualizar{
   width: 100%;
-  background-color: #34de31; /* Color de fondo */
+  background-color: #5fde31; /* Color de fondo */
   color: white; /* Color del texto */
   padding: 8px 16px; /* Espaciado interno */
   border: none; /* Sin borde */
@@ -348,6 +343,8 @@ table th {
   
    
 }
+
+
 
 .btnInsertar{
   width: 15%;
@@ -531,7 +528,6 @@ select{
 
 
 
-/*estilos de formulario de insertar*/
 
 
 /*clases para mover el menu para que tenga movimiento */
@@ -672,24 +668,6 @@ select{
   
 
   /*estilos de los botones*/
-
-  .btnActualizar{
-      width: 60%;
-      height: 50px;
-      margin-top: 60px;
-      background-color: #61af4c; /* Color de fondo */
-      color: white; /* Color del texto */
-      padding: 8px 16px; /* Espaciado interno */
-      border: none; /* Sin borde */
-      border-radius: 4px; /* Bordes redondeados */
-      cursor: pointer; /* Cambiar el cursor al pasar por encima */
-      transition: background-color 0.5s ease; 
-      margin-left: 20%;
-      margin-top: 3%;
-   
-      
-      
-  }
     
   .btnInsertar{
       

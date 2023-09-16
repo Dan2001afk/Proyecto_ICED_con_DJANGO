@@ -131,6 +131,14 @@ class BuscarEquipo(View):
         
         return JsonResponse(datos_equipo)
 
+#metodos adicionales
+
+class ContarActivos(View):
+    def get(self, request):
+        cantidad_equipos_activos = Equipos.objects.filter(Equi_estado='Activo').count()
+        return JsonResponse({"cantidad_equipos_activos": cantidad_equipos_activos})
+
+
 class ContarEquipos(View):
     def get(self, request):
         cantidad_equipos = Equipos.objects.count()  # Realiza una consulta para contar los equipos
@@ -238,12 +246,13 @@ class BuscarUsuario(View):
         }
         return JsonResponse(datos_usuario)
 
+
+#metodos adicionales
 class ContarUsuarios(View):
     def get(self, request):
         cantidad_usuarios=Usuarios.objects.count()
-        return JsonResponse({"cantidad_usuarios":cantidad_usuarios})   
+        return JsonResponse({"cantidad_usuarios":cantidad_usuarios}) 
 
-#metodos adicionales
 
 
 
