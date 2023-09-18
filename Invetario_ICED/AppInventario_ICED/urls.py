@@ -7,6 +7,7 @@ from django.conf.urls.static import *
 
 
 urlpatterns=[
+    
     #PORTADA PRINCIPAL
     path('Portada',views.Portada,name='Portada'),
     #LOGIN
@@ -14,6 +15,7 @@ urlpatterns=[
     path('iniciarSesion/',IniciarSesionView.as_view(),name="iniciar_sesion"),
     path('ActualizarUsuario/',PerfilClienteView.as_view(),name="perfil_usuario"),
     path('Login',views.Login,name='Login'),
+    path('VistasUsuarios',VistasUsuarios,name="VistaUsarios"),
     #FORMULARIO
     path('Formulario',views.Formulario,name='Formulario'),
     #CRUD EQUIPOS
