@@ -12,6 +12,8 @@ from .formsUsuario import *
 from django.contrib.auth.decorators import *
 
 
+
+
 class RegistrarUsuarioView(View):
     template_name = 'formulario.html'
 

@@ -27,8 +27,9 @@ import json
 #    model=Sanciones
 #    template_name="indextres.html"
 
-
-
+#VistasUsuarios
+def VistasUsuarios(request):
+    return render(request,"VistasUsuarios.html")
 #equipos
 class ListadoEquipos(ListView):
     def get(self,request):
