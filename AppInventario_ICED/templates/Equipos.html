@@ -1,0 +1,238 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipos</title> 
+    <link rel="stylesheet" href="{% static 'css/Equipo.css' %}">
+    <script src="{% static 'js/Crud-Equipo.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://kit.fontawesome.com/3d7a846b01.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="icon" href="{% static 'imagenes/iced_logo.png' %}" type="image/x-icon">
+   
+
+</head>
+<body id="body" style="max-height: 100vh; overflow-y: scroll;">
+    <header>
+    
+        <div class="icon__menu">
+            <i class="fas fa-bars" id="btn_open"></i>
+        </div>
+    </header>
+
+    <div class="menu__side" id="menu_side">
+
+        <div class="options__menu"> 
+
+            <a href="/Equipo" class="selected">
+                <div class="option">
+                    <i class="fas fa-laptop"></i>
+                    <h4>Equipos</h4>
+                </div>
+            </a>
+
+            <a href="/Usuario">
+                <div class="option">
+                    <i class="fa-solid fa-users"></i>
+                    <h4>Usuarios</h4>
+                </div>
+            </a>
+            
+            <a href="/Prestamo">
+                <div class="option">
+                    <i class="fas fa-server"></i>
+                    <h4>Prestamos</h4>
+                </div>
+            </a>
+
+            <a href="/Sancion">
+                <div class="option">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <h4>Sanciones</h4>
+                </div>
+            </a>
+
+
+            <a href="#">
+                <div class="option">
+                    <i class="fas fa-box-open"></i>
+                    <h4>Devoluciones</h4>
+                </div>
+            </a>
+            
+
+            <a href="#">
+                <div class="option">
+                    <i class="fas fa-phone"></i>
+                    <h4>Contacto</h4>
+                </div>
+            </a>
+            
+
+            <a href="#">
+                <div class="option">
+                    <i class="fas fa-user-circle"></i>
+                    <h4>Nosotros</h4>
+                </div>
+            </a>
+            
+        </div>
+    </div>
+
+
+    <section class="cont">
+
+        <div class="cabezera">
+                <h1 class="titulo">LISTA DE EQUIPOS REGISTRADOS</h1>
+        </div>
+
+        <div class="contenedor1">
+            <button class="btnInsertar">Insertar Equipo</button>
+            <input type="text" id="id_equipoo" placeholder="Ingrese el ID del equipo">
+            <button type="button" id="BuscarEquipo" class="btnBuscar">Buscar</button>
+        </div>
+
+        <div class="contador1">
+            <div class="icon-container">
+                <i class="fa-solid fa-circle-check"></i>
+                <h1 class="activos">contador</h1>
+            </div>
+        </div>
+
+
+        <div class="contador2">
+            <div class="icon-container">
+                <i class="fas fa-laptop"></i>
+                <h1 class="cantidad">Contador</h1>
+            </div>
+        </div>
+        <div class="contador3"></div>
+    
+
+        <div class="contenedor3">    
+            <div>
+                <table id="tabla1">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Dispositivo</th>
+                            <th>Modelo</th>
+                            <th>Color</th>
+                            <th>Serial</th>
+                            <th>Estado</th>
+                            <th>Especialidad</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla1-body">
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                            Consultar();
+                            });
+                        </script>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!--modal1-->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h1>ACTUALIZAR EQUIPO</h1>
+                <form method="" id="ActualizarEquipos">
+                    {% csrf_token %}
+                    <input type="number" id="Equ_id_Act"><br>
+                    <input type="text" name="Equi_tipo_Act" id="Equi_tipo_Act" placeholder="Tipo" required><br>
+                    <input type="text" name="Equi_modelo_Act" id="Equi_modelo_Act" placeholder="Modelo" required><br>
+                    <input type="text" name="Equi_color_Act" id="Equi_color_Act" placeholder="Color" required><br>
+                    <input type="text" name="Equi_serial_Act" id="Equi_serial_Act" placeholder="Serial" required><br>
+                    <input type="text" name="Equi_estado_Act" id="Equi_estado_Act" placeholder="Estado" required><br>
+                    <input type="text" name="equi_especialidad_Act" id="equi_especialidad_Act" placeholder="Especialidad"><br>
+                    <button type="submit" id="ActualizarEquipo" class="ActualizarEquipo" value="ActualizarEquipo">Actualizar Equipo</button>
+                </form>
+                
+            </div>
+        </div>
+        <!-- ... -->
+        
+        <!--modal2-->
+        <div id="myModal2" class="modal">
+            <div class="modal-content">
+                <span class="close2">&times;</span>
+                <h1>Insertar Equipo</h1>
+                <form method="post"  id="FormEquipos" >
+                    {% csrf_token %}
+
+                    <div>
+                        <select id="Equi_tipo">
+                            <option value="" selected>Tipo</option>
+                            <option value="portatil">Portatil</option>
+                            <option value="video_beam">Video Beam</option>
+                            <option value="cable_hdmi">Cable HDMI</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <select id="Equi_modelo">
+                            <option value="" selected>Modelo</option>
+                            <option value="Hewelt Packard">Hewelt Packard</option>
+                            <option value="Lenovo">Lenovo</option>
+                            <option value="HP">HP</option>
+                            <option value="Otro">Otros</option>
+                        </select>
+                    </div>
+
+                
+                    
+                   <div>
+                    <select id="Equi_color" >
+                    <option value="" selected>Color</option>
+                    <option value="Gris">Gris</option>
+                    <option value="Negro">Negro</option>
+                    <option value="Otro">Otro</option>
+                    </select>
+                 
+                   </div>
+                    
+                    <div>
+                        <input type="text" name="Equi_serial" id="Equi_serial" placeholder="Serial" required><br>
+                    </div>
+
+                    <div>
+                        <select id="Equi_estado">
+                            <option value="" selected>Estado</option>
+                            <option value="Activo">Activo</option>
+                            <option value="Inactivo">Inactivo</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <select id="equi_especialidad">
+                            <option value="" selected>Especialidad</option>
+                            <option value="ADSO">ADSO</option>
+                            <option value="ADSI">ADSI</option>
+                            <option value="CISCO 8.1">CISCO 8.1</option>
+                            <option value="TAURUS">TAURUS</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <button class="Guardar" type="submit" value="Guardar" id="Guardar">Enviar</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <!---->
+
+    </section>
+
+    <script src="static/js/script.js"></script>
+    <script src="static/js/script3.js"></script>
+    
+</body>
+</html>
