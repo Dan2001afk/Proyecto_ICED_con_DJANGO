@@ -37,6 +37,14 @@ class Prestamos(models.Model):
     Pres_Tiempo_Limite = models.BigIntegerField(verbose_name="Horas Que prestara el Equipo")
     Pres_Observaciones_entrega = models.TextField(max_length=255, verbose_name="Observaciones Salida Equipo")
 
+class Devoluciones(models.Model):
+    Dev_id = models.AutoField(verbose_name="ID de la devolucion", primary_key=True)
+    Dev_Pres_id = models.ForeignKey(Prestamos, verbose_name="ID del prestamo", on_delete=models.CASCADE)
+    Dev_Fec_Devolucion = models.DateField(auto_now=True)
+    Dev_Hora_Devolucion = models.TimeField(auto_now=True)
+    Dev_Observacion_Devolucion = models.TextField(max_length=255, verbose_name="Observacion de entrega del equipo")
+    
+
 class Sanciones(models.Model):
     San_Id = models.AutoField(verbose_name="ID de la sancion", primary_key=True)
     San_Pres = models.ForeignKey(Prestamos, verbose_name="Prestamo relacionado", on_delete=models.CASCADE)
