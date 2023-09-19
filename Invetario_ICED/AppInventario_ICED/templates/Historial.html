@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prestamos</title>
-    <link rel="stylesheet" href="{% static 'css/Prestamo.css' %}">
-    <script src="{% static 'js/Crud-Prestamos.js' %}"></script>
+    <title>Historial</title>
+    <link rel="stylesheet" href="{% static 'css/Historial.css' %}">
+    <script src="{% static 'js/Crud-Historial.js' %}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://kit.fontawesome.com/3d7a846b01.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -40,7 +40,7 @@
                 </div>
             </a>
             
-            <a href="/Prestamo" class="selected">
+            <a href="/Prestamo" >
                 <div class="option">
                     <i class="fas fa-server"></i>
                     <h4>Prestamos</h4>
@@ -54,7 +54,7 @@
                 </div>
             </a>
 
-            <a href="/Historial">
+            <a href="/Historial" class="selected">
                 <div class="option">
                     <i class="fas fa-box-open"></i>
                     <h4>Historial</h4>
@@ -81,11 +81,10 @@
     <section class="cont">
 
         <div class="cabezera">
-            <h1>Lista de Prestamos en el centro</h1>
+            <h1>Historial de los prestamos</h1>
         </div>
 
         <div class="contenedor1">
-            <button class="btnInsertar">Insertar Prestamo</button>
             <input type="text" id="id_prestamoo" placeholder="Buscar Prestamo">
             <button type="button" id="BuscarPrestamo" class="btnBuscar">Buscar</button>
         </div>
@@ -111,13 +110,13 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>ID Equipo</th>
                             <th>Documento</th>
-                            <th>Fecha Entrega</th>
-                            <th>Hora entrega</th>
-                            <th>Tiempo Limite</th>
-                            <th>Observaciones de Entrega</th>
+                            <th>ID del Equipo</th>
+                            <th>Fecha Devolucion</th>
+                            <th>Hora Devolucion</th>
+                            <th>Observaciones de la Devolucion</th>
                             <th>Acciones</th>
+
                         </tr>
                     </thead>
                     <tbody id="tabla1-body">
@@ -130,61 +129,7 @@
                 </table>
             </div>
         </div>
-        <!--modal1-->
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h1>Actualizar Prestamo</h1>
-                <form method=""  id="ActualizarPrestamos" >
-                    {% csrf_token %}
         
-                    <input type="text" name="Pres_Id" id="Pres_Id_Act" placeholder="ID" required><br>
-                    
-                    <input type="text" name="Pres_Equipos" id="Pres_Equipos_Act" placeholder="Tipo" required><br>
-                    
-                
-                    <input type="text" name="Pres_Usuarios_Documento" id="Pres_Usuarios_Documento_Act" placeholder="Modelo" required><br>
-                    
-                
-                    <input type="text" name="Pres_Fec_Entrega" id="Pres_Fec_Entrega_Act" placeholder="Color" required><br>
-                    
-                
-                    <input type="text" name="Pres_Hora_Entrega" id="Pres_Hora_Entrega_Act" placeholder="Serial" required><br>
-                    
-                
-                    <input type="text" name="Pres_Tiempo_Limite" id="Pres_Tiempo_Limite_Act" placeholder="Estado" required><br>
-                    
-            
-                    <input type="text" name="Pres_Observaciones_entrega" id="Pres_Observaciones_entrega_Act"  placeholder="Especialidad"><br>
-                
-                    <button type="submit" class="ActualizarPrestamo" value="ActualizarPrestamo" id="ActualizarPrestamo">Actualizar</button>
-                
-                </form>
-            </div>
-        </div>
-        
-        <!-- ... -->
-        <!--modal2-->
-        <div id="myModal2" class="modal">
-            <div class="modal-content">
-                <span class="close2">&times;</span>
-                <h1 class="h1">Insertar Prestamo</h1>
-                <form method="" id="FormPrestamos">
-                    {% csrf_token %}
-            
-                    <input type="text" placeholder="ID DEL EQUIPO" name="Pres_Equipos_id" id="Pres_Equipos_id" required><br>
-
-                    <input type="text"  placeholder="DOCUMENTO DEL USUARIO" name="Pres_Usuarios_Documento_id" id="Pres_Usuarios_Documento_id" required><br>
-
-                    <input type="text" placeholder="TIEMPO LIMITE" name="Pres_Tiempo_Limite" id="Pres_Tiempo_Limite" required><br>
-
-
-                    <input type="submit" value="Guardar" id="Guardar">
-                </form>
-            </div>
-        </div>
-        <!---->
-
     </section>
 
     <script src="static/js/script.js"></script>
@@ -192,6 +137,5 @@
     
 </body>
 </html>
-
 
 

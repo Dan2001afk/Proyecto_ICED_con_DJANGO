@@ -19,17 +19,14 @@ function Listar(){
                 tabla.innerHTML+=`
                 <tr>
                 <td>${dat.Pres_Id}</td>
-                <td>${dat.Pres_Equipos_id}</td>
                 <td>${dat.Pres_Usuarios_Documento_id}</td>
+                <td>${dat.Pres_Equipos_id}</td>
                 <td>${dat.Pres_Fec_Entrega}</td>
                 <td>${dat.Pres_Hora_Entrega}</td>
-                <td>${dat.Pres_Tiempo_Limite}</td>
                 <td>${dat.Pres_Observaciones_entrega}</td>
-                
                 <td>
                 <div class="btn-container">
-                <button class="btnActualizar" onclick="capturarYActualizarPrestamo(${dat.Pres_Id})">Actualizar</button>
-                <button class="btnEliminar" onclick="eliminarPrestamo(${dat.Pres_Id})">Liberar</button>
+                <button class="btnEliminar" onclick="eliminarPrestamo(${dat.Pres_Id})">Eliminar</button>
 
                 </div>
                 </td>
@@ -39,85 +36,14 @@ function Listar(){
     });
 }
 
-//Agregar un Prestamo
-function Agregar() {
-    var Datos = {
-        Pres_Equipos_id: document.getElementById("Pres_Equipos_id").value,
-        Pres_Usuarios_Documento_id: document.getElementById("Pres_Usuarios_Documento_id").value,
-        Pres_Tiempo_Limite: document.getElementById("Pres_Tiempo_Limite").value,
-    };
-
-    var jsonData = JSON.stringify(Datos);
-
-    // Primero, realiza una solicitud para verificar la existencia de préstamos
-    fetch("http://127.0.0.1:8000/verificarPrestamo/", {
-        method: "POST",
-        body: jsonData,
-        headers: {
-            "Content-Type": "application/json"
-        }
-    })
-    .then(response => {
-        if (response.status === 200) {
-            return response.json();
-        } else {
-            throw new Error('Error en la solicitud.');
-        }
-    })
-    .then(data => {
-        // Si no hay errores, puedes proceder a crear el préstamo
-        console.log(data);
-        if (data.error) {
-            alert(data.error); // Muestra el mensaje de error recibido del servidor
-        } else {
-            // Si no hay error de préstamo existente, crea el préstamo
-            fetch("http://127.0.0.1:8000/insertarPrestamo/", {
-                method: "POST",
-                body: jsonData,
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            })
-            .then(response => {
-                if (response.status === 200) {
-                    return response.json();
-                } else {
-                    throw new Error('Error en la solicitud.');
-                }
-            })
-            .then(data => {
-                console.log(data);
-                Listar();
-                cantidadPrestamos();
-                alert("Datos enviados exitosamente.");
-            })
-            .catch(error => {
-                console.error(error);
-                alert("Error al enviar los datos: " + error.message);
-            });
-        }
-    })
-    .catch(error => {
-        console.error(error);
-        alert("Error al verificar el préstamo: " + error.message);
-    });
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("FormPrestamos").addEventListener("submit", function (event) {
-        event.preventDefault();
-        Agregar();
-    });
-});
-
 //funcion para eliminar prestamo
 function eliminarPrestamo(Pres_Id) {
     Swal.fire({
-        title: "Devolucion del Dispositivo",
-        icon: "question",
+        title: "Desea eliminar el prestamo",
+        icon: "warning",
         showCancelButton: true,
-        confirmButtonText: "Liberar Dispositivo",
-        cancelButtonText: "Realizar una sancion",
+        confirmButtonText: "Aceptar",
+        cancelButtonText: "Cancelar",
     }).then((result) => {
         if (result.isConfirmed) {
             const url = `http://127.0.0.1:8000/EliminarPrestamo/${Pres_Id}`;

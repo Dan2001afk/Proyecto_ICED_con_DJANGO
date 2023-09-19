@@ -521,8 +521,10 @@ def Login(request):
     return render(request,"Inicio.html")
 
 def Formulario(request):
-
     return render(request,"Usuarios.html")
+
+def Historial(request):
+    return render(request,"Historial.html")
 
 
 

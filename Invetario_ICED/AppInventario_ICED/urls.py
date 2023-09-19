@@ -18,10 +18,6 @@ urlpatterns=[
     path('VistasUsuarios',VistasUsuarios,name="VistaUsarios"),
     #FORMULARIO
     path('Formulario',views.Formulario,name='Formulario'),
-    
-    
-    
-    
     #CRUD EQUIPOS
     path('Equipo',views.Equipo,name='Equipo'),
     path('ListarEquipos',ListadoEquipos.as_view(),name='ListarEquipos'),
@@ -32,7 +28,6 @@ urlpatterns=[
     path('ContarEquipos', ContarEquipos.as_view(), name='contar-equipos'),
     path('ContarActivos', ContarActivos.as_view(), name='contar-activos'),
     path('ContarInactivos', ContarInactivos.as_view(), name='contar-inactivos'),
-
     #CRUD USUARIOS
     path('Usuario',views.Usuario,name='Usuario'),
     path('ListarUsuarios', ListarUsuarios.as_view(), name='ListarUsuarios'),
@@ -60,6 +55,9 @@ urlpatterns=[
     path('insertarSancion/',InsertarSanciones.as_view(),name='insertar'),
     path('ActualizarSanciones/<pk>',ActualizarSanciones.as_view(),name='Actualizar'),
     path('EliminarSancion/<pk>',EliminarSanciones.as_view(),name='Eliminar'),
+    #HISTORIAL
+    path('Historial',views.Historial,name='Historial'),
+    
 ] + static (settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 """ path('index.html',listadoEquipos.as_view(),name='Equipos'),
