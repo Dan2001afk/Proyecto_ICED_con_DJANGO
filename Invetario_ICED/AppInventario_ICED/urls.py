@@ -9,7 +9,9 @@ from django.conf.urls.static import *
 urlpatterns=[
     
     #PORTADA PRINCIPAL
-    path('Portada',views.Portada,name='Portada'),
+    path('VistasUsuarios',VistasUsuarios,name="VistaUsarios"),
+    path('listar_datos/', views.ListadoDatos.as_view(), name='listar_datos'),
+    
     #LOGIN
     path('registro/',RegistrarUsuarioView.as_view(),name="registrar_usuario"),
     path('iniciarSesion/',IniciarSesionView.as_view(),name="iniciar_sesion"),
