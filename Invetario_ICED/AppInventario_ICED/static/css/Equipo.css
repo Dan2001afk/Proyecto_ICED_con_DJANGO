@@ -299,9 +299,25 @@ main{
   grid-column: 9/13;
   grid-row: 6/12;
   border-radius: 8%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  padding: 20px; /* Agregamos un poco de espacio interno */ 
 
 }
 
+.contador3 h1 {
+
+  font-size: 15px;
+  
+}
+
+.contador3 i {
+  color: #f12020;
+  font-size: 45px; /* Ajusta el tamaño del icono según tus preferencias */
+  margin-bottom: 30px; /* Agregamos espacio entre el icono y el h1 */
+}
 
 /*diseño de la tabla*/
 table {

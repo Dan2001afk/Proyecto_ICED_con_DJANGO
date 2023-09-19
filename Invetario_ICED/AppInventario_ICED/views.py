@@ -142,8 +142,14 @@ class ContarActivos(View):
 
 class ContarEquipos(View):
     def get(self, request):
-        cantidad_equipos = Equipos.objects.count()  # Realiza una consulta para contar los equipos
+        cantidad_equipos = Equipos.objects.count() 
         return JsonResponse({"cantidad_equipos": cantidad_equipos})
+
+
+class ContarInactivos(View):
+    def get(self, request):
+        cantidad_equipos_Inactivos = Equipos.objects.filter(Equi_estado='Inactivo').count()
+        return JsonResponse({"cantidad_equipos_Inactivos": cantidad_equipos_Inactivos})
 
 
 
@@ -253,6 +259,18 @@ class ContarUsuarios(View):
     def get(self, request):
         cantidad_usuarios=Usuarios.objects.count()
         return JsonResponse({"cantidad_usuarios":cantidad_usuarios}) 
+
+class ContarAprendices(View):
+    def get(self, request):
+        cantidad_aprendices=Usuarios.objects.filter(Usu_tipo='Aprendiz').count()
+        return JsonResponse({"cantidad_aprendices":cantidad_aprendices}) 
+
+
+class ContarInstructor(View):
+    def get(self, request):
+        cantidad_instructores=Usuarios.objects.filter(Usu_tipo='Instructor').count()
+        return JsonResponse({"cantidad_instructores":cantidad_instructores}) 
+
 
 
 
@@ -413,6 +431,13 @@ class VerificarPrestamo(View):
             response_data["error"] = "El usuario ya tiene un préstamo activo"
 
         return JsonResponse(response_data)
+    
+    
+#metodos adicionales
+class ContarPrestamos(View):
+    def get(self, request):
+        cantidad_prestamos=Prestamos.objects.count()
+        return JsonResponse({"cantidad_prestamos":cantidad_prestamos}) 
 
 
 

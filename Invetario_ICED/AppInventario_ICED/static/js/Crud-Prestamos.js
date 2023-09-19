@@ -88,6 +88,7 @@ function Agregar() {
             .then(data => {
                 console.log(data);
                 Listar();
+                cantidadPrestamos();
                 alert("Datos enviados exitosamente.");
             })
             .catch(error => {
@@ -137,6 +138,7 @@ function eliminarPrestamo(Pres_Id) {
                 .then((data) => {
                     console.log(data);
                     Listar();
+                    cantidadPrestamos();
                     Swal.fire({
                         title: "Préstamo eliminado exitosamente.",
                         icon: "success",
@@ -153,9 +155,6 @@ function eliminarPrestamo(Pres_Id) {
         }
     });
 }
-
-
-
 
 //funcion Buscar Prestamo
 document.addEventListener("DOMContentLoaded", () => {
@@ -230,3 +229,29 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+//funciones adicionales 
+function cantidadPrestamos() {
+    fetch("http://127.0.0.1:8000/ContarPrestamos", {
+        method: "GET",
+        headers: {
+            "consultar-Type": "AppInventario_ICED/json"
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        const prestamos = document.querySelector('.prestamos');
+
+        
+        // Actualizar los contadores con los datos obtenidos
+        prestamos.textContent = `Total de prestamos: ${data.cantidad_prestamos}`;
+
+    })
+    .catch(error => {
+        console.error("Error al obtener la cantidad de prestamos:", error);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    cantidadPrestamos();
+});

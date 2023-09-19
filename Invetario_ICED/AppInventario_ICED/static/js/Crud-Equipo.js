@@ -364,6 +364,36 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+
+
+function equiposInactivos() {
+    fetch("http://127.0.0.1:8000/ContarInactivos", {
+        method: "GET",
+        headers: {
+            "consultar-Type": "AppInventario_ICED/json"
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        const inactivos = document.querySelector('.inactivos');
+
+        
+        // Actualizar los contadores con los datos obtenidos
+        inactivos.textContent = `Total de equipos inactivos: ${data.cantidad_equipos_Inactivos}`;
+
+    })
+    .catch(error => {
+        console.error("Error al obtener la cantidad de equipos inactivos:", error);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    equiposInactivos();
+});
+
+
+
 //funcion para que el boton pueda abrir el modal desde JS
 function abrirModalActualizar() {
     const updateModal = document.getElementById('myModal');

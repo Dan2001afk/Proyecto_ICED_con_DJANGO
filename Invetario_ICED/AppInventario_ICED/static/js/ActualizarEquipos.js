@@ -111,3 +111,28 @@ function eliminarEquipo(prestamoId) {
 }
 
 
+function equiposInactivos() {
+    fetch("http://127.0.0.1:8000/ContarPrestamos", {
+        method: "GET",
+        headers: {
+            "consultar-Type": "AppInventario_ICED/json"
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        const prestamos = document.querySelector('.prestamos');
+
+        
+        // Actualizar los contadores con los datos obtenidos
+        prestamos.textContent = `Total de prestamos: ${data.cantidad_equipos_Inactivos}`;
+
+    })
+    .catch(error => {
+        console.error("Error al obtener la cantidad de prestamos:", error);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    equiposInactivos();
+});

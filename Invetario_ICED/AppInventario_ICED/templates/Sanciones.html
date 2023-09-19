@@ -81,15 +81,39 @@
 
     <section class="cont">
 
+        <div class="cabezera">
+            <h1 class="titulo">LISTA DE SANCIONES</h1>
+        </div>
+
         <div class="contenedor1">
-            <h1>Lista de dispositivos en el centro</h1>
             <button class="btnInsertar">Insertar Sancion</button>
-            <button class="btnActualizar">Actualizar Sancion</button>
-            <label for=""><input type="text" id="id_sancionn" name="id_sancionn" placeholder="Buscar Sancion"></label>
+            <input type="text" id="id_sancionn" name="id_sancionn" placeholder="Buscar Sancion">
             <button type="button" id="BuscarSancion" class="btn btn-danger w-100 fs-5 mb-3">Buscar</button>  
         </div>
 
-        <div class="contenedor2">    
+        <div class="contador1">
+            <div class="icon-container">
+                <i class="fa-solid fa-circle-check"></i>
+                <h1 class="activos">contador</h1>
+            </div>
+        </div>
+
+        <div class="contador2">
+            <div class="icon-container">
+                <i class="fas fa-laptop"></i>
+                <h1 class="cantidad">Contador</h1>
+            </div>
+        </div>
+
+        <div class="contador3">
+            <div class="icon-container">
+                <i class="fa-solid fa-xmark"></i>
+                <h1 class="inactivos">Contador</h1>
+            </div>
+        </div>
+
+
+        <div class="contenedor3">    
             <div>
                 <table id="tabla1">
                     <thead>
@@ -113,6 +137,8 @@
                 </table>
             </div>
         </div>
+
+        
         <!--modal1-->
         <div id="myModal" class="modal">
             <div class="modal-content">
