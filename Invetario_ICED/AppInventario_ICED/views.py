@@ -30,33 +30,6 @@ import json
 #VistasUsuarios
 def VistasUsuarios(request):
     return render(request,"VistasUsuarios.html")
-
-class ListadoDatos(View):
-    def get(self, request):
-        prestamos = Prestamos.objects.all()
-        Datos = []
-
-        for prestamo in prestamos:
-            equipo = prestamo.Pres_Equipos
-            usuario = prestamo.Pres_Usuarios_Documento
-
-            Datos.append({
-                'Dispositivo': f"{equipo.Equi_tipo} {equipo.Equi_modelo}",
-                'Observaciones': prestamo.Pres_Observaciones_entrega,
-                'Serial': equipo.Equi_serial,
-                'Especialidad': equipo.equi_especialidad,
-                'Documento_Usuario': usuario.Usu_Documento,  # Agrega el campo de documento del usuario aquí
-                'Pres_Hora_Entrega': prestamo.Pres_Hora_Entrega
-            })
-
-        return JsonResponse(Datos, safe=False)
-
-
-
-def listar_prestamos_usuario(request, usuario_id):
-    usuario = Usuarios.objects.get(pk=usuario_id)
-    prestamos = Prestamos.objects.filter(Pres_Usuarios_Documento=usuario)
-    return render(request, 'VistasUsuarios.html', {'usuario': usuario, 'prestamos': prestamos})
 #equipos
 class ListadoEquipos(ListView):
     def get(self,request):
