@@ -7,6 +7,9 @@ from django.conf.urls.static import *
 
 
 urlpatterns=[
+    #Vistas Usuario 
+    path('VistasUsuarios',VistasUsuarios,name="VistaUsarios"),
+    path('listar_datos/', views.ListadoDatos.as_view(), name='listar_datos'),
     
     #PORTADA PRINCIPAL
     path('Portada',views.Portada,name='Portada'),
@@ -15,13 +18,9 @@ urlpatterns=[
     path('iniciarSesion/',IniciarSesionView.as_view(),name="iniciar_sesion"),
     path('ActualizarUsuario/',PerfilClienteView.as_view(),name="perfil_usuario"),
     path('Login',views.Login,name='Login'),
-    path('VistasUsuarios',VistasUsuarios,name="VistaUsarios"),
+   
     #FORMULARIO
     path('Formulario',views.Formulario,name='Formulario'),
-    
-    
-    
-    
     #CRUD EQUIPOS
     path('Equipo',views.Equipo,name='Equipo'),
     path('ListarEquipos',ListadoEquipos.as_view(),name='ListarEquipos'),
@@ -32,7 +31,6 @@ urlpatterns=[
     path('ContarEquipos', ContarEquipos.as_view(), name='contar-equipos'),
     path('ContarActivos', ContarActivos.as_view(), name='contar-activos'),
     path('ContarInactivos', ContarInactivos.as_view(), name='contar-inactivos'),
-
     #CRUD USUARIOS
     path('Usuario',views.Usuario,name='Usuario'),
     path('ListarUsuarios', ListarUsuarios.as_view(), name='ListarUsuarios'),
