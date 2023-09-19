@@ -517,18 +517,25 @@ table th {
 
 
 
-
-/*estilos de formulario de insertar */
-
-#Equi_tipo,
-#Equi_modelo,
-#Equi_estado,
-#equi_especialidad,
-#Usu_Correo
-{
-
- 
+#FormEquipos {
+  max-width: 400px; /* Ancho máximo del formulario */
+  margin: 0 auto; /* Centra el formulario horizontalmente */
+  padding: 20px; /* Espaciado interno */
+  background-color: #f2f2f2; /* Color de fondo */
+  border: 1px solid #ccc; /* Borde */
+  border-radius: 5px; /* Bordes redondeados */
 }
+
+/* Estilos para los elementos del formulario */
+select, input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 15px;
+}
+
 
 #Guardar:hover{
   background-color: #8acbff;
@@ -536,6 +543,7 @@ table th {
 
 
 #Guardar {
+  margin: 20px;
   border: none;
   background-color: #b491ce;
   border-radius: 15px;

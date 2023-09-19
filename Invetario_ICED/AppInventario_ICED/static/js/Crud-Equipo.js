@@ -97,6 +97,7 @@ function agregarEquipo() {
         Consultar();
         equiposActivos();
         mostrarCantidadEquipos();
+        equiposInactivos();
         Swal.fire({
             icon: "success",
             title: "Éxito",
@@ -144,6 +145,7 @@ function eliminarEquipo(Equ_id) {
                 Consultar();
                 equiposActivos();
                 mostrarCantidadEquipos();
+                equiposInactivos();
                 Swal.fire("Éxito", "Registro eliminado exitosamente.", "success");
             })
             .catch(error => {
@@ -285,6 +287,7 @@ function actualizarEquipo(Equ_id) {
         Consultar();
         equiposActivos();
         mostrarCantidadEquipos();
+        equiposInactivos();
         Swal.fire({
             icon: "success",
             title: "Éxito",

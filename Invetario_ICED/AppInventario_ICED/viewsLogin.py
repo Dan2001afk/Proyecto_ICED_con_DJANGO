@@ -93,7 +93,7 @@ class IniciarSesionView(View):
 
             if user is not None:
                 login(request, user)
-                if user.rol == 'cliente':
+                if user.rol == 'Aprendiz' or user.rol == 'aprendiz' or user.rol == 'Instructor' or user.rol == 'instructor':
                     print("entro al rol")
                     return redirect('perfil_usuario')  
                 else:
@@ -147,7 +147,3 @@ def frmcliente(request):
      return render(request,"ActualizarUsuario.html")
 
 
-
-    
-
-    

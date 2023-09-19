@@ -5,13 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/actualizacionPrefil.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://kit.fontawesome.com/3d7a846b01.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Perfil del cliente</title>
 </head>
 
 <body>
-    {% if form %}
-        <h1 class="titulo">Bienvenido</h1>
-<div id="myModal" class="modal">
+{% if form %}
+<h1 class="titulo">Bienvenido</h1>
+<div id="myModalp" class="modal">
     <div class="modal-content">
         <span class="close" id="closeModalBtn">&times;</span>
         <form method="POST" id="myForm">
@@ -21,6 +24,7 @@
         </form>
     </div>
 </div>
+
 
     {% else %}
         <div>No se encontró información para el cliente solicitado</div>
@@ -35,7 +39,8 @@
         <img class="imagenPerfil" class="perfil-imagen" src="{{ user.imagen.url }}" alt="Imagen de usuario">
     {% endif %}
 </div>
-    <button id="openModalBtn">Editar Perfil</button>
+
+    <button class="BTNactualizaUsuario" id="openModalBtn">Editar Perfil</button>
 
 
     
@@ -43,6 +48,7 @@
 
 
     <script src="{% static 'js/modalPerfil.js' %}"></script>
+
 
     </body>
 </html>

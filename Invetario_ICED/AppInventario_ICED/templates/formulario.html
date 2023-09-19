@@ -38,9 +38,16 @@
                         {{ form.password2 }}
                     </div>
                     <div class="input_controlador">
-                        <!--{{ form.rol.label_tag }}-->
-                        {{ form.rol }}
+                        <!-- {{ form.rol.label_tag }} -->
+                        <select name="rol" id="rol" class="mi-select"> <!-- Agrega una clase CSS al select -->
+                            <option value="Aprendiz">Aprendiz</option>
+                            <option value="Instructor">Instructor</option>
+                            <option value="Administrador">Administrador</option>
+                            <!-- Agrega más opciones según sea necesario -->
+                        </select>
                     </div>
+                    
+                    
                     <div class="input_controlador">
                         <!--{{ form.imagen.label_tag }}-->
                         {{ form.imagen }}
@@ -60,4 +67,3 @@
     
 </body>
 </html>
-
