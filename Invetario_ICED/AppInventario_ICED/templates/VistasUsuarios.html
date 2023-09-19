@@ -8,6 +8,7 @@
     <title>Menú lateral responsive</title>
     <link rel="stylesheet" href="{% static 'css/VistasUsuarios.css' %}">
     <script src="{% static 'js/Crud-Equipo.js' %}"></script>
+    <script src="{% static 'js/Crud-VistasUsuarios.js' %}"></script>
     <script src="https://kit.fontawesome.com/3d7a846b01.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.2/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -89,24 +90,24 @@
             <h1>Perfil Usuario</h1>
         </div>
         <div class="contenedor1" >
-            <h3>HISTORIAL DE  MIS PRESTAMOS </h3>
+            <h3>HISTORIAL DE MIS DATOS </h3>
             <!-- Creación de tabla de datos -->
             <table id="tabla1">
                 <thead>
                     <tr>
-                        <th>ID DEL PRESTAMOS </th>
-                        <th>Dispositivo</th>
-                        <th>Estado</th>
+                        
+                        <th>Dispositivo - Marca</th>
                         <th>Observaciones</th>
                         <th>Serial</th>
                         <th>Especialidad</th>
+                        <th>Documento del Usuario</th> <!-- Agrega la columna del documento del usuario -->
+                        <th>Fecha de entrega</th>
                     </tr>
                 </thead>
                 <tbody id="tabla1-body"></tbody>
             </table>
-             
             <!-- Final de la tabla -->
-        </div>              
+        </div>   
         
         <div class="contenedor2">
             <h3>Portatiles disponibles </h32>
