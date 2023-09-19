@@ -4,43 +4,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'actualizacion.css' %}">
+    <link rel="stylesheet" href="{% static 'css/actualizacionPrefil.css' %}">
     <title>Perfil del cliente</title>
 </head>
 
 <body>
-    <a href="{% url 'perfil_usuario' %}">Ir a mi perfil</a>
-
     {% if form %}
-        <h1>informacion del cliente</h1>
-        <div class="form-content">
-        <form method="POST">
+        <h1 class="titulo">Bienvenido</h1>
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModalBtn">&times;</span>
+        <form method="POST" id="myForm">
             {% csrf_token %}
-            {{form.as_div }}
-
-
-            <div><label for="">Nombre usuario</label>{{form.Usu_Nombre}}</div>
-            <a href="{% url 'perfil_usuario' %}">Ir a mi perfil</a>
-
-
-            <!-- {{ form.as_p }} -->
-             <button type="submit" name="editar" value="editar">Guardar Cambios</button>
+            {{ form.as_p }}
+            <button type="submit" name="editar" value="editar">Guardar Cambios</button>
         </form>
-        </div>
-        <div>datos de usuario</div>
-        <div>nombre de usuario{{user.username}}</div>
-        <div>rol: {{user.rol}}</div>
-
-        {% if user.imagen %}
-
-        <input type="text" value=" usuario.imagen ">
-        <img src="{{ user.imagen.url }}" alt="imagen de usuario">
-        {% endif %}
+    </div>
+</div>
 
     {% else %}
-        <div>no se encontro informacion para el cliente solicitado</div>
+        <div>No se encontró información para el cliente solicitado</div>
     {% endif %}
+    
+    <div class="informacionUsuario">
+        <div>Nombre de usuario: {{ user.username }}</div>
+        <div>Rol: {{ user.rol }}</div>    
+    
+  
+    {% if user.imagen %}
+        <img class="imagenPerfil" class="perfil-imagen" src="{{ user.imagen.url }}" alt="Imagen de usuario">
+    {% endif %}
+</div>
+    <button id="openModalBtn">Editar Perfil</button>
+
+
+    
+
+
+
+    <script src="{% static 'js/modalPerfil.js' %}"></script>
+
     </body>
-
-
 </html>

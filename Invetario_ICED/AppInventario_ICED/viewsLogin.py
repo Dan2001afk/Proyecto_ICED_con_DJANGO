@@ -98,7 +98,7 @@ class IniciarSesionView(View):
                     return redirect('perfil_usuario')  
                 else:
                     print("no entra")
-                    form.add_error(None, 'Credenciales inválidas. Por favor, intenta nuevamente.')
+                    return redirect('Equipo')  
 
             
 #        return render(request, 'iniciosesion.html', {'form': form})
@@ -145,7 +145,6 @@ class PerfilClienteView(View):
     
 def frmcliente(request):
      return render(request,"ActualizarUsuario.html")
-
 
 
 
