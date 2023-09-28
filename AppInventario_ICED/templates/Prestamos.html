@@ -1,0 +1,190 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prestamos</title>
+    <link rel="stylesheet" href="{% static 'css/Prestamo.css' %}">
+    <script src="{% static 'js/Crud-Prestamos.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://kit.fontawesome.com/3d7a846b01.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body id="body" style="max-height: 100vh; overflow-y: scroll;">
+    <header>
+        <div class="icon__menu">
+            <i class="fas fa-bars" id="btn_open"></i>
+        </div>
+
+    </header>
+    
+
+    <div class="menu__side" id="menu_side">
+
+        <div class="options__menu">	
+
+            <a href="/Equipo">
+                <div class="option">
+                    <i class="fas fa-laptop"></i>
+                    <h4>Equipos</h4>
+                </div>
+            </a>
+
+            <a href="/Usuario">
+                <div class="option">
+                    <i class="fa-solid fa-users"></i>
+                    <h4>Usuarios</h4>
+                </div>
+            </a>
+            
+            <a href="/Prestamo" class="selected">
+                <div class="option">
+                    <i class="fas fa-server"></i>
+                    <h4>Prestamos</h4>
+                </div>
+            </a>
+
+            <a href="/Sancion">
+                <div class="option">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <h4>Sanciones</h4>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="option">
+                    <i class="fas fa-box-open"></i>
+                    <h4>Devoluciones</h4>
+                </div>
+            </a>
+            
+            <a href="#">
+                <div class="option">
+                    <i class="fas fa-phone"></i>
+                    <h4>Contacto</h4>
+                </div>
+            </a>
+            
+            <a href="#">
+                <div class="option">
+                    <i class="fas fa-user-circle"></i>
+                    <h4>Nosotros</h4>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+    <section class="cont">
+
+        <div class="cabezera">
+            <h1>Lista de Prestamos en el centro</h1>
+        </div>
+
+        <div class="contenedor1">
+            <button class="btnInsertar">Insertar Prestamo</button>
+            <input type="text" id="id_prestamoo" placeholder="Buscar Prestamo">
+            <button type="button" id="BuscarPrestamo" class="btnBuscar">Buscar</button>
+        </div>
+
+        <div class="contador1"></div>
+        <div class="contador2">
+            <div class="icon-container">
+                <i class="fas fa-laptop"></i>
+                <h1 class="cantidad">Contador</h1>
+            </div>
+        </div>
+        <div class="contador3"></div>
+        
+        <div class="contenedor3">    
+            <div>
+                <table id="tabla1">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>ID Equipo</th>
+                            <th>Documento</th>
+                            <th>Fecha Entrega</th>
+                            <th>Hora entrega</th>
+                            <th>Tiempo Limite</th>
+                            <th>Observaciones de Entrega</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla1-body">
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                                Listar();
+                            });
+                        </script>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--modal1-->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h1>Actualizar Prestamo</h1>
+                <form method=""  id="ActualizarPrestamos" >
+                    {% csrf_token %}
+        
+                    <input type="text" name="Pres_Id" id="Pres_Id_Act" placeholder="ID" required><br>
+                    
+                    <input type="text" name="Pres_Equipos" id="Pres_Equipos_Act" placeholder="Tipo" required><br>
+                    
+                
+                    <input type="text" name="Pres_Usuarios_Documento" id="Pres_Usuarios_Documento_Act" placeholder="Modelo" required><br>
+                    
+                
+                    <input type="text" name="Pres_Fec_Entrega" id="Pres_Fec_Entrega_Act" placeholder="Color" required><br>
+                    
+                
+                    <input type="text" name="Pres_Hora_Entrega" id="Pres_Hora_Entrega_Act" placeholder="Serial" required><br>
+                    
+                
+                    <input type="text" name="Pres_Tiempo_Limite" id="Pres_Tiempo_Limite_Act" placeholder="Estado" required><br>
+                    
+            
+                    <input type="text" name="Pres_Observaciones_entrega" id="Pres_Observaciones_entrega_Act"  placeholder="Especialidad"><br>
+                
+                    <button type="submit" class="ActualizarPrestamo" value="ActualizarPrestamo" id="ActualizarPrestamo">Actualizar</button>
+                
+                </form>
+            </div>
+        </div>
+        
+        <!-- ... -->
+        <!--modal2-->
+        <div id="myModal2" class="modal">
+            <div class="modal-content">
+                <span class="close2">&times;</span>
+                <h1 class="h1">Insertar Prestamo</h1>
+                <form method="" id="FormPrestamos">
+                    {% csrf_token %}
+            
+                    <input type="text" placeholder="ID DEL EQUIPO" name="Pres_Equipos_id" id="Pres_Equipos_id" required><br>
+
+                    <input type="text"  placeholder="DOCUMENTO DEL USUARIO" name="Pres_Usuarios_Documento_id" id="Pres_Usuarios_Documento_id" required><br>
+
+                    <input type="text" placeholder="TIEMPO LIMITE" name="Pres_Tiempo_Limite" id="Pres_Tiempo_Limite" required><br>
+
+
+                    <input type="submit" value="Guardar" id="Guardar">
+                </form>
+            </div>
+        </div>
+        <!---->
+
+    </section>
+
+    <script src="static/js/script.js"></script>
+    <script src="static/js/script3.js"></script>
+    
+</body>
+</html>
+
+
+

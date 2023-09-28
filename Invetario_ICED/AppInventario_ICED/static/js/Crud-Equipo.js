@@ -130,7 +130,7 @@ function eliminarEquipo(Equ_id) {
         text: "Esta Acción Eliminará El Equipo",
         icon: "error",
         showCancelButton: true,
-        confirmButtonText: "Aceptar",
+        confirmButtonText: "Eliminar",
         cancelButtonText: "Cancelar"
     }).then((result) => {
         if (result.isConfirmed) {
@@ -146,10 +146,10 @@ function eliminarEquipo(Equ_id) {
                 equiposActivos();
                 mostrarCantidadEquipos();
                 equiposInactivos();
-                Swal.fire("Éxito", "Registro eliminado exitosamente.", "success");
+                Swal.fire("Éxito", "Dispositivo eliminado exitosamente.", "success");
             })
             .catch(error => {
-                console.error("Error al eliminar el equipo:", error);
+                console.error("Error al eliminar el Dispositivo:", error);
                 Swal.fire("Error", "Error al eliminar el equipo.", "error");
             });
         }
@@ -176,7 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (response.ok) {
                     return response.json();
                 } else {
-                    throw new Error("Error al buscar el equipo por ID");
+                    throw new Error("Error al buscar el Dispositivo por ID");
                 }
             })
             .then(equipo => {
@@ -212,7 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 } else {
                     Swal.fire({
-                        title: "Elemento No Encontrado",
+                        title: "Dispositivo No Encontrado",
                         icon: "error", 
                         confirmButtonText: "Aceptar"
                     });

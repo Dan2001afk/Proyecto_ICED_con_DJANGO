@@ -1,0 +1,138 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es-co">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú lateral responsive</title>
+    <link rel="stylesheet" href="{% static 'css/VistasUsuarios.css' %}">
+    <script src="{% static 'js/Crud-Equipo.js' %}"></script>
+    <script src="https://kit.fontawesome.com/3d7a846b01.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.2/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="icon" href="{% static 'imagenes/iced_logo.png' %}" type="image/x-icon">
+
+    
+</head>
+<body id="body" style="max-height: 100vh; overflow-y: scroll;">
+    
+    <header>
+        <div class="icon__menu">
+            <i class="fas fa-bars" id="btn_open"></i>
+        </div>
+
+        </div>
+
+    </header>
+
+    <div class="menu__side" id="menu_side">
+
+        <div class="options__menu"> 
+
+            <a href="#" class="selected" >
+                <div class="option">
+                    <i class="fas fa-home" title="Inicio"></i>
+                    <h4>Inicio</h4>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="option">
+                    <i class="fa-solid fa-cloud"></i>
+                    <h4>Portafolio</h4>
+                </div>
+            </a>
+            
+            <a href="#">
+                <div class="option">
+                    <i class="fa-solid fa-database"></i>
+                    <h4>Cursos</h4>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="option">
+                    <i class="fa-solid fa-code"></i>
+                    <h4>Blog</h4>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="option">
+                    <i class="fa-solid fa-users"></i>
+                    <h4>Contacto</h4>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="option">
+                    <i class="fa-solid fa-arrows-rotate"></i>
+                    <h4>Nosotros</h4>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="option">
+                    <i class="fa-solid fa-plus"></i>
+                    <h4>Nosotros</h4>
+                </div>
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <section class="cont">
+        <div class="encabezado">
+            <h1>Perfil Usuario</h1>
+        </div>
+        <div class="contenedor1" >
+            <h3>HISTORIAL DE  MIS PRESTAMOS </h3>
+            <!-- Creación de tabla de datos -->
+            <table id="tabla1">
+                <thead>
+                    <tr>
+                        <th>ID DEL PRESTAMOS </th>
+                        <th>Dispositivo</th>
+                        <th>Estado</th>
+                        <th>Observaciones</th>
+                        <th>Serial</th>
+                        <th>Especialidad</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla1-body"></tbody>
+            </table>
+             
+            <!-- Final de la tabla -->
+        </div>              
+        
+        <div class="contenedor2">
+            <h1>Datos de usuarios</h1>
+            <p><i class="icono fas fa-user"></i> Nombre: ICED</p>
+            <p><i class="icono fas fa-envelope"></i> Correo electrónico: juan@example.com</p>
+            <p><i class="icono fas fa-birthday-cake"></i> Edad: 30 años</p>
+        </div>
+
+        <div class="contenedor3">
+            <h3>Portatiles disponibles </h32>
+            <div class="icon-container">
+                <i class="fa-solid fa-circle-check"></i>
+                <h1 class="activos">contador</h1>
+            </div></div>
+
+
+        <div class="contenedor4">
+            <h1>Recuerda enregar el dispositivo acorde a la ficha del estudiante</h1>
+        </div>
+    </section>
+      
+
+
+
+    <script src="js/script.js"></script>
+    <script src="js/listar.js"></script>
+
+</body>
+</html>

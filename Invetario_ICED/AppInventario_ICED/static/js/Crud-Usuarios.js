@@ -111,9 +111,9 @@ function eliminarUsuario(Usu_Documento) {
 
     // Mostrar un SweetAlert de confirmación
     Swal.fire({
-        title: "Confirmar",
-        text: "¿Está seguro de eliminar este usuario?",
-        icon: "warning",
+        title: "¿Estás seguro?",
+        text: "¿Esta Acción Eliminará el usuario?",
+        icon: "error",
         showCancelButton: true,
         confirmButtonText: "Eliminar",
         cancelButtonText: "Cancelar"
@@ -247,7 +247,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     tablaBody.appendChild(newRow);
                 } else {
                     Swal.fire({
-                        title: "Elemento No Encontrado",
+                        title: "Usuario No Encontrado",
                         icon: "error", 
                         confirmButtonText: "Aceptar"
                     })
@@ -255,11 +255,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             })
             .catch(error => {
-                console.error("Error al buscar el usuario por ID:", error);
-                alert("Error al buscar el usuario por ID");
+                console.error("Error al buscar el usuario por Documento:", error);
+                alert("Error al buscar el usuario por Documento");
             });
         } else {
-            console.error("Debe ingresar un ID de usuario válido");
+            console.error("Debe ingresar un Documento de un usuario válido");
         }
     });
 });

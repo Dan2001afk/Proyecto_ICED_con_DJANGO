@@ -4,15 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro Usuario</title>
+    <title>Formulario</title>
     <link rel="stylesheet" href="{% static 'css/Formulario.css' %}">
+    <link rel="icon" href="{% static 'imagenes/iced_logo.png' %}" type="image/x-icon">
 </head>
 <body>
     
     <div class="form-main">
         <div class="form-content">
             <div class="box">
-            <h3>Registro Usuario</h3>
+            <h3>Registro</h3>
             <form action="/registro/" method="post" enctype="multipart/form-data">
                 <legend>Diligencia el formulario para Continuar</legend>
                 {% csrf_token %}
@@ -56,7 +57,7 @@
                     <button type="submit" class="btn">Registrar</button>
                 </div>
             </form>
-            <p>ya tiene cuenta? <a href="Login.html">Iniciar Sesion</a></p>
+            <p>ya tiene cuenta? <a href="/iniciarSesion/">Iniciar Sesion</a></p>
         </div>
     </div>
 </div>
