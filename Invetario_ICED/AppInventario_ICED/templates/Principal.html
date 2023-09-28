@@ -8,8 +8,8 @@
     <title>Inicio </title>
     <link rel="stylesheet" href="{% static 'css/Portada.css' %}">
     <script src="{% static 'js/script2.js' %}"></script>
-
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="{% static 'imagenes/iced_logo.png' %}" type="image/x-icon">
 
 </head>
 <body>
@@ -26,10 +26,10 @@
                 <nav id="nav">
                     <img src="{% static 'imagenes/logo sena pilar.png' %}" alt="">
                     <ul>
-                        <li><a href="#" id="selected">Inicio</a></li>
+                        <li><a href="/Principal" id="selected">Inicio</a></li>
                         <li><a href="#">Servicios</a></li>
                         <li><a href="#">Nosotros</a></li>
-                        <li><a href="#">Iniciar sesion</a></li>
+                        <li><a href="/iniciarSesion/">Iniciar sesion</a></li>
                     </ul>
                 </nav>
             </div>
@@ -46,7 +46,7 @@
 
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate quo nostrum eligendi sequi iste quae voluptates assumenda nemo odit cum!</p>
 
-                    <input type="button" value="Registrate">
+                  <a href="/registro/"><input type="button" value="Registrate"></a>
                 </div>
 
 

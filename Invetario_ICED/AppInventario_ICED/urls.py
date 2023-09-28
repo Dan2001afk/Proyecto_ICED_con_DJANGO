@@ -9,6 +9,7 @@ from django.conf.urls.static import *
 urlpatterns=[
     
     #PORTADA PRINCIPAL
+    path('Principal',Portada,name="Principal"),
     path('VistasUsuarios',VistasUsuarios,name="VistaUsarios"),
     path('listar_datos/', views.ListadoDatos.as_view(), name='listar_datos'),
     
