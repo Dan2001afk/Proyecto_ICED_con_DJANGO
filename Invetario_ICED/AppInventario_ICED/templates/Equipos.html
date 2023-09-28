@@ -149,7 +149,7 @@
             <div class="modal-content">
                 <span class="close">&times;</span>
                 <h1>ACTUALIZAR EQUIPO</h1>
-                <form method="" id="ActualizarEquipos">
+                <form method="" id="ActualizarEquipos" class="ActualizarEquipos">
                     {% csrf_token %}
                     <input type="number" id="Equ_id_Act"><br>
                     <input type="text" name="Equi_tipo_Act" id="Equi_tipo_Act" placeholder="Tipo" required><br>
@@ -170,7 +170,7 @@
             <div class="modal-content">
                 <span class="close2">&times;</span>
                 <h1>Insertar Equipo</h1>
-                <form method="post"  id="FormEquipos" >
+                <form method="post"  id="FormEquipos" class="FormEquipos" >
                     {% csrf_token %}
 
                     <div>

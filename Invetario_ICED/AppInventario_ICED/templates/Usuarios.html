@@ -96,14 +96,26 @@
         </div>
 
         
-        <div class="contador1">A</div>
+        <div class="contador1">
+            <div class="icon-container">
+                <i class="fa-solid fa-person-chalkboard"></i>
+                <h1 class="instructores">Contador</h1>
+            </div>
+        </div>
+
         <div class="contador2">
             <div class="icon-container">
                 <i class="fa-solid fa-users"></i>
                 <h1 class="cantidad">Contador</h1>
             </div>
         </div>
-        <div class="contador3">C</div>
+
+        <div class="contador3">
+            <div class="icon-container">
+                <i class="fa-solid fa-user-pen"></i>
+                <h1 class="aprendices">Contador</h1>
+            </div>
+        </div>
     
         
         <div class="contenedor3">    
@@ -137,7 +149,7 @@
             <div class="modal-content">
                 <span class="close">&times;</span>
                 <h1>Actualizar Usuario</h1>
-                <form id="ActualizarUsuarioForm">
+                <form id="ActualizarUsuarioForm" class="ActualizarUsuarioForm">
                     
                     <div>
                         <input type="text" name="Usu_DocumentoActualizar" id="Usu_DocumentoActualizar" placeholder="Documento" required><br>
@@ -177,7 +189,7 @@
                 <div class="modal-content">
                     <span class="close2">&times;</span>
                     <h1>Insertar Usuario</h1>
-                    <form method=""  id="FormUsuarios" >
+                    <form method=""  id="FormUsuarios" class="FormUsuarios">
                         {% csrf_token %}
                         
 

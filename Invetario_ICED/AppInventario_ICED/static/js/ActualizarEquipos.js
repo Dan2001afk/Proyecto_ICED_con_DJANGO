@@ -136,3 +136,51 @@ function equiposInactivos() {
 document.addEventListener("DOMContentLoaded", function () {
     equiposInactivos();
 });
+
+
+function mostrarCantidadInstructores(){
+    fetch("http://127.0.0.1:8000/ContarInstructores", {
+        method: "GET",
+        headers: {
+            "consultar-Type": "AppInventario_ICED/json"
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        const cantidad = document.querySelector('.instructores');
+
+        
+        // Actualizar los contadores con los datos obtenidos
+        cantidad.textContent = `Total de instructores : ${data.cantidad_instructores}`;
+
+    })
+    .catch(error => {
+        console.error("Error al obtener la cantidad de instructores:", error);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    mostrarCantidadInstructores();
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

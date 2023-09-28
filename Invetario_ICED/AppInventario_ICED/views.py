@@ -292,7 +292,6 @@ class ContarAprendices(View):
         cantidad_aprendices=Usuarios.objects.filter(Usu_tipo='Aprendiz').count()
         return JsonResponse({"cantidad_aprendices":cantidad_aprendices}) 
 
-
 class ContarInstructor(View):
     def get(self, request):
         cantidad_instructores=Usuarios.objects.filter(Usu_tipo='Instructor').count()

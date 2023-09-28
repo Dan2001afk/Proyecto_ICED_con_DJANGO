@@ -74,6 +74,8 @@ function Agregar() {
             console.log(data);
             Consultar();
             mostrarCantidadUsuarios();
+            mostrarCantidadAprendinces();
+            mostrarCantidadInstructores();
 
             // SweetAlert para éxito
             Swal.fire({
@@ -136,6 +138,8 @@ function eliminarUsuario(Usu_Documento) {
 
                 Consultar();
                 mostrarCantidadUsuarios();
+                mostrarCantidadInstructores();
+                
             })
             .catch(error => {
                 console.error("Error al eliminar el Usuario:", error);
@@ -190,6 +194,10 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("ActualizarUsuarioForm").addEventListener("submit", function (event) {
         event.preventDefault();
         actualizarUsuario();
+        mostrarCantidadUsuarios();
+        mostrarCantidadInstructores();
+        mostrarCantidadAprendinces();
+        
     });
 });
 
@@ -286,6 +294,62 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+
+function mostrarCantidadAprendinces(){
+    fetch("http://127.0.0.1:8000/ContarAprendices", {
+        method: "GET",
+        headers: {
+            "consultar-Type": "AppInventario_ICED/json"
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        const cantidad = document.querySelector('.aprendices');
+
+        
+        // Actualizar los contadores con los datos obtenidos
+        cantidad.textContent = `Total de aprendices : ${data.cantidad_aprendices}`;
+
+    })
+    .catch(error => {
+        console.error("Error al obtener la cantidad de aprendices:", error);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    mostrarCantidadAprendinces();
+});
+
+
+function mostrarCantidadInstructores(){
+    fetch("http://127.0.0.1:8000/ContarInstructores", {
+        method: "GET",
+        headers: {
+            "consultar-Type": "AppInventario_ICED/json"
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        const cantidad = document.querySelector('.instructores');
+
+        
+        // Actualizar los contadores con los datos obtenidos
+        cantidad.textContent = `Total de instructores : ${data.cantidad_instructores}`;
+
+    })
+    .catch(error => {
+        console.error("Error al obtener la cantidad de instructores:", error);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    mostrarCantidadInstructores();
+});
+
+
+
 //funcion para que el boton pueda abrir el modal desde JS
 function abrirModalActualizar() {
     const updateModal = document.getElementById('myModal');
@@ -306,10 +370,6 @@ function abrirModalActualizar() {
 
     // Aquí puedes realizar acciones adicionales según tus necesidades, como cargar los datos del equipo en el modal.
 }
-
-
-
-//funcion para actualizar
 
 
 //funcion actualizar que atrapa datos del registro

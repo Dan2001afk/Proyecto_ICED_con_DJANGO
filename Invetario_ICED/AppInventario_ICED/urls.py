@@ -40,6 +40,7 @@ urlpatterns=[
     path('BuscarUsuario/<int:pk>', views.BuscarUsuario.as_view(), name='buscarUsuario'),  # Nueva ruta
     path('ContarUsuarios', ContarUsuarios.as_view(), name='cantidad_usuarios'),
     path('ContarAprendices', ContarAprendices.as_view(), name='cantidad_aprendices'),
+    path('ContarInstructores',ContarInstructor.as_view(), name='cantidad_instructores'),
     
     #CRUD PRESTAMOS
     path('Prestamo',views.Prestamo,name='Prestamo'),
