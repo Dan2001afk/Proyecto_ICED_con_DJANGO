@@ -538,10 +538,21 @@ class EliminarSanciones(View):
             return JsonResponse({"Error":"La Sancion no existe"})
         Delete.delete()
         return JsonResponse({"Mensaje":"Sancion Eliminada"})
+ 
+ 
     
 
 def Portada(request):
     return render(request,"Principal.html")
+
+def Informacion(request):
+    return render(request,"Informacion.html")
+
+
+def Nosotros(request):
+    return render(request,"Nosotros.html")
+
+
 
 def Login(request):
     return render(request,"Inicio.html")

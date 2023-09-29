@@ -10,6 +10,11 @@ urlpatterns=[
     
     #PORTADA PRINCIPAL
     path('Principal',Portada,name="Principal"),
+    path('Informacion',Informacion,name='Informacion'),
+    path('Nosotros',Nosotros,name='Nosotros'),
+    
+    
+    
     path('VistasUsuarios',VistasUsuarios,name="VistaUsarios"),
     path('listar_datos/', views.ListadoDatos.as_view(), name='listar_datos'),
     

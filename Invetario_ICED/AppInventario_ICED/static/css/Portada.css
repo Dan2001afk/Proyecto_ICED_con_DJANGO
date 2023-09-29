@@ -75,7 +75,11 @@ p{
 }
 
 #selected{
-    background: #a8a9f5;
+    background: linear-gradient(to right, #8c84cf, #4fa8f1);
+    color: white;
+    cursor: pointer;
+    box-shadow: 1px 1px 30px -12px #e6e6e6;
+    transition: all 300ms;
     padding: 10px 40px;
     border-radius: 50px;
 }
@@ -188,7 +192,7 @@ p{
 @media screen and (max-width: 1020px){
 
     .container__cover{
-        background-color: #b1a8f5;
+        background-color: #464073;
     }
 
     .container__cover .svg img{

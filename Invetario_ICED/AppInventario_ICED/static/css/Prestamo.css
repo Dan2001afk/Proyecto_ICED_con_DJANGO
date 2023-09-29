@@ -279,7 +279,6 @@ main{
 }
 
 
-
 .contador3{
   background-color: rgb(255, 255, 255);
   grid-column: 9/13;
@@ -411,7 +410,7 @@ table th {
   border: 1px solid #888;
   border-radius: 8px;
   max-width: 500px;
-  height: 600px;
+  height: 450px;
   box-shadow: 0px 4px 8px rgba(118, 7, 7, 0.1);
   text-align: center;
 }
@@ -458,21 +457,30 @@ table th {
 
 
 
-#ActualizarEquipo:hover {
-  background-color:  #8acbff; /* Cambio de color al pasar el mouse por encima */
-}
 
-select{
-  
+.FormPrestamos input {
+
+  margin-bottom: 10%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  outline: none;
   width: 250px;
   height: 40px;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  background-color: white;
-  font-size: 16px;
+    
 }
+
+#FormPrestamos {
+  max-width: 400px; /* Ancho máximo del formulario */
+  margin: 0 auto; /* Centra el formulario horizontalmente */
+  padding: 20px; /* Espaciado interno */
+  background-color: #f2f2f2; /* Color de fondo */
+  border: 1px solid #ccc; /* Borde */
+  border-radius: 5px; /* Bordes redondeados */
+  
+}
+
 
 #Guardar:hover{
   background-color: #8acbff;
