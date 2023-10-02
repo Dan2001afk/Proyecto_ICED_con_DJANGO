@@ -231,8 +231,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     const newRow = document.createElement("tr");
                     newRow.innerHTML = `
-                    
-                    
                         <td>${usuario.Usu_Documento}</td>
                         <td>${usuario.Usu_Nombre}</td>
                         <td>${usuario.Usu_Apellido}</td>

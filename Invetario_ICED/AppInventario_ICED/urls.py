@@ -66,7 +66,9 @@ urlpatterns=[
     path('EliminarSancion/<pk>',EliminarSanciones.as_view(),name='Eliminar'),
     #HISTORIAL
     path('Historial',views.Historial,name='Historial'),
-    
+    path('ListarHistorial',ListarHistorial.as_view(),name='Historial'),
+    path('EliminarHistorial/<pk>',EliminarHistorial.as_view(),name='Eliminar'),
+
 ] + static (settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 """ path('index.html',listadoEquipos.as_view(),name='Equipos'),

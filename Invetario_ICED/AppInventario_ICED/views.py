@@ -540,7 +540,72 @@ class EliminarSanciones(View):
         return JsonResponse({"Mensaje":"Sancion Eliminada"})
  
  
+#HISTORIAL DE LOS PRESTAMOS
+class ListarHistorial(ListView):
+    def get(self,request):
+        datos=Historial.objects.all()
+        Datos_Historial=[]
+        for i in datos:
+            Datos_Historial.append({
+                'Dev_id':i.Dev_id,
+                'Dev_Usuarios_Documento':i.Dev_Usuarios_Documento,
+                'Dev_Pres_id':i.Dev_Pres_id,
+                'Dev_Fec_Devolucion':i.Dev_Fec_Devolucion,
+                'Dev_Hora_Devolucion':i.Dev_Hora_Devolucion,
+                'Dev_Observacion_Devolucion':i.Dev_Observacion_Devolucion,
+            })
+        # DatosEquipos=list(Datos)
+        return JsonResponse(Datos_Historial,safe=False)    
+
+def Historial(request):
+    return render(request,"Historial.html")
+
+
+class EliminarHistorial(View):
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def delete(self, request, pk):
+        try:
+            historial = Historial.objects.get(pk=pk)
+        except Historial.DoesNotExist:
+            return JsonResponse({"Error": "El Prestamo no existe"})
+
+        # Recupera el equipo asociado al préstamo
+        equipo = historial.Dev_Equipos
+
+        # Cambia el estado del equipo de nuevo a "Activo"
+        equipo.Equi_estado = "Activo"
+        equipo.save()
+
+        # Luego, elimina el préstamo
+        historial.delete()
+
+        return JsonResponse({"Mensaje": "Datos Eliminados"})
+
+class BuscarPrestamo(View):
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
     
+    def get(self, request, pk):
+        try:
+            historial = Historial.objects.get(pk=pk)
+        except Historial.DoesNotExist:
+            return JsonResponse({"Error": "El Prestamo no existe"})
+        
+        datos_historial = {
+            'Dev_id': historial.Dev_id,
+            'Dev_Usuarios_Documento': historial.Dev_Usuarios_Documento,
+            'Dev_Pres_id': historial.Dev_Pres_id,
+            'Dev_Fec_Devolucion': historial.Dev_Fec_Devolucion,
+            'Dev_Hora_Devolucion': historial.Dev_Hora_Devolucion,
+            'Dev_Observacion_Devolucion': historial.Dev_Observacion_Devolucion
+        }
+        
+        return JsonResponse(datos_historial)
+
 
 def Portada(request):
     return render(request,"Principal.html")
@@ -560,8 +625,7 @@ def Login(request):
 def Formulario(request):
     return render(request,"Usuarios.html")
 
-def Historial(request):
-    return render(request,"Historial.html")
+
 
 
 

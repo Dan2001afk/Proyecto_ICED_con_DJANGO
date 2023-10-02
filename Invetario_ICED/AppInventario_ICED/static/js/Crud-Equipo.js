@@ -176,7 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (response.ok) {
                     return response.json();
                 } else {
-                    throw new Error("Error al buscar el Dispositivo por ID");
+                    throw new Error("Error al buscar el Dispositivo por el Serial");
                 }
             })
             .then(equipo => {
@@ -220,11 +220,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             })
             .catch(error => {
-                console.error("Error al buscar el equipo por ID:", error);
-                alert("Error al buscar el equipo por ID");
+                console.error("Error al buscar el equipo por Serial:", error);
+                alert("Error al buscar el equipo por Serial");
             });
         } else {
-            console.error("Debe ingresar un ID de equipo válido");
+            console.error("Debe ingresar un serial de  un equipo válido");
         }
     });
 });
