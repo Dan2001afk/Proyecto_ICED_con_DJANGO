@@ -239,10 +239,22 @@ document.addEventListener("DOMContentLoaded", () => {
                         <td>${usuario.Usu_Correo}</td>
                         <td>${usuario.Usu_Ficha}</td>
                         <td>
+                        <div class="btn-container">
+                        <button class="btnEliminar" onclick="eliminarUsuario(${usuario.Usu_Documento})">Eliminar</button>
+                        <button class="btnActualizar" onclick="capturarYActualizarUsuario(${usuario.Usu_Documento})">Actualizar</button>
+                        </div>
                         </td>
                     `;
 
                     tablaBody.appendChild(newRow);
+                    
+                      // Agregar evento de clic al botón de "Actualizar"
+                      const updateButton = newRow.querySelector('.btnActualizar');
+                      updateButton.addEventListener('click', function() {
+                          const usuarioId = this.getAttribute('data-usuario-id');
+                          abrirModalActualizar(usuarioId);
+                      });
+
                 } else {
                     Swal.fire({
                         title: "Usuario No Encontrado",
