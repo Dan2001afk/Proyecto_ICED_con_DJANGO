@@ -12,6 +12,7 @@ urlpatterns=[
     path('Principal',Portada,name="Principal"),
     path('Informacion',Informacion,name='Informacion'),
     path('Nosotros',Nosotros,name='Nosotros'),
+    path('RecuperarContraseña',RecuperarContraseña,name='Recuperarcontraseña'),
     
     
     

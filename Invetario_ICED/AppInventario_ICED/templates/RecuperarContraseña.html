@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>  
+    <title>Recuperar Contraseña</title>
+    <link rel="stylesheet" href="{% static 'css/RecuperarContraseña.css' %}">
+</head>
+<body>
+    <section class="form-main">
+        <div class="form-content">
+            <div class="circle-1"></div>
+            <div class="circle-2"></div>
+            <div class="circle-3"></div>
+            <div class="box">
+                <h3>Recuperar Contraseña</h3>
+                <form id="recovery-form">
+                    <div>
+                        <input type="email" placeholder="Email" class="input_controlador" id="email" name="email" required>
+                    </div>
+                    <button type="submit" class="btn">Enviar</button>
+                </form>
+                <div id="message"></div>
+            </div>
+        </div>
+    </section>
+    <script src="/js/RecuperarContraseña.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

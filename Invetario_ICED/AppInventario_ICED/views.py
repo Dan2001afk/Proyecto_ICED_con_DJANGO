@@ -613,6 +613,9 @@ def Portada(request):
 def Informacion(request):
     return render(request,"Informacion.html")
 
+def RecuperarContraseña(request):
+    return render(request, "RecuperarContraseña.html")
+
 
 def Nosotros(request):
     return render(request,"Nosotros.html")
