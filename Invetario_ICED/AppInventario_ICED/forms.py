@@ -95,6 +95,13 @@ class UserForm(UserCreationForm):
 
 class LoginForm(AuthenticationForm):
 
+    class LoginForm(AuthenticationForm):
+
+        error_messages = {
+            'invalid_login': 'Las credenciales ingresadas son incorrectas. Por favor, inténtalo nuevamente.',
+            'inactive': 'Esta cuenta está inactiva.',
+        }
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['username'].widget.attrs.update({
@@ -120,5 +127,3 @@ class LoginForm(AuthenticationForm):
              'minlength':'1'
     })
 
-    class Meta:
-        fields = ['username' , 'password']

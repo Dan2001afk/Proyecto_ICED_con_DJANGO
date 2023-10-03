@@ -78,6 +78,7 @@ class RegistrarUsuarioView(View):
 
 
 
+
 class IniciarSesionView(View):
     def get(self, request):
         form = LoginForm()
@@ -93,13 +94,14 @@ class IniciarSesionView(View):
 
             if user is not None:
                 login(request, user)
-                if user.rol == 'Aprendiz' or user.rol == 'aprendiz' or user.rol == 'Instructor' or user.rol == 'instructor':
+                if user.rol in ['Aprendiz', 'aprendiz', 'Instructor', 'instructor']:
                     print("entro al rol")
-                    return redirect('perfil_usuario')  
+                    return redirect('perfil_usuario')
                 else:
                     print("no entra")
-                    return redirect('Equipo')  
-
+                    return redirect('Equipo')
+        # Si la validación del formulario falla, el formulario con errores se pasará al contexto
+        return render(request, 'Inicio.html', {'form': form})
             
 #        return render(request, 'iniciosesion.html', {'form': form})
 

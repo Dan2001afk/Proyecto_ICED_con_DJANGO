@@ -28,39 +28,50 @@
                 {% csrf_token %}
                 <div class="form-content">
                     <div class="input_controlador">
-                        <!--{{ form.Documento.label_tag }}-->
+                         <!-- {{ form.Documento.label_tag }} -->
+                        
                         {{ form.Documento }}
+                        {{ form.Documento.errors }}
                     </div>
                     <div class="input_controlador">
-                        <!-- {{ form.username.label_tag }}-->
+                         <!--  {{ form.username.label_tag }} -->
+                       
                         {{ form.username }}
+                        {{ form.username.errors }}
                     </div>
                     <div class="input_controlador">
-                        <!--{{ form.email.label_tag }}-->
+                         <!--   {{ form.email.label_tag }} -->
+                      
                         {{ form.email }}
+                        {{ form.email.errors }}
                     </div>
                     <div class="input_controlador">
-                        <!--{{ form.password1.label_tag }}-->
+                         <!-- {{ form.password1.label_tag }} -->
+                        
                         {{ form.password1 }}
+                        {{ form.password1.errors }}
                     </div>
                     <div class="input_controlador">
-                        <!--{{ form.password2.label_tag }}-->
+                         <!-- {{ form.password2.label_tag }} -->
+                  
                         {{ form.password2 }}
+                        {{ form.password2.errors }}
                     </div>
                     <div class="input_controlador">
-                        <!-- {{ form.rol.label_tag }} -->
-                        <select name="rol" id="rol" class="mi-select"> <!-- Agrega una clase CSS al select -->
+                         <!-- {{ form.rol.label_tag }} -->
+                         <select name="rol" id="rol" class="mi-select"> <!-- Agrega una clase CSS al select -->
                             <option value="Aprendiz">Aprendiz</option>
                             <option value="Instructor">Instructor</option>
                             <option value="Administrador">Administrador</option>
                             <!-- Agrega más opciones según sea necesario -->
                         </select>
+                        {{ form.rol.errors }}
                     </div>
-                    
-                    
                     <div class="input_controlador">
-                        <!--{{ form.imagen.label_tag }}-->
+                         <!-- {{ form.imagen.label_tag }} -->
+                        
                         {{ form.imagen }}
+                        {{ form.imagen.errors }}
                     </div>
                     <!-- Agrega clases y estilos a los campos según sea necesario -->
                     <button type="submit" class="btn">Registrar</button>
