@@ -4,6 +4,7 @@ from . import views
 from AppInventario_ICED.viewsLogin import *
 from django.conf import *
 from django.conf.urls.static import *
+from django.contrib.auth import views as auth_views
 
 
 urlpatterns=[
@@ -25,6 +26,17 @@ urlpatterns=[
     path('ActualizarUsuario/',PerfilClienteView.as_view(),name="perfil_usuario"),
     path('Login',views.Login,name='Login'),
     path('VistasUsuarios',VistasUsuarios,name="VistaUsarios"),
+
+
+    #recuperar contraseña mediante correo
+
+    path('reset_password/', auth_views.PasswordResetView.as_view(), name='password_reset'),
+    path('reset_password/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
+    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    path('reset_password/complete/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
+
+
+
     #FORMULARIO
     path('Formulario',views.Formulario,name='Formulario'),
     #CRUD EQUIPOS
