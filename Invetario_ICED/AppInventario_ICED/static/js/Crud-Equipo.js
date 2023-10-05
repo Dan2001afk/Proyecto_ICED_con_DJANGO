@@ -157,14 +157,15 @@ function eliminarEquipo(Equ_id) {
 }
 
 //funcion para Buscar Equipo
+//funcion para Buscar Equipo
 document.addEventListener("DOMContentLoaded", () => {
     const buscarBtn = document.getElementById("BuscarEquipo");
     buscarBtn.addEventListener("click", () => {
-        const equipoIdInput = document.getElementById("id_equipoo");
-        const equipoId = equipoIdInput.value;
+        const equipoSerialInput = document.getElementById("serial_equipo");
+        const equipoSerial = equipoSerialInput.value;
 
-        if (equipoId) {
-            const url = `http://127.0.0.1:8000/BuscarEquipo/${equipoId}`;
+        if (equipoSerial) {
+            const url = `http://127.0.0.1:8000/BuscarEquipo/${equipoSerial}/`;
 
             fetch(url, {
                 method: "GET",
@@ -224,10 +225,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert("Error al buscar el equipo por Serial");
             });
         } else {
-            console.error("Debe ingresar un serial de  un equipo válido");
+            console.error("Debe ingresar un serial de un equipo válido");
         }
     });
 });
+
+
+
+
 
 
 

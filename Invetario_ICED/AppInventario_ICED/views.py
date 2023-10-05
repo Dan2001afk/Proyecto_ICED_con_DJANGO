@@ -141,9 +141,9 @@ class BuscarEquipo(View):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
     
-    def get(self, request, pk):
+    def get(self, request, equi_serial):
         try:
-            equipo = Equipos.objects.get(pk=pk)
+            equipo = Equipos.objects.get(Equi_serial=equi_serial)
         except Equipos.DoesNotExist:
             return JsonResponse({"Error": "El equipo no existe"})
         
@@ -158,7 +158,6 @@ class BuscarEquipo(View):
         }
         
         return JsonResponse(datos_equipo)
-
 #metodos adicionales
 
 class ContarActivos(View):

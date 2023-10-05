@@ -138,12 +138,12 @@
                 <form method=""  id="ActualizarPrestamos" >
                     {% csrf_token %}
         
-                    <input type="number" name="Pres_Id" id="Pres_Id_Act" placeholder="ID" required><br>
+                    <input type="text" name="Pres_Id" id="Pres_Id_Act" placeholder="ID" required><br>
                     
-                    <input type="number" name="Pres_Equipos" id="Pres_Equipos_Act" placeholder="Tipo" required><br>
+                    <input type="text" name="Pres_Equipos" id="Pres_Equipos_Act" placeholder="Tipo" required><br>
                     
                 
-                    <input type="number" name="Pres_Usuarios_Documento" id="Pres_Usuarios_Documento_Act" placeholder="Modelo" required><br>
+                    <input type="text" name="Pres_Usuarios_Documento" id="Pres_Usuarios_Documento_Act" placeholder="Modelo" required><br>
                     
                 
                     <input type="text" name="Pres_Fec_Entrega" id="Pres_Fec_Entrega_Act" placeholder="Color" required><br>
@@ -172,11 +172,11 @@
                 <form method="" id="FormPrestamos" class="FormPrestamos">
                     {% csrf_token %}
             
-                    <input type="number" placeholder="SERIAL DEL EQUIPO" name="Pres_Equipos_id" id="Pres_Equipos_id" required><br>
+                    <input type="text" placeholder="SERIAL DEL EQUIPO" name="Pres_Equipos_serial" id="Pres_Equipos_serial" required><br>
 
-                    <input type="number"  placeholder="DOCUMENTO DEL USUARIO" name="Pres_Usuarios_Documento_id" id="Pres_Usuarios_Documento_id" required><br>
+                    <input type="text"  placeholder="DOCUMENTO DEL USUARIO" name="Pres_Usuarios_Documento_id" id="Pres_Usuarios_Documento_id" required><br>
 
-                    <input type="number" placeholder="TIEMPO LIMITE" name="Pres_Tiempo_Limite" id="Pres_Tiempo_Limite" required><br>
+                    <input type="text" placeholder="TIEMPO LIMITE" name="Pres_Tiempo_Limite" id="Pres_Tiempo_Limite" required><br>
 
 
                     <input type="submit" value="Guardar" id="Guardar">
