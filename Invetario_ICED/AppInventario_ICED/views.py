@@ -537,8 +537,7 @@ class EliminarSanciones(View):
             return JsonResponse({"Error":"La Sancion no existe"})
         Delete.delete()
         return JsonResponse({"Mensaje":"Sancion Eliminada"})
- 
- 
+
 #HISTORIAL DE LOS PRESTAMOS
 class ListarHistorial(ListView):
     def get(self,request):
@@ -556,8 +555,7 @@ class ListarHistorial(ListView):
         # DatosEquipos=list(Datos)
         return JsonResponse(Datos_Historial,safe=False)    
 
-def Historial(request):
-    return render(request,"Historial.html")
+
 
 
 class EliminarHistorial(View):
@@ -583,7 +581,7 @@ class EliminarHistorial(View):
 
         return JsonResponse({"Mensaje": "Datos Eliminados"})
 
-class BuscarPrestamo(View):
+class BuscarHistorial(View):
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
@@ -604,7 +602,6 @@ class BuscarPrestamo(View):
         }
         
         return JsonResponse(datos_historial)
-
 
 def Portada(request):
     return render(request,"Principal.html")
@@ -627,7 +624,8 @@ def Login(request):
 def Formulario(request):
     return render(request,"Usuarios.html")
 
-
+def historial(request):
+    return render(request,"historial.html")
 
 
 

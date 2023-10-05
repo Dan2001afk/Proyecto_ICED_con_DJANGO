@@ -1,6 +1,6 @@
-//Listar Prestamos
+//Listar Historial de prestamos
 function Listar(){
-    fetch("http://127.0.0.1:8000/ListarPrestamos",{
+    fetch("http://127.0.0.1:8000/ListarHistorial",{
         method:"GET",
         Headers:{
             "consultar-Type":"AppInventario_ICED/json"
@@ -18,16 +18,15 @@ function Listar(){
             for (let dat of datos) {
                 tabla.innerHTML+=`
                 <tr>
-                <td>${dat.Pres_Id}</td>
-                <td>${dat.Pres_Usuarios_Documento_id}</td>
-                <td>${dat.Pres_Equipos_id}</td>
-                <td>${dat.Pres_Fec_Entrega}</td>
-                <td>${dat.Pres_Hora_Entrega}</td>
-                <td>${dat.Pres_Observaciones_entrega}</td>
+                <td>${dat.Dev_id}</td>
+                <td>${dat.Dev_Usuarios_Documento}</td>
+                <td>${dat.Dev_Pres_id}</td>
+                <td>${dat.Dev_Fec_Devolucion}</td>
+                <td>${dat.Dev_Hora_Devolucion}</td>
+                <td>${dat.Dev_Observacion_Devolucion}</td>
                 <td>
                 <div class="btn-container">
-                <button class="btnEliminar" onclick="eliminarPrestamo(${dat.Pres_Id})">Eliminar</button>
-
+                <button class="btnEliminar" onclick="eliminarHistorial(${dat.Dev_id})">Eliminar</button>
                 </div>
                 </td>
                 </tr>`;
@@ -35,9 +34,14 @@ function Listar(){
         }
     });
 }
+function Agregar(){
+}
+
+
+
 
 //funcion para eliminar prestamo
-function eliminarPrestamo(Pres_Id) {
+function eliminarHistorial(Dev_id) {
     Swal.fire({
         title: "Desea eliminar el prestamo",
         icon: "warning",
@@ -46,8 +50,7 @@ function eliminarPrestamo(Pres_Id) {
         cancelButtonText: "Cancelar",
     }).then((result) => {
         if (result.isConfirmed) {
-            const url = `http://127.0.0.1:8000/EliminarPrestamo/${Pres_Id}`;
-
+            const url = `http://127.0.0.1:8000/ListarHistorial/${Dev_id}`;
             fetch(url, {
                 method: "DELETE",
                 headers: {
@@ -90,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const prestamoId = prestamoIdInput.value;
 
         if (prestamoId) {
-            const url = `http://127.0.0.1:8000/BuscarPrestamo/${prestamoId}`;
+            const url = `http://127.0.0.1:8000/BuscarHistorial/${prestamoId}`;
 
             fetch(url, {
                 method: "GET",
