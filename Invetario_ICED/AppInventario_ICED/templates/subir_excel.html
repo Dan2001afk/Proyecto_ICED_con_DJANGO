@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cargar Archivo Excel</title>
+</head>
+<body>
+    <h1>Cargar Archivo Excel</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="excel_file" id="excel_file" accept=".xlsx, .xls">
+        <button type="submit">Cargar Archivo Excel</button>
+    </form>
+    <!-- Puedes agregar más contenido o mensajes de error si es necesario -->
+</body>
+</html>

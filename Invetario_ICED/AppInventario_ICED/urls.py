@@ -83,6 +83,9 @@ urlpatterns=[
     path('EliminarHistorial/<pk>',EliminarHistorial.as_view(),name='Eliminar'),
     path('BuscarHistorial/<int:pk>',BuscarHistorial.as_view(), name='buscar-prestamo'),
 
+    #subir excel
+    path('subir_excel/', views.subir_excel, name='subir_excel'),
+
 ] + static (settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 """ path('index.html',listadoEquipos.as_view(),name='Equipos'),

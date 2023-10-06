@@ -127,3 +127,11 @@ class LoginForm(AuthenticationForm):
              'minlength':'1'
     })
 
+
+
+#cargar archivos excel
+
+
+class ExcelUploadForm(forms.Form):
+    excel_file = forms.FileField(label='Selecciona un archivo Excel')
+

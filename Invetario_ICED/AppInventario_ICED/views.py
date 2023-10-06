@@ -629,3 +629,38 @@ def historial(request):
 
 
 
+#cargar archivos excel
+
+from django.shortcuts import render
+from .forms import ExcelUploadForm
+import pandas as pd
+from .models import Usuarios  # Importa el modelo Usuarios
+
+def subir_excel(request):
+    if request.method == 'POST':
+        form = ExcelUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            excel_file = request.FILES['excel_file']
+            
+            # Procesar el archivo Excel con pandas
+            df = pd.read_excel(excel_file)
+            
+            # Iterar sobre las filas del DataFrame y guardar los datos en la base de datos
+            for _, row in df.iterrows():
+                usuario = Usuarios(
+                    Usu_Documento=row['Documento'],
+                    Usu_Nombre=row['Nombre'],
+                    Usu_Apellido=row['Apellido'],
+                    Usu_tipo=row['tipo'],
+                    Usu_Celular=row['Celular'],
+                    Usu_Correo=row['Correo'],
+                    Usu_Ficha=row['Ficha']
+                )
+                usuario.save()
+            
+            # Redirigir a una página de éxito o realizar alguna otra acción
+            return render(request, 'exito.html')
+    else:
+        form = ExcelUploadForm()
+    
+    return render(request, 'subir_excel.html', {'form': form})
