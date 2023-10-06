@@ -111,7 +111,50 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 //funcion para eliminar prestamo
+function eliminarPrestamo(Pres_Id) {
+    Swal.fire({
+        title: "Devolucion del Dispositivo",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonText: "Liberar Dispositivo",
+        cancelButtonText: "Realizar una sancion",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const url = `http://127.0.0.1:8000/EliminarPrestamo/${Pres_Id}`;
 
+            fetch(url, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error("Error al eliminar el préstamo");
+                    }
+                })
+                .then((data) => {
+                    console.log(data);
+                    Listar();
+                    cantidadPrestamos();
+                    Swal.fire({
+                        title: "Préstamo eliminado exitosamente.",
+                        icon: "success",
+                    });
+                })
+                .catch((error) => {
+                    console.error("Error al eliminar el préstamo:", error);
+                    Swal.fire({
+                        title: "Error al eliminar el préstamo",
+                        text: error.message,
+                        icon: "error",
+                    });
+                });
+        }
+    });
+}
 
 //funcion Buscar Prestamo
 document.addEventListener("DOMContentLoaded", () => {
