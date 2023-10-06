@@ -5,15 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/actualizacionPrefil.css' %}">
+    <link rel="stylesheet" href="{% static 'css/VistasUsuarios.css' %}">
+    <script src="{% static 'js/Crud-Equipo.js' %}"></script>
+    <script src="{% static 'js/Crud-VistasUsuario.js' %}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://kit.fontawesome.com/3d7a846b01.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.2/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>Perfil del cliente</title>
+    <link rel="icon" href="{% static 'imagenes/iced_logo.png' %}" type="image/x-icon">
+    <title>Vista Usuario</title>
 </head>
 
 <body>
 {% if form %}
-<h1 class="titulo">Bienvenido</h1>
 <div id="myModalp" class="modal">
     <div class="modal-content">
         <span class="close" id="closeModalBtn">&times;</span>
@@ -30,25 +34,72 @@
         <div>No se encontró información para el cliente solicitado</div>
     {% endif %}
     
-    <div class="informacionUsuario">
-        <div>Nombre de usuario: {{ user.username }}</div>
-        <div>Rol: {{ user.rol }}</div>    
+
+
+
+   
+    <section class="cont">
+        <div class="encabezado">
+            <h1>Perfil Usuario</h1>
+        </div>
+        <div class="contenedor1" >
+            <h3>HISTORIAL DE MIS DATOS </h3>
+            <!-- Creación de tabla de datos -->
+            <table id="tabla1">
+                <thead>
+                    <tr>
+                        
+                        <th>Dispositivo</th>
+                        <th>Observaciones</th>
+                        <th>Serial</th>
+                        <th>Especialidad</th>
+                        <th>Documento del Usuario</th> <!-- Agrega la columna del documento del usuario -->
+                        <th>Fecha de entrega</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla1-body"></tbody>
+            </table>
+            <!-- Final de la tabla -->
+        </div>   
+        
+        <div class="contenedor2">
+            <h1>Mi Perfil</h1>
+
+            <div class="informacionUsuario">
+                <div>Nombre de usuario: {{ user.username }}</div>
+                <div>Rol: {{ user.rol }}</div>    
+            
+          
+            {% if user.imagen %}
+                <img class="imagenPerfil" class="perfil-imagen" src="{{ user.imagen.url }}" alt="Imagen de usuario">
+            {% endif %}
+            </div>
     
-  
-    {% if user.imagen %}
-        <img class="imagenPerfil" class="perfil-imagen" src="{{ user.imagen.url }}" alt="Imagen de usuario">
-    {% endif %}
-</div>
+            <button class="BTNactualizaUsuario" id="openModalBtn">Editar Perfil</button>
+        </div>
 
-    <button class="BTNactualizaUsuario" id="openModalBtn">Editar Perfil</button>
+        <div class="contenedor3">
+            <p><strong>¡ATENCIÓN!</strong> A partir de la fecha, el horario de atención será:</p>
+            <p>7:00 am - 1:00 pm</p>
+            <p>2:00 pm - 5:00 pm</p>
+            <p>Sofía Plus</p>
+        </div>
 
 
-    
+        <div class="contenedor4">
+            <h3 class="h3texto">Portatiles disponibles </h32>
+                <div class="icon-container">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <h1 class="activos">contador</h1>
+                </div>
+        </div>
+    </section>
 
 
 
     <script src="{% static 'js/modalPerfil.js' %}"></script>
-
+    <script src="js/script.js"></script>
+    <script src="js/listar.js"></script>
 
     </body>
 </html>
