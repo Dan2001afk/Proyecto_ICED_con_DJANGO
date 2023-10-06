@@ -352,7 +352,7 @@ p{
         position: fixed;
         top: 0;
         right: -250px;
-        background: white;
+        background: #4f4173d2;
         width: 250px;
         height: 100vh;
         padding: 40px;
@@ -370,7 +370,7 @@ p{
         margin-left: 0;
     }
     .menu ul li a{
-        color: #bebebe;
+        color: #ffffff;
     }
 
     #selected{
@@ -450,6 +450,10 @@ p{
         margin: 10px;
     }
 
+    .contenedor1 h1{
+        margin-top: 20%;
+    }
+
 
     .contenedor2{
   
@@ -459,6 +463,11 @@ p{
         margin: 10px;
     }
 
+    .contenedor2 p{
+        font-size: 18px;
+    }
+
+
 
     .contenedor3{
     
@@ -466,6 +475,10 @@ p{
         grid-row: 35/40;
         border-radius: 1%;
         margin: 10px;
+    }
+
+    .contenedor3 p{
+        font-size: 18px;
     }
 
 
@@ -481,6 +494,11 @@ p{
         margin: 10px;
     }
 
+    .contenedor4 h1{
+        font-size: 12px;
+    }
+
+
 
     .contenedor5{
    
@@ -489,6 +507,11 @@ p{
         border-radius: 1%;
         margin: 10px;
     }
+
+    .contenedor5 p{
+        font-size: 18px;
+    }
+
 
 
     .contenedor6{

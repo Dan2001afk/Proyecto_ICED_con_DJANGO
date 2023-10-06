@@ -299,7 +299,7 @@ p{
         position: fixed;
         top: 0;
         right: -250px;
-        background: white;
+        background: #4f4173d2;
         width: 250px;
         height: 100vh;
         padding: 40px;
@@ -317,7 +317,7 @@ p{
         margin-left: 0;
     }
     .menu ul li a{
-        color: #bebebe;
+        color: #ffffff;
     }
 
     #selected{
