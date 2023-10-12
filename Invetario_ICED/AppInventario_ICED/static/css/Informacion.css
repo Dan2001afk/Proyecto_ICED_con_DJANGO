@@ -112,7 +112,7 @@ p{
 
 
 .contenedor1{
-    background-image: url(/imagenes/tecnologia.jpg);
+    background: url("{% static 'imagenes/tecnologia.jpg' %}") center/cover no-repeat;
     background-color: rgb(43, 41, 41);
     grid-column: 1/7;
     grid-row: 1/20;
