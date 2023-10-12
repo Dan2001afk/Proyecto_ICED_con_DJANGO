@@ -21,14 +21,13 @@
             <form method="post">
                 {% csrf_token %}
                 <div class="form-group">
-                    {{ form.username.label_tag }}
                     {{ form.username }}
                     {% for error in form.username.errors %}
                     <p class="error">{{ error }}</p>
                     {% endfor %}
                 </div>
                 <div class="form-group">
-                    {{ form.password.label_tag }}
+                   
                     {{ form.password }}
                     {% for error in form.password.errors %}
                     <p class="error">{{ error }}</p>

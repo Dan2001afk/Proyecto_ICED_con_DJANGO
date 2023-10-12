@@ -110,7 +110,7 @@ class LoginForm(AuthenticationForm):
              'id':'user',
              'type':'text',
              'class':'form-input',
-             'placeholder':'Usuario',
+             'placeholder':'Nombre Usuario',
              'maxlength':'20',
              'minlength':'1'
     })
