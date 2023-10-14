@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{% static 'css/Informacion.css' %}">
     <script src="{% static 'js/script2.js' %}"></script>
     <title>Informacion</title>
-
+    <link rel="icon" href="{% static 'imagenes/iced_logo.png' %}" type="image/x-icon">
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -16,13 +16,13 @@
 
         <div class="container__menu">
             <div class="logo">
-                <img src="/imagenes/sena.logo.png" alt="">
+                <img src="{% static 'imagenes/sena.logo.png' %}" alt="">
             </div>
             <div class="menu">
                 <i class="fas fa-bars" id="btn_menu" style="color: #fafafa;"></i>
                 <div id="back_menu"></div>
                 <nav id="nav">
-                    <img src="/images/iced.png" alt="">
+                    <img src="{% static 'imagenes/iced_logo.png' %}" alt="">
                     <ul>
                         <li><a href="/Principal" >Principal</a></li>
                         <li><a href="/Informacion" id="selected">Informacion </a></li>
@@ -43,11 +43,14 @@
     
     <section  class="cont">
 
-        
-
         <div class="contenedor1">
-            <h1>ICED INVENRORY</h1>
+            <div class="imagen-container">
+                <img src="{% static 'imagenes/laptop.jpg' %}" alt="Laptop Image" class="imagen-estilo">
+                <div class="texto">ICED INVENTORY</div>
+            </div>
         </div>
+        
+        
 
         <div class="contenedor2">
             <h1 class="titulo2">Bienvenido a la página de información sobre ICED</h1>

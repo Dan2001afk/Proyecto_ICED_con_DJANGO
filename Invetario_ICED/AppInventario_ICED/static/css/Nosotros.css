@@ -45,6 +45,9 @@ header{
 
 }
 
+.nc{
+    text-align: center;
+}
 .menu{
     display: flex;
     align-items: center;
@@ -262,6 +265,19 @@ p{
 .footer__card h3{
     font-size: 15px;
     font-weight: 500;
+}
+.user__namen{
+    margin-top: 16px;
+
+}
+.cc{
+    margin-top: 16px;
+
+}
+
+.jj{
+    margin-top: 16px;
+
 }
 
 @media screen and (max-width:1200px) {
