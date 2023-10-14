@@ -30,11 +30,11 @@ class Equipos(models.Model):
 
 class Prestamos(models.Model):
     Pres_Id = models.AutoField(verbose_name="ID del prestamo", primary_key=True)
-    Pres_Equipos = models.ForeignKey(Equipos, verbose_name="ID del equipo", on_delete=models.CASCADE)
+    Pres_Equipos = models.ForeignKey(Equipos,verbose_name="ID del equipo", on_delete=models.CASCADE)
     Pres_Usuarios_Documento = models.ForeignKey(Usuarios, verbose_name="N° Documento del usuario", on_delete=models.CASCADE)
     Pres_Fec_Entrega = models.DateField(auto_now=True)
     Pres_Hora_Entrega = models.TimeField(auto_now=True, verbose_name="Hora de Entrega")
-    Pres_Tiempo_Limite = models.BigIntegerField(verbose_name="Horas Que prestara el Equipo")
+    Pres_Tiempo_Limite = models.TextField(max_length=70)
     Pres_Observaciones_entrega = models.TextField(max_length=255, verbose_name="Observaciones Salida Equipo")
 
 
@@ -53,5 +53,5 @@ class Historial(models.Model):
     Pres_Usuarios_Documento = models.ForeignKey(Usuarios, on_delete=models.CASCADE)
     Pres_Fec_Entrega = models.DateField()
     Pres_Hora_Entrega = models.TimeField()
-    Pres_Tiempo_Limite = models.BigIntegerField()
+    Pres_Tiempo_Limite = models.TextField(max_length=70)
     Pres_Observaciones_entrega = models.TextField(max_length=255)

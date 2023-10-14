@@ -450,7 +450,7 @@ table th {
 
 
 
-.FormPrestamos input {
+.FormPrestamos select,input {
 
   margin-bottom: 10%;
   padding: 10px;

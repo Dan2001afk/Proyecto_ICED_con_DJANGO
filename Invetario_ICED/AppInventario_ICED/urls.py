@@ -79,9 +79,9 @@ urlpatterns=[
     path('ActualizarSanciones/<pk>',ActualizarSanciones.as_view(),name='Actualizar'),
     path('EliminarSancion/<pk>',EliminarSanciones.as_view(),name='Eliminar'),
     #HISTORIAL
-    path('Listarhistorial/', ListarHistorial.as_view(), name='Historia'),
+    path('Historial',views.historial,name='Historial'),
+    path('Listarhistorial/',ListarHistorial.as_view(), name='Historia'),
 
- 
 
     #subir excel
     path('subir_excel/', views.subir_excel, name='subir_excel'),

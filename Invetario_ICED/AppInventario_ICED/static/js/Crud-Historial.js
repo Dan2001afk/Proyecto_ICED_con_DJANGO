@@ -1,6 +1,6 @@
 //Listar Historial de prestamos
 function Listar(){
-    fetch("http://127.0.0.1:8000/ListarHistorial",{
+    fetch("http://127.0.0.1:8000/Listarhistorial",{
         method:"GET",
         Headers:{
             "consultar-Type":"AppInventario_ICED/json"
@@ -18,12 +18,12 @@ function Listar(){
             for (let dat of datos) {
                 tabla.innerHTML+=`
                 <tr>
-                <td>${dat.Dev_id}</td>
-                <td>${dat.Dev_Usuarios_Documento}</td>
-                <td>${dat.Dev_Pres_id}</td>
-                <td>${dat.Dev_Fec_Devolucion}</td>
-                <td>${dat.Dev_Hora_Devolucion}</td>
-                <td>${dat.Dev_Observacion_Devolucion}</td>
+                <td>${dat.Pres_Id}</td>
+                <td>${dat.Pres_Usuarios_Documento_id}</td>
+                <td>${dat.Pres_Equipos_id}</td>
+                <td>${dat.Pres_Fec_Entrega}</td>
+                <td>${dat.Pres_Hora_Entrega}</td>
+                <td>${dat.Pres_Observaciones_entrega}</td>
                 <td>
                 <div class="btn-container">
                 <button class="btnEliminar" onclick="eliminarHistorial(${dat.Dev_id})">Eliminar</button>
@@ -36,8 +36,6 @@ function Listar(){
 }
 function Agregar(){
 }
-
-
 
 
 //funcion para eliminar prestamo

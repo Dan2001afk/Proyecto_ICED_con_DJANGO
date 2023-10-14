@@ -590,12 +590,6 @@ class ListarHistorial(View):
         return JsonResponse(Datos_Historial, safe=False)
 
 
- 
-
-
-
-
-
 def Portada(request):
     return render(request,"Principal.html")
 
@@ -605,11 +599,8 @@ def Informacion(request):
 def RecuperarContraseña(request):
     return render(request, "RecuperarContraseña.html")
 
-
 def Nosotros(request):
     return render(request,"Nosotros.html")
-
-
 
 def Login(request):
     return render(request,"Inicio.html")

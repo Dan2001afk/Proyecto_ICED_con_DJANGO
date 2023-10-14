@@ -99,7 +99,7 @@ function Agregar() {
                 Swal.fire({
                     icon: 'error',
                     title: 'Error',
-                    text: 'Error al enviar los datos: ' + error.message
+                    text: 'Error al enviar los datos'
                 });
             });
         }
