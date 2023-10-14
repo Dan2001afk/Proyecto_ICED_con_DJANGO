@@ -157,7 +157,6 @@ function eliminarEquipo(Equ_id) {
 }
 
 //funcion para Buscar Equipo
-//funcion para Buscar Equipo
 document.addEventListener("DOMContentLoaded", () => {
     const buscarBtn = document.getElementById("BuscarEquipo");
     buscarBtn.addEventListener("click", () => {
@@ -231,14 +230,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-
-
-
-
-
 //funcion actualizar que atrapa datos del registro
 function capturarYActualizarEquipo(equipoId) {
-    fetch(`http://127.0.0.1:8000/BuscarEquipo/${equipoId}`, {
+    fetch(`http://127.0.0.1:8000/BuscarEquipoID/${equipoId}`, {
         method: "GET",
         headers: {
             "consultar-Type": "AppInventario_ICED/json"
@@ -422,5 +416,4 @@ function abrirModalActualizar() {
 
     // Aquí puedes realizar acciones adicionales según tus necesidades, como cargar los datos del equipo en el modal.
 }
-
 

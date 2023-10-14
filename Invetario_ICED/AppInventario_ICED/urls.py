@@ -46,6 +46,7 @@ urlpatterns=[
     path('ActualizarEquipo/<int:pk>',ActualizarEquipo.as_view(),name='actualizar'),
     path('EliminarEquipo/<int:pk>',EliminarEquipo.as_view(),name='eliminar'),    
     path('BuscarEquipo/<str:equi_serial>/', views.BuscarEquipo.as_view(), name='buscar_equipo'),
+    path('BuscarEquipoID/<int:pk>', BuscarEquipoID.as_view(), name='buscar-equipo'),
     path('ContarEquipos', ContarEquipos.as_view(), name='contar-equipos'),
     path('ContarActivos', ContarActivos.as_view(), name='contar-activos'),
     path('ContarInactivos', ContarInactivos.as_view(), name='contar-inactivos'),
@@ -78,10 +79,9 @@ urlpatterns=[
     path('ActualizarSanciones/<pk>',ActualizarSanciones.as_view(),name='Actualizar'),
     path('EliminarSancion/<pk>',EliminarSanciones.as_view(),name='Eliminar'),
     #HISTORIAL
-    path('Historial',views.historial,name='Historial'),
-    path('ListarHistorial',ListarHistorial.as_view(),name='Historial'),
-    path('EliminarHistorial/<pk>',EliminarHistorial.as_view(),name='Eliminar'),
-    path('BuscarHistorial/<int:pk>',BuscarHistorial.as_view(), name='buscar-prestamo'),
+    path('historial/', ListarHistorial.as_view(), name='listar_historial'),
+
+ 
 
     #subir excel
     path('subir_excel/', views.subir_excel, name='subir_excel'),

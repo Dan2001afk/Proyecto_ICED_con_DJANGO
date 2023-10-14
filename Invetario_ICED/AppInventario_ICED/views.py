@@ -137,6 +137,7 @@ class EliminarEquipo(View):
         return JsonResponse({"Mensaje":"Equipo Eliminado"})
     
 class BuscarEquipo(View):
+
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
@@ -158,6 +159,29 @@ class BuscarEquipo(View):
         }
         
         return JsonResponse(datos_equipo)
+    
+class BuscarEquipoID(View):
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+    
+    def get(self, request, pk):
+        try:
+            equipo = Equipos.objects.get(pk=pk)
+        except Equipos.DoesNotExist:
+            return JsonResponse({"Error": "El equipo no existe"})
+        
+        datos_equipo = {
+            'Equ_id': equipo.Equ_id,
+            'Equi_tipo': equipo.Equi_tipo,
+            'Equi_modelo': equipo.Equi_modelo,
+            'Equi_color': equipo.Equi_color,
+            'Equi_serial': equipo.Equi_serial,
+            'Equi_estado': equipo.Equi_estado,
+            'equi_especialidad': equipo.equi_especialidad
+        }
+        
+        return JsonResponse(datos_equipo)  
 #metodos adicionales
 
 class ContarActivos(View):
@@ -395,6 +419,16 @@ class EliminarPrestamo(View):
         except Prestamos.DoesNotExist:
             return JsonResponse({"Error": "El Prestamo no existe"})
 
+        # Crear un nuevo objeto Historial antes de eliminar el préstamo
+        Historial.objects.create(
+            Pres_Equipos=prestamo.Pres_Equipos,
+            Pres_Usuarios_Documento=prestamo.Pres_Usuarios_Documento,
+            Pres_Fec_Entrega=prestamo.Pres_Fec_Entrega,
+            Pres_Hora_Entrega=prestamo.Pres_Hora_Entrega,
+            Pres_Tiempo_Limite=prestamo.Pres_Tiempo_Limite,
+            Pres_Observaciones_entrega=prestamo.Pres_Observaciones_entrega
+        )
+
         # Recupera el equipo asociado al préstamo
         equipo = prestamo.Pres_Equipos
 
@@ -406,7 +440,7 @@ class EliminarPrestamo(View):
         prestamo.delete()
 
         return JsonResponse({"Mensaje": "Datos Eliminados"})
-
+  
     
 class BuscarPrestamo(View):
     @method_decorator(csrf_exempt)
@@ -539,69 +573,27 @@ class EliminarSanciones(View):
         return JsonResponse({"Mensaje":"Sancion Eliminada"})
 
 #HISTORIAL DE LOS PRESTAMOS
-class ListarHistorial(ListView):
-    def get(self,request):
-        datos=Historial.objects.all()
-        Datos_Historial=[]
-        for i in datos:
+class ListarHistorial(View):
+    def get(self, request):
+        historial = Historial.objects.all()
+        Datos_Historial = []
+
+        for registro in historial:
             Datos_Historial.append({
-                'Dev_id':i.Dev_id,
-                'Dev_Usuarios_Documento':i.Dev_Usuarios_Documento,
-                'Dev_Pres_id':i.Dev_Pres_id,
-                'Dev_Fec_Devolucion':i.Dev_Fec_Devolucion,
-                'Dev_Hora_Devolucion':i.Dev_Hora_Devolucion,
-                'Dev_Observacion_Devolucion':i.Dev_Observacion_Devolucion,
+                'Pres_Id': registro.Pres_Id,
+                'Pres_Equipos_id': registro.Pres_Equipos_id,
+                'Pres_Usuarios_Documento_id': registro.Pres_Usuarios_Documento_id,
+                'Pres_Fec_Entrega': registro.Pres_Fec_Entrega,
+                'Pres_Hora_Entrega': registro.Pres_Hora_Entrega,
+                'Pres_Tiempo_Limite': registro.Pres_Tiempo_Limite,
+                'Pres_Observaciones_entrega': registro.Pres_Observaciones_entrega
             })
-        # DatosEquipos=list(Datos)
-        return JsonResponse(Datos_Historial,safe=False)    
+
+        return JsonResponse(Datos_Historial, safe=False)
 
 
 
 
-class EliminarHistorial(View):
-    @method_decorator(csrf_exempt)
-    def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs)
-
-    def delete(self, request, pk):
-        try:
-            historial = Historial.objects.get(pk=pk)
-        except Historial.DoesNotExist:
-            return JsonResponse({"Error": "El Prestamo no existe"})
-
-        # Recupera el equipo asociado al préstamo
-        equipo = historial.Dev_Equipos
-
-        # Cambia el estado del equipo de nuevo a "Activo"
-        equipo.Equi_estado = "Activo"
-        equipo.save()
-
-        # Luego, elimina el préstamo
-        historial.delete()
-
-        return JsonResponse({"Mensaje": "Datos Eliminados"})
-
-class BuscarHistorial(View):
-    @method_decorator(csrf_exempt)
-    def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs)
-    
-    def get(self, request, pk):
-        try:
-            historial = Historial.objects.get(pk=pk)
-        except Historial.DoesNotExist:
-            return JsonResponse({"Error": "El Prestamo no existe"})
-        
-        datos_historial = {
-            'Dev_id': historial.Dev_id,
-            'Dev_Usuarios_Documento': historial.Dev_Usuarios_Documento,
-            'Dev_Pres_id': historial.Dev_Pres_id,
-            'Dev_Fec_Devolucion': historial.Dev_Fec_Devolucion,
-            'Dev_Hora_Devolucion': historial.Dev_Hora_Devolucion,
-            'Dev_Observacion_Devolucion': historial.Dev_Observacion_Devolucion
-        }
-        
-        return JsonResponse(datos_historial)
 
 def Portada(request):
     return render(request,"Principal.html")

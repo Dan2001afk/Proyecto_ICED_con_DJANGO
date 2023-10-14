@@ -13,14 +13,13 @@ class ListaUsuarios(admin.ModelAdmin):
 class ListaPrestamos(admin.ModelAdmin):
     list_display = ('Pres_Id', 'Pres_Equipos', 'Pres_Usuarios_Documento', 'Pres_Fec_Entrega', 'Pres_Hora_Entrega', 'Pres_Tiempo_Limite', 'Pres_Observaciones_entrega')
 
-@admin.register(Historial)
-class ListaHistorial(admin.ModelAdmin):
-    list_display = ('Dev_id','Dev_Usuarios_Documento','Dev_Pres_id','Dev_Fec_Devolucion','Dev_Hora_Devolucion','Dev_Observacion_Devolucion')
 
 @admin.register(Sanciones)
 class ListaSanciones(admin.ModelAdmin):
     list_display = ('San_Id', 'San_Pres', 'San_Fecha', 'San_Hora', 'San_tiempo', 'San_Descripcion')
 
 
-
+@admin.register(Historial)
+class ListaHistorial(admin.ModelAdmin):
+    list_display = ('Pres_Id', 'Pres_Equipos', 'Pres_Usuarios_Documento', 'Pres_Fec_Entrega', 'Pres_Hora_Entrega', 'Pres_Tiempo_Limite', 'Pres_Observaciones_entrega')
 
