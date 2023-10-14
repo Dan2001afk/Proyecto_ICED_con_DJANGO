@@ -24,13 +24,10 @@ function Listar(){
                 <td>${dat.Pres_Fec_Entrega}</td>
                 <td>${dat.Pres_Hora_Entrega}</td>
                 <td>${dat.Pres_Tiempo_Limite}</td>
-                <td>${dat.Pres_Observaciones_entrega}</td>
-                
+                <td>${dat.Pres_Observaciones_entrega}</td>   
                 <td>
                 <div class="btn-container">
-                <button class="btnActualizar" onclick="capturarYActualizarPrestamo(${dat.Pres_Id})">Actualizar</button>
                 <button class="btnEliminar" onclick="eliminarPrestamo(${dat.Pres_Id})">Liberar</button>
-
                 </div>
                 </td>
                 </tr>`;
@@ -42,14 +39,13 @@ function Listar(){
 //Agregar un Prestamo
 function Agregar() {
     var Datos = {
-        Pres_Equipos_id: document.getElementById("Pres_Equipos_id").value,
+        Pres_Equipos_serial: document.getElementById("Pres_Equipos_serial").value,
         Pres_Usuarios_Documento_id: document.getElementById("Pres_Usuarios_Documento_id").value,
         Pres_Tiempo_Limite: document.getElementById("Pres_Tiempo_Limite").value,
     };
 
     var jsonData = JSON.stringify(Datos);
 
-    // Primero, realiza una solicitud para verificar la existencia de préstamos
     fetch("http://127.0.0.1:8000/verificarPrestamo/", {
         method: "POST",
         body: jsonData,
@@ -65,12 +61,14 @@ function Agregar() {
         }
     })
     .then(data => {
-        // Si no hay errores, puedes proceder a crear el préstamo
-        console.log(data);
         if (data.error) {
-            alert(data.error); // Muestra el mensaje de error recibido del servidor
+            // Muestra SweetAlert con el mensaje de error recibido del servidor
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.error
+            });
         } else {
-            // Si no hay error de préstamo existente, crea el préstamo
             fetch("http://127.0.0.1:8000/insertarPrestamo/", {
                 method: "POST",
                 body: jsonData,
@@ -86,20 +84,34 @@ function Agregar() {
                 }
             })
             .then(data => {
-                console.log(data);
                 Listar();
                 cantidadPrestamos();
-                alert("Datos enviados exitosamente.");
+                // Muestra SweetAlert de éxito
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Éxito',
+                    text: 'Datos enviados exitosamente.'
+                });
             })
             .catch(error => {
                 console.error(error);
-                alert("Error al enviar los datos: " + error.message);
+                // Muestra SweetAlert de error al enviar los datos
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Error al enviar los datos: ' + error.message
+                });
             });
         }
     })
     .catch(error => {
         console.error(error);
-        alert("Error al verificar el préstamo: " + error.message);
+        // Muestra SweetAlert de error al verificar el préstamo
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Error al verificar el préstamo: ' + error.message
+        });
     });
 }
 
@@ -109,6 +121,7 @@ document.addEventListener("DOMContentLoaded", function () {
         Agregar();
     });
 });
+
 
 //funcion para eliminar prestamo
 function eliminarPrestamo(Pres_Id) {

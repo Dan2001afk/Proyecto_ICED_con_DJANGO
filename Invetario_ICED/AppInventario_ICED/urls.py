@@ -79,7 +79,7 @@ urlpatterns=[
     path('ActualizarSanciones/<pk>',ActualizarSanciones.as_view(),name='Actualizar'),
     path('EliminarSancion/<pk>',EliminarSanciones.as_view(),name='Eliminar'),
     #HISTORIAL
-    path('historial/', ListarHistorial.as_view(), name='listar_historial'),
+    path('Listarhistorial/', ListarHistorial.as_view(), name='Historia'),
 
  
 

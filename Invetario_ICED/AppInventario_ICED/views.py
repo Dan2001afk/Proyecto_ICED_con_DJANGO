@@ -303,7 +303,6 @@ class BuscarUsuario(View):
         }
         return JsonResponse(datos_usuario)
 
-
 #metodos adicionales
 class ContarUsuarios(View):
     def get(self, request):
@@ -353,20 +352,21 @@ class InsertarPrestamos(View):
         except (json.JSONDecodeError, UnicodeDecodeError):
             return JsonResponse({"Error": "Error en el Documento"})
 
-        Pres_Equipos_id = datos.get('Pres_Equipos_id')
+        Pres_Equipos_serial = datos.get('Pres_Equipos_serial')  # Cambiado a Pres_Equipos_serial en lugar de Pres_Equipos_id
         Pres_Usuarios_Documento_id = datos.get('Pres_Usuarios_Documento_id')
         Pres_Tiempo_Limite = datos.get('Pres_Tiempo_Limite')
 
-        #validacion extra si existe algun equipo o usuario que ya tenga un prestamo
-        if Prestamos.objects.filter(Pres_Equipos_id=Pres_Equipos_id).exists():
+        # Validación extra si existe algún equipo o usuario que ya tenga un préstamo
+        if Prestamos.objects.filter(Pres_Equipos__Equi_serial=Pres_Equipos_serial).exists():
             return JsonResponse({"Error": "El equipo ya está en préstamo"})
         
         if Prestamos.objects.filter(Pres_Usuarios_Documento_id=Pres_Usuarios_Documento_id).exists():
             return JsonResponse({"Error": "El usuario ya tiene un préstamo activo"})
 
-        equipo = get_object_or_404(Equipos, pk=Pres_Equipos_id)
+        equipo = get_object_or_404(Equipos, Equi_serial=Pres_Equipos_serial)  # Buscar por número de serie en lugar de ID
         usuario = get_object_or_404(Usuarios, Usu_Documento=Pres_Usuarios_Documento_id)
-        #definir el campo automatico
+        
+        # Definir el campo automático
         pres_observaciones_entrega = "En buen estado"
 
         Prestamos.objects.create(
@@ -376,15 +376,14 @@ class InsertarPrestamos(View):
             Pres_Observaciones_entrega=pres_observaciones_entrega,
         )
 
-         # Update the equipment state
+        # Actualizar el estado del equipo
         equipo.Equi_estado = "En préstamo"
         equipo.save()
 
-        return JsonResponse({"mensaje": "Préstamo registrado"})    
+        return JsonResponse({"mensaje": "Préstamo registrado"})
 
 def Prestamo(request):
     return render(request,"Prestamos.html")
-
 
 class ActualizarPrestamo(View):
     @method_decorator(csrf_exempt)
@@ -440,8 +439,7 @@ class EliminarPrestamo(View):
         prestamo.delete()
 
         return JsonResponse({"Mensaje": "Datos Eliminados"})
-  
-    
+      
 class BuscarPrestamo(View):
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
@@ -476,13 +474,13 @@ class VerificarPrestamo(View):
         except (json.JSONDecodeError, UnicodeDecodeError):
             return JsonResponse({"Error": "Error en el Documento"})
 
-        Pres_Equipos_id = datos.get('Pres_Equipos_id')
+        Pres_Equipos_serial = datos.get('Pres_Equipos_serial')
         Pres_Usuarios_Documento_id = datos.get('Pres_Usuarios_Documento_id')
 
         response_data = {}  # Respuesta que enviarás al cliente
 
         # Validación para verificar si el equipo ya está en préstamo
-        if Prestamos.objects.filter(Pres_Equipos_id=Pres_Equipos_id).exists():
+        if Prestamos.objects.filter(Pres_Equipos__Equi_serial=Pres_Equipos_serial).exists():
             response_data["error"] = "El equipo ya está en préstamo"
 
         # Validación para verificar si el usuario ya tiene un préstamo activo
@@ -490,8 +488,7 @@ class VerificarPrestamo(View):
             response_data["error"] = "El usuario ya tiene un préstamo activo"
 
         return JsonResponse(response_data)
-    
-    
+   
 #metodos adicionales
 class ContarPrestamos(View):
     def get(self, request):
@@ -573,6 +570,7 @@ class EliminarSanciones(View):
         return JsonResponse({"Mensaje":"Sancion Eliminada"})
 
 #HISTORIAL DE LOS PRESTAMOS
+
 class ListarHistorial(View):
     def get(self, request):
         historial = Historial.objects.all()
@@ -590,6 +588,9 @@ class ListarHistorial(View):
             })
 
         return JsonResponse(Datos_Historial, safe=False)
+
+
+ 
 
 
 

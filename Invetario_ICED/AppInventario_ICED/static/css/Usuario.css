@@ -386,13 +386,14 @@ table th {
   color: white; /* Color del texto */
   padding: 8px 16px; /* Espaciado interno */
   border: none; /* Sin borde */
-  border-radius: 4px; /* Bordes redondeados */
+  border-radius: 10px; /* Bordes redondeados */
   cursor: pointer; /* Cambiar el */
   transition: background-color 0.5s ease; 
   margin: 10px;
-  
 
 }
+
+
 
 /* Estilo para el botón de búsqueda */
 #id_usuarioo {
@@ -401,6 +402,8 @@ table th {
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 3px;
+  border-radius: 10px; /* Bordes redondeados */
+
 }
 
 #BuscarUsuario {
@@ -412,6 +415,22 @@ table th {
   border: none;
   border-radius: 3px;
   cursor: pointer;
+  border-radius: 10px; /* Bordes redondeados */
+
+}
+
+
+
+#CargarUsuarios{
+
+  width: 10%;
+  padding: 10px;
+  background-color: #61ce35;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  border-radius: 10px; /* Bordes redondeados */
 }
 
 /*estilos de los botones para que cambien de color*/

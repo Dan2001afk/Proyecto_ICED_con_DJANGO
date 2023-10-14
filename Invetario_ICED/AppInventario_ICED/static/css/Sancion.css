@@ -383,7 +383,7 @@ table th {
   color: white; /* Color del texto */
   padding: 8px 16px; /* Espaciado interno */
   border: none; /* Sin borde */
-  border-radius: 4px; /* Bordes redondeados */
+  border-radius: 10px; /* Bordes redondeados */
   cursor: pointer; /* Cambiar el */
   transition: background-color 0.5s ease; 
   margin: 15px;
@@ -392,21 +392,23 @@ table th {
 }
 
 /* Estilo para el botón de búsqueda */
-#id_equipoo {
+#id_sancionn {
   width: 15%;
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 3px;
+  border-radius: 10px; /* Bordes redondeados */
+
 }
 
-#BuscarEquipo {
+#BuscarSancion {
   width: 12%;
   padding: 10px;
   background-color: #f44336;
   color: white;
   border: none;
-  border-radius: 3px;
+  border-radius: 10px; /* Bordes redondeados */
   cursor: pointer;
   transition: background-color 0.5s ease; 
 }
@@ -449,7 +451,7 @@ table th {
   border: 1px solid #888;
   border-radius: 8px;
   max-width: 500px;
-  height: 600px;
+  height: 450px;
   box-shadow: 0px 4px 8px rgba(118, 7, 7, 0.1);
   text-align: center;
 }
@@ -486,18 +488,33 @@ table th {
 }
 
 
-/*estilos del formulario de actualizar*/
 
-#Equ_id_Act,
-#Equi_tipo_Act,
-#Equi_modelo_Act,
-#Equi_color_Act,
-#Equi_serial_Act,
-#Equi_estado_Act,
-#equi_especialidad_Act
-{
-
+/* Estilos para los elementos del formulario */
+.FormSanciones select, input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  outline: none;
+  width: 250px;
+  height: 40px;
+    
 }
+
+#FormSanciones {
+  max-width: 400px; /* Ancho máximo del formulario */
+  margin: 0 auto; /* Centra el formulario horizontalmente */
+  padding: 20px; /* Espaciado interno */
+  background-color: #f2f2f2; /* Color de fondo */
+  border: 1px solid #ccc; /* Borde */
+  border-radius: 5px; /* Bordes redondeados */
+  
+}
+
+
+
+
+
 
 
 #ActualizarEquipo {
@@ -523,15 +540,6 @@ table th {
 
 /*estilos de formulario de insertar */
 
-#Equi_tipo,
-#Equi_modelo,
-#Equi_estado,
-#equi_especialidad,
-#Usu_Correo
-{
-
- 
-}
 
 #Guardar:hover{
   background-color: #8acbff;
@@ -552,18 +560,6 @@ table th {
 
 
 
-select{
-  
-  
-}
-
-
-#Equi_color,
-#Equi_serial
-{
-
- 
-}
 
 #Guardar:hover{
   background-color: #8acbff;

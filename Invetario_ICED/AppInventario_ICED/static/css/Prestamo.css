@@ -203,6 +203,7 @@ main{
 .cabezera h1{
   text-align: center;
   margin-top: 25px;
+  font-size: 23px;
 }
 
 
@@ -314,8 +315,8 @@ table th {
 
 /* Estilos para los botones de la tabla */
 .btnEliminar {
-  width: 50%;
-  background-color: #de3156; /* Color de fondo */
+  width: 100%;
+  background-color: #7646cf; /* Color de fondo */
   color: white; /* Color del texto */
   padding: 8px 16px; /* Espaciado interno */
   border: none; /* Sin borde */
@@ -326,18 +327,7 @@ table th {
   
 }
 
-.btnActualizar{
-  width: 50%;
-  background-color: #5fde31; /* Color de fondo */
-  color: white; /* Color del texto */
-  padding: 8px 16px; /* Espaciado interno */
-  border: none; /* Sin borde */
-  border-radius: 4px; /* Bordes redondeados */
-  cursor: pointer; /* Cambiar el cursor al pasar por encima */
-  transition: background-color 0.5s ease; 
-  margin-top: 4px;
-   
-}
+
 
 .btnInsertar{
   width: 15%;
@@ -346,7 +336,7 @@ table th {
   color: white; /* Color del texto */
   padding: 8px 16px; /* Espaciado interno */
   border: none; /* Sin borde */
-  border-radius: 4px; /* Bordes redondeados */
+  border-radius: 10px; /* Bordes redondeados */
   cursor: pointer; /* Cambiar el */
   transition: background-color 0.5s ease; 
   margin: 15px;
@@ -359,7 +349,9 @@ table th {
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
-  border-radius: 3px;
+  border-radius: 15px; /* Bordes redondeados */
+  
+  
 }
 
 #BuscarPrestamo {
@@ -368,7 +360,7 @@ table th {
   background-color: #f44336;
   color: white;
   border: none;
-  border-radius: 3px;
+  border-radius: 10px; /* Bordes redondeados */
   cursor: pointer;
   transition: background-color 0.5s ease; 
 }
