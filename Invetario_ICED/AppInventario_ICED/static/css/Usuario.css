@@ -378,7 +378,6 @@ table th {
 }
 
 
-
 .btnInsertar{
   width: 15%;
   height: 40px;
@@ -422,9 +421,8 @@ table th {
 
 
 #CargarUsuarios{
-
   width: 10%;
-  padding: 10px;
+  padding: 9px;
   background-color: #61ce35;
   color: white;
   border: none;
