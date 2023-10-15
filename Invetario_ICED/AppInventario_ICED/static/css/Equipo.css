@@ -9,7 +9,7 @@
 
 body{
 
-  background-image: linear-gradient(to left,  #8acbff,#301f4f);
+  background-image: linear-gradient(to right,#140d28d4,#342362d2, #b1a8f5);
   margin-top: 80px;
   margin-left: 80px;
   transition: margin-left 300ms  cubic-bezier(0.075, 0.82, 0.165, 1);
