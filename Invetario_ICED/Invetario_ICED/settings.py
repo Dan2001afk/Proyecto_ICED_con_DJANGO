@@ -60,7 +60,7 @@ AUTHENTICATIONS_BACKENDS =(
     'django.contrib.auth.backends.ModelsBackend',
 )
 LOGIN_URL='iniciar_sesion'
-SESSION_COOKIE_AGE = 60
+SESSION_COOKIE_AGE = 3600
 ROOT_URLCONF = 'Invetario_ICED.urls'
 
 TEMPLATES = [
