@@ -10,10 +10,12 @@
 </head>
 <body>
     <h1 class="h1">CARGAR ARCHIVO EXCEL</h1>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <input type="file" name="excel_file" id="excel_file" accept=".xlsx, .xls">
-        <button type="submit">Cargar Archivo Excel</button>
-    </form>
+    <div class="form-container">
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <input type="file" name="excel_file" id="excel_file" accept=".xlsx, .xls">
+          <button type="submit">Cargar Archivo Excel</button>
+        </form>
+      </div>
 </body>
 </html>

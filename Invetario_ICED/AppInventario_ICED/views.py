@@ -648,3 +648,18 @@ def subir_excel(request):
         form = ExcelUploadForm()
     
     return render(request, 'subir_excel.html', {'form': form})
+
+
+
+# logout django
+
+from django.contrib.auth import logout
+from django.shortcuts import redirect
+
+
+def user_logout(request):
+    # Use the logout() function to log the user out
+    logout(request)
+    
+    # Redirect to a success page, e.g., the homepage
+    return redirect('Principal')  # Replace 'home' with the name of your desired view or URL

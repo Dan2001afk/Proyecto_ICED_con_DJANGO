@@ -64,7 +64,12 @@
         
         <div class="contenedor2">
             <h1>Mi Perfil</h1>
-
+            <a href="#">
+                <div class="option">
+                    <i class="fa-solid fa-arrow-right-from-bracket fa-beat"></i>
+                    <a href="{% url 'logout' %}">cerrar sesion</a>
+                </div>
+            </a>
             <div class="informacionUsuario">
                 <div>Nombre de usuario: {{ user.username }}</div>
                 <div>Rol: {{ user.rol }}</div>    

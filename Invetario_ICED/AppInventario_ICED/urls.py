@@ -27,6 +27,9 @@ urlpatterns=[
     path('Login',views.Login,name='Login'),
     path('VistasUsuarios',VistasUsuarios,name="VistaUsarios"),
 
+    #LOGOUT 
+    path('logout/', views.user_logout, name='logout'),
+
 
     #recuperar contraseña mediante correo
 

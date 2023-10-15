@@ -1,14 +1,18 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/exito.css' %}">
     <title>Éxito</title>
 </head>
 <body>
-    <h1>Éxito</h1>
-    <p>Los datos se han cargado correctamente en la base de datos.</p>
-    <li><a href="/Usuario" >volver a Usuarios</a></li>
+    <h1 id="titulo">Éxito</h1>
+    <p id="Mensaje">Los datos se han cargado correctamente en la base de datos.</p>
+    <a id="Boton_Centro" href="/Usuario">
+        <button class="boton-redireccion">Regresar a Usuarios</button>
+      </a>
     
     <!-- Puedes agregar más contenido o redirigir a otra página si es necesario -->
 </body>
