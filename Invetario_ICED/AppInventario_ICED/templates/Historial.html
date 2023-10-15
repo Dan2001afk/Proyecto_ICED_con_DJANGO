@@ -1,4 +1,4 @@
-{% load static %}
+{{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +24,7 @@
 
     <div class="menu__side" id="menu_side">
 
-        <div class="options__menu">	
+        <div class="options__menu"> 
 
             <a href="/Equipo">
                 <div class="option">
@@ -60,44 +60,46 @@
                     <h4>Historial</h4>
                 </div>
             </a>
-        
+            
             <a href="#">
                 <div class="option">
-                    <i class="fa-solid fa-arrow-right-from-bracket fa-beat"></i>
-                    <a href="{% url 'logout' %}">cerrar sesion</a>
+                    <i class="fas fa-phone"></i>
+                    <h4>Contacto</h4>
+                </div>
+            </a>
+            
+            <a href="#">
+                <div class="option">
+                    <i class="fas fa-user-circle"></i>
+                    <h4>Nosotros</h4>
                 </div>
             </a>
 
         </div>
     </div>
 
+
+    
+
     <section class="cont">
 
-        <div class="cabezera">
-            <h1>Historial de los prestamos</h1>
-        </div>
+    <div class="contenedor1">
+        <h1>Historial de prestamos</h1>
+    </div>
 
-        <div class="contenedor1">
-            <input type="text" id="id_prestamoo" placeholder="Buscar Prestamo">
-            <button type="button" id="BuscarPrestamo" class="btnBuscar">Buscar</button>
-        </div>
 
-        <div class="contador1">
-            
-        </div>
+    <div class="contenedor2">
+        <input type="text" id="id_serial" name="id_serial" placeholder="documento o serial">
+        <button type="button" id="BuscarID" class="btnBuscar">Buscar</button>
+    </div>
+
 
         
 
-        <div class="contador2">
-            <div class="icon-container">
-                <i class="fa-solid fa-lines-leaning"></i>
-                <h1 class="prestamos">Contador</h1>
-        </div>
+      
 
-        </div>
-        <div class="contador3"></div>
         
-        <div class="contenedor3">    
+    <div class="contenedor3">    
             <div>
                 <table id="tabla1">
                     <thead>
@@ -121,7 +123,7 @@
                     </tbody>
                 </table>
             </div>
-        </div>
+    </div>
         
     </section>
 
@@ -130,5 +132,6 @@
     
 </body>
 </html>
+
 
 
