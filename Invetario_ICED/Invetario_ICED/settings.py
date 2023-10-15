@@ -31,13 +31,14 @@ DEBUG = True
 # Application definition
 
 INSTALLED_APPS = [
+    'AppInventario_ICED',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'AppInventario_ICED'
+    
 ]
 
 MIDDLEWARE = [
