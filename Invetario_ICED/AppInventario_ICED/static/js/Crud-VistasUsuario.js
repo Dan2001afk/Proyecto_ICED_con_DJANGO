@@ -31,3 +31,34 @@ async function cargarDatos() {
 
 // Llama a la función para cargar los datos cuando se cargue la página
 window.onload = cargarDatos;
+
+
+/*CONTADOR CANTIDAD DE EQUIPOS*/
+
+function equiposActivos() {
+    fetch("http://127.0.0.1:8000/ContarActivos", {
+        method: "GET",
+        headers: {
+            "consultar-Type": "AppInventario_ICED/json"
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        const activos = document.querySelector('.activos');
+
+        
+        // Actualizar los contadores con los datos obtenidos
+        activos.textContent = `Total de equipos activos: ${data.cantidad_equipos_activos}`;
+
+    })
+    .catch(error => {
+        console.error("Error al obtener la cantidad de equipos activos:", error);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    equiposActivos();
+});
+
+

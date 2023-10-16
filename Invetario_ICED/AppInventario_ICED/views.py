@@ -31,9 +31,6 @@ import json
 def VistasUsuarios(request):
     return render(request,"VistasUsuarios.html")
 
-from django.http import JsonResponse
-from django.views import View
-
 class ListadoDatos(View):
     def get(self, request):
         if request.user.is_authenticated:
@@ -55,8 +52,7 @@ class ListadoDatos(View):
 
             return JsonResponse(Datos, safe=False)
         else:
-            return JsonResponse([], safe=False)  # Usuario no autenticado
-
+            return JsonResponse([], safe=False) 
 
 def listar_prestamos_usuario(request, usuario_id):
     usuario = Usuarios.objects.get(pk=usuario_id)
