@@ -1,36 +1,43 @@
 body{
     background-image: linear-gradient(to left,  #301f4f,#8acbff);
-    }
+}
     
-    .contenedor1{
+.contenedor1{
     background-color: rgb(255, 255, 255);
     grid-column: 1/13;
     grid-row: 3/6;
     border-radius: 3%;
     margin: 10px;
-    }
+}
     
     
     /*titulo*/
     
-    .titulo{
+.titulo{
         text-align: center;
         color: #fefefe;
-    }
+}
     
     
     
       
     /*estilos para la imagen*/
     
-    .imagenPerfil {
-        width: 8%;
-        height: 80px;
+.imagenPerfil {
+        width: 20%;
+        height: 120px;
         border-radius: 50%; /* Establece un radio de borde del 50% para hacer la imagen circular */
-    }
-    
-    
-    #Usu_Nombre{
+        margin-left: 400px;
+        margin-top: -80px;
+}
+
+#openModalBtn{
+    margin-left:400px;
+    font-size: 18px;
+    margin-top: -100px;
+}
+
+#Usu_Nombre{
         display:  block;
         height: 45px;
         width: 100%;
@@ -39,9 +46,9 @@ body{
         border-bottom: 1px solid rgb(0, 0, 0);
         color: rgb(0, 0, 0);
         font-size: 16px;
-    }
+}
     
-    #Usu_Apellido{
+#Usu_Apellido{
         display:  block;
         height: 45px;
         width: 100%;
@@ -50,9 +57,9 @@ body{
         border-bottom: 1px solid rgb(0, 0, 0);
         color: rgb(0, 0, 0);
         font-size: 16px;
-    }
+}
     
-    #Usu_tipo{
+#Usu_tipo{
         display:  block;
         height: 45px;
         width: 100%;
@@ -61,9 +68,9 @@ body{
         border-bottom: 1px solid rgb(0, 0, 0);
         color: rgb(0, 0, 0);
         font-size: 16px;
-    }
+}
     
-    #Usu_Celular{
+#Usu_Celular{
         display:  block;
         height: 45px;
         width: 100%;
@@ -72,9 +79,9 @@ body{
         border-bottom: 1px solid rgb(0, 0, 0);
         color: rgb(0, 0, 0);
         font-size: 16px;
-    }
+}
     
-    #Usu_Correo{
+#Usu_Correo{
         display:  block;
         height: 45px;
         width: 100%;
@@ -83,9 +90,9 @@ body{
         border-bottom: 1px solid rgb(0, 0, 0);
         color: rgb(0, 0, 0);
         font-size: 16px;
-    }
+}
     
-    #Usu_Ficha{
+#Usu_Ficha{
         display:  block;
         height: 45px;
         width: 100%;
@@ -94,7 +101,7 @@ body{
         border-bottom: 1px solid rgb(0, 0, 0);
         color: rgb(0, 0, 0);
         font-size: 16px;
-    }
+}
     
     /* Estilos para el formulario */
     form {
@@ -150,6 +157,23 @@ body{
         padding: 10px;
         cursor: pointer;
     }
-
-
+.h1{
+    margin-top: 10px;
+    margin-right: 150px;
+}
+.nombre{
+    margin-right: 150px;
+    margin-top: 5px;
+    font-size: 18px;
+}
+.rol{
+    margin-right: 150px;
+    margin-top: 5px;
+    font-size: 18px;
+}
+.option{
+    margin-right: 400px;
+    font-size: 25px;
+    margin-top: -15px;
+}
 

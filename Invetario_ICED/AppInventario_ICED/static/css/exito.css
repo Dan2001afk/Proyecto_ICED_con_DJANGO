@@ -1,3 +1,12 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: sans-serif;
+
+}
+
 body{
 
     background-image: linear-gradient(to left,  #8acbff,#301f4f);
@@ -8,30 +17,39 @@ body{
 }   
 
 #titulo{
-    color: white;
+    color: black;
+    text-shadow: 3px 2px 4px white;
     text-align: center;
+    margin-top: 300px;
+    font-size: 40px;
 }
 
 #Mensaje{
     color: white;
     text-align: center;
+    font-size: 25px;
+    margin-top: 12px;
+    text-shadow: 3px 2px 3px black;
 }
 
 #regresar{
     color: white;
     text-align: center;
+
 }
 
 
 button {
     background-color: #007BFF;
     color: white;
-    font-size: 16px;
+    font-size: 22px;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-top: 20px;
+    margin-left: 130px;
   }
 
   button:hover {

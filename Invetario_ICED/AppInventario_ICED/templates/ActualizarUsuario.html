@@ -63,22 +63,23 @@
         </div>   
         
         <div class="contenedor2">
-            <h1>Mi Perfil</h1>
-            <a href="#">
-                <div class="option">
-                    <i class="fa-solid fa-arrow-right-from-bracket fa-beat"></i>
-                    <a href="{% url 'logout' %}">cerrar sesion</a>
-                </div>
-            </a>
+            <h1 class="h1">Mi Perfil</h1>
+
             <div class="informacionUsuario">
-                <div>Nombre de usuario: {{ user.username }}</div>
-                <div>Rol: {{ user.rol }}</div>    
+                <div class="nombre">Nombre de usuario: {{ user.username }}</div>
+                <div class="rol">Rol: {{ user.rol }}</div>    
             
           
             {% if user.imagen %}
                 <img class="imagenPerfil" class="perfil-imagen" src="{{ user.imagen.url }}" alt="Imagen de usuario">
             {% endif %}
             </div>
+            <a href="#">
+                <div class="option">
+                    <i class="fa-solid fa-arrow-right-from-bracket fa-beat"></i>
+                    <a href="{% url 'logout' %}">cerrar sesion</a>
+                </div>
+            </a>
     
             <button class="BTNactualizaUsuario" id="openModalBtn">Editar Perfil</button>
         </div>
