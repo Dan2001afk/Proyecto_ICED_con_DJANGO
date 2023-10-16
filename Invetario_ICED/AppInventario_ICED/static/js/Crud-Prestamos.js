@@ -209,20 +209,12 @@ document.addEventListener("DOMContentLoaded", () => {
                         <td>
                             <div class="btn-container">
                                 <button class="btnEliminar" onclick="eliminarPrestamo(${prestamo.Pres_Id})">Eliminar</button>
-                                <button class="btnActualizar" data-prestamo-id="${prestamo.Pres_Id}">Actualizar</button>
                             </div>
                         </td>
                     `;
 
                     tablaBody.appendChild(newRow);
                     
-                    // Agregar evento de clic al botón de "Actualizar"
-                    const updateButton = newRow.querySelector('.btnActualizar');
-                    updateButton.addEventListener('click', function() {
-                        const prestamoId = this.getAttribute('data-prestamo-id');
-                        abrirModalActualizar(prestamoId);
-                    });
-
                 } else {
                     Swal.fire({
                         title: "Elemento No Encontrado",

@@ -12,6 +12,13 @@ class Usuarios(models.Model):
     Usu_Celular=models.BigIntegerField(verbose_name="N° De Celular")
     Usu_Correo=models.EmailField(max_length=50,verbose_name="Correo Electronico")
     Usu_Ficha=models.TextField(max_length=40)
+    def to_dict(self):
+        return {
+            'Usu_Documento': self.Usu_Documento,
+            'Usu_Nombre': self.Usu_Nombre,
+            'Usu_Apellido': self.Usu_Apellido,
+            # Agrega otros campos aquí
+        }
     
 class User(AbstractUser):
     rol = models.CharField(max_length=100)

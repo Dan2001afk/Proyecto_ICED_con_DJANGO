@@ -98,10 +98,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             })
             .then(response => {
-                if (response.ok) {
+                    if (response.ok) {
+                        console.log(response.json)
                     return response.json();
                 } else {
-                    throw new Error("Error al buscar el Prestamo por ID");
+                    throw new Error("Error al buscar el historial por ID");
                 }
             })
             .then(historial => {
@@ -120,19 +121,12 @@ document.addEventListener("DOMContentLoaded", () => {
                         <td>${historial.Pres_Observaciones_entrega}</td>
                         <td>
                             <div class="btn-container">
-                                <button class="btnEliminar" onclick="eliminarHistorial(${dat.Pres_Id})">Eliminar</button>
+                                <button class="btnEliminar" onclick="eliminarHistorial(${historial.Pres_Id})">Eliminar</button>
                                 </div>
                         </td>
                     `;
 
                     tablaBody.appendChild(newRow);
-                    
-                    // Agregar evento de clic al botón de "Actualizar"
-                    const updateButton = newRow.querySelector('.btnActualizar');
-                    updateButton.addEventListener('click', function() {
-                        const prestamoId = this.getAttribute('data-prestamo-id');
-                        abrirModalActualizar(historialId);
-                    });
 
                 } else {
                     Swal.fire({

@@ -31,26 +31,31 @@ import json
 def VistasUsuarios(request):
     return render(request,"VistasUsuarios.html")
 
+from django.http import JsonResponse
+from django.views import View
+
 class ListadoDatos(View):
     def get(self, request):
-        prestamos = Prestamos.objects.all()
-        Datos = []
+        if request.user.is_authenticated:
+            usuario = request.user.Documento
+            prestamos = Prestamos.objects.filter(Pres_Usuarios_Documento=usuario)
+            Datos = []
 
-        for prestamo in prestamos:
-            equipo = prestamo.Pres_Equipos
-            usuario = prestamo.Pres_Usuarios_Documento
+            for prestamo in prestamos:
+                equipo = prestamo.Pres_Equipos
+                usuario_dict = usuario.to_dict()  # Llama al método to_dict para serializar el usuario
+                Datos.append({
+                    'Dispositivo': f"{equipo.Equi_tipo} {equipo.Equi_modelo}",
+                    'Observaciones': prestamo.Pres_Observaciones_entrega,
+                    'Serial': equipo.Equi_serial,
+                    'Especialidad': equipo.equi_especialidad,
+                    'Usuario': usuario_dict,  # Usa el diccionario del usuario en lugar del objeto
+                    'Pres_Hora_Entrega': prestamo.Pres_Hora_Entrega
+                })
 
-            Datos.append({
-                'Dispositivo': f"{equipo.Equi_tipo} {equipo.Equi_modelo}",
-                'Observaciones': prestamo.Pres_Observaciones_entrega,
-                'Serial': equipo.Equi_serial,
-                'Especialidad': equipo.equi_especialidad,
-                'Documento_Usuario': usuario.Usu_Documento,  # Agrega el campo de documento del usuario aquí
-                'Pres_Hora_Entrega': prestamo.Pres_Hora_Entrega
-            })
-
-        return JsonResponse(Datos, safe=False)
-
+            return JsonResponse(Datos, safe=False)
+        else:
+            return JsonResponse([], safe=False)  # Usuario no autenticado
 
 
 def listar_prestamos_usuario(request, usuario_id):

@@ -27,12 +27,12 @@ body{
         width: 20%;
         height: 120px;
         border-radius: 50%; /* Establece un radio de borde del 50% para hacer la imagen circular */
-        margin-left: 400px;
-        margin-top: -80px;
+        margin-left: 300px;
+        margin-top: -70px;
 }
 
 #openModalBtn{
-    margin-left:400px;
+    margin-left:300px;
     font-size: 18px;
     margin-top: -100px;
 }
@@ -160,20 +160,21 @@ body{
 .h1{
     margin-top: 10px;
     margin-right: 150px;
+    font-size: 20px;
 }
 .nombre{
     margin-right: 150px;
     margin-top: 5px;
-    font-size: 18px;
+    font-size: 15px;
 }
 .rol{
     margin-right: 150px;
     margin-top: 5px;
-    font-size: 18px;
+    font-size: 15px;
 }
 .option{
-    margin-right: 400px;
-    font-size: 25px;
-    margin-top: -15px;
+    margin-right: 300px;
+    font-size: 20px;
+    margin-top: -10px;
 }
 
