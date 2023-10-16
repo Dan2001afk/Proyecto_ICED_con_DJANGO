@@ -1,4 +1,4 @@
-{{% load static %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,6 +72,13 @@
                 <div class="option">
                     <i class="fas fa-user-circle"></i>
                     <h4>Nosotros</h4>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="option">
+                    <i class="fa-solid fa-arrow-right-from-bracket fa-beat"></i>
+                    <a href="{% url 'logout' %}">cerrar sesion</a>
                 </div>
             </a>
 

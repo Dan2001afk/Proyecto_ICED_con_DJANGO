@@ -2,20 +2,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cargar Archivo Excel</title>
     <link rel="icon" href="{% static 'imagenes/iced_logo.png' %}" type="image/x-icon">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://kit.fontawesome.com/3d7a846b01.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="{% static 'css/exel.css' %}">
-</head>
-<body>
-    <h1 class="h1">CARGAR ARCHIVO EXCEL</h1>
-    <div class="form-container">
-        <form method="post" enctype="multipart/form-data">
-          {% csrf_token %}
-          <input type="file" name="excel_file" id="excel_file" accept=".xlsx, .xls">
-          <button type="submit">Cargar Archivo Excel</button>
-        </form>
+  </head>
+  <body id="body" style="max-height: 100vh; overflow-y: scroll;">
+    <header>
+      <div class="icon__menu">
+          <i class="fas fa-bars" id="btn_open"></i>
       </div>
+    </header>
+
+  <div class="menu__side" id="menu_side">
+
+      <div class="options__menu">	
+
+          <a href="/Equipo" >
+              <div class="option">
+                  <i class="fas fa-laptop"></i>
+                  <h4>Equipos</h4>
+              </div>
+          </a>
+
+          <a href="/Usuario" >
+              <div class="option">
+                  <i class="fa-solid fa-users"></i>
+                  <h4>Usuarios</h4>
+              </div>
+          </a>
+          
+          <a href="/Prestamo">
+              <div class="option">
+                  <i class="fas fa-server"></i>
+                  <h4>Prestamos</h4>
+              </div>
+          </a>
+
+          <a href="/Sancion">
+              <div class="option">
+                  <i class="fas fa-exclamation-circle"></i>
+                  <h4>Sanciones</h4>
+              </div>
+          </a>
+
+
+          <a href="/Historial">
+              <div class="option">
+                  <i class="fas fa-box-open"></i>
+                  <h4>Historial</h4>
+              </div>
+          </a>
+          
+
+          <a href="Excel"class="selected">
+              <div class="option">
+                  <i class="fas fa-phone"></i>
+                  <h4>Contacto</h4>
+              </div>
+          </a>
+          
+
+          <a href="#">
+              <div class="option">
+                  <i class="fas fa-user-circle"></i>
+                  <h4>Nosotros</h4>
+              </div>
+          </a>
+
+          <a href="#">
+              <div class="option">
+                  <i class="fa-solid fa-arrow-right-from-bracket fa-beat"></i>
+                  <a href="{% url 'logout' %}">cerrar sesion</a>
+              </div>
+          </a>
+
+      </div>
+
+  </div>
+
+  
+  <h1 class="h1">CARGAR ARCHIVO EXCEL</h1>
+  <div class="form-container">
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="excel_file" id="excel_file" accept=".xlsx, .xls">
+        <button type="submit">Cargar Archivo Excel</button>
+      </form>
+  </div>
+  
+  <script src="static/js/script.js"></script>
+  <script src="static/js/script3.js"></script>
+
 </body>
 </html>
