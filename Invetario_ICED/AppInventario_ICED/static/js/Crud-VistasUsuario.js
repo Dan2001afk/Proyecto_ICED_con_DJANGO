@@ -18,7 +18,7 @@ async function cargarDatos() {
                         <td>${dato.Observaciones}</td>
                         <td>${dato.Serial}</td>
                         <td>${dato.Especialidad}</td>
-                        <td>${dato.Documento_Usuario}</td> <!-- Agrega el campo del documento del usuario -->
+                        <td>${dato.Documento_Usuario}</td>
                         <td>${dato.Pres_Hora_Entrega}</td>
                     </tr>
                 `;

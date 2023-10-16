@@ -26,7 +26,7 @@ function Listar(){
                 <td>${dat.Pres_Observaciones_entrega}</td>
                 <td>
                 <div class="btn-container">
-                <button class="btnEliminar" onclick="eliminarHistorial(${dat.Dev_id})">Eliminar</button>
+                <button class="btnEliminar" onclick="eliminarHistorial(${dat.Pres_Id})">Eliminar</button>
                 </div>
                 </td>
                 </tr>`;
@@ -34,21 +34,19 @@ function Listar(){
         }
     });
 }
-function Agregar(){
-}
-
 
 //funcion para eliminar prestamo
-function eliminarHistorial(Dev_id) {
+function eliminarHistorial(Pres_Id) {
     Swal.fire({
-        title: "Desea eliminar el prestamo",
-        icon: "warning",
+        title: "Esta accion eliminara el prestamo",
+        icon: "error",
         showCancelButton: true,
         confirmButtonText: "Aceptar",
         cancelButtonText: "Cancelar",
     }).then((result) => {
         if (result.isConfirmed) {
-            const url = `http://127.0.0.1:8000/ListarHistorial/${Dev_id}`;
+            const url = `http://127.0.0.1:8000/EliminarHistorial/${Pres_Id}`;
+
             fetch(url, {
                 method: "DELETE",
                 headers: {
@@ -85,13 +83,13 @@ function eliminarHistorial(Dev_id) {
 
 //funcion Buscar Prestamo
 document.addEventListener("DOMContentLoaded", () => {
-    const buscarBtn = document.getElementById("BuscarPrestamo");
+    const buscarBtn = document.getElementById("BuscarHistorial");
     buscarBtn.addEventListener("click", () => {
-        const prestamoIdInput = document.getElementById("id_prestamoo");
-        const prestamoId = prestamoIdInput.value;
+        const historialIdInput = document.getElementById("id_historiall");
+        const historialId = historialIdInput.value;
 
-        if (prestamoId) {
-            const url = `http://127.0.0.1:8000/BuscarHistorial/${prestamoId}`;
+        if (historialId) {
+            const url = `http://127.0.0.1:8000/BuscarHistorial/${historialId}`;
 
             fetch(url, {
                 method: "GET",
@@ -106,25 +104,24 @@ document.addEventListener("DOMContentLoaded", () => {
                     throw new Error("Error al buscar el Prestamo por ID");
                 }
             })
-            .then(prestamo => {
-                if (prestamo.hasOwnProperty('Pres_Id')) {
+            .then(historial => {
+                if (historial.hasOwnProperty('Pres_Id')) {
                     const tablaBody = document.getElementById("tabla1-body");
                     tablaBody.innerHTML = "";
 
                     const newRow = document.createElement("tr");
                     newRow.innerHTML = `
-                        <td>${prestamo.Pres_Id}</td>
-                        <td>${prestamo.Pres_Equipos_id}</td>
-                        <td>${prestamo.Pres_Usuarios_Documento_id}</td>
-                        <td>${prestamo.Pres_Fec_Entrega}</td>
-                        <td>${prestamo.Pres_Hora_Entrega}</td>
-                        <td>${prestamo.Pres_Tiempo_Limite}</td>
-                        <td>${prestamo.Pres_Observaciones_entrega}</td>
+                        <td>${historial.Pres_Id}</td>
+                        <td>${historial.Pres_Equipos_id}</td>
+                        <td>${historial.Pres_Usuarios_Documento_id}</td>
+                        <td>${historial.Pres_Fec_Entrega}</td>
+                        <td>${historial.Pres_Hora_Entrega}</td>
+                        <td>${historial.Pres_Tiempo_Limite}</td>
+                        <td>${historial.Pres_Observaciones_entrega}</td>
                         <td>
                             <div class="btn-container">
-                                <button class="btnEliminar" onclick="eliminarPrestamo(${prestamo.Pres_Id})">Eliminar</button>
-                                <button class="btnActualizar" data-prestamo-id="${prestamo.Pres_Id}">Actualizar</button>
-                            </div>
+                                <button class="btnEliminar" onclick="eliminarHistorial(${dat.Pres_Id})">Eliminar</button>
+                                </div>
                         </td>
                     `;
 
@@ -134,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     const updateButton = newRow.querySelector('.btnActualizar');
                     updateButton.addEventListener('click', function() {
                         const prestamoId = this.getAttribute('data-prestamo-id');
-                        abrirModalActualizar(prestamoId);
+                        abrirModalActualizar(historialId);
                     });
 
                 } else {

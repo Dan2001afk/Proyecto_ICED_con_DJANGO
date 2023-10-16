@@ -160,6 +160,54 @@ a.selected{
 
 }
 
+.btnEliminar {
+  width: 100%;
+  background-color: #ff0000; /* Color de fondo */
+  color: white; /* Color del texto */
+  padding: 8px 16px; /* Espaciado interno */
+  border: none; /* Sin borde */
+  border-radius: 4px; /* Bordes redondeados */
+  cursor: pointer; /* Cambiar el cursor al pasar por encima */
+  transition: background-color 0.5s ease; 
+  margin-top: 4px;
+  
+}
+
+#id_historiall {
+  width: 15%;
+  padding: 12px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 15px; /* Bordes redondeados */
+  margin-top: 45px;
+  margin-left: 50px;
+  
+  
+}
+
+
+#BuscarHistorial {
+  width: 13%;
+  padding: 13px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 10px; /* Bordes redondeados */
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+  margin-left: 5px;
+}
+
+.BuscarEquipo:hover {
+  background-color: #e77d26; 
+}
+
+.btnEliminar:hover {
+  background-color: #e77d26; 
+}
+
+
+
 /*contenido del diseño*/
 main{
   background-color: #d3d3d3;
@@ -233,7 +281,7 @@ main{
   grid-column: 1/13;
   grid-row: 10/30;
   border-radius: 1%;
-  overflow-y: auto;
+  overflow-y: auto,rgb(68, 35, 35);
   overflow-x: hidden;
   position: relative;
 }

@@ -84,8 +84,8 @@ urlpatterns=[
     #HISTORIAL
     path('Historial',views.historial,name='Historial'),
     path('Listarhistorial/',ListarHistorial.as_view(), name='Historia'),
-
-
+    path('EliminarHistorial/<int:pk>',EliminarHistorial.as_view(),name='eliminarHistorial'),
+    path('BuscarHistorial/<int:pk>', BuscarHistorial.as_view(), name='buscar-historial'),
     #subir excel
     path('subir_excel/', views.subir_excel, name='subir_excel'),
 

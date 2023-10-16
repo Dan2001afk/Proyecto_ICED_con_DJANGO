@@ -589,7 +589,43 @@ class ListarHistorial(View):
 
         return JsonResponse(Datos_Historial, safe=False)
 
+class EliminarHistorial(View):
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
 
+    def delete(self, request, pk):
+        try:
+            historial = Historial.objects.get(pk=pk)
+        except Historial.DoesNotExist:
+            return JsonResponse({"Error": "El Prestamo no existe"})
+        historial.delete()
+        return JsonResponse({"Mensaje":"Datos Eliminados"})
+
+
+class BuscarHistorial(View):
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+    
+    def get(self, request, pk):
+        try:
+            historial = Historial.objects.get(pk=pk)
+        except Historial.DoesNotExist:
+            return JsonResponse({"Error": "El Prestamo no existe"})
+        
+        datos_historial = {
+            'Pres_Id': historial.Pres_Id,
+            'Pres_Equipos_id': historial.Pres_Equipos_id,
+            'Pres_Usuarios_Documento_id': historial.Pres_Usuarios_Documento_id,
+            'Pres_Fec_Entrega': historial.Pres_Fec_Entrega,
+            'Pres_Hora_Entrega': historial.Pres_Hora_Entrega,
+            'Pres_Tiempo_Limite': historial.Pres_Tiempo_Limite,
+            'Pres_Observaciones_entrega': historial.Pres_Observaciones_entrega
+        }
+        
+        return JsonResponse(datos_historial)
+    
 def Portada(request):
     return render(request,"Principal.html")
 
