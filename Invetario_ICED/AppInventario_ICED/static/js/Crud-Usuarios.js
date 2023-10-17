@@ -139,7 +139,7 @@ function eliminarUsuario(Usu_Documento) {
                 Consultar();
                 mostrarCantidadUsuarios();
                 mostrarCantidadInstructores();
-                
+                mostrarCantidadAprendinces();
             })
             .catch(error => {
                 console.error("Error al eliminar el Usuario:", error);

@@ -151,7 +151,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'ICED.SENA@gmail.com'
 EMAIL_HOST_PASSWORD = 'xaikinmfjligvpyh'
 
-
+SITE_ID = 1
 # settings.py
 
 DEFAULT_FROM_EMAIL = 'noreply@example.com'

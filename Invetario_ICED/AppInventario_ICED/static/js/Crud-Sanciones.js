@@ -107,11 +107,11 @@ function eliminarSancion(id_sancion) {
             .then(data => {
                 ConsultarSanciones();
                 
-                Swal.fire("Éxito", "Dispositivo eliminado exitosamente.", "success");
+                Swal.fire("Éxito", "Sancion eliminadada exitosamente.", "success");
             })
             .catch(error => {
-                console.error("Error al eliminar el Dispositivo:", error);
-                Swal.fire("Error", "Error al eliminar el equipo.", "error");
+                console.error("Error al eliminar el La Sancion:", error);
+                Swal.fire("Error", "Error al eliminar la Sancion.", "error");
             });
         }
     });

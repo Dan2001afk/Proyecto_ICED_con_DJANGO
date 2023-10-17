@@ -130,7 +130,7 @@ function eliminarPrestamo(Pres_Id) {
         icon: "question",
         showCancelButton: true,
         confirmButtonText: "Liberar Dispositivo",
-        cancelButtonText: "Realizar una sancion",
+        //cancelButtonText: "Realizar una sancion",
     }).then((result) => {
         if (result.isConfirmed) {
             const url = `http://127.0.0.1:8000/EliminarPrestamo/${Pres_Id}`;
