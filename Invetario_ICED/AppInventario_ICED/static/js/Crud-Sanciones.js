@@ -238,3 +238,27 @@ function equiposInactivos() {
 document.addEventListener("DOMContentLoaded", function () {
     equiposInactivos();
 });
+
+
+
+function contarSanciones() {
+    fetch("http://127.0.0.1:8000/Totalsanciones/", {
+        method: "GET",
+        headers: {
+            "consultar-Type": "AppInventario_ICED/json"
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        const sanciones = document.querySelector('.sanciones');
+        // Actualizar los contadores con los datos obtenidos
+        sanciones.textContent = `Total de sanciones: ${data.cantidad_sanciones}`;
+    })
+    .catch(error => {
+        console.error("Error al obtener la cantidad de sanciones:", error);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    contarSanciones();
+});

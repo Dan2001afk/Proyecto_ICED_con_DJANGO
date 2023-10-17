@@ -596,6 +596,10 @@ class BuscarSancion(View):
         
         return JsonResponse(datos_sancion)
 
+class ContarSanciones(View):
+    def get(self, request):
+        cantidad_sanciones = Sanciones.objects.count()
+        return JsonResponse({"cantidad_sanciones": cantidad_sanciones})
 #HISTORIAL DE LOS PRESTAMOS
 
 class ListarHistorial(View):
@@ -628,8 +632,7 @@ class EliminarHistorial(View):
             return JsonResponse({"Error": "El Prestamo no existe"})
         historial.delete()
         return JsonResponse({"Mensaje":"Datos Eliminados"})
-
-
+      
 class BuscarHistorial(View):
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):

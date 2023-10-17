@@ -86,6 +86,7 @@ urlpatterns=[
     path('ActualizarSanciones/<pk>',ActualizarSanciones.as_view(),name='Actualizar'),
     path('EliminarSancion/<pk>',EliminarSanciones.as_view(),name='Eliminar'),
     path('BuscarSancion/<int:pk>/', BuscarSancion.as_view(), name='buscar_sancion'),
+    path('Totalsanciones/', ContarSanciones.as_view(), name='contar_sanciones'),  # Agregar esta línea
     #HISTORIAL
     path('Historial',views.historial,name='Historial'),
     path('Listarhistorial/',ListarHistorial.as_view(), name='Historia'),
