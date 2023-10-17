@@ -119,6 +119,9 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("FormPrestamos").addEventListener("submit", function (event) {
         event.preventDefault();
         Agregar();
+        cantidadPrestamos();
+        equiposEnPrestamo();
+        mostrarCantidadEquipos();
     });
 });
 
@@ -151,7 +154,10 @@ function eliminarPrestamo(Pres_Id) {
                 .then((data) => {
                     console.log(data);
                     Listar();
+                    Agregar();
                     cantidadPrestamos();
+                    equiposEnPrestamo();
+                    mostrarCantidadEquipos();
                     Swal.fire({
                         title: "Préstamo eliminado exitosamente.",
                         icon: "success",
@@ -260,3 +266,62 @@ function cantidadPrestamos() {
 document.addEventListener("DOMContentLoaded", function () {
     cantidadPrestamos();
 });
+
+
+function equiposEnPrestamo() {
+    fetch("http://127.0.0.1:8000/contar_en_prestamo", {
+        method: "GET",
+        headers: {
+            "consultar-Type": "AppInventario_ICED/json"
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        const enPrestamo = document.querySelector('.en-prestamo');
+
+        // Actualizar los contadores con los datos obtenidos
+        enPrestamo.textContent = `Total de equipos en préstamo: ${data.cantidad_equipos_en_prestamo}`;
+
+    })
+    .catch(error => {
+        console.error("Error al obtener la cantidad de equipos en préstamo:", error);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    equiposEnPrestamo();
+});
+
+
+
+function mostrarCantidadEquipos() {
+    fetch("http://127.0.0.1:8000/ContarEquipos", {
+        method: "GET",
+        headers: {
+            "consultar-Type": "AppInventario_ICED/json"
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        const cantidad = document.querySelector('.cantidad');
+
+        
+        // Actualizar los contadores con los datos obtenidos
+        cantidad.textContent = `Total de equipos: ${data.cantidad_equipos}`;
+
+    })
+    .catch(error => {
+        console.error("Error al obtener la cantidad de equipos:", error);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    mostrarCantidadEquipos();
+});
+
+
+
+
+

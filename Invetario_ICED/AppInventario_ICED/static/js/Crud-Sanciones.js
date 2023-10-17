@@ -53,6 +53,8 @@ function Agregar() {
         console.log(data);
         if (data.mensaje === "Datos Guardados") {
             ConsultarSanciones();
+            mostrarCantidadEquipos();
+            equiposInactivos
             Swal.fire({
                 icon: 'success',
                 title: '¡Éxito!',
@@ -106,6 +108,8 @@ function eliminarSancion(id_sancion) {
             .then(response => response.json())
             .then(data => {
                 ConsultarSanciones();
+                mostrarCantidadEquipos();
+                equiposInactivos();
                 
                 Swal.fire("Éxito", "Sancion eliminadada exitosamente.", "success");
             })
@@ -179,4 +183,58 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("Debe ingresar un ID de sanción válido");
         }
     });
+});
+
+
+function mostrarCantidadEquipos() {
+    fetch("http://127.0.0.1:8000/ContarEquipos", {
+        method: "GET",
+        headers: {
+            "consultar-Type": "AppInventario_ICED/json"
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        const cantidad = document.querySelector('.cantidad');
+
+        
+        // Actualizar los contadores con los datos obtenidos
+        cantidad.textContent = `Total de equipos: ${data.cantidad_equipos}`;
+
+    })
+    .catch(error => {
+        console.error("Error al obtener la cantidad de equipos:", error);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    mostrarCantidadEquipos();
+});
+
+
+function equiposInactivos() {
+    fetch("http://127.0.0.1:8000/ContarInactivos", {
+        method: "GET",
+        headers: {
+            "consultar-Type": "AppInventario_ICED/json"
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        const inactivos = document.querySelector('.inactivos');
+
+        
+        // Actualizar los contadores con los datos obtenidos
+        inactivos.textContent = `Total de equipos inactivos: ${data.cantidad_equipos_Inactivos}`;
+
+    })
+    .catch(error => {
+        console.error("Error al obtener la cantidad de equipos inactivos:", error);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    equiposInactivos();
 });

@@ -76,6 +76,8 @@ urlpatterns=[
     path('EliminarPrestamo/<int:pk>',EliminarPrestamo.as_view(),name='eliminarPrestamo'),
     path('verificarPrestamo/', VerificarPrestamo.as_view(), name='verificar-prestamo'),
     path('ContarPrestamos', ContarPrestamos.as_view(), name='cantidad_prestamos'),
+    path('contar_en_prestamo/', ContarEnPrestamo.as_view(), name='contar_en_prestamo'),
+
 
     #CRUD SANCIONES
     path('Sancion',views.Sancion,name='Sancion'),

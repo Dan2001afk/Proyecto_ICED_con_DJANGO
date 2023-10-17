@@ -496,6 +496,10 @@ class ContarPrestamos(View):
         cantidad_prestamos=Prestamos.objects.count()
         return JsonResponse({"cantidad_prestamos":cantidad_prestamos}) 
 
+class ContarEnPrestamo(View):
+    def get(self, request):
+        cantidad_equipos_en_prestamo = Equipos.objects.filter(Equi_estado='En préstamo').count()
+        return JsonResponse({"cantidad_equipos_en_prestamo": cantidad_equipos_en_prestamo})
 
 
 #SANCIONES

@@ -243,6 +243,13 @@ main{
   position: relative;
 }
 
+.contador3 h1 {
+
+  font-size: 15px;
+  
+}
+
+
 /*estilos de contadores*/
 
 .contador1{
@@ -255,6 +262,12 @@ main{
   align-items: center;
   background-color: rgb(255, 255, 255);
   padding: 20px; /* Agregamos un poco de espacio interno */  
+}
+
+.contador1 h1 {
+
+  font-size: 15px;
+  
 }
 
 
