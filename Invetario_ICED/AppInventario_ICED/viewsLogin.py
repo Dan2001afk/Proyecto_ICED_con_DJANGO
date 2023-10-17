@@ -1,15 +1,28 @@
+from django.http import HttpResponseBadRequest, JsonResponse
 from .forms import *
 from django.views import *
-from django.contrib.auth import *
-from django.utils.decorators import *
-from django.views.decorators.csrf import *
-from typing import *
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
 import json
 from .models import *
 from django.shortcuts import *
 from .formsUsuario import *
 from django.contrib.auth.decorators import *
+from django.utils.decorators import method_decorator
+from django.contrib.auth import authenticate, login
+
+
+
+def verificarS(request):
+    if request.user.is_authenticated:
+        # El usuario tiene una sesión iniciada
+        print("se inicio la sesion")
+        return JsonResponse({'mensaje': True})
+    else:
+        # El usuario no tiene una sesión iniciada
+        print("no se inicio la sesion")
+        return JsonResponse({'mensaje': False})
 
 
 
@@ -76,35 +89,56 @@ class RegistrarUsuarioView(View):
             messages.error(request, 'Error en los datos enviados desde Flutter.')
     
 
-
-
-
 class IniciarSesionView(View):
     def get(self, request):
         form = LoginForm()
         return render(request, 'Inicio.html', {'form': form})
 
+    @csrf_exempt
+    def dispatch(self, request, *args, **kwargs):
+        if request.method.lower() == "get":
+            print("entro a la vista de iniciar sesion2")
+            return self.get(request, *args, **kwargs)
+        elif request.method.lower() == "post":
+            print("entro a la vista de iniciar sesion3")
+            return self.post(request, *args, **kwargs)
+
     def post(self, request):
-        form = LoginForm(data=request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-
-            user = authenticate(username=username, password=password)
-
-            if user is not None:
-                login(request, user)
-                if user.rol in ['Aprendiz', 'aprendiz', 'Instructor', 'instructor']:
-                    print("entro al rol")
-                    return redirect('perfil_usuario')
+        accept_header = request.META.get('HTTP_ACCEPT', '')
+        if 'application/json' in accept_header:
+            try:
+                json_data = json.loads(request.body)
+                username = json_data.get('username')
+                password = json_data.get('password')
+                user = authenticate(username=username, password=password)
+                if user is not None:
+                    print("json validacion")
+                    login(request, user)
+                    print("entro")
+                    return JsonResponse({'mensaje': "inicio de sesion exitoso"})
                 else:
-                    print("no entra")
-                    return redirect('Equipo')
-        # Si la validación del formulario falla, el formulario con errores se pasará al contexto
-        return render(request, 'Inicio.html', {'form': form})
-            
-#        return render(request, 'iniciosesion.html', {'form': form})
+                    return JsonResponse({'mensaje': "No se inicio la sesion "})
+            except json.JSONDecodeError:
+                return HttpResponseBadRequest('Invalid JSON data')
 
+        else:
+            form = LoginForm(data=request.POST)
+            if form.is_valid():
+                username = form.cleaned_data.get('username')
+                password = form.cleaned_data.get('password')
+
+                user = authenticate(username=username, password=password)
+
+                if user is not None:
+                    login(request, user)
+                    if user.rol in ['Aprendiz', 'aprendiz', 'Instructor', 'instructor']:
+                        print("entro al rol")
+                        return redirect('perfil_usuario')
+                    else:
+                        print("no entra")
+                        return redirect('Equipo')
+                # Si la validación del formulario falla, el formulario con errores se pasará al contexto
+                return render(request, 'Inicio.html', {'form': form})
 
 
 @method_decorator(login_required(login_url='iniciar_sesion'), name='dispatch')

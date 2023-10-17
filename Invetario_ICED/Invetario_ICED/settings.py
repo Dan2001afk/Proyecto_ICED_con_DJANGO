@@ -38,8 +38,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework.authtoken',
+    'rest_framework',
+    'rest_framework_simplejwt',
+  
     
 ]
+
+SIMPLE_JWT = {
+    # ...
+    'USER_ID_FIELD': 'Documento_id',  # Nombre del campo de identificación en tu modelo de usuario personalizado
+    # ...
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -53,6 +63,10 @@ MIDDLEWARE = [
 
 
 ALLOWED_HOSTS = ['*']
+
+CORS_ALLOWED_ORIGINS = [
+    'http://10.190.82.231/',
+]
 
 
 

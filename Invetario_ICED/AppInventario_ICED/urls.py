@@ -1,14 +1,25 @@
 from django.urls import path
+from . import viewsLogin 
 from .views import *
 from . import views
-from AppInventario_ICED.viewsLogin import *
 from django.conf import *
 from django.conf.urls.static import *
 from django.contrib.auth import views as auth_views
 from django.urls import path, reverse
+from . viewsLogin import *
+from rest_framework_simplejwt.views import TokenRefreshView
+from rest_framework_simplejwt.views import TokenObtainPairView 
+import jwt 
 
 
-urlpatterns=[
+
+urlpatterns=[   
+
+    #VALIDACION FLUTTER
+    path('verificarS', viewsLogin.verificarS, name='verificarS'),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),  # Ruta para obtener el token JWT
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),  # Ruta para refrescar el token JWT
+     
     
     #PORTADA PRINCIPAL
     path('Principal',Portada,name="Principal"),
@@ -23,7 +34,7 @@ urlpatterns=[
     
     #LOGIN
     path('registro/',RegistrarUsuarioView.as_view(),name="registrar_usuario"),
-    path('iniciarSesion/',IniciarSesionView.as_view(),name="iniciar_sesion"),
+    path('iniciarSesion',IniciarSesionView.as_view(),name="iniciar_sesion"),
     path('ActualizarUsuario/',PerfilClienteView.as_view(),name="perfil_usuario"),
     path('Login',views.Login,name='Login'),
     path('VistasUsuarios',VistasUsuarios,name="VistaUsarios"),
