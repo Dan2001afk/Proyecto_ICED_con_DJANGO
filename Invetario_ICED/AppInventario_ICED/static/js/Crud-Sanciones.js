@@ -31,100 +31,101 @@ function ConsultarSanciones(){
    });
 }
 
+
 //Agregar Sancion
 function Agregar() {
     var Datos={
-        San_Pres_id:document.getElementById("San_Pres_id").value,
-        San_tiempo:document.getElementById("San_tiempo").value,
-        San_Descripcion:document.getElementById("San_Descripcion").value
+        San_Pres_id: document.getElementById("San_Pres_id").value,
+        San_tiempo: document.getElementById("San_tiempo").value,
+        San_Descripcion: document.getElementById("San_Descripcion").value
     };
-    var jsonData=JSON.stringify(Datos);
-    console.log(jsonData)
+    var jsonData = JSON.stringify(Datos);
+
     fetch("http://127.0.0.1:8000/insertarSancion/",{
-        method:"POST",
-        body:jsonData,
-        headers:{
-            "Content-Type":"AppInventario_ICED/json"
+        method: "POST",
+        body: jsonData,
+        headers: {
+            "Content-Type": "AppInventario_ICED/json"
         }
     })
     .then(response => response.json())
     .then(data => {
         console.log(data);
-        ConsultarSanciones();
-        alert("Datos enviados exitosamente.");
+        if (data.mensaje === "Datos Guardados") {
+            ConsultarSanciones();
+            Swal.fire({
+                icon: 'success',
+                title: '¡Éxito!',
+                text: 'Datos enviados exitosamente.'
+            });
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Error al enviar los datos.'
+            });
+        }
     })
     .catch(error => {
         console.error(error);
-        alert("Error al enviar los datos.");
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Error al enviar los datos.'
+        });
     });
 }
-document.addEventListener("DOMContentLoaded",function(){
-    document.getElementById("FormSanciones").addEventListener("submit",function(event) {
+
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("FormSanciones").addEventListener("submit", function(event) {
         event.preventDefault();
         Agregar();
     });
 });
 
 
+//Buscar eliminar sancion 
+function eliminarSancion(id_sancion) {
+    const url = `http://127.0.0.1:8000/EliminarSancion/${id_sancion}`;
 
-//Eliminar Sancion
-
-
-function eliminarPrestamo(sancionId) {
     Swal.fire({
-        title: "Devolucion del Dispositivo",
-        icon: "question",
+        title: "¿Estás seguro?",
+        text: "Esta Acción Eliminará esta Sancion",
+        icon: "error",
         showCancelButton: true,
-        confirmButtonText: "Liberar Dispositivo",
-        cancelButtonText: "Realizar una sancion",
+        confirmButtonText: "Eliminar",
+        cancelButtonText: "Cancelar"
     }).then((result) => {
         if (result.isConfirmed) {
-            const url = `http://127.0.0.1:8000/EliminarSancion/${sancionId}`;
-
             fetch(url, {
                 method: "DELETE",
                 headers: {
-                    "Content-Type": "application/json",
-                },
+                    "consultar-Type": "AppInventario_ICED/json"
+                }
             })
-                .then((response) => {
-                    if (response.ok) {
-                        return response.json();
-                    } else {
-                        throw new Error("Error al eliminar el préstamo");
-                    }
-                })
-                .then((data) => {
-                    console.log(data);
-                    Listar();
-                    cantidadPrestamos();
-                    Swal.fire({
-                        title: "Préstamo eliminado exitosamente.",
-                        icon: "success",
-                    });
-                })
-                .catch((error) => {
-                    console.error("Error al eliminar el préstamo:", error);
-                    Swal.fire({
-                        title: "Error al eliminar el préstamo",
-                        text: error.message,
-                        icon: "error",
-                    });
-                });
+            .then(response => response.json())
+            .then(data => {
+                ConsultarSanciones();
+                
+                Swal.fire("Éxito", "Dispositivo eliminado exitosamente.", "success");
+            })
+            .catch(error => {
+                console.error("Error al eliminar el Dispositivo:", error);
+                Swal.fire("Error", "Error al eliminar el equipo.", "error");
+            });
         }
     });
 }
 
-
-
+//Buscar sancion 
 document.addEventListener("DOMContentLoaded", () => {
-    const buscarBtn = document.getElementById("BuscarSancion");
-    buscarBtn.addEventListener("click", () => {
+    const buscarSancionBtn = document.getElementById("BuscarSancion");
+    buscarSancionBtn.addEventListener("click", () => {
         const sancionIdInput = document.getElementById("id_sancionn");
         const sancionId = sancionIdInput.value;
 
         if (sancionId) {
-            const url = `http://127.0.0.1:8000/BuscarSancion/${sancionId}`;
+            const url = `http://127.0.0.1:8000/BuscarSancion/${sancionId}/`;
 
             fetch(url, {
                 method: "GET",
@@ -140,34 +141,34 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             })
             .then(sancion => {
-                if (sancion.length > 0) {  // Comprobamos si se encontraron sanciones
+                if (sancion.hasOwnProperty('San_Id')) {
                     const tablaBody = document.getElementById("tabla1-body");
                     tablaBody.innerHTML = "";
 
-                    sancion.forEach(sancion => {
-                        const newRow = document.createElement("tr");
-                        newRow.innerHTML = `
-                            <td>${sancion.fields.San_Id}</td>
-                            <td>${sancion.fields.San_Pres}</td>
-                            <td>${sancion.fields.San_Fecha}</td>
-                            <td>${sancion.fields.San_Hora}</td>
-                            <td>${sancion.fields.San_tiempo}</td>
-                            <td>${sancion.fields.San_Descripcion}</td>
-                            <td>
-                                <div class="btn-container">
-                                    <button class="btnEliminar" onclick="eliminarSancion(${sancion.pk})">Eliminar</button>
-                                </div>
-                            </td>
-                        `;
+                    const newRow = document.createElement("tr");
+                    newRow.innerHTML = `
+                        <td>${sancion.San_Id}</td>
+                        <td>${sancion.San_Pres_id}</td>
+                        <td>${sancion.San_Fecha}</td>
+                        <td>${sancion.San_Hora}</td>
+                        <td>${sancion.San_tiempo}</td>
+                        <td>${sancion.San_Descripcion}</td>
+                        <td>
+                            <div class="btn-container">
+                                <button class="btnEliminar" onclick="eliminarSancion(${sancion.San_Id})">Eliminar</button>
+                            </div>
+                        </td>
+                    `;
 
-                        tablaBody.appendChild(newRow);
-                    });
+                    tablaBody.appendChild(newRow);
+                    
                 } else {
                     Swal.fire({
-                        title: "Elemento No Encontrado",
+                        title: "Sanción No Encontrada",
                         icon: "error", 
                         confirmButtonText: "Aceptar"
                     });
+                    ConsultarSanciones();
                 }
             })
             .catch(error => {

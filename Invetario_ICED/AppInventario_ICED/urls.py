@@ -81,6 +81,7 @@ urlpatterns=[
     path('insertarSancion/',InsertarSanciones.as_view(),name='insertar'),
     path('ActualizarSanciones/<pk>',ActualizarSanciones.as_view(),name='Actualizar'),
     path('EliminarSancion/<pk>',EliminarSanciones.as_view(),name='Eliminar'),
+    path('BuscarSancion/<int:pk>/', BuscarSancion.as_view(), name='buscar_sancion'),
     #HISTORIAL
     path('Historial',views.historial,name='Historial'),
     path('Listarhistorial/',ListarHistorial.as_view(), name='Historia'),

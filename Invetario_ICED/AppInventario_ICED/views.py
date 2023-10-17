@@ -570,6 +570,28 @@ class EliminarSanciones(View):
         Delete.delete()
         return JsonResponse({"Mensaje":"Sancion Eliminada"})
 
+class BuscarSancion(View):
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+    
+    def get(self, request, pk):
+        try:
+            sancion = Sanciones.objects.get(pk=pk)
+        except Sanciones.DoesNotExist:
+            return JsonResponse({"Error": "La sanción no existe"})
+        
+        datos_sancion = {
+            'San_Id': sancion.San_Id,
+            'San_Pres_id': sancion.San_Pres_id,
+            'San_Fecha': sancion.San_Fecha,
+            'San_Hora': sancion.San_Hora,
+            'San_tiempo': sancion.San_tiempo,
+            'San_Descripcion': sancion.San_Descripcion,
+        }
+        
+        return JsonResponse(datos_sancion)
+
 #HISTORIAL DE LOS PRESTAMOS
 
 class ListarHistorial(View):
