@@ -171,6 +171,8 @@ function actualizarUsuario() {
     })
     .then(response => response.json())
     .then(data => {
+        mostrarCantidadInstructores();
+        mostrarCantidadAprendinces();
         console.log(data);
         Consultar();
         Swal.fire({

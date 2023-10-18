@@ -86,6 +86,7 @@ function Agregar() {
             .then(data => {
                 Listar();
                 cantidadPrestamos();
+                equiposEnPrestamo();
                 // Muestra SweetAlert de éxito
                 Swal.fire({
                     icon: 'success',
@@ -154,7 +155,6 @@ function eliminarPrestamo(Pres_Id) {
                 .then((data) => {
                     console.log(data);
                     Listar();
-                    Agregar();
                     cantidadPrestamos();
                     equiposEnPrestamo();
                     mostrarCantidadEquipos();

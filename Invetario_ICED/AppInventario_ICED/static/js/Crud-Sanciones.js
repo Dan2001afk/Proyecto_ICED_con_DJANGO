@@ -52,9 +52,10 @@ function Agregar() {
     .then(data => {
         console.log(data);
         if (data.mensaje === "Datos Guardados") {
+            contarSanciones();
             ConsultarSanciones();
             mostrarCantidadEquipos();
-            equiposInactivos
+            equiposInactivos();
             Swal.fire({
                 icon: 'success',
                 title: '¡Éxito!',
@@ -107,6 +108,7 @@ function eliminarSancion(id_sancion) {
             })
             .then(response => response.json())
             .then(data => {
+                contarSanciones();
                 ConsultarSanciones();
                 mostrarCantidadEquipos();
                 equiposInactivos();

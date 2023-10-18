@@ -34,7 +34,7 @@ urlpatterns=[
     
     #LOGIN
     path('registro/',RegistrarUsuarioView.as_view(),name="registrar_usuario"),
-    path('iniciarSesion',IniciarSesionView.as_view(),name="iniciar_sesion"),
+    path('iniciarSesion/',IniciarSesionView.as_view(),name="iniciar_sesion"),
     path('ActualizarUsuario/',PerfilClienteView.as_view(),name="perfil_usuario"),
     path('Login',views.Login,name='Login'),
     path('VistasUsuarios',VistasUsuarios,name="VistaUsarios"),
